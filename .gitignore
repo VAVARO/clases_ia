@@ -1,0 +1,15 @@
+# OS & Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.log
+.vscode/
+.idea/
+
+# Dependencies
+node_modules/
+
+# Temporary extraction files
+paragraphs.txt
+extracted_docx.txt

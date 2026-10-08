@@ -1,0 +1,922 @@
+[
+  {
+    "id": "rec-01",
+    "title": "\"If AI is writing the work and AI is reading the work, do we even need to be there at all?\" Education workers reveal a growing crisis on campus and off",
+    "authors": "Brian Merchant",
+    "authorId": "aut-merchant",
+    "source": "Blood in the Machine (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Crítica Laboral",
+    "url": "https://www.bloodinthemachine.com/p/if-ai-is-writing-the-work-and-ai",
+    "description": "Crónica urgente sobre el vaciamiento pedagógico en universidades: estudiantes que generan tareas con LLMs y docentes que las corrigen con LLMs, diluyendo el sentido humano del aprendizaje.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      32
+    ]
+  },
+  {
+    "id": "rec-02",
+    "title": "A Guide to Which AI to Use in the Agentic Era",
+    "authors": "Ethan Mollick",
+    "authorId": "aut-mollick",
+    "source": "One Useful Thing (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Guía Práctica",
+    "url": "https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the",
+    "description": "Análisis comparativo de Ethan Mollick sobre qué modelos de frontera y herramientas agénticas seleccionar según la naturaleza de la tarea cognitiva y el nivel de autonomía requerido.",
+    "hub": "agentes",
+    "relatedConceptIds": [
+      24,
+      6
+    ]
+  },
+  {
+    "id": "rec-03",
+    "title": "AI Evals for the Situation Room, Explained",
+    "authors": "Jordan Schneider & Phoebe Chow",
+    "authorId": "aut-chinatalk",
+    "source": "ChinaTalk (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Seguridad Nacional",
+    "url": "https://www.chinatalk.media/p/ai-evals-for-the-situation-room-explained",
+    "description": "Cómo los organismos de defensa y seguridad evalúan la fiabilidad, alucinaciones y vulnerabilidades operativas de los modelos de IA antes de emplearlos en análisis de inteligencia.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      31,
+      28
+    ]
+  },
+  {
+    "id": "rec-04",
+    "title": "AI Is Breaking Education. Rebecca Winthrop Has the Blueprint to Fix It",
+    "authors": "Center for Humane Technology",
+    "authorId": "aut-humane-tech",
+    "source": "Center for Humane Technology (Substack & Podcast)",
+    "type": "Post de Blog / Podcast",
+    "categoryType": "articulo",
+    "badge": "Políticas Educativas",
+    "url": "https://centerforhumanetechnology.substack.com/p/ai-is-breaking-education-rebecca",
+    "description": "Diálogo con Rebecca Winthrop (Brookings Institution) sobre cómo transformar el currículo educativo para formar habilidades humanas que la IA complementa pero no reemplaza.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      32
+    ]
+  },
+  {
+    "id": "rec-05",
+    "title": "AI agents can't yet do open-ended AI research",
+    "authors": "Sayash Kapoor & Arvind Narayanan",
+    "authorId": "aut-narayanan-kapoor",
+    "source": "AI as Normal Technology (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Escepticismo Empírico",
+    "url": "https://www.normaltech.ai/p/ai-agents-cant-yet-do-open-ended",
+    "description": "Rigurosa investigación de Princeton que demuestra que las afirmaciones de «científicos autónomos de IA» son infundadas: los agentes fallan al plantear preguntas de investigación no triviales.",
+    "hub": "agentes",
+    "relatedConceptIds": [
+      24
+    ]
+  },
+  {
+    "id": "rec-06",
+    "title": "Agent Evaluation: A Detailed Guide",
+    "authors": "Cameron R. Wolfe, Ph.D.",
+    "source": "Deep (Learning) Focus (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Ingeniería Profunda",
+    "url": "https://cameronrwolfe.substack.com/p/agent-evals",
+    "description": "Manual técnico sobre diseño de benchmarks, entornos de simulación y métricas de precisión multi-paso para evaluar agentes autónomos en condiciones de producción.",
+    "hub": "agentes",
+    "relatedConceptIds": [
+      24,
+      25
+    ]
+  },
+  {
+    "id": "rec-07",
+    "title": "America Against China Against America",
+    "authors": "Jasmine Sun",
+    "authorId": "aut-sun",
+    "source": "jasmi.news (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Geopolítica Cultural",
+    "url": "https://jasmi.news/p/china-2025",
+    "description": "Exploración de la interdependencia e imitación competitiva entre Silicon Valley y el ecosistema tecnológico de China en la carrera por el desarrollo de modelos de frontera.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      6,
+      35
+    ]
+  },
+  {
+    "id": "rec-08",
+    "title": "Autonomous Long-Running Coding Agents",
+    "authors": "Elvis Saravia",
+    "source": "AI Newsletter (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Arquitectura de Software",
+    "url": "https://nlp.elvissaravia.com/p/autonomous-long-running-coding-agents",
+    "description": "Arquitectura técnica de agentes de código que operan de forma ininterrumpida durante horas: gestión de contexto expandido, retroalimentación de linter y compilación iterativa.",
+    "hub": "agentes",
+    "relatedConceptIds": [
+      24,
+      25,
+      26
+    ]
+  },
+  {
+    "id": "rec-09",
+    "title": "Bits In, Bits Out",
+    "authors": "Erik Hoel",
+    "source": "The Intrinsic Perspective (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Neurociencia y Filosofía",
+    "url": "https://www.theintrinsicperspective.com/p/bits-in-bits-out",
+    "description": "El neurocientífico Erik Hoel analiza la distinción entre procesamiento sintáctico de información y comprensión semántica biológica, abordando las raíces teóricas de la conciencia.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      4,
+      3
+    ]
+  },
+  {
+    "id": "rec-10",
+    "title": "China has all but caught up. The US is not going to \"win\" the AI war. Here's what we should do instead",
+    "authors": "Gary Marcus",
+    "authorId": "aut-marcus",
+    "source": "Marcus on AI (Substack)",
+    "type": "Post de Blog (Substack)",
+    "badge": "Estrategia Global",
+    "url": "https://garymarcus.substack.com/p/china-has-all-but-caught-up-the-us",
+    "description": "Gary Marcus expone por qué el enfoque exclusivo de restricción de hardware no detendrá el avance chino y propone centrar la agenda en estándares de seguridad globales e investigación neuro-simbólica.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      6,
+      31
+    ]
+  },
+  {
+    "id": "rec-11",
+    "title": "Cómo uso Claude Code sin ser ingeniero",
+    "authors": "José Ignacio Flores",
+    "source": "Fintualist",
+    "type": "Artículo Web / Opinión",
+    "categoryType": "articulo",
+    "badge": "Adopción Práctica",
+    "url": "https://fintualist.com/chile/opinion/como-uso-claude-code-sin-ser-ingeniero/",
+    "description": "Relato en primera persona sobre la adopción de herramientas de terminal agénticas por parte de profesionales de humanidades y redacción para automatizar procesos reales de negocio.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      24,
+      26
+    ]
+  },
+  {
+    "id": "rec-12",
+    "title": "Grading in the Age of AI",
+    "authors": "Daniel Greco",
+    "source": "Greco & Wansley (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Filosofía Docente",
+    "url": "https://grecowansley.substack.com/p/grading-in-the-age-of-ai",
+    "description": "Reflexión filosófica sobre la validez de los métodos tradicionales de evaluación universitaria cuando los estudiantes disponen de sintetizadores automáticos de prosa.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      32,
+      4
+    ]
+  },
+  {
+    "id": "rec-13",
+    "title": "How AI Becomes a Political Crisis",
+    "authors": "Jordan Schneider, Phoebe Chow & Anton Leicht",
+    "authorId": "aut-chinatalk",
+    "source": "ChinaTalk (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Análisis Institucional",
+    "url": "https://www.chinatalk.media/p/how-ai-becomes-a-political-crisis",
+    "description": "Análisis de riesgo político sobre cómo la generación de contenidos hiperrealistas puede interactuar con instituciones democráticas frágiles y desencadenar crisis de legitimidad.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      31,
+      28
+    ]
+  },
+  {
+    "id": "rec-14",
+    "title": "Infinite midwit",
+    "authors": "Adam Mastroianni",
+    "source": "Experimental History (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Psicología Cultural",
+    "url": "https://www.experimental-history.com/p/infinite-midwit",
+    "description": "Ensayo sobre la producción masiva de contenido superficial con LLMs: cómo la abundancia de respuestas aparentemente competentes pero insustanciales puede degradar el criterio intelectual.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      4
+    ]
+  },
+  {
+    "id": "rec-15",
+    "title": "Inteligencia Artificial, comprenderla antes de fallar en el intento",
+    "authors": "Nancy Pérez & Álvaro Contreras",
+    "authorId": "aut-contreras-perez",
+    "source": "alvarocontreras.substack.com",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Docencia & Gestión",
+    "url": "https://alvarocontreras.substack.com/p/inteligencia-artificial-comprenderla",
+    "description": "Artículo de los docentes Álvaro Contreras y Nancy Pérez sobre los errores recurrentes en instituciones que adoptan herramientas de IA sin gobernanza, comprensión técnica previa ni claridad de objetivos.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      1,
+      5
+    ]
+  },
+  {
+    "id": "rec-16",
+    "title": "Note taking more effective than AI for learning",
+    "authors": "Cambridge University Press & Assessment",
+    "source": "Cambridge.org",
+    "type": "Artículo de Noticias Web",
+    "categoryType": "articulo",
+    "badge": "Evidencia Científica",
+    "url": "https://www.cambridge.org/",
+    "description": "Investigación experimental de la Universidad de Cambridge que demuestra que la toma activa de notas a mano consolida recuerdos y conexiones conceptuales muy superiores a la lectura pasiva de resúmenes de IA.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      32
+    ]
+  },
+  {
+    "id": "rec-17",
+    "title": "Open-source is NOT the same as open-weight",
+    "authors": "Gary Marcus",
+    "authorId": "aut-marcus",
+    "source": "Marcus on AI (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Transparencia Técnica",
+    "url": "https://garymarcus.substack.com/p/open-source-is-not-the-same-as-open",
+    "description": "Distinción conceptual crucial: liberar los pesos numéricos de una red neuronal sin publicar los datos de entrenamiento ni el código de curaduría no cumple con los estándares históricos del código abierto.",
+    "hub": "arquitectura",
+    "relatedConceptIds": [
+      9,
+      34
+    ]
+  },
+  {
+    "id": "rec-18",
+    "title": "Save the Student Essay",
+    "authors": "Victor Kumar",
+    "source": "Open Questions (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Humanidades",
+    "url": "https://openquestionsblog.substack.com/p/save-the-student-essay",
+    "description": "El filósofo moral Victor Kumar argumenta por qué el ensayo estudiantil es un ejercicio irreemplazable de formulación del pensamiento, estructuración lógica y maduración intelectual humana.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      32,
+      4
+    ]
+  },
+  {
+    "id": "rec-19",
+    "title": "Software Vision: Navigating the Era of Claude Code Psychosis",
+    "authors": "Jasmine Sun",
+    "authorId": "aut-sun",
+    "source": "jasmi.news (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Sociología Digital",
+    "url": "https://jasmi.news/p/claude-code",
+    "description": "Reflexión etnográfica sobre el cambio psicológico y laboral de los desarrolladores que pasan de escribir código línea a línea a supervisar bucles agénticos autónomos.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      24,
+      26
+    ]
+  },
+  {
+    "id": "rec-20",
+    "title": "Strategic Cognitive Offloading: What the Research Says, and Why Higher Education Isn't Ready for It",
+    "authors": "Tawnya Means",
+    "source": "The Collaboration Chronicle (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Pedagogía Universitaria",
+    "url": "https://inspirehighered.com/genai-insights",
+    "description": "Revisión sistemática de literatura sobre cuándo delegar carga mental a la IA potencia el razonamiento superior y cuándo atrofia la comprensión basal en estudiantes universitarios.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      32
+    ]
+  },
+  {
+    "id": "rec-21",
+    "title": "The Overhang",
+    "authors": "Ethan Mollick",
+    "authorId": "aut-mollick",
+    "source": "One Useful Thing (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Frontera Tecnológica",
+    "url": "https://www.oneusefulthing.org/p/the-overhang",
+    "description": "Análisis del concepto de «overhang»: la enorme discrepancia entre lo que los modelos de frontera ya pueden hacer en laboratorio y la escasa fracción que las organizaciones han aprendido a aprovechar.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      6,
+      5
+    ]
+  },
+  {
+    "id": "rec-22",
+    "title": "What a Global Study of 500 People Across 50 Countries Found About AI and Kids",
+    "authors": "Center for Humane Technology",
+    "authorId": "aut-humane-tech",
+    "source": "Center for Humane Technology (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Estudio Empírico",
+    "url": "https://centerforhumanetechnology.substack.com/p/what-a-global-study-of-500-people",
+    "description": "Resultados de un estudio internacional sobre las interacciones emocionales entre niños y modelos conversacionales de IA, alertando sobre apegos parasociales y vulnerabilidades evolutivas.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      22,
+      31
+    ]
+  },
+  {
+    "id": "rec-23",
+    "title": "What it feels like to work with Mythos",
+    "authors": "Ethan Mollick",
+    "authorId": "aut-mollick",
+    "source": "One Useful Thing (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Razonamiento Avanzado",
+    "url": "https://www.oneusefulthing.org/p/what-it-feels-like-to-work-with-mythos",
+    "description": "Reporte de experimentación directa con modelos de razonamiento avanzado y resolución reflexiva de problemas complejos, examinando la sensación subjetiva del nuevo flujo de trabajo.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      27,
+      6
+    ]
+  },
+  {
+    "id": "rec-24",
+    "title": "What will be left for us to work on?",
+    "authors": "Arvind Narayanan",
+    "authorId": "aut-narayanan-kapoor",
+    "source": "AI as Normal Technology (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Futuro Laboral",
+    "url": "https://www.normaltech.ai/p/what-will-be-left-for-us-to-work",
+    "description": "El profesor de Princeton analiza la redistribución del trabajo cognitivo: qué tareas se vuelven mercancía barata y qué competencias humanas adquieren un valor diferencial creciente.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      32,
+      1
+    ]
+  },
+  {
+    "id": "rec-25",
+    "title": "Why China's AI Bubble Is Also Industrial Policy",
+    "authors": "Leia Wang & Jordan Schneider",
+    "authorId": "aut-chinatalk",
+    "source": "ChinaTalk (Substack)",
+    "type": "Post de Blog (Substack)",
+    "categoryType": "articulo",
+    "badge": "Política Industrial",
+    "url": "https://www.chinatalk.media/p/why-chinas-ai-bubble-is-also-industrial",
+    "description": "Examen de la estrategia estatal china: cómo el subsidio masivo a desarrolladores locales de modelos de IA persigue soberanía de infraestructura a largo plazo más que rendimientos trimestrales.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      35,
+      6
+    ]
+  },
+  {
+    "id": "rec-26",
+    "title": "What are AI Agents?",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Arquitectura Agéntica",
+    "url": "https://www.youtube.com/watch?v=ksWjLruVwNw",
+    "description": "Explicación en pizarra sobre los componentes centrales de un agente de IA: percepción del entorno, memoria a corto y largo plazo, planificación iterativa y uso de herramientas para alcanzar objetivos.",
+    "hub": "agentes",
+    "relatedConceptIds": [
+      24,
+      25
+    ]
+  },
+  {
+    "id": "rec-27",
+    "title": "5 Types of AI Agents: Autonomous Functions & Real-World Applications",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Taxonomía de Agentes",
+    "url": "https://www.youtube.com/watch?v=fXizBc03D7E",
+    "description": "Clasificación formal de los cinco tipos de agentes de software (reflejos simples, basados en modelos, orientados a metas, basados en utilidad y de aprendizaje continuo) y sus casos prácticos.",
+    "hub": "agentes",
+    "relatedConceptIds": [
+      24
+    ]
+  },
+  {
+    "id": "rec-28",
+    "title": "The Power of AI Agents and Agentic AI Explained",
+    "authors": "IBM Technology (con Deanna Berger)",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Agentic AI",
+    "url": "https://www.youtube.com/watch?v=2j26a5dmCnI",
+    "description": "Análisis sobre la evolución desde los chatbots pasivos hacia arquitecturas agénticas capaces de coordinar flujos multi-paso, delegar subtareas y operar de manera semi-autónoma.",
+    "hub": "agentes",
+    "relatedConceptIds": [
+      24,
+      22
+    ]
+  },
+  {
+    "id": "rec-29",
+    "title": "What AI Agent Skills Are and How They Work",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Habilidades Agénticas",
+    "url": "https://www.youtube.com/watch?v=Lg-meK5IU8Q",
+    "description": "Cómo se implementan y ejecutan las «skills» de un agente: llamadas a funciones (function calling), conectores de API, recuperación de información externa e interacción con bases de datos.",
+    "hub": "agentes",
+    "relatedConceptIds": [
+      26,
+      24
+    ]
+  },
+  {
+    "id": "rec-30",
+    "title": "Top 10 Security Risks in AI Agents Explained",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Ciberseguridad",
+    "url": "https://www.youtube.com/watch?v=qoajxoBYghE",
+    "description": "Auditoría exhaustiva sobre las vulnerabilidades de los agentes autónomos: inyecciones indirectas de instrucciones, secuestro de herramientas, exfiltración de credenciales y loops infinitos de ejecución.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      29,
+      30,
+      31
+    ]
+  },
+  {
+    "id": "rec-31",
+    "title": "The 7 Skills You Need to Build AI Agents",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Desarrollo Agéntico",
+    "url": "https://www.youtube.com/watch?v=D7_ipDqhtwk",
+    "description": "Guía formativa sobre las siete disciplinas técnicas requeridas para ingenieros de agentes: frameworks de orquestación, evaluación de trayectorias, observabilidad, diseño de memoria y control de acceso.",
+    "hub": "agentes",
+    "relatedConceptIds": [
+      24,
+      25
+    ]
+  },
+  {
+    "id": "rec-32",
+    "title": "Claude Cowork Fundamentals In 22 Minutes",
+    "authors": "Tina Huang",
+    "authorId": "aut-huang",
+    "source": "Tina Huang (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Tutorial Práctico",
+    "url": "https://www.youtube.com/watch?v=uGwDuvSqgYI",
+    "description": "Guía concisa para configurar y aprovechar Claude Cowork en proyectos profesionales, optimizando la gestión de proyectos, contexto compartido y delegación colaborativa de tareas.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      17,
+      24
+    ]
+  },
+  {
+    "id": "rec-33",
+    "title": "Essential AI Skills For 2026",
+    "authors": "Tina Huang",
+    "authorId": "aut-huang",
+    "source": "Tina Huang (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Prospectiva Laboral",
+    "url": "https://www.youtube.com/watch?v=jm2jBW462bU",
+    "description": "Análisis de las habilidades críticas que marcarán la diferencia en el mercado laboral contemporáneo: formulación de problemas, validación cruzada y gestión de agentes en flujos de trabajo mixtos.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      1,
+      17
+    ]
+  },
+  {
+    "id": "rec-34",
+    "title": "Every AI Model Explained In 20 Minutes (Update)",
+    "authors": "Tina Huang",
+    "authorId": "aut-huang",
+    "source": "Tina Huang (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Panorama de Modelos",
+    "url": "https://www.youtube.com/watch?v=GOSYouMEYmE",
+    "description": "Revisión panorámica y comparativa de las familias de modelos de frontera: OpenAI (GPT), Anthropic (Claude), Google (Gemini) y los modelos de pesos abiertos (Llama, Mistral y DeepSeek).",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      4,
+      9
+    ]
+  },
+  {
+    "id": "rec-35",
+    "title": "My Favourite AI Workflow Nobody Talks About",
+    "authors": "Tina Huang",
+    "authorId": "aut-huang",
+    "source": "Tina Huang (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Metodología de Trabajo",
+    "url": "https://www.youtube.com/watch?v=kKG5MDF_234",
+    "description": "Estrategia para encadenar modelos de razonamiento y herramientas de síntesis en flujos de investigación profunda y estructuración de conocimiento sin sobrecargar la ventana de contexto.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      19,
+      27
+    ]
+  },
+  {
+    "id": "rec-36",
+    "title": "My Full Claude Cowork Setup (steal my workflows!)",
+    "authors": "Tina Huang",
+    "authorId": "aut-huang",
+    "source": "Tina Huang (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Configuración Avanzada",
+    "url": "https://www.youtube.com/watch?v=kYJdJ-t7j64",
+    "description": "Demostración detallada de la configuración completa de Tina Huang con Claude: instrucciones de sistema, proyectos persistentes y atajos para acelerar tareas analíticas diarias.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      17,
+      26
+    ]
+  },
+  {
+    "id": "rec-37",
+    "title": "How AI is Destroying Your Brain",
+    "authors": "Mark Manson",
+    "authorId": "aut-manson",
+    "source": "Mark Manson (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Psicología y Cognición",
+    "url": "https://www.youtube.com/watch?v=EaFhlWqhqvw",
+    "description": "Ensayo sobre los peligros cognitivos de la delegación intelectual excesiva: cómo la atrofia del esfuerzo de pensamiento y la gratificación inmediata debilitan la memoria y la capacidad reflexiva.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      32,
+      31
+    ]
+  },
+  {
+    "id": "rec-38",
+    "title": "How You Can Use ChatGPT to Change Your Life",
+    "authors": "Mark Manson",
+    "authorId": "aut-manson",
+    "source": "Mark Manson (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Desarrollo Personal",
+    "url": "https://www.youtube.com/watch?v=rHNnIn0-7bE",
+    "description": "Marco de uso constructivo de la IA para el autoconocimiento: cómo emplear prompts socráticos que desafíen tus propios sesgos en lugar de buscar respuestas complacientes y aduladoras.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      16,
+      22
+    ]
+  },
+  {
+    "id": "rec-39",
+    "title": "I Created an AI to Try to Fix the Self-Help Industry",
+    "authors": "Mark Manson",
+    "authorId": "aut-manson",
+    "source": "Mark Manson (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Ética en Agentes",
+    "url": "https://www.youtube.com/watch?v=E0N-MO0eo2g",
+    "description": "Reflexión de Mark Manson sobre el desarrollo de un tutor de IA personalizado diseñado para confrontar al usuario con principios éticos y psicológicos rigurosos, evitando el optimismo tóxico.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      22,
+      24
+    ]
+  },
+  {
+    "id": "rec-40",
+    "title": "A Different Approach to AI: Gary Marcus and Nicholas Thompson (MITIAI Ep. 7)",
+    "authors": "Nicholas Thompson & Gary Marcus",
+    "authorId": "aut-thompson",
+    "source": "Atlantic Re:think / MITIAI",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "IA Neuro-Simbólica",
+    "url": "https://www.youtube.com/watch?v=gR43ryjJHhU",
+    "description": "Gary Marcus argumenta ante Nicholas Thompson por qué los modelos puramente generativos están chocando contra un muro de confiabilidad y por qué la integración simbólica es indispensable.",
+    "hub": "arquitectura",
+    "relatedConceptIds": [
+      3,
+      10
+    ]
+  },
+  {
+    "id": "rec-41",
+    "title": "AI Optimism: with Kevin Kelly and Nicholas Thompson (MITIAI Ep. 12)",
+    "authors": "Nicholas Thompson & Kevin Kelly",
+    "authorId": "aut-thompson",
+    "source": "Atlantic Re:think / MITIAI",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Filosofía Tecnológica",
+    "url": "https://www.youtube.com/watch?v=_6LBbuWaLlE",
+    "description": "Kevin Kelly (cofundador de WIRED) expone una perspectiva de largo plazo: concibe la IA como mentes artificiales especializadas que enriquecerán la ecología del conocimiento humano.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      1,
+      7
+    ]
+  },
+  {
+    "id": "rec-42",
+    "title": "Building Trustworthy AI: with Navrina Singh and Nicholas Thompson (MITIAI Ep. 18)",
+    "authors": "Nicholas Thompson & Navrina Singh",
+    "authorId": "aut-thompson",
+    "source": "Atlantic Re:think / MITIAI",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Auditoría de Algoritmos",
+    "url": "https://www.youtube.com/watch?v=92t8DXrWG0Q",
+    "description": "Navrina Singh (fundadora de Credo AI) explica cómo establecer marcos de rendición de cuentas, auditoría de sesgos y gobernanza empresarial para desplegar IA con respaldo ético.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      29,
+      31
+    ]
+  },
+  {
+    "id": "rec-43",
+    "title": "Ethical Machines: with Audrey Tang and Nicholas Thompson (MITIAI Ep. 8)",
+    "authors": "Nicholas Thompson & Audrey Tang",
+    "authorId": "aut-thompson",
+    "source": "Atlantic Re:think / MITIAI",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Democracia Digital",
+    "url": "https://www.youtube.com/watch?v=BEwSVnzS2IA",
+    "description": "Audrey Tang (primera Ministra Digital de Taiwán) analiza cómo la inteligencia asistida puede emplearse para potenciar consensos cívicos y desarticular la polarización en democracias abiertas.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      32,
+      31
+    ]
+  },
+  {
+    "id": "rec-44",
+    "title": "Neuro-Symbolic AI: with Ohad Elhelo and Nicholas Thompson (MITIAI Ep. 13)",
+    "authors": "Nicholas Thompson & Ohad Elhelo",
+    "authorId": "aut-thompson",
+    "source": "Atlantic Re:think / MITIAI",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Razonamiento y Lógica",
+    "url": "https://www.youtube.com/watch?v=KbXladrIXR8",
+    "description": "Diálogo técnico sobre la unión de redes neuronales y grafos de conocimiento estructurados para lograr trazabilidad y exactitud en decisiones críticas de negocio y medicina.",
+    "hub": "arquitectura",
+    "relatedConceptIds": [
+      10,
+      27
+    ]
+  },
+  {
+    "id": "rec-45",
+    "title": "The Copyright Wars: with Bill Gross and Nicholas Thompson (MITIAI Ep. 19)",
+    "authors": "Nicholas Thompson & Bill Gross",
+    "authorId": "aut-thompson",
+    "source": "Atlantic Re:think / MITIAI",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Propiedad Intelectual",
+    "url": "https://www.youtube.com/watch?v=mQBYCDxMulE",
+    "description": "El emprendedor e inversor Bill Gross analiza las disputas legales sobre derechos de autor, el entrenamiento masivo de modelos con obras protegidas y esquemas de retribución a creadores.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      34,
+      31
+    ]
+  },
+  {
+    "id": "rec-46",
+    "title": "The Future of AI at Work: with Matt Wood and Nicholas Thompson (MITIAI Ep. 16)",
+    "authors": "Nicholas Thompson & Matt Wood",
+    "authorId": "aut-thompson",
+    "source": "Atlantic Re:think / MITIAI",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Infraestructura Cloud",
+    "url": "https://www.youtube.com/watch?v=sh35HT-NzCo",
+    "description": "Matt Wood (Vicepresidente de IA en AWS) comparte cómo las organizaciones están pasando de experimentos aislados a desplegar arquitecturas generativas en producción sobre la nube.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      5,
+      15
+    ]
+  },
+  {
+    "id": "rec-47",
+    "title": "Can We Really Build Data Centers in Space? Ariel Ekblaw Thinks So",
+    "authors": "Nicholas Thompson & Ariel Ekblaw",
+    "authorId": "aut-thompson",
+    "source": "The Most Interesting Thing in AI (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Cómputo Espacial",
+    "url": "https://www.youtube.com/watch?v=l8qPlKnvXKI",
+    "description": "La fundadora de MIT Space Exploration Initiative expone la viabilidad de trasladar servidores de entrenamiento a órbita para aprovechar energía solar inagotable y mitigar el impacto hídrico terrestre.",
+    "hub": "arquitectura",
+    "relatedConceptIds": [
+      35,
+      15
+    ]
+  },
+  {
+    "id": "rec-48",
+    "title": "How AI Could Throw the Global Order Into Chaos",
+    "authors": "Nicholas Thompson & Ian Bremmer",
+    "authorId": "aut-thompson",
+    "source": "The Most Interesting Thing in AI (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Geopolítica Global",
+    "url": "https://www.youtube.com/watch?v=9u_qtURT7Io",
+    "description": "Ian Bremmer (Eurasia Group) reflexiona sobre el «test alienígena»: por qué el orden geopolítico actual carece de coordinación suficiente para gobernar los riesgos existenciales y armamentistas de la IA.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      6,
+      31
+    ]
+  },
+  {
+    "id": "rec-49",
+    "title": "How AI Is Changing Code: Programmer Paul Ford",
+    "authors": "Nicholas Thompson & Paul Ford",
+    "authorId": "aut-thompson",
+    "source": "The Most Interesting Thing in AI (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Ingeniería de Software",
+    "url": "https://www.youtube.com/watch?v=VNmAM6BZLVE",
+    "description": "Paul Ford analiza la transformación del oficio de programar ante el auge del «vibe coding», la sobreproducción de código sin revisión humana y los desafíos de pensar productos más allá de la sintaxis.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      26,
+      17
+    ]
+  },
+  {
+    "id": "rec-50",
+    "title": "The Case for Open Source AI: Mozilla CTO Raffi Krikorian",
+    "authors": "Nicholas Thompson & Raffi Krikorian",
+    "authorId": "aut-thompson",
+    "source": "The Most Interesting Thing in AI (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Código Abierto",
+    "url": "https://www.youtube.com/watch?v=SGzPVz7SNlU",
+    "description": "El director de tecnología de Mozilla expone los argumentos a favor de los modelos de pesos y código abierto como baluarte frente a monopolios opacos y garantía de soberanía cívica.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      9,
+      5
+    ]
+  },
+  {
+    "id": "rec-51",
+    "title": "How to Solve AI's Sycophancy Problem: Yoshua Bengio",
+    "authors": "Nicholas Thompson & Yoshua Bengio",
+    "authorId": "aut-thompson",
+    "source": "The Most Interesting Thing in AI (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Alineamiento y Seguridad",
+    "url": "https://www.youtube.com/watch?v=Ae6vSwmaGD0",
+    "description": "El premio Turing Yoshua Bengio introduce el concepto de «Scientist AI»: entrenar modelos desapegados de la complacencia humana para que prioricen la verdad objetiva y actúen como inspectores de seguridad.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      28,
+      31
+    ]
+  },
+  {
+    "id": "rec-52",
+    "title": "Steven Johnson on How AI Will Change Writing",
+    "authors": "Nicholas Thompson & Steven Johnson",
+    "authorId": "aut-thompson",
+    "source": "The Most Interesting Thing in AI (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Creatividad y Escritura",
+    "url": "https://www.youtube.com/watch?v=Dmtv78xVf0M",
+    "description": "El ensayista y director editorial en Google Labs (co-creador de NotebookLM) explica cómo usar la IA como socio interactivo de investigación sin renunciar al estilo personal ni a la voz propia.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      19,
+      13
+    ]
+  },
+  {
+    "id": "rec-53",
+    "title": "The Limits of Predictive AI: Oxford Philosopher Carissa Véliz",
+    "authors": "Nicholas Thompson & Carissa Véliz",
+    "authorId": "aut-thompson",
+    "source": "The Most Interesting Thing in AI (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Ética Predictiva",
+    "url": "https://www.youtube.com/watch?v=jL-5MR6_oP0",
+    "description": "Carissa Véliz profundiza en las trampas morales de delegar sentencias, diagnósticos y decisiones laborales a modelos predictivos que reproducen discriminaciones históricas bajo la apariencia de neutralidad.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      33,
+      2
+    ]
+  },
+  {
+    "id": "rec-54",
+    "title": "Utopia or Catastrophe? Nick Bostrom on AI's Risks & Promise",
+    "authors": "Nicholas Thompson & Nick Bostrom",
+    "authorId": "aut-thompson",
+    "source": "The Most Interesting Thing in AI (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Riesgo Existencial",
+    "url": "https://www.youtube.com/watch?v=yYJ4d_T6H1g",
+    "description": "Nick Bostrom reflexiona sobre los escenarios extremos de la transición hacia la superinteligencia: desde la superación de la escasez material hasta el problema del control y la aniquilación existencial.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      6,
+      31
+    ]
+  },
+  {
+    "id": "rec-55",
+    "title": "What AI Is Really Doing to Jobs Right Now: Stanford Economist Erik Brynjolfsson",
+    "authors": "Nicholas Thompson & Erik Brynjolfsson",
+    "authorId": "aut-thompson",
+    "source": "The Most Interesting Thing in AI (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Economía Laboral",
+    "url": "https://www.youtube.com/watch?v=HpgjB4ZA7E0",
+    "description": "Erik Brynjolfsson expone evidencia cuantitativa sobre la sustitución de tareas vs complementariedad, la curva en J de productividad y el impacto diferencial de la IA generativa en trabajadores de distinto nivel de experiencia.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      1,
+      32
+    ]
+  }
+]

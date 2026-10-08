@@ -1,0 +1,110 @@
+[
+  {
+    "id": "aut-mollick",
+    "name": "Ethan Mollick",
+    "role": "Profesor en Wharton & Investigador",
+    "affiliation": "Wharton School, University of Pennsylvania",
+    "platform": "One Useful Thing (Substack)",
+    "perspective": "Pionero en el estudio empírico de la IA en el trabajo y la educación. Aborda la tecnología desde la experimentación práctica inmediata, el «tiempo con la máquina» y nociones clave como la «frontera tecnológica irregular» (jagged technological frontier), analizando cómo amplificar la creatividad humana y mitigar riesgos sin prohibiciones inútiles.",
+    "topics": ["Productividad", "Modelos de Frontera", "Educación", "Experimentación"]
+  },
+  {
+    "id": "aut-marcus",
+    "name": "Gary Marcus",
+    "role": "Científico Cognitivo & Autor",
+    "affiliation": "New York University (Profesor Emérito) & Geometric Intelligence",
+    "platform": "Marcus on AI (Substack)",
+    "perspective": "Una de las voces críticas y escépticas más influyentes del paradigma de Deep Learning puro. Aboga por la IA neuro-simbólica (combinar redes neuronales con razonamiento y lógica estructurada) y advierte constantemente sobre los límites de confiabilidad, sesgos y alucinaciones de los LLMs actuales.",
+    "topics": ["IA Neuro-Simbólica", "Límites de LLMs", "Gobernanza", "Open Source"]
+  },
+  {
+    "id": "aut-thompson",
+    "name": "Nicholas Thompson",
+    "role": "CEO de The Atlantic & Periodista",
+    "affiliation": "The Atlantic (ex Editor en Jefe de WIRED)",
+    "platform": "The Most Interesting Thing in AI (YouTube / Podcast)",
+    "perspective": "Periodista tecnológico de primer nivel. Conduce la serie de entrevistas en profundidad «The Most Interesting Thing in AI», explorando las implicancias culturales, geopolíticas, éticas y económicas de la IA junto a los principales pensadores, investigadores y líderes mundiales.",
+    "topics": ["Entrevistas de Fondo", "Geopolítica", "Futuro del Trabajo", "Filosofía"]
+  },
+  {
+    "id": "aut-ibm",
+    "name": "IBM Technology",
+    "role": "Equipo de Arquitectura e Ingeniería",
+    "affiliation": "IBM Research & watsonx",
+    "platform": "IBM Technology (YouTube)",
+    "perspective": "División de divulgación técnica y arquitectura de IBM. Explica con rigor técnico y diagramas de pizarra la anatomía interna de los agentes de IA, taxonomías de autonomía, protocolos de seguridad y las habilidades prácticas necesarias para llevar sistemas a producción.",
+    "topics": ["Sistemas Agénticos", "Arquitectura Empresarial", "Ciberseguridad", "Taxonomía"]
+  },
+  {
+    "id": "aut-huang",
+    "name": "Tina Huang",
+    "role": "Divulgadora Tecnológica & Ex Data Scientist",
+    "affiliation": "Educadora Independiente",
+    "platform": "Tina Huang (YouTube)",
+    "perspective": "Científica de datos y creadora de contenido formativo. Su foco es intensamente pragmático: diseño de flujos de trabajo eficientes, integración de asistentes agénticos (Claude Code y Cowork) y adquisición de competencias operativas de IA para profesionales y no programadores.",
+    "topics": ["Workflows", "Claude", "Productividad", "Habilidades 2026"]
+  },
+  {
+    "id": "aut-manson",
+    "name": "Mark Manson",
+    "role": "Escritor Best-Seller & Ensayista",
+    "affiliation": "Autor de «The Subtle Art of Not Giving a F*ck»",
+    "platform": "Mark Manson (YouTube / Blog)",
+    "perspective": "Aborda la inteligencia artificial desde la psicología cognitiva, la salud mental y el desarrollo del juicio personal. Advierte sobre los riesgos de atrofia del pensamiento crítico cuando delegamos la reflexión reflexiva en algoritmos, y propone usar la IA como caja de resonancia socrática.",
+    "topics": ["Psicología Cognitiva", "Salud Mental", "Pensamiento Crítico", "Uso Consciente"]
+  },
+  {
+    "id": "aut-chinatalk",
+    "name": "Jordan Schneider & ChinaTalk",
+    "role": "Investigador de Políticas & Podcaster",
+    "affiliation": "Rhodium Group / Lawfare / ChinaTalk Media",
+    "platform": "ChinaTalk (Substack & Podcast)",
+    "perspective": "Especialista en la intersección estratégica entre geopolítica, política industrial y tecnologías de vanguardia entre Estados Unidos y China. Analiza el despliegue militar de la IA, controles de exportación y la dinámica de subsidios gubernamentales en semiconductores.",
+    "topics": ["Geopolítica", "Política Industrial", "Evaluaciones de Seguridad", "China vs EE.UU."]
+  },
+  {
+    "id": "aut-narayanan-kapoor",
+    "name": "Arvind Narayanan & Sayash Kapoor",
+    "role": "Catedrático e Investigador en Ciencias de la Computación",
+    "affiliation": "Princeton University (Center for Information Technology Policy)",
+    "platform": "AI as Normal Technology (Substack)",
+    "perspective": "Académicos de Princeton dedicados a desmontar el «hype» y mitos infundados en torno a la IA. Evalúan los modelos con rigor empírico considerándolos tecnologías estándar con costos, limitaciones y compensaciones medibles, analizando su verdadero impacto en el empleo y la ciencia.",
+    "topics": ["Escepticismo Empírico", "Futuro del Empleo", "Límites Agénticos", "Ciencia Rigurosa"]
+  },
+  {
+    "id": "aut-humane-tech",
+    "name": "Center for Humane Technology",
+    "role": "Organización de Ética y Diseño Tecnológico",
+    "affiliation": "Fundado por Tristan Harris y Aza Raskin",
+    "platform": "Your Undivided Attention & Substack",
+    "perspective": "Organización sin fines de lucro enfocada en alinear los incentivos tecnológicos con la cognición humana, la salud mental infantil y las instituciones democráticas. Alertan sobre el secuestro atencional y la fragilización del tejido social por algoritmos persuasivos.",
+    "topics": ["Educación Infantil", "Bienestar Digital", "Democracia", "Alineamiento Ético"]
+  },
+  {
+    "id": "aut-sun",
+    "name": "Jasmine Sun",
+    "role": "Investigadora en Sociología de la Tecnología",
+    "affiliation": "Stanford University & Reboot",
+    "platform": "jasmi.news (Substack)",
+    "perspective": "Analista cultural y sociológica de los ecosistemas de Silicon Valley y Asia. Examina la psicología de los programadores ante la automatización del código y los choques civilizatorios en la carrera tecnológica contemporánea.",
+    "topics": ["Sociología del Software", "Claude Code", "Cultura Tecnológica", "EE.UU. y China"]
+  },
+  {
+    "id": "aut-merchant",
+    "name": "Brian Merchant",
+    "role": "Periodista Laboral & Autor",
+    "affiliation": "Autor de «Blood in the Machine»",
+    "platform": "Blood in the Machine (Substack)",
+    "perspective": "Investiga la automatización desde la historia laboral y la perspectiva de los trabajadores. Analiza cómo las empresas utilizan la retórica de la IA para precarizar empleos, desarmar sindicatos y distanciar el trabajo humano de su valor genuino.",
+    "topics": ["Trabajo", "Crisis Educativa", "Historia Laboral", "Crítica a Big Tech"]
+  },
+  {
+    "id": "aut-contreras-perez",
+    "name": "Álvaro Contreras Barrios & Nancy Pérez",
+    "role": "Docente e Investigadores en Gestión Pública y Tecnología",
+    "affiliation": "Universidad de Chile / Hub Tecnológico",
+    "platform": "LinkedIn / Substack",
+    "perspective": "Docente del curso y especialistas en gestión tecnológica. Enfatizan la necesidad de comprender con precisión los conceptos técnicos y de arquitectura antes de emprender iniciativas de adopción de IA en organizaciones, evitando el desperdicio de recursos y riesgos no gobernados.",
+    "topics": ["Fundamentos", "Gestión Organizacional", "Políticas Públicas", "Estrategia"]
+  }
+]

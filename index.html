@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursos — Álvaro Contreras Barrios</title>
+  <meta name="description" content="Recursos y conceptos de Inteligencia Artificial: mapa conceptual interactivo, glosario técnico, ejercicios prácticos, lecturas y materiales.">
+
+  <!-- Google Fonts: Playfair Display (editorial), Inter (cuerpo), JetBrains Mono (código y metadatos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- D3.js v7 para el Mapa Conceptual Interactivo -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <!-- Tailwind CSS CDN con configuración alineada a C:\AGY\AVLARO -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00357f',        /* Cobalt profundo oficial */
+            'primary-dark': '#00255a',
+            'primary-light': '#0059c5',
+            'primary-container': '#004aad',
+            'primary-fixed': '#d9e2ff',
+            background: '#fcf9f8',     /* Off-white cálido, papel editorial */
+            'surface-alt': '#f5f0ea',  /* Tono pergamino sutil */
+            'on-surface': '#1c1b1b',   /* Carbón profundo */
+            muted: '#66625f',          /* Gris cálido para metadatos */
+            'border-subtle': 'rgba(28, 27, 27, 0.09)',
+            'border-strong': 'rgba(28, 27, 27, 0.18)',
+            'cobalt-subtle': 'rgba(0, 53, 127, 0.06)',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          boxShadow: {
+            'editorial': '0 1px 3px rgba(28, 27, 27, 0.04), 0 6px 16px rgba(28, 27, 27, 0.03)',
+            'cobalt-glow': '0 0 24px rgba(0, 53, 127, 0.12)',
+            'drawer': '-10px 0 30px rgba(28, 27, 27, 0.08)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Datos del repositorio (bundle local para funcionamiento instantáneo) -->
+  <script src="data/data.js"></script>
+
+  <style>
+    :root {
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      --cobalt: #00357f;
+    }
+
+    body {
+      background-color: #fcf9f8;
+      color: #1c1b1b;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Regla Apple / Emil Kowalski: respuesta táctil inmediata en :active */
+    button, a.btn-action, .clickable-card {
+      transition: transform 120ms var(--ease-out), background-color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+    }
+    button:active, a.btn-action:active, .clickable-card:active {
+      transform: scale(0.98);
+    }
+
+    /* Animaciones sutiles y respetuosas */
+    @keyframes fadeInStagger {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stagger-item {
+      animation: fadeInStagger 240ms var(--ease-out) forwards;
+    }
+
+    /* Reducción de movimiento para accesibilidad */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Scrollbar sutil y editorial */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fcf9f8;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00357f26;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00357f55;
+    }
+
+    /* Translucent Apple Glass Surface */
+    .glass-surface {
+      background: rgba(252, 249, 248, 0.90);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+    }
+
+    /* Estilos del Canvas D3 */
+    #d3-canvas-container {
+      background-color: #fcf9f8;
+      background-image: radial-gradient(rgba(0, 53, 127, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+      cursor: grab;
+    }
+    #d3-canvas-container:active {
+      cursor: grabbing;
+    }
+
+    .d3-link {
+      stroke: rgba(0, 53, 127, 0.22);
+      stroke-width: 1.5px;
+      transition: stroke 160ms ease, stroke-width 160ms ease, stroke-opacity 160ms ease;
+    }
+    .d3-link.highlighted {
+      stroke: #00357f;
+      stroke-width: 2.5px;
+      stroke-opacity: 0.9;
+    }
+    .d3-link.dimmed {
+      stroke-opacity: 0.05;
+    }
+
+    .d3-node {
+      cursor: pointer;
+      transition: transform 160ms ease;
+    }
+    .d3-node:hover {
+      filter: drop-shadow(0 0 10px rgba(0, 53, 127, 0.35));
+    }
+    .d3-node.dimmed {
+      opacity: 0.15;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col selection:bg-primary selection:text-white">
+
+  <!-- LÍNEA SUPERIOR DE IDENTIDAD AZUL COBALTO -->
+  <div class="h-1 bg-gradient-to-r from-primary via-primary-light to-primary w-full"></div>
+
+  <!-- TOP APP BAR / BRAND HEADER -->
+  <header class="sticky top-0 z-40 glass-surface border-b border-border-subtle transition-all duration-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-18 flex items-center justify-between gap-4">
+      
+      <!-- Identidad y Marca Personal (Solo nombre, sin subtítulos molestos) -->
+      <div class="flex items-center gap-3 min-w-0">
+        <a href="index.html" class="group flex items-center gap-2.5 min-w-0" title="Ir al inicio">
+          <span class="w-2.5 h-2.5 rounded-full bg-primary shadow-xs"></span>
+          <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-on-surface group-hover:text-primary transition-colors truncate">
+            Álvaro Contreras Barrios
+          </span>
+        </a>
+      </div>
+
+      <!-- Acciones de cabecera -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        <!-- Buscador rápido en header -->
+        <div class="relative hidden sm:block">
+          <input 
+            type="search" 
+            id="global-search-input" 
+            placeholder="Buscar en el repositorio... (/)" 
+            class="w-56 lg:w-72 pl-9 pr-8 py-1.5 text-xs font-sans bg-surface-alt/70 border border-border-subtle rounded-full focus:outline-none focus:border-primary focus:bg-white focus:ring-1 focus:ring-primary/20 transition-all placeholder:text-muted/70 text-on-surface"
+            aria-label="Buscar recursos"
+          />
+          <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-primary text-[17px] pointer-events-none">search</span>
+          <kbd class="absolute right-2.5 top-1/2 -translate-y-1/2 font-mono text-xs bg-white border border-border-subtle rounded px-1.5 text-muted pointer-events-none">/</kbd>
+        </div>
+
+        <!-- Enlace a LinkedIn -->
+        <a 
+          href="https://www.linkedin.com/in/%C3%A1lvaro-contreras-barrios/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-primary hover:text-white rounded-full bg-primary/5 hover:bg-primary border border-primary/20 transition-all font-mono"
+          title="Visitar perfil de LinkedIn de Álvaro Contreras Barrios"
+        >
+          <span>LinkedIn</span>
+          <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO EDITORIAL LIMPIO & SECCIONES DIRECTAS -->
+  <section class="border-b border-border-subtle bg-gradient-to-b from-background via-surface-alt/25 to-background">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-8 sm:pt-12 sm:pb-10">
+      
+      <div class="max-w-3xl">
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-on-surface leading-[1.1] mb-4">
+          <span class="text-primary">Recursos</span>
+        </h1>
+        <p class="font-sans text-base sm:text-lg text-on-surface/80 leading-relaxed font-normal">
+          ¡Hola! Te invito a revisar las distintas secciones de esta página. Acá encontrarás: un diccionario de los principales conceptos de IA con mapa visual interactivo, ejercicios prácticos, recursos complementarios y materiales de apoyo descargables.
+        </p>
+      </div>
+
+      <!-- ACCESO DIRECTO A LAS SECCIONES (Sin módulos ni estructura de curso) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-8 pt-6 border-t border-border-subtle">
+        
+        <button onclick="switchTab('conceptos')" class="text-left p-3.5 rounded-xl border border-transparent hover:border-primary/25 hover:bg-white hover:shadow-xs transition-all group">
+          <div class="font-serif text-lg font-bold text-on-surface group-hover:text-primary flex items-center justify-between">
+            <span>Conceptos de IA</span>
+            <span class="material-symbols-outlined text-sm text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+          <div class="text-xs text-muted mt-1">35 conceptos & mapa visual</div>
+        </button>
+
+        <button onclick="switchTab('ejercicios')" class="text-left p-3.5 rounded-xl border border-transparent hover:border-primary/25 hover:bg-white hover:shadow-xs transition-all group">
+          <div class="font-serif text-lg font-bold text-on-surface group-hover:text-primary flex items-center justify-between">
+            <span>Ejercicios</span>
+            <span class="material-symbols-outlined text-sm text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+          <div class="text-xs text-muted mt-1">4 habilidades & prompts para tu IA</div>
+        </button>
+
+        <button onclick="switchTab('recursos')" class="text-left p-3.5 rounded-xl border border-transparent hover:border-primary/25 hover:bg-white hover:shadow-xs transition-all group">
+          <div class="font-serif text-lg font-bold text-on-surface group-hover:text-primary flex items-center justify-between">
+            <span>Recursos</span>
+            <span class="material-symbols-outlined text-sm text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+          <div class="text-xs text-muted mt-1">55 videos & lecturas curadas</div>
+        </button>
+
+        <button onclick="switchTab('materiales')" class="text-left p-3.5 rounded-xl border border-transparent hover:border-primary/25 hover:bg-white hover:shadow-xs transition-all group">
+          <div class="font-serif text-lg font-bold text-on-surface group-hover:text-primary flex items-center justify-between">
+            <span>Materiales</span>
+            <span class="material-symbols-outlined text-sm text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </div>
+          <div class="text-xs text-muted mt-1">Presentación de la charla</div>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATION TABS (Segmented Control con Azul Cobalto Protagónico) -->
+  <nav class="sticky top-16 sm:top-18 z-30 glass-surface border-b border-border-subtle" aria-label="Secciones">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between overflow-x-auto py-2.5 no-scrollbar gap-2 sm:gap-4">
+        
+        <!-- Pestañas principales -->
+        <div class="flex items-center gap-1.5 p-1 bg-surface-alt/90 rounded-full border border-border-subtle text-xs sm:text-sm font-medium">
+          <button 
+            id="tab-btn-conceptos" 
+            onclick="switchTab('conceptos')" 
+            class="tab-button px-4 py-1.5 rounded-full flex items-center gap-2 transition-all bg-primary text-white shadow-sm font-semibold"
+            aria-selected="true"
+          >
+            <span class="material-symbols-outlined text-[17px]">hub</span>
+            <span>Conceptos de IA</span>
+            <span class="ml-0.5 text-xs font-mono bg-white/20 text-white px-1.5 py-0.5 rounded-full font-bold" id="badge-count-conceptos">35</span>
+          </button>
+
+          <button 
+            id="tab-btn-ejercicios" 
+            onclick="switchTab('ejercicios')" 
+            class="tab-button px-4 py-1.5 rounded-full flex items-center gap-2 transition-all text-on-surface hover:text-primary hover:bg-white/60"
+            aria-selected="false"
+          >
+            <span class="material-symbols-outlined text-[17px]">terminal</span>
+            <span>Ejercicios</span>
+            <span class="ml-0.5 text-xs font-mono bg-black/5 text-muted px-1.5 py-0.5 rounded-full" id="badge-count-ejercicios">4</span>
+          </button>
+
+          <button 
+            id="tab-btn-recursos" 
+            onclick="switchTab('recursos')" 
+            class="tab-button px-4 py-1.5 rounded-full flex items-center gap-2 transition-all text-on-surface hover:text-primary hover:bg-white/60"
+            aria-selected="false"
+          >
+            <span class="material-symbols-outlined text-[17px]">link</span>
+            <span>Recursos</span>
+            <span class="ml-0.5 text-xs font-mono bg-black/5 text-muted px-1.5 py-0.5 rounded-full" id="badge-count-recursos">55</span>
+          </button>
+
+          <button 
+            id="tab-btn-materiales" 
+            onclick="switchTab('materiales')" 
+            class="tab-button px-4 py-1.5 rounded-full flex items-center gap-2 transition-all text-on-surface hover:text-primary hover:bg-white/60"
+            aria-selected="false"
+          >
+            <span class="material-symbols-outlined text-[17px]">download</span>
+            <span>Materiales</span>
+            <span class="ml-0.5 text-xs font-mono bg-black/5 text-muted px-1.5 py-0.5 rounded-full" id="badge-count-materiales">1</span>
+          </button>
+        </div>
+
+        <!-- Indicador de items visibles -->
+        <div class="hidden md:flex items-center font-mono text-xs text-muted">
+          <span id="visible-items-counter">Mostrando 35 de 35 conceptos</span>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTROLS & SUBFILTERS BAR -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-5 pb-2 w-full">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      
+      <!-- Chips de filtro por categoría dinámicos -->
+      <div id="category-filters-container" class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 no-scrollbar text-xs">
+        <!-- Renderizado dinámicamente -->
+      </div>
+
+      <!-- Selector de Vista para Conceptos (Mapa D3 vs Fichas) -->
+      <div id="concept-view-mode-selector" class="flex items-center gap-1 bg-surface-alt/80 p-0.5 rounded-lg border border-border-subtle self-start sm:self-auto shrink-0">
+        <button 
+          id="btn-view-graph" 
+          onclick="setConceptDisplayMode('graph')" 
+          class="px-2.5 py-1 rounded-md text-xs font-mono font-medium flex items-center gap-1.5 transition-all bg-white text-primary shadow-xs"
+          title="Ver mapa conceptual interactivo D3"
+        >
+          <span class="material-symbols-outlined text-sm">hub</span>
+          <span>Mapa Conceptual</span>
+        </button>
+        <button 
+          id="btn-view-cards" 
+          onclick="setConceptDisplayMode('cards')" 
+          class="px-2.5 py-1 rounded-md text-xs font-mono font-medium flex items-center gap-1.5 transition-all text-muted hover:text-on-surface"
+          title="Ver fichas de conceptos"
+        >
+          <span class="material-symbols-outlined text-sm">grid_view</span>
+          <span>Fichas</span>
+        </button>
+      </div>
+
+      <!-- Buscador en pantallas móviles -->
+      <div class="sm:hidden w-full relative">
+        <input 
+          type="search" 
+          id="mobile-search-input" 
+          placeholder="Buscar en esta sección..." 
+          class="w-full pl-9 pr-3 py-2 text-xs bg-surface-alt/70 border border-border-subtle rounded-lg focus:outline-none focus:border-primary text-on-surface"
+          aria-label="Buscar contenido"
+        />
+        <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-primary text-[17px] pointer-events-none">search</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-4 w-full">
+    
+    <!-- SECCIÓN 1: CONCEPTOS DE IA -->
+    <div id="view-conceptos" class="tab-view block space-y-6">
+      
+      <!-- 1.A: MAPA CONCEPTUAL INTERACTIVO D3.JS -->
+      <div id="concept-graph-wrapper" class="block">
+        <div class="relative w-full rounded-2xl border border-primary/20 bg-white overflow-hidden shadow-editorial">
+          
+          <!-- Barra superior de controles del Mapa D3 -->
+          <div class="px-4 py-3 border-b border-border-subtle bg-white/95 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+              <span class="font-mono text-xs font-semibold text-primary uppercase tracking-wide">
+                Grafo de Conceptos Relevantes de la IA
+              </span>
+              <span class="hidden md:inline text-muted font-sans text-xs">
+                · Haz clic en cualquier nodo para leer su ficha completa
+              </span>
+            </div>
+
+            <!-- Controles de Zoom y Centrado -->
+            <div class="flex items-center gap-1.5">
+              <button onclick="zoomGraph(1.3)" class="p-1 rounded bg-surface-alt hover:bg-primary/10 text-on-surface hover:text-primary transition-colors" title="Acercar (+)">
+                <span class="material-symbols-outlined text-[17px]">zoom_in</span>
+              </button>
+              <button onclick="zoomGraph(0.7)" class="p-1 rounded bg-surface-alt hover:bg-primary/10 text-on-surface hover:text-primary transition-colors" title="Alejar (-)">
+                <span class="material-symbols-outlined text-[17px]">zoom_out</span>
+              </button>
+              <button onclick="resetGraphView()" class="px-2 py-1 rounded bg-surface-alt hover:bg-primary/10 text-on-surface hover:text-primary font-mono text-xs transition-colors flex items-center gap-1" title="Restablecer posición">
+                <span class="material-symbols-outlined text-[15px]">center_focus_strong</span>
+                <span>Centrar</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Contenedor del Lienzo SVG D3 (Espacioso y con aire) -->
+          <div class="relative w-full h-[480px] sm:h-[540px] overflow-hidden" id="d3-canvas-container">
+            <svg id="d3-concept-svg" class="w-full h-full"></svg>
+            
+            <!-- Leyenda flotante compacta -->
+            <div class="absolute bottom-2.5 left-2.5 bg-white/95 backdrop-blur-md border border-border-subtle rounded-lg p-2.5 text-xs font-mono shadow-xs space-y-1 max-w-[210px] pointer-events-none">
+              <div class="font-bold text-xs uppercase tracking-wider text-primary mb-0.5">
+                Familias Semánticas
+              </div>
+              <div class="flex items-center gap-2 text-on-surface/80">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#00357f]"></span>
+                <span>I. Fundamentos</span>
+              </div>
+              <div class="flex items-center gap-2 text-on-surface/80">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#0059c5]"></span>
+                <span>II. Arquitectura</span>
+              </div>
+              <div class="flex items-center gap-2 text-on-surface/80">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#0284c7]"></span>
+                <span>III. Interacción & RAG</span>
+              </div>
+              <div class="flex items-center gap-2 text-on-surface/80">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#4338ca]"></span>
+                <span>IV. Sistemas Agénticos</span>
+              </div>
+              <div class="flex items-center gap-2 text-on-surface/80">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#1e293b]"></span>
+                <span>V. Seguridad & Riesgos</span>
+              </div>
+            </div>
+
+            <!-- Tooltip reactivo -->
+            <div id="graph-tooltip" class="absolute pointer-events-none opacity-0 transition-opacity duration-150 bg-white border border-primary/30 p-3 rounded-lg shadow-editorial max-w-xs z-20">
+              <div id="tooltip-title" class="font-serif text-sm font-bold text-on-surface"></div>
+              <div id="tooltip-snippet" class="font-sans text-xs text-on-surface/80 mt-1 line-clamp-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1.B: GRILLA DE FICHAS DE CONCEPTOS -->
+      <div id="concept-cards-wrapper" class="hidden">
+        <div id="conceptos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <!-- Renderizado dinámico -->
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 2: EJERCICIOS -->
+    <div id="view-ejercicios" class="tab-view hidden">
+      <!-- Encabezado Editorial Simple y Despejado -->
+      <div class="mb-10 max-w-3xl">
+        <div class="text-xs font-mono uppercase tracking-wider text-primary font-semibold mb-2">
+          Taller Presencial &middot; Práctica Autónoma
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-on-surface mb-3 leading-tight">
+          Cuatro Habilidades para el Emprendedor
+        </h2>
+        <p class="text-sm text-on-surface/80 leading-relaxed mb-6">
+          Ejercicios prácticos para interactuar desde tu celular con cualquier herramienta de inteligencia artificial (WhatsApp con Meta AI, ChatGPT o Gemini). Elige libremente según la necesidad actual de tu negocio; no hay orden obligatorio.
+        </p>
+
+        <!-- Selección según necesidad: Selector táctil sin cajas anidadas -->
+        <div class="pt-6 border-t border-border-subtle">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3.5">
+            <span class="text-xs font-mono uppercase tracking-wider text-muted font-semibold">
+              Elige según la situación actual de tu negocio:
+            </span>
+            <button 
+              onclick="seleccionarEjercicio('all')" 
+              id="btn-ver-todas"
+              class="text-xs font-mono text-primary hover:underline cursor-pointer transition-colors text-left sm:text-right"
+            >
+              Ver las 4 habilidades juntas
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="selector-situaciones">
+            <button 
+              onclick="seleccionarEjercicio('ej-01')" 
+              data-ej-id="ej-01"
+              class="btn-situacion p-4 rounded-xl border border-border-subtle bg-white hover:border-primary/60 hover:shadow-xs active:scale-[0.99] transition-all text-left flex items-center justify-between gap-3 cursor-pointer group"
+            >
+              <div class="flex items-start gap-3">
+                <span class="situacion-num font-mono text-xs font-bold text-primary shrink-0 mt-0.5">01.</span>
+                <span class="situacion-text text-sm font-medium text-on-surface group-hover:text-primary transition-colors leading-snug">
+                  Quiero profundizar en mi negocio
+                </span>
+              </div>
+              <span class="material-symbols-outlined situacion-arrow text-base text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0">arrow_forward</span>
+            </button>
+
+            <button 
+              onclick="seleccionarEjercicio('ej-02')" 
+              data-ej-id="ej-02"
+              class="btn-situacion p-4 rounded-xl border border-border-subtle bg-white hover:border-primary/60 hover:shadow-xs active:scale-[0.99] transition-all text-left flex items-center justify-between gap-3 cursor-pointer group"
+            >
+              <div class="flex items-start gap-3">
+                <span class="situacion-num font-mono text-xs font-bold text-primary shrink-0 mt-0.5">02.</span>
+                <span class="situacion-text text-sm font-medium text-on-surface group-hover:text-primary transition-colors leading-snug">
+                  Me cuesta vender, explicar el valor de lo mío o cerrar clientes
+                </span>
+              </div>
+              <span class="material-symbols-outlined situacion-arrow text-base text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0">arrow_forward</span>
+            </button>
+
+            <button 
+              onclick="seleccionarEjercicio('ej-03')" 
+              data-ej-id="ej-03"
+              class="btn-situacion p-4 rounded-xl border border-border-subtle bg-white hover:border-primary/60 hover:shadow-xs active:scale-[0.99] transition-all text-left flex items-center justify-between gap-3 cursor-pointer group"
+            >
+              <div class="flex items-start gap-3">
+                <span class="situacion-num font-mono text-xs font-bold text-primary shrink-0 mt-0.5">03.</span>
+                <span class="situacion-text text-sm font-medium text-on-surface group-hover:text-primary transition-colors leading-snug">
+                  Quiero definir la estética de mi negocio
+                </span>
+              </div>
+              <span class="material-symbols-outlined situacion-arrow text-base text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0">arrow_forward</span>
+            </button>
+
+            <button 
+              onclick="seleccionarEjercicio('ej-04')" 
+              data-ej-id="ej-04"
+              class="btn-situacion p-4 rounded-xl border border-border-subtle bg-white hover:border-primary/60 hover:shadow-xs active:scale-[0.99] transition-all text-left flex items-center justify-between gap-3 cursor-pointer group"
+            >
+              <div class="flex items-start gap-3">
+                <span class="situacion-num font-mono text-xs font-bold text-primary shrink-0 mt-0.5">04.</span>
+                <span class="situacion-text text-sm font-medium text-on-surface group-hover:text-primary transition-colors leading-snug">
+                  Quiero automatizar algo en el corto plazo
+                </span>
+              </div>
+              <span class="material-symbols-outlined situacion-arrow text-base text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRILLA DE EJERCICIOS -->
+      <div id="ejercicios-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Renderizado dinámico -->
+      </div>
+    </div>
+
+    <!-- SECCIÓN 3: RECURSOS -->
+    <div id="view-recursos" class="tab-view hidden space-y-6">
+      
+      <!-- Banner Editorial: Aviso de Idioma y Herramientas de Traducción -->
+      <div class="p-5 sm:p-6 rounded-xl bg-white border border-border-subtle shadow-xs">
+        <div class="flex items-start gap-3.5">
+          <span class="material-symbols-outlined text-primary text-2xl shrink-0 mt-0.5">translate</span>
+          <div class="space-y-1.5">
+            <h3 class="font-serif text-base sm:text-lg font-bold text-on-surface">
+              Nota sobre el idioma de las fuentes y herramientas de traducción
+            </h3>
+            <p class="font-sans text-xs sm:text-sm text-muted leading-relaxed">
+              La mayor parte de los artículos técnicos, investigaciones de frontera y contenidos audiovisuales sobre inteligencia artificial se publican originalmente en inglés. En YouTube puedes activar los <strong class="text-on-surface font-semibold">subtítulos automáticos traducidos al español</strong> desde el icono de configuración de cada video. Además, los modelos de IA actuales (ChatGPT, Claude o Gemini) son excelentes traductores y sintetizadores: puedes compartirles el enlace o texto de cualquier recurso y solicitar una traducción comentada o un resumen en español adaptado a tu contexto.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grilla del Catálogo General de Recursos -->
+      <div id="recursos-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <!-- Renderizado dinámico -->
+      </div>
+
+      <!-- Contenedor para la Vista Agrupada por Creadores & Autores -->
+      <div id="recursos-autores-container" class="hidden space-y-6">
+        <!-- Renderizado dinámico -->
+      </div>
+
+    </div>
+
+    <!-- SECCIÓN 4: MATERIALES -->
+    <div id="view-materiales" class="tab-view hidden space-y-6">
+      <!-- Contenedor de presentación oficial -->
+      <div id="materiales-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        <!-- Renderizado dinámico -->
+      </div>
+    </div>
+
+    <!-- ESTADO VACÍO (Si la búsqueda no da resultados) -->
+    <div id="empty-state" class="hidden py-16 text-center max-w-md mx-auto">
+      <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3">
+        <span class="material-symbols-outlined text-2xl">search_off</span>
+      </div>
+      <h3 class="font-serif text-lg font-bold text-on-surface mb-1">No se encontraron resultados</h3>
+      <p class="text-xs text-muted leading-relaxed mb-4">
+        Prueba con términos como "Transformer", "Prompt", "Colab" o limpia el filtro.
+      </p>
+      <button 
+        onclick="clearFiltersAndSearch()" 
+        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-primary text-white hover:bg-primary-dark transition-colors"
+      >
+        <span class="material-symbols-outlined text-sm">refresh</span>
+        <span>Restablecer búsqueda</span>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- LECTURA EDITORIAL LATERAL / DRAWER PARA CONCEPTOS (Apple-style Slide-over) -->
+  <aside 
+    id="concept-drawer" 
+    class="fixed inset-0 z-50 pointer-events-none transition-all duration-200"
+    aria-hidden="true"
+    role="dialog"
+    aria-labelledby="drawer-concept-title"
+  >
+    <!-- Backdrop oscuro con blur sutil -->
+    <div 
+      id="drawer-backdrop" 
+      class="absolute inset-0 bg-black/35 backdrop-blur-sm opacity-0 transition-opacity duration-200 pointer-events-none"
+      onclick="closeConceptDrawer()"
+    ></div>
+
+    <!-- Panel deslizante -->
+    <div 
+      id="drawer-panel" 
+      class="absolute right-0 top-0 bottom-0 w-full max-w-2xl bg-background border-l border-primary/20 shadow-drawer transform translate-x-full transition-transform duration-250 ease-out flex flex-col pointer-events-auto overflow-hidden"
+    >
+      <!-- Cabecera del Drawer -->
+      <div class="px-6 py-4 border-b border-border-subtle flex items-center justify-between gap-3 bg-white/95 sticky top-0 z-10">
+        <div class="flex items-center gap-2 min-w-0">
+          <span id="drawer-concept-id" class="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-primary text-white">
+            #01
+          </span>
+        </div>
+        
+        <div class="flex items-center gap-1">
+          <button 
+            id="drawer-btn-prev" 
+            onclick="navigateConcept(-1)" 
+            class="p-1.5 text-muted hover:text-primary hover:bg-surface-alt rounded-lg transition-colors" 
+            title="Concepto anterior (←)"
+          >
+            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          </button>
+          <button 
+            id="drawer-btn-next" 
+            onclick="navigateConcept(1)" 
+            class="p-1.5 text-muted hover:text-primary hover:bg-surface-alt rounded-lg transition-colors" 
+            title="Siguiente concepto (→)"
+          >
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </button>
+          <div class="h-4 w-px bg-border-subtle mx-1"></div>
+          <button 
+            onclick="closeConceptDrawer()" 
+            class="p-1.5 text-muted hover:text-on-surface hover:bg-surface-alt rounded-lg transition-colors" 
+            title="Cerrar panel (Esc)"
+          >
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Contenido editorial del Drawer -->
+      <div class="flex-1 overflow-y-auto px-6 py-8 space-y-6">
+        <div>
+          <h2 id="drawer-concept-title" class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-on-surface leading-tight">
+            Inteligencia Artificial Generativa (GenAI)
+          </h2>
+        </div>
+
+        <!-- Definición -->
+        <div class="pt-2">
+          <div id="drawer-concept-definition" class="font-sans text-base sm:text-lg leading-relaxed text-on-surface/90 font-normal">
+            Cargando definición...
+          </div>
+        </div>
+
+        <!-- Sección Ejemplo (sin cajas dentro de cajas) -->
+        <div class="pt-6 border-t border-border-subtle space-y-2">
+          <h3 class="font-serif text-lg font-bold text-on-surface">
+            Ejemplo
+          </h3>
+          <div id="drawer-concept-example" class="font-sans text-sm sm:text-base leading-relaxed text-on-surface/85 font-normal">
+            Cargando ejemplo...
+          </div>
+        </div>
+
+        <!-- Material para investigar más -->
+        <div id="drawer-concept-resources-section" class="pt-6 border-t border-border-subtle space-y-3 hidden">
+          <h3 class="font-serif text-lg font-bold text-on-surface">
+            Material para investigar más
+          </h3>
+          <div id="drawer-concept-resources" class="space-y-2">
+            <!-- Renderizado dinámico -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Pie del Drawer -->
+      <div class="px-6 py-3 border-t border-border-subtle bg-surface-alt/50 flex items-center justify-between text-xs font-mono text-muted">
+        <span>Teclado: <kbd class="px-1 border border-border-subtle rounded bg-white">←</kbd> <kbd class="px-1 border border-border-subtle rounded bg-white">→</kbd></span>
+        <button onclick="closeConceptDrawer()" class="text-primary font-semibold hover:underline">
+          Volver a la vista
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- FOOTER EDITORIAL -->
+  <footer class="border-t border-border-subtle bg-white mt-16 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+      
+      <div class="font-serif text-base font-bold text-on-surface flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-primary"></span>
+        Álvaro Contreras Barrios
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="#top" class="inline-flex items-center gap-1 font-mono hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-[15px]">arrow_upward</span>
+          <span>Volver arriba</span>
+        </a>
+        <a href="https://www.linkedin.com/in/%C3%A1lvaro-contreras-barrios/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-mono text-primary font-semibold hover:underline">
+          <span>LinkedIn</span>
+          <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- SCRIPT DE APLICACIÓN, VISUALIZACIÓN D3.JS Y RENDERIZADO -->
+  <script>
+    // ESTADO DE LA APLICACIÓN
+    const AppState = {
+      activeTab: 'conceptos',
+      conceptDisplayMode: 'graph', // 'graph' | 'cards'
+      searchQuery: '',
+      activeCategoryFilter: 'all',
+      selectedConceptIndex: 0,
+      data: {
+        conceptos: [],
+        ejercicios: [],
+        recursos: [],
+        materiales: [],
+        autores: []
+      },
+      graph: {
+        simulation: null,
+        svg: null,
+        g: null,
+        zoom: null,
+        nodes: [],
+        links: []
+      }
+    };
+
+    // Inicializar datos locales
+    if (window.AI_REPOSITORY_DATA) {
+      AppState.data = window.AI_REPOSITORY_DATA;
+    }
+
+    // Inicialización del DOM
+    document.addEventListener('DOMContentLoaded', () => {
+      loadDynamicData().then(() => {
+        handleHashRouting();
+      });
+      setupSearchListeners();
+      setupKeyboardShortcuts();
+      handleHashRouting();
+    });
+
+    function handleHashRouting() {
+      const hash = (window.location.hash || '').toLowerCase();
+      if (hash === '#ejercicios' || hash.startsWith('#ej-')) {
+        switchTab('ejercicios');
+        if (hash.startsWith('#ej-')) {
+          const ejId = hash.replace('#', '');
+          setTimeout(() => seleccionarEjercicio(ejId), 200);
+        }
+      } else if (hash === '#recursos') {
+        switchTab('recursos');
+      } else if (hash === '#materiales') {
+        switchTab('materiales');
+      } else {
+        switchTab('conceptos');
+      }
+    }
+
+    window.addEventListener('hashchange', () => {
+      handleHashRouting();
+    });
+
+    async function loadDynamicData() {
+      try {
+        const [cRes, eRes, rRes, mRes, aRes] = await Promise.allSettled([
+          fetch('data/conceptos.json').then(r => r.json()),
+          fetch('data/ejercicios.json').then(r => r.json()),
+          fetch('data/recursos.json').then(r => r.json()),
+          fetch('data/materiales.json').then(r => r.json()),
+          fetch('data/autores.json').then(r => r.json())
+        ]);
+
+        if (cRes.status === 'fulfilled') AppState.data.conceptos = cRes.value;
+        if (eRes.status === 'fulfilled') AppState.data.ejercicios = eRes.value;
+        if (rRes.status === 'fulfilled') AppState.data.recursos = rRes.value;
+        if (mRes.status === 'fulfilled') AppState.data.materiales = mRes.value;
+        if (aRes.status === 'fulfilled') AppState.data.autores = aRes.value;
+
+        updateBadgesCount();
+        renderActiveView();
+      } catch (err) {
+        console.log('Usando datos de respaldo offline');
+        updateBadgesCount();
+        renderActiveView();
+      }
+    }
+
+    function updateBadgesCount() {
+      document.getElementById('badge-count-conceptos').textContent = AppState.data.conceptos.length;
+      document.getElementById('badge-count-ejercicios').textContent = AppState.data.ejercicios.length;
+      document.getElementById('badge-count-recursos').textContent = AppState.data.recursos.length;
+      document.getElementById('badge-count-materiales').textContent = AppState.data.materiales.length;
+    }
+
+    // CAMBIO DE PESTAÑAS PRINCIPALES
+    function switchTab(tabId) {
+      AppState.activeTab = tabId;
+      AppState.activeCategoryFilter = 'all';
+
+      const tabs = ['conceptos', 'ejercicios', 'recursos', 'materiales'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const view = document.getElementById(`view-${t}`);
+        const badge = document.getElementById(`badge-count-${t}`);
+
+        if (t === tabId) {
+          btn.className = 'tab-button px-4 py-1.5 rounded-full flex items-center gap-2 transition-all bg-primary text-white shadow-sm font-semibold';
+          btn.setAttribute('aria-selected', 'true');
+          badge.className = 'ml-0.5 text-xs font-mono bg-white/20 text-white px-1.5 py-0.5 rounded-full font-bold';
+          view.classList.remove('hidden');
+          view.classList.add('block');
+        } else {
+          btn.className = 'tab-button px-4 py-1.5 rounded-full flex items-center gap-2 transition-all text-on-surface hover:text-primary hover:bg-white/60';
+          btn.setAttribute('aria-selected', 'false');
+          badge.className = 'ml-0.5 text-xs font-mono bg-black/5 text-muted px-1.5 py-0.5 rounded-full';
+          view.classList.add('hidden');
+          view.classList.remove('block');
+        }
+      });
+
+      // Mostrar selector de modo solo en conceptos
+      const modeSelector = document.getElementById('concept-view-mode-selector');
+      if (tabId === 'conceptos') {
+        modeSelector.classList.remove('hidden');
+      } else {
+        modeSelector.classList.add('hidden');
+      }
+
+      renderCategoryFilters();
+      renderActiveView();
+    }
+
+    // ALTERNAR VISTA DE CONCEPTOS (Mapa D3 vs Fichas)
+    function setConceptDisplayMode(mode) {
+      AppState.conceptDisplayMode = mode;
+      const graphWrap = document.getElementById('concept-graph-wrapper');
+      const cardsWrap = document.getElementById('concept-cards-wrapper');
+      const btnGraph = document.getElementById('btn-view-graph');
+      const btnCards = document.getElementById('btn-view-cards');
+
+      if (mode === 'graph') {
+        graphWrap.classList.remove('hidden');
+        graphWrap.classList.add('block');
+        cardsWrap.classList.add('hidden');
+        cardsWrap.classList.remove('block');
+
+        btnGraph.className = 'px-2.5 py-1 rounded-md text-xs font-mono font-medium flex items-center gap-1.5 transition-all bg-white text-primary shadow-xs font-semibold';
+        btnCards.className = 'px-2.5 py-1 rounded-md text-xs font-mono font-medium flex items-center gap-1.5 transition-all text-muted hover:text-on-surface';
+
+        initOrUpdateD3ConceptMap();
+      } else {
+        graphWrap.classList.add('hidden');
+        graphWrap.classList.remove('block');
+        cardsWrap.classList.remove('hidden');
+        cardsWrap.classList.add('block');
+
+        btnGraph.className = 'px-2.5 py-1 rounded-md text-xs font-mono font-medium flex items-center gap-1.5 transition-all text-muted hover:text-on-surface';
+        btnCards.className = 'px-2.5 py-1 rounded-md text-xs font-mono font-medium flex items-center gap-1.5 transition-all bg-white text-primary shadow-xs font-semibold';
+
+        renderConceptosCards();
+      }
+    }
+
+    // RENDERIZADO DE FILTROS POR CATEGORÍA
+    function renderCategoryFilters() {
+      const container = document.getElementById('category-filters-container');
+      container.innerHTML = '';
+
+      let categories = [];
+      if (AppState.activeTab === 'conceptos') {
+        categories = [
+          { id: 'all', label: 'Todos (35)' },
+          { id: 'fundamentos', label: 'Fundamentos (9)' },
+          { id: 'arquitectura', label: 'Arquitectura (6)' },
+          { id: 'interaccion', label: 'Interacción & RAG (8)' },
+          { id: 'agentes', label: 'Sistemas Agénticos (4)' },
+          { id: 'seguridad', label: 'Seguridad & Riesgos (8)' },
+        ];
+      } else if (AppState.activeTab === 'ejercicios') {
+        categories = [
+          { id: 'all', label: 'Todas las habilidades (4)' },
+          { id: 'ej-01', label: '01. Conocimiento Profundo' },
+          { id: 'ej-02', label: '02. Conocimiento Amplio' },
+          { id: 'ej-03', label: '03. Criterio o Gusto' },
+          { id: 'ej-04', label: '04. Agencia' },
+        ];
+      } else if (AppState.activeTab === 'recursos') {
+        const total = (AppState.data.recursos && AppState.data.recursos.length) || 55;
+        const videosCount = (AppState.data.recursos || []).filter(r => r.categoryType === 'video').length || 30;
+        const articlesCount = (AppState.data.recursos || []).filter(r => r.categoryType === 'articulo').length || 25;
+
+        categories = [
+          { id: 'all', label: `Todos (${total})` },
+          { id: 'video', label: `Videos (${videosCount})` },
+          { id: 'articulo', label: `Artículos & Ensayos (${articlesCount})` },
+          { id: 'autores', label: 'Por Creadores & Autores' }
+        ];
+      } else if (AppState.activeTab === 'materiales') {
+        categories = [
+          { id: 'all', label: 'Todos (1)' }
+        ];
+      }
+
+      categories.forEach(cat => {
+        const btn = document.createElement('button');
+        const isActive = AppState.activeCategoryFilter === cat.id;
+        btn.className = `px-3.5 py-1 rounded-full whitespace-nowrap transition-all font-mono text-xs ${
+          isActive 
+            ? 'bg-primary text-white font-semibold shadow-xs' 
+            : 'bg-white text-on-surface/80 hover:text-primary hover:bg-surface-alt border border-border-subtle'
+        }`;
+        btn.textContent = cat.label;
+        btn.onclick = () => {
+          AppState.activeCategoryFilter = cat.id;
+          renderCategoryFilters();
+          renderActiveView();
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    // RENDERIZADO GENERAL
+    function renderActiveView() {
+      if (AppState.activeTab === 'conceptos') {
+        if (AppState.conceptDisplayMode === 'graph') {
+          initOrUpdateD3ConceptMap();
+        } else {
+          renderConceptosCards();
+        }
+      } else if (AppState.activeTab === 'ejercicios') renderEjercicios();
+      else if (AppState.activeTab === 'recursos') renderRecursos();
+      else if (AppState.activeTab === 'materiales') renderMateriales();
+    }
+
+    // ==========================================
+    // VISUALIZACIÓN D3.JS: MAPA CONCEPTUAL
+    // ==========================================
+    function initOrUpdateD3ConceptMap() {
+      const container = document.getElementById('d3-canvas-container');
+      const svg = d3.select('#d3-concept-svg');
+      if (!container || !svg.node()) return;
+
+      const width = container.clientWidth || 900;
+      const height = container.clientHeight || 580;
+
+      // Limpiar SVG anterior
+      svg.selectAll('*').remove();
+
+      // Definir paleta de colores cromática de Azul Cobalto
+      const clusterColors = {
+        'fundamentos': { bg: '#00357f', border: '#00255a', text: '#ffffff' },
+        'arquitectura': { bg: '#0059c5', border: '#004aad', text: '#ffffff' },
+        'interaccion': { bg: '#0284c7', border: '#0369a1', text: '#ffffff' },
+        'agentes': { bg: '#4338ca', border: '#3730a3', text: '#ffffff' },
+        'seguridad': { bg: '#1e293b', border: '#0f172a', text: '#ffffff' },
+      };
+
+      // 1. Nodos de Categoría (Hubs distribuidos en 5 zonas equilibradas)
+      const hubs = [
+        { id: 'hub-fundamentos', isHub: true, title: 'Fundamentos', categoryId: 'fundamentos', r: 26, x: width * 0.22, y: height * 0.30 },
+        { id: 'hub-arquitectura', isHub: true, title: 'Arquitectura', categoryId: 'arquitectura', r: 26, x: width * 0.50, y: height * 0.22 },
+        { id: 'hub-interaccion', isHub: true, title: 'Interacción', categoryId: 'interaccion', r: 26, x: width * 0.24, y: height * 0.74 },
+        { id: 'hub-agentes', isHub: true, title: 'Sistemas Agénticos', categoryId: 'agentes', r: 26, x: width * 0.58, y: height * 0.76 },
+        { id: 'hub-seguridad', isHub: true, title: 'Seguridad', categoryId: 'seguridad', r: 26, x: width * 0.82, y: height * 0.46 }
+      ];
+
+      // 2. Nodos de Conceptos distribuidos alrededor de su respectivo Hub con amplio radio
+      const conceptNodes = AppState.data.conceptos.map(c => {
+        const hub = hubs.find(h => h.categoryId === c.categoryId) || hubs[0];
+        const catConcepts = AppState.data.conceptos.filter(item => item.categoryId === c.categoryId);
+        const catIndex = catConcepts.findIndex(item => item.id === c.id);
+        const totalInCat = catConcepts.length;
+        const angle = (catIndex / totalInCat) * 2 * Math.PI - (Math.PI / 2);
+        const radius = 64 + (catIndex % 2) * 22;
+        return {
+          ...c,
+          isHub: false,
+          r: 13,
+          targetX: hub.x,
+          targetY: hub.y,
+          x: hub.x + Math.cos(angle) * radius,
+          y: hub.y + Math.sin(angle) * radius,
+          nodeId: `concept-${c.id}`
+        };
+      });
+
+      // 3. Enlaces semánticos
+      const links = [];
+
+      // Conectar cada concepto a su Hub principal
+      conceptNodes.forEach(c => {
+        links.push({
+          source: c.nodeId,
+          target: `hub-${c.categoryId}`,
+          type: 'category'
+        });
+      });
+
+      // Conexiones semánticas entre conceptos relacionados (Actualizado con los 35 conceptos)
+      const semanticPairs = [
+        // 1. Fundamentos
+        [1, 2], [1, 4], [1, 5], [1, 8],     // GenAI -> ML, LLMs, Foundation, Diffusion
+        [2, 3], [2, 21],                    // ML -> Deep Learning, Transfer Learning
+        [3, 10],                            // Deep Learning -> Transformers
+        [4, 5], [4, 9], [4, 12], [4, 13],   // LLMs -> Foundation, Open/Closed, Tokens, Context Window
+        [5, 6], [5, 7], [5, 18],            // Foundation -> Frontier, GPAI, Fine-tuning
+        [6, 31], [6, 35],                   // Frontier -> AI Safety, FLOPS
+        
+        // 2. Arquitectura
+        [10, 11], [10, 12], [10, 15],       // Transformer -> Attention, Token, Inference
+        [12, 13], [12, 14],                 // Token -> Context Window, Embeddings
+        [13, 19],                           // Context Window -> RAG
+        [14, 15], [14, 19],                 // Embeddings -> Inference, RAG
+        
+        // 3. Interacción y RAG
+        [16, 17], [16, 22], [16, 30],       // Prompt -> Prompt Eng, Chatbot, Jailbreak
+        [17, 20], [17, 27],                 // Prompt Eng -> RLHF, Chain of Thought
+        [18, 20], [18, 21], [18, 34],       // Fine-tuning -> RLHF, Transfer, Datasets
+        [19, 23], [19, 26], [19, 28],       // RAG -> Cut-off, Tool Use, Alucinación
+        [22, 24],                           // Chatbot -> AI Agents
+        
+        // 4. Sistemas Agénticos y Razonamiento
+        [24, 25], [24, 26], [24, 27],       // AI Agents -> Agent Harness, Tool Use, Reasoning Models
+        [25, 26],                           // Agent Harness -> Tool Use
+        [26, 15],                           // Tool Use -> Inference
+        [27, 24],                           // Reasoning Models -> AI Agents
+        
+        // 5. Riesgos, Seguridad y Gobernanza
+        [28, 29],                           // Alucinación -> Guardrails
+        [29, 30], [29, 31],                 // Guardrails -> Jailbreaking, AI Safety
+        [30, 31],                           // Jailbreak -> AI Safety
+        [31, 32], [31, 33],                 // AI Safety -> Human Oversight, XAI
+        [32, 24],                           // Human Oversight -> AI Agents
+        [34, 18], [34, 31],                 // Datasets -> Fine-tuning, AI Safety
+        [35, 15], [35, 6]                   // FLOPS -> Inference, Frontier Models
+      ];
+
+      semanticPairs.forEach(([fromId, toId]) => {
+        links.push({
+          source: `concept-${fromId}`,
+          target: `concept-${toId}`,
+          type: 'semantic'
+        });
+      });
+
+      // Conectar Hubs entre sí para coherencia estructural
+      links.push(
+        { source: 'hub-fundamentos', target: 'hub-arquitectura', type: 'backbone' },
+        { source: 'hub-arquitectura', target: 'hub-interaccion', type: 'backbone' },
+        { source: 'hub-interaccion', target: 'hub-agentes', type: 'backbone' },
+        { source: 'hub-agentes', target: 'hub-seguridad', type: 'backbone' },
+        { source: 'hub-fundamentos', target: 'hub-interaccion', type: 'backbone' },
+        { source: 'hub-arquitectura', target: 'hub-agentes', type: 'backbone' },
+        { source: 'hub-arquitectura', target: 'hub-seguridad', type: 'backbone' }
+      );
+
+      const allNodes = [...hubs, ...conceptNodes];
+
+      // Configurar Zoom
+      const g = svg.append('g').attr('class', 'graph-root');
+      AppState.graph.g = g;
+
+      const zoom = d3.zoom()
+        .scaleExtent([0.5, 2.5])
+        .on('zoom', (event) => {
+          g.attr('transform', event.transform);
+        });
+
+      svg.call(zoom);
+      AppState.graph.zoom = zoom;
+
+      // Configurar simulación de fuerzas con amplio espacio y sin aglomeración
+      const simulation = d3.forceSimulation(allNodes)
+        .force('link', d3.forceLink(links).id(d => d.nodeId || d.id).distance(d => {
+          if (d.type === 'backbone') return 240;
+          if (d.type === 'category') return 75;
+          return 55;
+        }).strength(0.35))
+        .force('charge', d3.forceManyBody().strength(d => d.isHub ? -400 : -130))
+        .force('collision', d3.forceCollide().radius(d => d.isHub ? 45 : 30).iterations(3))
+        .force('x', d3.forceX(d => d.isHub ? d.x : d.targetX).strength(0.12))
+        .force('y', d3.forceY(d => d.isHub ? d.y : d.targetY).strength(0.12))
+        .force('center', d3.forceCenter(width / 2, height / 2).strength(0.04));
+
+      AppState.graph.simulation = simulation;
+
+      // Dibujar Enlaces (Links)
+      const linkElements = g.append('g')
+        .attr('class', 'links')
+        .selectAll('line')
+        .data(links)
+        .enter()
+        .append('line')
+        .attr('class', d => `d3-link link-${d.type}`);
+
+      // Dibujar Nodos
+      const nodeElements = g.append('g')
+        .attr('class', 'nodes')
+        .selectAll('g')
+        .data(allNodes)
+        .enter()
+        .append('g')
+        .attr('class', d => `d3-node ${d.isHub ? 'hub-node' : 'concept-node'}`)
+        .call(d3.drag()
+          .on('start', dragStarted)
+          .on('drag', dragged)
+          .on('end', dragEnded)
+        );
+
+      // Render de círculos
+      nodeElements.each(function(d) {
+        const el = d3.select(this);
+        const col = clusterColors[d.categoryId] || { bg: '#00357f', border: '#00255a', text: '#fff' };
+
+        if (d.isHub) {
+          // Halo sutil
+          el.append('circle')
+            .attr('r', d.r + 5)
+            .attr('fill', col.bg)
+            .attr('opacity', 0.12);
+
+          // Círculo del Hub
+          el.append('circle')
+            .attr('r', d.r)
+            .attr('fill', col.bg)
+            .attr('stroke', '#ffffff')
+            .attr('stroke-width', 2);
+
+          // Identificador en el centro del Hub (I, II, III, IV, V)
+          const hubNumeral = d.categoryId === 'fundamentos' ? 'I' : d.categoryId === 'arquitectura' ? 'II' : d.categoryId === 'interaccion' ? 'III' : d.categoryId === 'agentes' ? 'IV' : 'V';
+          el.append('text')
+            .text(hubNumeral)
+            .attr('text-anchor', 'middle')
+            .attr('dy', '0.35em')
+            .attr('fill', '#ffffff')
+            .attr('font-size', '11px')
+            .attr('font-weight', '700')
+            .attr('font-family', 'JetBrains Mono, monospace')
+            .attr('pointer-events', 'none');
+
+          // Título del Hub debajo del círculo con halo para no cortar letras
+          el.append('text')
+            .text(d.title)
+            .attr('text-anchor', 'middle')
+            .attr('dy', d.r + 13)
+            .attr('fill', col.bg)
+            .attr('font-size', '11px')
+            .attr('font-weight', '700')
+            .attr('font-family', 'Inter, sans-serif')
+            .attr('stroke', '#fcf9f8')
+            .attr('stroke-width', '4px')
+            .attr('paint-order', 'stroke fill')
+            .attr('stroke-linejoin', 'round')
+            .attr('pointer-events', 'none');
+
+        } else {
+          // Halo al hover
+          el.append('circle')
+            .attr('class', 'hover-halo')
+            .attr('r', d.r + 3)
+            .attr('fill', col.bg)
+            .attr('opacity', 0);
+
+          // Círculo del concepto
+          el.append('circle')
+            .attr('r', d.r)
+            .attr('fill', '#ffffff')
+            .attr('stroke', col.bg)
+            .attr('stroke-width', 2);
+
+          // Número de concepto
+          el.append('text')
+            .text(String(d.id).padStart(2, '0'))
+            .attr('text-anchor', 'middle')
+            .attr('dy', '0.35em')
+            .attr('fill', col.bg)
+            .attr('font-size', '9px')
+            .attr('font-weight', '700')
+            .attr('font-family', 'JetBrains Mono, monospace')
+            .attr('pointer-events', 'none');
+
+          // Etiqueta de texto debajo del nodo con halo
+          el.append('text')
+            .text(d.title.length > 16 ? d.title.substring(0, 14) + '…' : d.title)
+            .attr('text-anchor', 'middle')
+            .attr('dy', d.r + 10)
+            .attr('fill', '#1c1b1b')
+            .attr('font-size', '9px')
+            .attr('font-weight', '500')
+            .attr('font-family', 'Inter, sans-serif')
+            .attr('stroke', '#fcf9f8')
+            .attr('stroke-width', '3px')
+            .attr('paint-order', 'stroke fill')
+            .attr('stroke-linejoin', 'round')
+            .attr('pointer-events', 'none');
+        }
+      });
+
+      // INTERACTIVIDAD: Hover y Clic
+      const tooltip = document.getElementById('graph-tooltip');
+
+      nodeElements
+        .on('mouseenter', (event, d) => {
+          if (d.isHub) return;
+
+          // Resaltar enlaces conectados
+          const connectedIds = new Set();
+          connectedIds.add(d.nodeId);
+
+          links.forEach(l => {
+            const sId = l.source.nodeId || l.source.id;
+            const tId = l.target.nodeId || l.target.id;
+            if (sId === d.nodeId) connectedIds.add(tId);
+            if (tId === d.nodeId) connectedIds.add(sId);
+          });
+
+          nodeElements.classed('dimmed', n => !connectedIds.has(n.nodeId || n.id));
+          linkElements.classed('highlighted', l => {
+            const sId = l.source.nodeId || l.source.id;
+            const tId = l.target.nodeId || l.target.id;
+            return sId === d.nodeId || tId === d.nodeId;
+          });
+          linkElements.classed('dimmed', l => {
+            const sId = l.source.nodeId || l.source.id;
+            const tId = l.target.nodeId || l.target.id;
+            return sId !== d.nodeId && tId !== d.nodeId;
+          });
+
+          // Mostrar tooltip
+          document.getElementById('tooltip-title').textContent = `#${d.id} · ${d.title}`;
+          document.getElementById('tooltip-snippet').innerHTML = formatMarkdownText(d.definition);
+
+          const rect = container.getBoundingClientRect();
+          tooltip.style.left = `${Math.min(event.clientX - rect.left + 15, width - 260)}px`;
+          tooltip.style.top = `${Math.min(event.clientY - rect.top + 15, height - 120)}px`;
+          tooltip.style.opacity = '1';
+        })
+        .on('mouseleave', () => {
+          nodeElements.classed('dimmed', false);
+          linkElements.classed('highlighted', false);
+          linkElements.classed('dimmed', false);
+          tooltip.style.opacity = '0';
+        })
+        .on('click', (event, d) => {
+          if (!d.isHub) {
+            openConceptDrawerById(d.id);
+          }
+        });
+
+      // Tick de la simulación con límites estrictos
+      simulation.on('tick', () => {
+        allNodes.forEach(d => {
+          const pad = d.r + 8;
+          d.x = Math.max(pad, Math.min(width - pad, d.x));
+          d.y = Math.max(pad, Math.min(height - pad, d.y));
+        });
+
+        linkElements
+          .attr('x1', d => d.source.x)
+          .attr('y1', d => d.source.y)
+          .attr('x2', d => d.target.x)
+          .attr('y2', d => d.target.y);
+
+        nodeElements.attr('transform', d => `translate(${d.x},${d.y})`);
+      });
+
+      // Funciones de Drag
+      function dragStarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      }
+      function dragged(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+      }
+      function dragEnded(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      }
+
+      // Aplicar filtro si ya hay uno activo
+      applyFilterToGraph();
+    }
+
+    function applyFilterToGraph() {
+      if (!AppState.graph.simulation) return;
+      const cat = AppState.activeCategoryFilter;
+      const q = AppState.searchQuery.toLowerCase().trim();
+
+      d3.selectAll('.d3-node').classed('dimmed', d => {
+        if (d.isHub) return cat !== 'all' && d.categoryId !== cat;
+        const matchesCategory = cat === 'all' || d.categoryId === cat;
+        const matchesSearch = !q || 
+          d.title.toLowerCase().includes(q) ||
+          d.originalTerm.toLowerCase().includes(q) ||
+          d.definition.toLowerCase().includes(q);
+        return !(matchesCategory && matchesSearch);
+      });
+    }
+
+    function zoomGraph(factor) {
+      if (!AppState.graph.svg && d3.select('#d3-concept-svg').node()) {
+        AppState.graph.svg = d3.select('#d3-concept-svg');
+      }
+      if (AppState.graph.svg && AppState.graph.zoom) {
+        AppState.graph.svg.transition().duration(250).call(AppState.graph.zoom.scaleBy, factor);
+      }
+    }
+
+    function resetGraphView() {
+      if (!AppState.graph.svg && d3.select('#d3-concept-svg').node()) {
+        AppState.graph.svg = d3.select('#d3-concept-svg');
+      }
+      if (AppState.graph.svg && AppState.graph.zoom) {
+        AppState.graph.svg.transition().duration(350).call(AppState.graph.zoom.transform, d3.zoomIdentity);
+        if (AppState.graph.simulation) {
+          AppState.graph.simulation.alpha(0.3).restart();
+        }
+      }
+    }
+
+    // ==========================================
+    // RENDER DE FICHAS (VISTA ALTERNATIVA)
+    // ==========================================
+    function renderConceptosCards() {
+      const grid = document.getElementById('conceptos-grid');
+      const emptyState = document.getElementById('empty-state');
+      const q = AppState.searchQuery.toLowerCase().trim();
+      const cat = AppState.activeCategoryFilter;
+
+      const filtered = AppState.data.conceptos.filter(item => {
+        const matchesCategory = cat === 'all' || item.categoryId === cat;
+        const matchesSearch = !q || 
+          item.title.toLowerCase().includes(q) ||
+          item.originalTerm.toLowerCase().includes(q) ||
+          item.definition.toLowerCase().includes(q) ||
+          item.practicalExample.toLowerCase().includes(q) ||
+          item.tags.some(t => t.toLowerCase().includes(q));
+        return matchesCategory && matchesSearch;
+      });
+
+      updateCounterText(filtered.length, AppState.data.conceptos.length);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map((c, idx) => `
+        <article 
+          onclick="openConceptDrawerById(${c.id})"
+          tabindex="0"
+          role="button"
+          aria-label="Abrir concepto: ${escapeHtml(c.title)}"
+          class="clickable-card stagger-item group p-5 sm:p-6 rounded-xl bg-white border border-border-subtle hover:border-primary shadow-xs hover:shadow-editorial cursor-pointer flex flex-col justify-between"
+          style="animation-delay: ${Math.min(idx * 35, 240)}ms"
+        >
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2.5">
+              <span class="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                #${String(c.id).padStart(2, '0')}
+              </span>
+            </div>
+
+            <h3 class="font-serif text-lg sm:text-xl font-bold tracking-tight text-on-surface group-hover:text-primary transition-colors leading-snug mb-3">
+              ${escapeHtml(c.title)}
+            </h3>
+
+            <div class="font-sans text-xs sm:text-sm text-on-surface/80 leading-relaxed line-clamp-3 mb-4">
+              ${formatMarkdownText(c.definition)}
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-border-subtle/80 flex items-center justify-between text-xs">
+            <span class="font-mono text-xs text-primary font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+              Leer concepto completo
+              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // 2. EJERCICIOS
+    function renderEjercicios() {
+      const grid = document.getElementById('ejercicios-grid');
+      const emptyState = document.getElementById('empty-state');
+      const q = AppState.searchQuery.toLowerCase().trim();
+      const cat = AppState.activeCategoryFilter;
+
+      const filtered = AppState.data.ejercicios.filter(item => {
+        const matchesCategory = cat === 'all' || item.id === cat || item.skill === cat;
+        const matchesSearch = !q || 
+          item.skill.toLowerCase().includes(q) ||
+          item.title.toLowerCase().includes(q) ||
+          item.definition.toLowerCase().includes(q) ||
+          item.example.toLowerCase().includes(q) ||
+          item.trigger.toLowerCase().includes(q) ||
+          item.tags.some(t => t.toLowerCase().includes(q));
+        return matchesCategory && matchesSearch;
+      });
+
+      updateCounterText(filtered.length, AppState.data.ejercicios.length);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map((e, idx) => `
+        <article 
+          id="card-${e.id}"
+          class="stagger-item p-6 sm:p-8 rounded-2xl bg-white border border-border-subtle shadow-xs hover:border-primary/40 transition-all flex flex-col justify-between ${filtered.length === 1 ? 'col-span-full max-w-3xl mx-auto w-full' : ''}"
+          style="animation-delay: ${Math.min(idx * 50, 200)}ms"
+        >
+          <div>
+            <!-- Cabecera de la Habilidad -->
+            <div class="flex items-center justify-between gap-4 pb-3 mb-4 border-b border-border-subtle">
+              <span class="font-mono text-xs text-primary font-semibold tracking-wide uppercase">
+                ${escapeHtml(e.number)} &middot; ${escapeHtml(e.skillEn)}
+              </span>
+              <span class="font-mono text-xs text-muted flex items-center gap-1">
+                <span class="material-symbols-outlined text-xs">schedule</span>
+                ${escapeHtml(e.estimatedTime)}
+              </span>
+            </div>
+
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-on-surface mb-1">
+              ${escapeHtml(e.skill)}
+            </h3>
+
+            <div class="text-sm font-semibold text-primary mb-4">
+              ${escapeHtml(e.title)}
+            </div>
+
+            <!-- Definicion Conceptual -->
+            <p class="text-sm text-on-surface/90 leading-relaxed mb-4">
+              ${escapeHtml(e.definition)}
+            </p>
+
+            <!-- Ejemplo en tu negocio: Párrafo continuo sin cajas anidadas -->
+            <p class="text-sm text-on-surface/80 leading-relaxed mb-6">
+              <strong class="font-semibold text-on-surface">Ejemplo en tu negocio:</strong> ${escapeHtml(e.example)}
+            </p>
+
+            <!-- Centro de Acción: Prompt y Lanzadores de Chatbots -->
+            <div class="space-y-3 mb-6 pt-4 border-t border-border-subtle">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <span class="font-mono text-xs uppercase tracking-wider text-muted font-semibold">
+                  Prompt para tu IA:
+                </span>
+                <button 
+                  onclick="copiarPrompt('${e.id}', this)" 
+                  id="btn-copy-${e.id}"
+                  class="btn-action w-full sm:w-auto px-4 py-2.5 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-dark active:scale-95 shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span class="material-symbols-outlined text-base">content_copy</span>
+                  <span>Copiar prompt</span>
+                </button>
+              </div>
+
+              <!-- Contenedor del Prompt -->
+              <div class="bg-surface-alt rounded-xl border border-border-subtle p-4 max-h-56 overflow-y-auto font-mono text-xs text-on-surface leading-relaxed select-all">
+                <pre class="whitespace-pre-wrap font-mono">${escapeHtml(e.prompt)}</pre>
+              </div>
+
+              <!-- Botones de Acción Rápida para Abrir Chatbots -->
+              <div class="flex flex-wrap items-center gap-2 pt-1">
+                <span class="text-xs font-mono text-muted uppercase tracking-wider shrink-0 mr-1">Abrir en:</span>
+                <a 
+                  href="https://chatgpt.com" 
+                  target="_blank" 
+                  rel="noopener" 
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white hover:border-primary hover:bg-primary/[0.04] text-xs font-medium text-on-surface hover:text-primary transition-all active:scale-95 shadow-xs"
+                >
+                  <span class="material-symbols-outlined text-sm text-primary">smart_toy</span>
+                  <span>ChatGPT</span>
+                </a>
+                <a 
+                  href="https://gemini.google.com" 
+                  target="_blank" 
+                  rel="noopener" 
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white hover:border-primary hover:bg-primary/[0.04] text-xs font-medium text-on-surface hover:text-primary transition-all active:scale-95 shadow-xs"
+                >
+                  <span class="material-symbols-outlined text-sm text-primary">auto_awesome</span>
+                  <span>Gemini</span>
+                </a>
+                <a 
+                  href="https://wa.me/" 
+                  target="_blank" 
+                  rel="noopener" 
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white hover:border-primary hover:bg-primary/[0.04] text-xs font-medium text-on-surface hover:text-primary transition-all active:scale-95 shadow-xs"
+                >
+                  <span class="material-symbols-outlined text-sm text-emerald-700">chat</span>
+                  <span>WhatsApp (Meta AI)</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Regla clave y resultado: Formato de lectura serena con acento cobalto lateral -->
+            <div class="pt-4 border-t border-border-subtle text-xs text-muted leading-relaxed space-y-2 border-l-2 border-primary pl-4 my-2">
+              <p>
+                <strong class="text-on-surface font-semibold">Regla clave en la conversación:</strong> Responde estrictamente una sola pregunta a la vez con datos reales de tu trabajo. Si la IA formula más de una pregunta junta, respóndele: <em>«Sigue la instrucción: haz estrictamente una pregunta a la vez»</em>.
+              </p>
+              <p>
+                <strong class="text-on-surface font-semibold">Resultado final:</strong> ${escapeHtml(e.resultDeliverable)}
+              </p>
+            </div>
+
+            <!-- Desplegable metodológico sin fondos pesados -->
+            <details class="mt-4 pt-3 border-t border-border-subtle group text-xs text-muted">
+              <summary class="cursor-pointer hover:text-primary transition-colors flex items-center justify-between select-none py-1">
+                <span class="font-medium">¿Por qué este prompt está formulado de esta manera?</span>
+                <span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform">expand_more</span>
+              </summary>
+              <div class="mt-3 space-y-2 leading-relaxed text-muted pl-1">
+                <p><strong class="text-on-surface font-medium">Estructura cerrada:</strong> Al asignarle un rol estricto y un flujo delimitado, evitamos que la IA improvise o entregue generalidades.</p>
+                <p><strong class="text-on-surface font-medium">Cero complacencia:</strong> La IA tiene la orden de no avanzar si tus respuestas son vagas o teóricas, exigiéndote ejemplos reales de tu día a día.</p>
+                <p><strong class="text-on-surface font-medium">Una pregunta a la vez:</strong> Evita abrumar con cuestionarios largos y permite reflexionar punto por punto.</p>
+                <p><strong class="text-on-surface font-medium">Escucha reflexiva:</strong> Antes de formular la siguiente pregunta, la IA sintetiza lo que respondiste para verificar comprensión mutua.</p>
+                <p><strong class="text-on-surface font-medium">Cierre con entregable:</strong> La conversación concluye con un plan o protocolo operativo estructurado, no con una charla abierta.</p>
+              </div>
+            </details>
+          </div>
+        </article>
+      `).join('');
+
+      updateSelectorSituacionesUI(cat);
+    }
+
+    // 3. RECURSOS
+    function renderRecursos() {
+      const grid = document.getElementById('recursos-grid');
+      const autoresContainer = document.getElementById('recursos-autores-container');
+      const emptyState = document.getElementById('empty-state');
+      const q = AppState.searchQuery.toLowerCase().trim();
+      const cat = AppState.activeCategoryFilter;
+
+      if (cat === 'autores') {
+        grid.classList.add('hidden');
+        autoresContainer.classList.remove('hidden');
+        renderAutoresView(q);
+        return;
+      }
+
+      grid.classList.remove('hidden');
+      autoresContainer.classList.add('hidden');
+
+      const filtered = AppState.data.recursos.filter(item => {
+        let matchesCategory = true;
+        if (cat === 'video') {
+          matchesCategory = item.categoryType === 'video' || (item.type && item.type.toLowerCase().includes('video'));
+        } else if (cat === 'articulo') {
+          matchesCategory = item.categoryType === 'articulo' || (item.type && (item.type.toLowerCase().includes('blog') || item.type.toLowerCase().includes('artículo') || item.type.toLowerCase().includes('newsletter')));
+        } else if (cat === 'paper') {
+          matchesCategory = item.categoryType === 'paper' || (item.type && (item.type.toLowerCase().includes('paper') || item.type.toLowerCase().includes('regulatorio') || item.type.toLowerCase().includes('ingeniería') || item.type.toLowerCase().includes('técnica')));
+        } else if (cat !== 'all') {
+          matchesCategory = item.hub === cat || (item.tags && item.tags.some(t => t.toLowerCase() === cat.toLowerCase()));
+        }
+
+        const matchesSearch = !q || 
+          (item.title && item.title.toLowerCase().includes(q)) ||
+          (item.authors && item.authors.toLowerCase().includes(q)) ||
+          (item.description && item.description.toLowerCase().includes(q)) ||
+          (item.tags && item.tags.some(t => t.toLowerCase().includes(q)));
+
+        return matchesCategory && matchesSearch;
+      });
+
+      updateCounterText(filtered.length, AppState.data.recursos.length);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map((r, idx) => {
+        const isVideo = r.categoryType === 'video' || (r.type && r.type.toLowerCase().includes('video'));
+        const typeIcon = isVideo ? 'smart_display' : 'article';
+        const actionLabel = isVideo ? 'Ver Video' : 'Acceder';
+        const hubLabel = getHubLabel(r.hub);
+
+        return `
+        <div 
+          class="stagger-item p-6 rounded-xl bg-white border border-border-subtle hover:border-primary/40 shadow-xs flex flex-col justify-between transition-all"
+          style="animation-delay: ${Math.min(idx * 30, 240)}ms"
+        >
+          <div>
+            <h3 class="font-serif text-lg sm:text-xl font-bold text-on-surface mb-1.5 leading-snug">
+              ${escapeHtml(r.title)}
+            </h3>
+
+            <div class="font-mono text-xs text-primary/80 mb-3 italic">
+              ${escapeHtml(r.authors)} ${r.source ? `— ${escapeHtml(r.source)}` : ''}
+            </div>
+
+            <p class="font-sans text-xs sm:text-sm text-muted leading-relaxed mb-4">
+              ${escapeHtml(r.description)}
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-border-subtle flex flex-wrap items-center justify-between gap-3">
+            <div class="flex flex-wrap items-center gap-1.5 min-w-0">
+              ${(r.relatedConceptIds || []).map(cid => {
+                const concept = (AppState.data.conceptos || []).find(c => c.id === cid);
+                if (!concept) return '';
+                const shortTitle = concept.title.split('(')[0].trim();
+                return `
+                  <button 
+                    onclick="navigateToConcept(${cid})" 
+                    class="inline-flex items-center gap-1 text-xs font-mono text-primary/80 hover:text-primary transition-colors py-0.5 px-1.5 rounded hover:bg-primary/5"
+                    title="Ver concepto técnico: ${escapeHtml(concept.title)}"
+                  >
+                    <span class="material-symbols-outlined text-[13px] text-primary">hub</span>
+                    <span class="hover:underline">#${String(cid).padStart(2, '0')} ${escapeHtml(shortTitle)}</span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+            
+            <div class="flex items-center gap-2 ml-auto shrink-0">
+              <a 
+                href="${escapeHtml(r.url)}" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn-action inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary-dark transition-colors shadow-xs"
+              >
+                <span>${actionLabel}</span>
+                <span class="material-symbols-outlined text-sm">${isVideo ? 'play_arrow' : 'open_in_new'}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        `;
+      }).join('');
+    }
+
+    // VISTA AGRUPADA POR AUTORES & CREADORES
+    function renderAutoresView(q) {
+      const container = document.getElementById('recursos-autores-container');
+      const emptyState = document.getElementById('empty-state');
+      const autores = AppState.data.autores || [];
+
+      const filteredAutores = autores.filter(a => {
+        if (!q) return true;
+        return a.name.toLowerCase().includes(q) ||
+          a.affiliation.toLowerCase().includes(q) ||
+          a.perspective.toLowerCase().includes(q) ||
+          (a.topics && a.topics.some(t => t.toLowerCase().includes(q)));
+      });
+
+      updateCounterText(filteredAutores.length, autores.length);
+
+      if (filteredAutores.length === 0) {
+        container.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      emptyState.classList.add('hidden');
+
+      container.innerHTML = filteredAutores.map((author, idx) => {
+        const authorResources = (AppState.data.recursos || []).filter(r => 
+          r.authorId === author.id || 
+          (r.authors && r.authors.toLowerCase().includes(author.name.toLowerCase()))
+        );
+
+        return `
+        <article 
+          class="stagger-item p-6 sm:p-7 rounded-xl bg-white border border-border-subtle hover:border-primary/40 shadow-xs transition-all"
+          style="animation-delay: ${Math.min(idx * 40, 240)}ms"
+        >
+          <div class="pb-3 border-b border-border-subtle">
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-on-surface">
+              ${escapeHtml(author.name)}
+            </h3>
+            <div class="font-mono text-xs text-primary/90 mt-0.5">
+              ${escapeHtml(author.role)} &middot; <span class="text-muted">${escapeHtml(author.affiliation)}</span>
+            </div>
+          </div>
+
+          <div class="mt-4 space-y-1.5">
+            <div class="text-xs font-mono uppercase tracking-wider text-muted font-semibold">
+              Perspectiva & Enfoque sobre la IA
+            </div>
+            <p class="font-sans text-xs sm:text-sm text-on-surface/90 leading-relaxed">
+              ${escapeHtml(author.perspective)}
+            </p>
+          </div>
+
+          ${authorResources.length > 0 ? `
+            <div class="mt-5 pt-4 border-t border-border-subtle">
+              <div class="text-xs font-mono uppercase tracking-wider text-muted font-semibold mb-2.5">
+                Obras & Contenidos Curados (${authorResources.length})
+              </div>
+              <ul class="divide-y divide-border-subtle">
+                ${authorResources.map(r => {
+                  const isVideo = r.categoryType === 'video' || (r.type && r.type.toLowerCase().includes('video'));
+                  const icon = isVideo ? 'smart_display' : 'article';
+                  return `
+                  <li class="py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 group">
+                    <div class="flex items-start sm:items-center gap-2.5 min-w-0">
+                      <span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5 sm:mt-0">${icon}</span>
+                      <div class="min-w-0">
+                        <a 
+                          href="${escapeHtml(r.url)}" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          class="font-sans text-sm font-semibold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5"
+                        >
+                          <span class="truncate">${escapeHtml(r.title)}</span>
+                          <span class="material-symbols-outlined text-[14px] text-muted group-hover:text-primary shrink-0">arrow_outward</span>
+                        </a>
+                        <div class="font-mono text-xs text-muted flex items-center gap-2 mt-0.5">
+                          <span>${escapeHtml(r.type)}</span>
+                          ${(r.relatedConceptIds || []).map(cid => {
+                            const concept = (AppState.data.conceptos || []).find(c => c.id === cid);
+                            if (!concept) return '';
+                            const shortTitle = concept.title.split('(')[0].trim();
+                            return `<span>&middot;</span><button onclick="navigateToConcept(${cid})" class="text-primary hover:underline">#${String(cid).padStart(2, '0')} ${escapeHtml(shortTitle)}</button>`;
+                          }).join('')}
+                        </div>
+                      </div>
+                    </div>
+                    <a 
+                      href="${escapeHtml(r.url)}" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      class="shrink-0 self-start sm:self-auto inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-alt hover:bg-primary hover:text-white text-on-surface font-mono text-xs font-medium transition-colors"
+                    >
+                      <span>${isVideo ? 'Ver video' : 'Leer'}</span>
+                      <span class="material-symbols-outlined text-[13px]">${isVideo ? 'play_arrow' : 'open_in_new'}</span>
+                    </a>
+                  </li>
+                  `;
+                }).join('')}
+              </ul>
+            </div>
+          ` : ''}
+        </article>
+        `;
+      }).join('');
+    }
+
+    function getHubLabel(hub) {
+      const map = {
+        'fundamentos': 'Fundamentos',
+        'arquitectura': 'Arquitectura',
+        'interaccion': 'Interacción & RAG',
+        'agentes': 'Sistemas Agénticos',
+        'seguridad': 'Seguridad & Riesgos'
+      };
+      return map[hub] || '';
+    }
+
+    // 4. MATERIALES (Presentación y Descargas)
+    function renderMateriales() {
+      const grid = document.getElementById('materiales-grid');
+      const emptyState = document.getElementById('empty-state');
+      const q = AppState.searchQuery.toLowerCase().trim();
+      const cat = AppState.activeCategoryFilter;
+
+      const filtered = AppState.data.materiales.filter(item => {
+        const matchesCategory = cat === 'all' || (item.format && item.format.includes(cat));
+        const matchesSearch = !q || 
+          item.title.toLowerCase().includes(q) ||
+          item.description.toLowerCase().includes(q);
+        return matchesCategory && matchesSearch;
+      });
+
+      updateCounterText(filtered.length, AppState.data.materiales.length);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map((m, idx) => `
+        <div 
+          class="stagger-item p-6 sm:p-7 rounded-xl bg-white border border-border-subtle hover:border-primary/40 shadow-xs flex flex-col justify-between transition-all"
+          style="animation-delay: ${Math.min(idx * 35, 240)}ms"
+        >
+          <div>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-on-surface mb-2 leading-snug">
+              ${escapeHtml(m.title)}
+            </h3>
+
+            <p class="font-sans text-xs sm:text-sm text-muted leading-relaxed mb-6">
+              ${escapeHtml(m.description)}
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
+            <span class="font-mono text-xs text-muted flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[17px] text-primary">slideshow</span>
+              ${escapeHtml(m.format)}
+            </span>
+            <a 
+              href="${escapeHtml(m.fileUrl || '#')}" 
+              ${m.fileUrl && m.fileUrl !== '#' ? (m.isLocal ? 'download' : 'target="_blank" rel="noopener noreferrer"') : 'onclick="showToast(\'Material disponible próximamente\'); return false;"'} 
+              class="btn-action inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary-dark transition-colors shadow-xs"
+            >
+              <span class="material-symbols-outlined text-sm">download</span>
+              <span>Descargar</span>
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // NAVEGACIÓN DIRECTA DESDE RECURSOS HACIA CONCEPTOS
+    function navigateToConcept(conceptId) {
+      if (!conceptId) return;
+      switchTab('conceptos');
+      setTimeout(() => {
+        openConceptDrawerById(Number(conceptId));
+        const graphWrapper = document.getElementById('concept-graph-wrapper');
+        if (graphWrapper) {
+          graphWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 50);
+    }
+    window.navigateToConcept = navigateToConcept;
+
+    // DRAWER LATERAL DE LECTURA DE CONCEPTOS
+    function openConceptDrawerById(id) {
+      const idx = AppState.data.conceptos.findIndex(c => c.id === id);
+      if (idx !== -1) {
+        openConceptDrawerByIndex(idx);
+      }
+    }
+
+    function openConceptDrawerByIndex(index) {
+      AppState.selectedConceptIndex = index;
+      const c = AppState.data.conceptos[index];
+      if (!c) return;
+
+      document.getElementById('drawer-concept-id').textContent = `#${String(c.id).padStart(2, '0')}`;
+      document.getElementById('drawer-concept-title').textContent = c.title;
+      document.getElementById('drawer-concept-definition').innerHTML = formatMarkdownText(c.definition);
+      document.getElementById('drawer-concept-example').innerHTML = formatMarkdownText(c.practicalExample);
+
+      // Recursos y videos específicamente vinculados a este concepto
+      const resSection = document.getElementById('drawer-concept-resources-section');
+      const resContainer = document.getElementById('drawer-concept-resources');
+      if (resSection && resContainer) {
+        const relatedRes = (AppState.data.recursos || []).filter(r => 
+          Array.isArray(r.relatedConceptIds) && r.relatedConceptIds.includes(c.id)
+        ).slice(0, 4);
+
+        if (relatedRes.length > 0) {
+          resSection.classList.remove('hidden');
+          resContainer.innerHTML = relatedRes.map(r => {
+            const isVideo = r.categoryType === 'video' || (r.type && r.type.toLowerCase().includes('video'));
+            const icon = isVideo ? 'smart_display' : 'article';
+            const authorText = r.authors ? ` · ${escapeHtml(r.authors)}` : '';
+            return `
+            <a 
+              href="${escapeHtml(r.url)}" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="flex items-center justify-between gap-3 p-3 rounded-lg border border-border-subtle hover:border-primary/40 hover:bg-white transition-all group"
+            >
+              <div class="flex items-center gap-2.5 min-w-0">
+                <span class="material-symbols-outlined text-primary text-[20px] shrink-0">${icon}</span>
+                <div class="min-w-0">
+                  <div class="font-sans text-xs sm:text-sm font-semibold text-on-surface group-hover:text-primary truncate">
+                    ${escapeHtml(r.title)}
+                  </div>
+                  <div class="font-mono text-[11px] text-muted truncate">
+                    ${escapeHtml(r.source || '')}${authorText}
+                  </div>
+                </div>
+              </div>
+              <span class="material-symbols-outlined text-muted group-hover:text-primary text-[16px] shrink-0">arrow_outward</span>
+            </a>
+            `;
+          }).join('');
+        } else {
+          resSection.classList.add('hidden');
+          resContainer.innerHTML = '';
+        }
+      }
+
+      document.getElementById('drawer-btn-prev').disabled = index === 0;
+      document.getElementById('drawer-btn-next').disabled = index === AppState.data.conceptos.length - 1;
+
+      const drawer = document.getElementById('concept-drawer');
+      const backdrop = document.getElementById('drawer-backdrop');
+      const panel = document.getElementById('drawer-panel');
+
+      drawer.classList.remove('pointer-events-none');
+      drawer.setAttribute('aria-hidden', 'false');
+      backdrop.classList.remove('pointer-events-none', 'opacity-0');
+      backdrop.classList.add('opacity-100');
+      panel.classList.remove('translate-x-full');
+      panel.classList.add('translate-x-0');
+
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeConceptDrawer() {
+      const drawer = document.getElementById('concept-drawer');
+      const backdrop = document.getElementById('drawer-backdrop');
+      const panel = document.getElementById('drawer-panel');
+
+      backdrop.classList.remove('opacity-100');
+      backdrop.classList.add('opacity-0');
+      panel.classList.remove('translate-x-0');
+      panel.classList.add('translate-x-full');
+
+      setTimeout(() => {
+        drawer.classList.add('pointer-events-none');
+        drawer.setAttribute('aria-hidden', 'true');
+        backdrop.classList.add('pointer-events-none');
+        document.body.style.overflow = '';
+      }, 200);
+    }
+
+    function navigateConcept(direction) {
+      const nextIndex = AppState.selectedConceptIndex + direction;
+      if (nextIndex >= 0 && nextIndex < AppState.data.conceptos.length) {
+        openConceptDrawerByIndex(nextIndex);
+      }
+    }
+
+    // GESTIÓN DE BÚSQUEDA Y ATAJOS
+    function setupSearchListeners() {
+      const globalInput = document.getElementById('global-search-input');
+      const mobileInput = document.getElementById('mobile-search-input');
+
+      const onSearch = (val) => {
+        AppState.searchQuery = val;
+        if (globalInput.value !== val) globalInput.value = val;
+        if (mobileInput.value !== val) mobileInput.value = val;
+        renderActiveView();
+      };
+
+      globalInput.addEventListener('input', (e) => onSearch(e.target.value));
+      mobileInput.addEventListener('input', (e) => onSearch(e.target.value));
+    }
+
+    function setupKeyboardShortcuts() {
+      document.addEventListener('keydown', (e) => {
+        const drawerOpen = document.getElementById('concept-drawer').getAttribute('aria-hidden') === 'false';
+
+        if (e.key === 'Escape' && drawerOpen) {
+          closeConceptDrawer();
+          return;
+        }
+
+        if (drawerOpen) {
+          if (e.key === 'ArrowLeft') navigateConcept(-1);
+          if (e.key === 'ArrowRight') navigateConcept(1);
+          return;
+        }
+
+        if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+          e.preventDefault();
+          const input = document.getElementById('global-search-input');
+          input.focus();
+          input.select();
+        }
+      });
+    }
+
+    function clearFiltersAndSearch() {
+      AppState.searchQuery = '';
+      AppState.activeCategoryFilter = 'all';
+      document.getElementById('global-search-input').value = '';
+      document.getElementById('mobile-search-input').value = '';
+      renderCategoryFilters();
+      renderActiveView();
+    }
+
+    function updateCounterText(shown, total) {
+      const el = document.getElementById('visible-items-counter');
+      if (el) {
+        el.textContent = `Mostrando ${shown} de ${total} elementos`;
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function formatMarkdownText(str) {
+      if (!str) return '';
+      let safe = escapeHtml(str.trim());
+      // Reemplazar negrita **texto** por <strong>
+      safe = safe.replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-on-surface">$1</strong>');
+      // Reemplazar cursiva *texto* por <em>
+      safe = safe.replace(/(^|[^\*])\*([^\*]+?)\*([^\*]|$)/g, '$1<em class="italic">$2</em>$3');
+      // Listas con viñetas (- elemento)
+      safe = safe.replace(/(?:^|\n)\s*-\s+/g, '<br>&bull; ');
+      // Saltos de línea
+      safe = safe.replace(/\n\n+/g, '<br><br>');
+      safe = safe.replace(/\n/g, '<br>');
+      if (safe.startsWith('<br>')) {
+        safe = safe.substring(4);
+      }
+      return safe;
+    }
+
+    // ACCIONES DE EJERCICIOS Y PROMPTS
+    function copiarPrompt(id, btn) {
+      const item = AppState.data.ejercicios.find(e => e.id === id);
+      if (!item) return;
+
+      const promptText = item.prompt;
+      const onCopiedSuccess = () => {
+        if (navigator.vibrate) {
+          try { navigator.vibrate(40); } catch(err) {}
+        }
+
+        if (btn) {
+          const originalContent = btn.innerHTML;
+          btn.classList.remove('bg-primary', 'hover:bg-primary-dark');
+          btn.classList.add('bg-emerald-700', 'hover:bg-emerald-800');
+          btn.innerHTML = `
+            <span class="material-symbols-outlined text-base">check</span>
+            <span>Prompt Copiado</span>
+          `;
+          setTimeout(() => {
+            btn.classList.remove('bg-emerald-700', 'hover:bg-emerald-800');
+            btn.classList.add('bg-primary', 'hover:bg-primary-dark');
+            btn.innerHTML = originalContent;
+          }, 3000);
+        }
+
+        showToast('Prompt copiado al portapapeles. Pegalo en tu chatbot de preferencia.');
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(promptText)
+          .then(onCopiedSuccess)
+          .catch(() => {
+            fallbackCopyText(promptText);
+            onCopiedSuccess();
+          });
+      } else {
+        fallbackCopyText(promptText);
+        onCopiedSuccess();
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.top = '0';
+      textArea.style.left = '0';
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+      } catch (e) {}
+      document.body.removeChild(textArea);
+    }
+
+    function updateSelectorSituacionesUI(activeId) {
+      const buttons = document.querySelectorAll('.btn-situacion');
+      buttons.forEach(btn => {
+        const btnId = btn.getAttribute('data-ej-id');
+        const arrow = btn.querySelector('.situacion-arrow');
+        const text = btn.querySelector('.situacion-text');
+
+        if (activeId === btnId) {
+          btn.classList.add('border-primary', 'bg-primary/[0.04]', 'ring-1', 'ring-primary/40');
+          btn.classList.remove('border-border-subtle', 'bg-white');
+          if (arrow) {
+            arrow.classList.add('text-primary', 'translate-x-0.5');
+            arrow.classList.remove('text-muted');
+          }
+          if (text) {
+            text.classList.add('text-primary', 'font-semibold');
+          }
+        } else {
+          btn.classList.remove('border-primary', 'bg-primary/[0.04]', 'ring-1', 'ring-primary/40');
+          btn.classList.add('border-border-subtle', 'bg-white');
+          if (arrow) {
+            arrow.classList.remove('text-primary', 'translate-x-0.5');
+            arrow.classList.add('text-muted');
+          }
+          if (text) {
+            text.classList.remove('text-primary', 'font-semibold');
+          }
+        }
+      });
+
+      const btnVerTodas = document.getElementById('btn-ver-todas');
+      if (btnVerTodas) {
+        if (activeId === 'all') {
+          btnVerTodas.classList.add('font-bold', 'underline');
+        } else {
+          btnVerTodas.classList.remove('font-bold', 'underline');
+        }
+      }
+    }
+
+    function seleccionarEjercicio(id) {
+      AppState.activeCategoryFilter = id;
+      updateSelectorSituacionesUI(id);
+      renderCategoryFilters();
+      renderEjercicios();
+
+      if (id !== 'all') {
+        setTimeout(() => {
+          const targetEl = document.getElementById(`card-${id}`);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            targetEl.classList.add('ring-2', 'ring-primary', 'border-primary');
+            setTimeout(() => {
+              targetEl.classList.remove('ring-2', 'ring-primary');
+            }, 2500);
+          }
+        }, 80);
+      }
+    }
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      const toastMsg = document.getElementById('toast-message');
+      if (!toast || !toastMsg) return;
+
+      toastMsg.textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 3500);
+    }
+  </script>
+
+  <!-- Notificacion Toast sutil -->
+  <div 
+    id="toast-notification" 
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-on-surface text-white text-xs font-medium shadow-editorial opacity-0 pointer-events-none transition-all duration-200 flex items-center gap-2 translate-y-3"
+    role="alert"
+  >
+    <span class="material-symbols-outlined text-sm text-emerald-400">check_circle</span>
+    <span id="toast-message">Mensaje</span>
+  </div>
+</body>
+</html>
