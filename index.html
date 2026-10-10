@@ -1849,8 +1849,8 @@
               ${m.fileUrl && m.fileUrl !== '#' ? (m.isLocal ? 'download' : 'target="_blank" rel="noopener noreferrer"') : 'onclick="showToast(\'Material disponible próximamente\'); return false;"'} 
               class="btn-action inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary-dark transition-colors shadow-xs"
             >
-              <span class="material-symbols-outlined text-sm">download</span>
-              <span>Descargar</span>
+              <span class="material-symbols-outlined text-sm">${m.isLocal ? 'download' : 'open_in_new'}</span>
+              <span>${m.isLocal ? 'Descargar' : 'Ver presentación'}</span>
             </a>
           </div>
         </div>
