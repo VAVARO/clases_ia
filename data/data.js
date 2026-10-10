@@ -1780,7 +1780,7 @@
     materiales: [
   {
     "id": "mat-01",
-    "title": "Presentación de la Clase: Trabajo Autónomo CDN",
+    "title": "Presentación IA desde el Sur del Mundo",
     "format": "Presentación en Google Drive",
     "fileUrl": "https://drive.google.com/open?id=1UltR50c7bkkSfdMWDOv5KvRUA-w4vnHO2tep_3k9Xb4&usp=drive_copy",
     "description": "Diapositivas oficiales utilizadas en la clase. Aborda los fundamentos conceptuales de la inteligencia artificial generativa, la arquitectura de modelos, criterios estratégicos y la guía metodológica para los ejercicios prácticos.",
