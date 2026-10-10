@@ -38,5 +38,5 @@ node scripts/scan_and_remove_emojis.cjs
   2. *Conocimiento Amplio:* "Me cuesta vender, explicar el valor de lo mío o los clientes preguntan pero no compran".
   3. *Criterio o Gusto:* "Quiero definir la estética de mi negocio".
   4. *Agencia:* "Quiero automatizar algo en el corto plazo".
-- **Recursos:** 55 recursos de aprendizaje curados (30 videos de YouTube verificados y 25 posts/ensayos de Substack) vinculados con rigor técnico únicamente a los conceptos directamente pertinentes (los conceptos sin material específico omiten la sección en el drawer sin rellenos artificiales) y a 12 perfiles de creadores y autores destacados (`data/autores.json`).
+- **Recursos:** 72 recursos de aprendizaje curados (47 videos de YouTube verificados y 25 posts/ensayos de Substack) vinculados con rigor técnico únicamente a los conceptos directamente pertinentes y a 12 perfiles de creadores y autores destacados (`data/autores.json`).
 - **Materiales:** 1 presentación oficial correspondiente a la charla.

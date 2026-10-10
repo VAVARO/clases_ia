@@ -1485,6 +1485,296 @@
       1,
       32
     ]
+  },
+  {
+    "id": "rec-56",
+    "title": "Machine Learning vs. Deep Learning vs. Foundation Models",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Fundamentos de IA",
+    "url": "https://www.youtube.com/watch?v=Beh13Cd_QbY",
+    "description": "Explicación comparativa en pizarra sobre la evolución jerárquica desde los algoritmos clásicos de aprendizaje automático y las redes neuronales profundas hasta el paradigma de modelos fundacionales preentrenados.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      2,
+      3,
+      5
+    ]
+  },
+  {
+    "id": "rec-57",
+    "title": "How Large Language Models Work",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Modelos de Lenguaje",
+    "url": "https://www.youtube.com/watch?v=5sLYAQS9sWQ",
+    "description": "Desglose paso a paso del funcionamiento interno de un modelo de lenguaje extenso: cómo descompone el texto en tokens, procesa representaciones vectoriales y predice probabilísticamente la secuencia siguiente.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      4,
+      12
+    ]
+  },
+  {
+    "id": "rec-58",
+    "title": "Diffusion Models for AI Image Generation",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Generación Visual",
+    "url": "https://www.youtube.com/watch?v=x2GRE-RzmD8",
+    "description": "Fundamentos matemáticos e intuitivos de los modelos de difusión: cómo el proceso hacia adelante añade ruido gaussiano progresivo a una imagen y cómo la red neuronal aprende el proceso inverso para sintetizar imágenes desde cero.",
+    "hub": "fundamentos",
+    "relatedConceptIds": [
+      8
+    ]
+  },
+  {
+    "id": "rec-59",
+    "title": "What are Transformers (Machine Learning Model)?",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Arquitectura Interna",
+    "url": "https://www.youtube.com/watch?v=ZXiruGOCn9s",
+    "description": "Anatomía de la arquitectura Transformer: el funcionamiento de los bloques codificador-decodificador, el mecanismo de autoatención (self-attention) para ponderar el contexto en paralelo y cómo habilita el aprendizaje por transferencia.",
+    "hub": "arquitectura",
+    "relatedConceptIds": [
+      10,
+      11,
+      21
+    ]
+  },
+  {
+    "id": "rec-60",
+    "title": "What is a Context Window? Unlocking LLM Secrets",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Memoria Operativa",
+    "url": "https://www.youtube.com/watch?v=-QVoIxEpFkM",
+    "description": "Análisis de la memoria de trabajo de un modelo de lenguaje medida en tokens: por qué existe un límite computacional en la ventana de contexto y cómo afecta la retención de información en conversaciones o documentos extensos.",
+    "hub": "arquitectura",
+    "relatedConceptIds": [
+      13,
+      12
+    ]
+  },
+  {
+    "id": "rec-61",
+    "title": "What are Word Embeddings?",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Representación Vectorial",
+    "url": "https://www.youtube.com/watch?v=wgfSDrqYMJ4",
+    "description": "Cómo el lenguaje natural se traduce en vectores numéricos dentro de un espacio multidimensional continuo, donde la proximidad geométrica entre coordenadas refleja la similitud semántica de los conceptos.",
+    "hub": "arquitectura",
+    "relatedConceptIds": [
+      14
+    ]
+  },
+  {
+    "id": "rec-62",
+    "title": "What is a Vector Database? Powering Semantic Search & AI Applications",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Búsqueda Semántica",
+    "url": "https://www.youtube.com/watch?v=gl1r1XV0SLw",
+    "description": "Arquitectura de bases de datos vectoriales: cómo se almacenan, indexan y consultan embeddings de alta dimensión para ejecutar búsquedas por similitud semántica en milisegundos y alimentar sistemas RAG.",
+    "hub": "arquitectura",
+    "relatedConceptIds": [
+      14,
+      19
+    ]
+  },
+  {
+    "id": "rec-63",
+    "title": "What is Retrieval-Augmented Generation (RAG)?",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Arquitectura RAG",
+    "url": "https://www.youtube.com/watch?v=T-D1OfcDW1M",
+    "description": "Explicación fundamental de Marina Danilevsky (IBM Research) sobre cómo conectar un LLM a repositorios de datos externos y actualizados para superar la fecha de corte del conocimiento y respaldar las respuestas con evidencia verificable.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      19,
+      23,
+      28
+    ]
+  },
+  {
+    "id": "rec-64",
+    "title": "RAG vs. Fine-Tuning vs. Prompt Engineering: Optimizing AI Models",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Optimización de Modelos",
+    "url": "https://www.youtube.com/watch?v=zYGDpG-pTho",
+    "description": "Marco de decisión arquitectónico para comparar costos, latencia y precisión al elegir entre diseñar mejores instrucciones (prompt engineering), conectar bases de conocimiento (RAG) o reentrenar pesos (fine-tuning).",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      18,
+      19,
+      17
+    ]
+  },
+  {
+    "id": "rec-65",
+    "title": "Is Fine-Tuning Still Needed? LLMs, RAG, & LoRA",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Ajuste Fino y LoRA",
+    "url": "https://www.youtube.com/watch?v=-W2JdSl1v48",
+    "description": "Análisis profundo sobre la vigencia del ajuste fino (fine-tuning) y el aprendizaje por transferencia: cuándo es indispensable modificar los parámetros del modelo y cómo técnicas ligeras como LoRA reducen drásticamente el costo de cómputo.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      18,
+      21
+    ]
+  },
+  {
+    "id": "rec-66",
+    "title": "Reinforcement Learning from Human Feedback (RLHF) Explained",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Alineamiento RLHF",
+    "url": "https://www.youtube.com/watch?v=T_X4XFwKX8k",
+    "description": "Cómo se entrena un modelo de recompensa a partir de preferencias y evaluaciones humanas para alinear un modelo de lenguaje preentrenado, transformando un predictor estadístico en un asistente seguro y útil.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      20,
+      32
+    ]
+  },
+  {
+    "id": "rec-67",
+    "title": "4 Methods of Prompt Engineering",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Ingeniería de Prompts",
+    "url": "https://www.youtube.com/watch?v=1c9iyoVIwDs",
+    "description": "Síntesis práctica en pizarra de las cuatro metodologías estructurales para formular instrucciones efectivas: Zero-shot, Few-shot, Chain-of-Thought y descomposición modular de problemas.",
+    "hub": "interaccion",
+    "relatedConceptIds": [
+      16,
+      17
+    ]
+  },
+  {
+    "id": "rec-68",
+    "title": "What Are Large Reasoning Models (LRMs)? Smarter AI Beyond LLMs",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Modelos de Razonamiento",
+    "url": "https://www.youtube.com/watch?v=enLbj0igyx4",
+    "description": "Funcionamiento de los modelos de razonamiento avanzado: cómo emplean cadenas de pensamiento internas y escalado de cómputo en tiempo de inferencia (test-time compute) para resolver problemas lógicos y matemáticos complejos.",
+    "hub": "agentes",
+    "relatedConceptIds": [
+      27,
+      15
+    ]
+  },
+  {
+    "id": "rec-69",
+    "title": "Why Large Language Models Hallucinate",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Fiabilidad y Alucinación",
+    "url": "https://www.youtube.com/watch?v=cfqtFvWOfg0",
+    "description": "Causas técnicas y matemáticas de las alucinaciones en IA generativa: por qué la naturaleza probabilística de predicción de tokens produce afirmaciones plausibles pero falsas, y qué arquitecturas permiten mitigarlas.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      28,
+      4
+    ]
+  },
+  {
+    "id": "rec-70",
+    "title": "What Is a Prompt Injection Attack?",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Seguridad y Guardrails",
+    "url": "https://www.youtube.com/watch?v=jrHRe9lSqqA",
+    "description": "Anatomía de los ataques de inyección directa e indirecta de instrucciones (jailbreaking) que buscan secuestrar el comportamiento de un modelo, y cómo implementar barreras de seguridad (guardrails) defensivas.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      30,
+      29
+    ]
+  },
+  {
+    "id": "rec-71",
+    "title": "What is Explainable AI?",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "IA Explicable (XAI)",
+    "url": "https://www.youtube.com/watch?v=jFHPEQi55Ko",
+    "description": "El imperativo de la IA Explicable (XAI) frente a los modelos de caja negra: métodos de interpretabilidad y trazabilidad algorítmica para auditar decisiones automatizadas en salud, finanzas y políticas públicas.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      33
+    ]
+  },
+  {
+    "id": "rec-72",
+    "title": "What is Human In The Loop with AI? How HITL Shapes AI Systems",
+    "authors": "IBM Technology",
+    "authorId": "aut-ibm",
+    "source": "IBM Technology (YouTube)",
+    "type": "Video de YouTube",
+    "categoryType": "video",
+    "badge": "Supervisión Humana",
+    "url": "https://www.youtube.com/watch?v=9iS-YYLIXiw",
+    "description": "El rol estructural de la supervisión humana (Human-in-the-Loop) a lo largo del ciclo de vida de la IA: desde la curaduría y etiquetado de datasets hasta la validación de salidas críticas y corrección continua.",
+    "hub": "seguridad",
+    "relatedConceptIds": [
+      32,
+      34
+    ]
   }
 ],
     materiales: [
@@ -1546,7 +1836,7 @@
     "role": "Equipo de Arquitectura e Ingeniería",
     "affiliation": "IBM Research & watsonx",
     "platform": "IBM Technology (YouTube)",
-    "perspective": "División de divulgación técnica y arquitectura de IBM. Explica con rigor técnico y diagramas de pizarra la anatomía interna de los agentes de IA, taxonomías de autonomía, protocolos de seguridad y las habilidades prácticas necesarias para llevar sistemas a producción.",
+    "perspective": "División de divulgación técnica y arquitectura de IBM. A través de su formato de pizarra luminosa (lightboard), explica con rigor técnico y claridad visual la anatomía interna de los Transformers, embeddings vectoriales, RAG, fine-tuning, RLHF, modelos de difusión, sistemas agénticos y protocolos de seguridad empresarial.",
     "topics": [
       "Sistemas Agénticos",
       "Arquitectura Empresarial",

@@ -25,8 +25,8 @@ El proyecto integra cuatro módulos pedagógicos articulados sobre una interfaz 
      - *04. Agencia (Agency):* Plan de microexperimento y prueba operativa en 48 horas.
    - Lanzadores directos a ChatGPT, Claude, Gemini y DeepSeek, con copiado en un clic y previsualización completa.
 
-3. **Biblioteca Curada de Recursos (55 recursos):**
-   - 30 videos de YouTube verificados y 25 ensayos y análisis de Substack seleccionados con rigor técnico.
+3. **Biblioteca Curada de Recursos (72 recursos):**
+   - 47 videos de YouTube verificados y 25 ensayos y análisis de Substack seleccionados con rigor técnico.
    - Vinculación a los conceptos del programa y navegación agrupada por 12 perfiles y perspectivas de autores destacados.
 
 4. **Materiales de la Charla:**
