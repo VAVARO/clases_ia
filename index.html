@@ -261,7 +261,7 @@
             <span>Materiales</span>
             <span class="material-symbols-outlined text-sm text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
           </div>
-          <div class="text-xs text-muted mt-1">Presentación de la charla</div>
+          <div class="text-xs text-muted mt-1">Presentación & guía de inicio</div>
         </button>
 
       </div>
@@ -316,7 +316,7 @@
           >
             <span class="material-symbols-outlined text-[17px]">download</span>
             <span>Materiales</span>
-            <span class="ml-0.5 text-xs font-mono bg-black/5 text-muted px-1.5 py-0.5 rounded-full" id="badge-count-materiales">1</span>
+            <span class="ml-0.5 text-xs font-mono bg-black/5 text-muted px-1.5 py-0.5 rounded-full" id="badge-count-materiales">2</span>
           </button>
         </div>
 
@@ -936,8 +936,9 @@
           { id: 'autores', label: 'Por Creadores & Autores' }
         ];
       } else if (AppState.activeTab === 'materiales') {
+        const totalMat = (AppState.data.materiales && AppState.data.materiales.length) || 2;
         categories = [
-          { id: 'all', label: 'Todos (1)' }
+          { id: 'all', label: `Todos (${totalMat})` }
         ];
       }
 
@@ -1824,7 +1825,10 @@
       }
       emptyState.classList.add('hidden');
 
-      grid.innerHTML = filtered.map((m, idx) => `
+      grid.innerHTML = filtered.map((m, idx) => {
+        const itemIcon = m.icon || (m.format && m.format.toLowerCase().includes('presentaci') ? 'slideshow' : 'description');
+        const itemAction = m.actionLabel || (m.isLocal ? 'Descargar' : (m.format && m.format.toLowerCase().includes('presentaci') ? 'Ver presentación' : 'Abrir documento'));
+        return `
         <div 
           class="stagger-item p-6 sm:p-7 rounded-xl bg-white border border-border-subtle hover:border-primary/40 shadow-xs flex flex-col justify-between transition-all"
           style="animation-delay: ${Math.min(idx * 35, 240)}ms"
@@ -1841,7 +1845,7 @@
 
           <div class="pt-4 border-t border-border-subtle flex items-center justify-between">
             <span class="font-mono text-xs text-muted flex items-center gap-1.5">
-              <span class="material-symbols-outlined text-[17px] text-primary">slideshow</span>
+              <span class="material-symbols-outlined text-[17px] text-primary">${escapeHtml(itemIcon)}</span>
               ${escapeHtml(m.format)}
             </span>
             <a 
@@ -1850,11 +1854,12 @@
               class="btn-action inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-primary-dark transition-colors shadow-xs"
             >
               <span class="material-symbols-outlined text-sm">${m.isLocal ? 'download' : 'open_in_new'}</span>
-              <span>${m.isLocal ? 'Descargar' : 'Ver presentación'}</span>
+              <span>${escapeHtml(itemAction)}</span>
             </a>
           </div>
         </div>
-      `).join('');
+      `;
+      }).join('');
     }
 
     // NAVEGACIÓN DIRECTA DESDE RECURSOS HACIA CONCEPTOS

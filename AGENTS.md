@@ -39,4 +39,4 @@ node scripts/scan_and_remove_emojis.cjs
   3. *Criterio o Gusto:* "Quiero definir la estética de mi negocio".
   4. *Agencia:* "Quiero automatizar algo en el corto plazo".
 - **Recursos:** 72 recursos de aprendizaje curados (47 videos de YouTube verificados y 25 posts/ensayos de Substack) vinculados con rigor técnico únicamente a los conceptos directamente pertinentes y a 12 perfiles de creadores y autores destacados (`data/autores.json`).
-- **Materiales:** 1 presentación oficial correspondiente a la charla.
+- **Materiales:** 2 materiales descargables (1 presentación oficial correspondiente a la charla y 1 guía de inicio práctico en IA).
