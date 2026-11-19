@@ -54,7 +54,7 @@
   </script>
 
   <!-- Datos del repositorio (bundle local para funcionamiento instantáneo) -->
-  <script src="data/data.js"></script>
+  <script src="data/data.js?v=20261119"></script>
 
   <style>
     :root {
@@ -245,7 +245,7 @@
             <span>Ejercicios</span>
             <span class="material-symbols-outlined text-sm text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
           </div>
-          <div class="text-xs text-muted mt-1">4 habilidades & prompts para tu IA</div>
+          <div class="text-xs text-muted mt-1">4 habilidades &amp; proyectos agénticos</div>
         </button>
 
         <button onclick="switchTab('recursos')" class="text-left p-3.5 rounded-xl border border-transparent hover:border-primary/25 hover:bg-white hover:shadow-xs transition-all group">
@@ -465,20 +465,20 @@
       <!-- Encabezado Editorial Simple y Despejado -->
       <div class="mb-10 max-w-3xl">
         <div class="text-xs font-mono uppercase tracking-wider text-primary font-semibold mb-2">
-          Taller Presencial &middot; Práctica Autónoma
+          Taller de IA Agéntica &middot; Práctica Autónoma
         </div>
         <h2 class="font-serif text-3xl sm:text-4xl font-bold text-on-surface mb-3 leading-tight">
-          Cuatro Habilidades para el Emprendedor
+          Cuatro Habilidades para Desarrollar con IA
         </h2>
         <p class="text-sm text-on-surface/80 leading-relaxed mb-6">
-          Ejercicios prácticos para interactuar desde tu celular con cualquier herramienta de inteligencia artificial (WhatsApp con Meta AI, ChatGPT o Gemini). Elige libremente según la necesidad actual de tu negocio; no hay orden obligatorio.
+          Ejercicios guiados para experimentar con <strong>chatbots</strong>, <strong>agentes de ejecución o código</strong> (Claude Code, Codex, Antigravity, Cursor) y <strong>agentes proactivos</strong> (Meta Muse, OpenAI Dots, Google Gemini Spark). Cada prompt te entrevista paso a paso y entrega la propuesta y planificación de un proyecto con IA agéntica.
         </p>
 
         <!-- Selección según necesidad: Selector táctil sin cajas anidadas -->
         <div class="pt-6 border-t border-border-subtle">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3.5">
             <span class="text-xs font-mono uppercase tracking-wider text-muted font-semibold">
-              Elige según la situación actual de tu negocio:
+              Elige según el punto de partida de tu proyecto:
             </span>
             <button 
               onclick="seleccionarEjercicio('all')" 
@@ -498,7 +498,7 @@
               <div class="flex items-start gap-3">
                 <span class="situacion-num font-mono text-xs font-bold text-primary shrink-0 mt-0.5">01.</span>
                 <span class="situacion-text text-sm font-medium text-on-surface group-hover:text-primary transition-colors leading-snug">
-                  Quiero profundizar en mi negocio
+                  Domino un tema u oficio y quiero diseñar un proyecto agéntico sin errores silenciosos
                 </span>
               </div>
               <span class="material-symbols-outlined situacion-arrow text-base text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0">arrow_forward</span>
@@ -512,7 +512,7 @@
               <div class="flex items-start gap-3">
                 <span class="situacion-num font-mono text-xs font-bold text-primary shrink-0 mt-0.5">02.</span>
                 <span class="situacion-text text-sm font-medium text-on-surface group-hover:text-primary transition-colors leading-snug">
-                  Me cuesta vender, explicar el valor de lo mío o cerrar clientes
+                  Tengo una idea transversal y necesito orquestar chatbots, agentes y Muse, Dots o Spark
                 </span>
               </div>
               <span class="material-symbols-outlined situacion-arrow text-base text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0">arrow_forward</span>
@@ -526,7 +526,7 @@
               <div class="flex items-start gap-3">
                 <span class="situacion-num font-mono text-xs font-bold text-primary shrink-0 mt-0.5">03.</span>
                 <span class="situacion-text text-sm font-medium text-on-surface group-hover:text-primary transition-colors leading-snug">
-                  Quiero definir la estética de mi negocio
+                  Quiero imponer mi propio criterio estético y evitar que los agentes produzcan relleno o ruido
                 </span>
               </div>
               <span class="material-symbols-outlined situacion-arrow text-base text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0">arrow_forward</span>
@@ -540,7 +540,7 @@
               <div class="flex items-start gap-3">
                 <span class="situacion-num font-mono text-xs font-bold text-primary shrink-0 mt-0.5">04.</span>
                 <span class="situacion-text text-sm font-medium text-on-surface group-hover:text-primary transition-colors leading-snug">
-                  Quiero automatizar algo en el corto plazo
+                  Solo he usado chatbots y quiero pasar a construir o activar mi primer agente esta semana
                 </span>
               </div>
               <span class="material-symbols-outlined situacion-arrow text-base text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0">arrow_forward</span>
@@ -803,11 +803,11 @@
     async function loadDynamicData() {
       try {
         const [cRes, eRes, rRes, mRes, aRes] = await Promise.allSettled([
-          fetch('data/conceptos.json').then(r => r.json()),
-          fetch('data/ejercicios.json').then(r => r.json()),
-          fetch('data/recursos.json').then(r => r.json()),
-          fetch('data/materiales.json').then(r => r.json()),
-          fetch('data/autores.json').then(r => r.json())
+          fetch('data/conceptos.json', { cache: 'no-store' }).then(r => r.json()),
+          fetch('data/ejercicios.json', { cache: 'no-store' }).then(r => r.json()),
+          fetch('data/recursos.json', { cache: 'no-store' }).then(r => r.json()),
+          fetch('data/materiales.json', { cache: 'no-store' }).then(r => r.json()),
+          fetch('data/autores.json', { cache: 'no-store' }).then(r => r.json())
         ]);
 
         if (cRes.status === 'fulfilled') AppState.data.conceptos = cRes.value;
@@ -1485,16 +1485,16 @@
               ${escapeHtml(e.definition)}
             </p>
 
-            <!-- Ejemplo en tu negocio: Párrafo continuo sin cajas anidadas -->
+            <!-- Ejemplo: Párrafo continuo sin cajas anidadas -->
             <p class="text-sm text-on-surface/80 leading-relaxed mb-6">
-              <strong class="font-semibold text-on-surface">Ejemplo en tu negocio:</strong> ${escapeHtml(e.example)}
+              <strong class="font-semibold text-on-surface">Ejemplo:</strong> ${escapeHtml(e.example)}
             </p>
 
-            <!-- Centro de Acción: Prompt y Lanzadores de Chatbots -->
+            <!-- Centro de Acción: Prompt y Lanzadores de Chatbots y Agentes -->
             <div class="space-y-3 mb-6 pt-4 border-t border-border-subtle">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <span class="font-mono text-xs uppercase tracking-wider text-muted font-semibold">
-                  Prompt para tu IA:
+                  Prompt entrevistador para planificar tu proyecto:
                 </span>
                 <button 
                   onclick="copiarPrompt('${e.id}', this)" 
@@ -1511,7 +1511,7 @@
                 <pre class="whitespace-pre-wrap font-mono">${escapeHtml(e.prompt)}</pre>
               </div>
 
-              <!-- Botones de Acción Rápida para Abrir Chatbots -->
+              <!-- Botones de Acción Rápida para Abrir Chatbots y Entornos Agénticos -->
               <div class="flex flex-wrap items-center gap-2 pt-1">
                 <span class="text-xs font-mono text-muted uppercase tracking-wider shrink-0 mr-1">Abrir en:</span>
                 <a 
@@ -1521,7 +1521,7 @@
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white hover:border-primary hover:bg-primary/[0.04] text-xs font-medium text-on-surface hover:text-primary transition-all active:scale-95 shadow-xs"
                 >
                   <span class="material-symbols-outlined text-sm text-primary">smart_toy</span>
-                  <span>ChatGPT</span>
+                  <span>ChatGPT / Dots</span>
                 </a>
                 <a 
                   href="https://gemini.google.com" 
@@ -1530,16 +1530,25 @@
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white hover:border-primary hover:bg-primary/[0.04] text-xs font-medium text-on-surface hover:text-primary transition-all active:scale-95 shadow-xs"
                 >
                   <span class="material-symbols-outlined text-sm text-primary">auto_awesome</span>
-                  <span>Gemini</span>
+                  <span>Gemini / Spark</span>
                 </a>
                 <a 
-                  href="https://wa.me/" 
+                  href="https://claude.ai" 
                   target="_blank" 
                   rel="noopener" 
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white hover:border-primary hover:bg-primary/[0.04] text-xs font-medium text-on-surface hover:text-primary transition-all active:scale-95 shadow-xs"
                 >
-                  <span class="material-symbols-outlined text-sm text-emerald-700">chat</span>
-                  <span>WhatsApp (Meta AI)</span>
+                  <span class="material-symbols-outlined text-sm text-primary">psychology</span>
+                  <span>Claude</span>
+                </a>
+                <a 
+                  href="https://www.meta.ai" 
+                  target="_blank" 
+                  rel="noopener" 
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white hover:border-primary hover:bg-primary/[0.04] text-xs font-medium text-on-surface hover:text-primary transition-all active:scale-95 shadow-xs"
+                >
+                  <span class="material-symbols-outlined text-sm text-emerald-700">bolt</span>
+                  <span>Meta AI / Muse</span>
                 </a>
               </div>
             </div>
@@ -1547,7 +1556,7 @@
             <!-- Regla clave y resultado: Formato de lectura serena con acento cobalto lateral -->
             <div class="pt-4 border-t border-border-subtle text-xs text-muted leading-relaxed space-y-2 border-l-2 border-primary pl-4 my-2">
               <p>
-                <strong class="text-on-surface font-semibold">Regla clave en la conversación:</strong> Responde estrictamente una sola pregunta a la vez con datos reales de tu trabajo. Si la IA formula más de una pregunta junta, respóndele: <em>«Sigue la instrucción: haz estrictamente una pregunta a la vez»</em>.
+                <strong class="text-on-surface font-semibold">Regla clave en la conversación:</strong> Responde estrictamente una sola pregunta a la vez con datos reales de tu proyecto o flujo de trabajo. Si la IA formula más de una pregunta junta, respóndele: <em>«Sigue la instrucción: haz estrictamente una pregunta a la vez»</em>.
               </p>
               <p>
                 <strong class="text-on-surface font-semibold">Resultado final:</strong> ${escapeHtml(e.resultDeliverable)}
@@ -1562,10 +1571,10 @@
               </summary>
               <div class="mt-3 space-y-2 leading-relaxed text-muted pl-1">
                 <p><strong class="text-on-surface font-medium">Estructura cerrada:</strong> Al asignarle un rol estricto y un flujo delimitado, evitamos que la IA improvise o entregue generalidades.</p>
-                <p><strong class="text-on-surface font-medium">Cero complacencia:</strong> La IA tiene la orden de no avanzar si tus respuestas son vagas o teóricas, exigiéndote ejemplos reales de tu día a día.</p>
-                <p><strong class="text-on-surface font-medium">Una pregunta a la vez:</strong> Evita abrumar con cuestionarios largos y permite reflexionar punto por punto.</p>
+                <p><strong class="text-on-surface font-medium">Cero complacencia:</strong> La IA tiene la orden de no avanzar si tus respuestas son vagas o teóricas, exigiéndote variables, reglas y flujos reales.</p>
+                <p><strong class="text-on-surface font-medium">Una pregunta a la vez:</strong> Evita abrumar con cuestionarios largos y permite diseñar la arquitectura punto por punto.</p>
                 <p><strong class="text-on-surface font-medium">Escucha reflexiva:</strong> Antes de formular la siguiente pregunta, la IA sintetiza lo que respondiste para verificar comprensión mutua.</p>
-                <p><strong class="text-on-surface font-medium">Cierre con entregable:</strong> La conversación concluye con un plan o protocolo operativo estructurado, no con una charla abierta.</p>
+                <p><strong class="text-on-surface font-medium">Cierre con planificación agéntica:</strong> La conversación concluye con una propuesta y planificación estructurada que articula chatbots, agentes de ejecución y agentes proactivos (Muse, Dots o Spark).</p>
               </div>
             </details>
           </div>
@@ -2088,7 +2097,7 @@
           }, 3000);
         }
 
-        showToast('Prompt copiado al portapapeles. Pegalo en tu chatbot de preferencia.');
+        showToast('Prompt copiado al portapapeles. Pégalo en tu chatbot o agente de preferencia.');
       };
 
       if (navigator.clipboard && navigator.clipboard.writeText) {
