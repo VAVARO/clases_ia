@@ -48,6 +48,8 @@ Clases de IA/
 │   ├── recursos.json            # 61 recursos (30 videos, 26 posts/ensayos, 5 papers/marcos)
 │   ├── autores.json             # 12 perfiles y perspectivas de creadores y autores destacados
 │   ├── materiales.json          # Presentaciones y diapositivas descargables
+│   ├── paletas.json             # 159 colores y 348 combinaciones de Sanzo Wada (HEX y RGB)
+│   ├── fuentes.json             # 94 tipografías gratuitas de Google Fonts (curaduría abierta)
 │   └── data.js                  # Bundle JS unificado (respaldo offline/CORS para window.AI_REPOSITORY_DATA)
 └── scripts/
     ├── build_data_bundle.cjs    # Empaqueta los 5 archivos JSON en data/data.js

@@ -1,0 +1,6813 @@
+{
+  "source": {
+    "book": "A Dictionary of Color Combinations",
+    "author": "Sanzo Wada",
+    "repo": "https://github.com/mattdesl/dictionary-of-colour-combinations"
+  },
+  "colors": [
+    {
+      "id": 0,
+      "name": "Hermosa Pink",
+      "hex": "#f9c1ce",
+      "rgb": [
+        249,
+        193,
+        206
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 1,
+      "name": "Corinthian Pink",
+      "hex": "#f8b6ba",
+      "rgb": [
+        248,
+        182,
+        186
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 2,
+      "name": "Cameo Pink",
+      "hex": "#e0b3b6",
+      "rgb": [
+        224,
+        179,
+        182
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 3,
+      "name": "Fawn",
+      "hex": "#d1b0a7",
+      "rgb": [
+        209,
+        176,
+        167
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 4,
+      "name": "Light Brown Drab",
+      "hex": "#b59392",
+      "rgb": [
+        181,
+        147,
+        146
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 5,
+      "name": "Coral Red",
+      "hex": "#f58e84",
+      "rgb": [
+        245,
+        142,
+        132
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 6,
+      "name": "Fresh Color",
+      "hex": "#f6917e",
+      "rgb": [
+        246,
+        145,
+        126
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 7,
+      "name": "Grenadine Pink",
+      "hex": "#f48067",
+      "rgb": [
+        244,
+        128,
+        103
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 8,
+      "name": "Eosine Pink",
+      "hex": "#f37f94",
+      "rgb": [
+        243,
+        127,
+        148
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 9,
+      "name": "Spinel Red",
+      "hex": "#f27291",
+      "rgb": [
+        242,
+        114,
+        145
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 10,
+      "name": "Old Rose",
+      "hex": "#d46d7a",
+      "rgb": [
+        212,
+        109,
+        122
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 11,
+      "name": "Eugenia Red | A",
+      "hex": "#e2625e",
+      "rgb": [
+        226,
+        98,
+        94
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 12,
+      "name": "Eugenia Red | B",
+      "hex": "#da525d",
+      "rgb": [
+        218,
+        82,
+        93
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 13,
+      "name": "Raw Sienna",
+      "hex": "#bb7125",
+      "rgb": [
+        187,
+        113,
+        37
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 14,
+      "name": "Vinaceous Tawny",
+      "hex": "#c56127",
+      "rgb": [
+        197,
+        97,
+        39
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 15,
+      "name": "Jasper Red",
+      "hex": "#eb5324",
+      "rgb": [
+        235,
+        83,
+        36
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 16,
+      "name": "Spectrum Red",
+      "hex": "#e31f26",
+      "rgb": [
+        227,
+        31,
+        38
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 17,
+      "name": "Red Orange",
+      "hex": "#dd4027",
+      "rgb": [
+        221,
+        64,
+        39
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 18,
+      "name": "Etruscan Red",
+      "hex": "#c55347",
+      "rgb": [
+        197,
+        83,
+        71
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 19,
+      "name": "Burnt Sienna",
+      "hex": "#ae5224",
+      "rgb": [
+        174,
+        82,
+        36
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 20,
+      "name": "Ochre Red",
+      "hex": "#ab544d",
+      "rgb": [
+        171,
+        84,
+        77
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 21,
+      "name": "Scarlet",
+      "hex": "#cb2f43",
+      "rgb": [
+        203,
+        47,
+        67
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 22,
+      "name": "Carmine",
+      "hex": "#cc1236",
+      "rgb": [
+        204,
+        18,
+        54
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 23,
+      "name": "Indian Lake",
+      "hex": "#c53c69",
+      "rgb": [
+        197,
+        60,
+        105
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 24,
+      "name": "Rosolanc Purple",
+      "hex": "#b73f74",
+      "rgb": [
+        183,
+        63,
+        116
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 25,
+      "name": "Pomegranite Purple",
+      "hex": "#b71f57",
+      "rgb": [
+        183,
+        31,
+        87
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 26,
+      "name": "Hydrangea Red",
+      "hex": "#a94151",
+      "rgb": [
+        169,
+        65,
+        81
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 27,
+      "name": "Brick Red",
+      "hex": "#a84222",
+      "rgb": [
+        168,
+        66,
+        34
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 28,
+      "name": "Carmine Red",
+      "hex": "#a62c37",
+      "rgb": [
+        166,
+        44,
+        55
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 29,
+      "name": "Pompeian Red",
+      "hex": "#ab2439",
+      "rgb": [
+        171,
+        36,
+        57
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 30,
+      "name": "Red",
+      "hex": "#a72144",
+      "rgb": [
+        167,
+        33,
+        68
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 31,
+      "name": "Brown",
+      "hex": "#7c4226",
+      "rgb": [
+        124,
+        66,
+        38
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 32,
+      "name": "Hay's Russet",
+      "hex": "#793327",
+      "rgb": [
+        121,
+        51,
+        39
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 33,
+      "name": "Vandyke Red",
+      "hex": "#82241f",
+      "rgb": [
+        130,
+        36,
+        31
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 34,
+      "name": "Pansy Purple",
+      "hex": "#7d133a",
+      "rgb": [
+        125,
+        19,
+        58
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 35,
+      "name": "Pale Burnt Lake",
+      "hex": "#802626",
+      "rgb": [
+        128,
+        38,
+        38
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 36,
+      "name": "Violet Red",
+      "hex": "#642d5e",
+      "rgb": [
+        100,
+        45,
+        94
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 37,
+      "name": "Vistoris Lake",
+      "hex": "#6d4145",
+      "rgb": [
+        109,
+        65,
+        69
+      ],
+      "swatch": 0
+    },
+    {
+      "id": 38,
+      "name": "Sulpher Yellow",
+      "hex": "#f5ecc2",
+      "rgb": [
+        245,
+        236,
+        194
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 39,
+      "name": "Pale Lemon Yellow",
+      "hex": "#ffefae",
+      "rgb": [
+        255,
+        239,
+        174
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 40,
+      "name": "Naples Yellow",
+      "hex": "#fbe6a0",
+      "rgb": [
+        251,
+        230,
+        160
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 41,
+      "name": "Ivory Buff",
+      "hex": "#ebd3a2",
+      "rgb": [
+        235,
+        211,
+        162
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 42,
+      "name": "Seashell Pink",
+      "hex": "#fdd4bd",
+      "rgb": [
+        253,
+        212,
+        189
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 43,
+      "name": "Light Pinkish Cinnamon",
+      "hex": "#fcc79b",
+      "rgb": [
+        252,
+        199,
+        155
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 44,
+      "name": "Pinkish Cinnamon",
+      "hex": "#eeb480",
+      "rgb": [
+        238,
+        180,
+        128
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 45,
+      "name": "Cinnamon Buff",
+      "hex": "#fdc57e",
+      "rgb": [
+        253,
+        197,
+        126
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 46,
+      "name": "Cream Yellow",
+      "hex": "#fdbf68",
+      "rgb": [
+        253,
+        191,
+        104
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 47,
+      "name": "Golden Yellow",
+      "hex": "#f3a257",
+      "rgb": [
+        243,
+        162,
+        87
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 48,
+      "name": "Vinaceous Cinnamon",
+      "hex": "#eea78c",
+      "rgb": [
+        238,
+        167,
+        140
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 49,
+      "name": "Ochraceous Salmon",
+      "hex": "#d8a37b",
+      "rgb": [
+        216,
+        163,
+        123
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 50,
+      "name": "Isabella Color",
+      "hex": "#c5a56e",
+      "rgb": [
+        197,
+        165,
+        110
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 51,
+      "name": "Maple",
+      "hex": "#c59f6b",
+      "rgb": [
+        197,
+        159,
+        107
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 52,
+      "name": "Olive Buff",
+      "hex": "#c1c494",
+      "rgb": [
+        193,
+        196,
+        148
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 53,
+      "name": "Ecru",
+      "hex": "#c2ae93",
+      "rgb": [
+        194,
+        174,
+        147
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 54,
+      "name": "Yellow",
+      "hex": "#fff200",
+      "rgb": [
+        255,
+        242,
+        0
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 55,
+      "name": "Lemon Yellow",
+      "hex": "#f8ed43",
+      "rgb": [
+        248,
+        237,
+        67
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 56,
+      "name": "Apricot Yellow",
+      "hex": "#ffdd00",
+      "rgb": [
+        255,
+        221,
+        0
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 57,
+      "name": "Pyrite Yellow",
+      "hex": "#cab356",
+      "rgb": [
+        202,
+        179,
+        86
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 58,
+      "name": "Olive Ocher",
+      "hex": "#d6b43e",
+      "rgb": [
+        214,
+        180,
+        62
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 59,
+      "name": "Yellow Ocher",
+      "hex": "#e2b540",
+      "rgb": [
+        226,
+        181,
+        64
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 60,
+      "name": "Orange Yellow",
+      "hex": "#fcb315",
+      "rgb": [
+        252,
+        179,
+        21
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 61,
+      "name": "Yellow Orange",
+      "hex": "#f99d1b",
+      "rgb": [
+        249,
+        157,
+        27
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 62,
+      "name": "Apricot Orange",
+      "hex": "#f68c50",
+      "rgb": [
+        246,
+        140,
+        80
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 63,
+      "name": "Orange",
+      "hex": "#f37420",
+      "rgb": [
+        243,
+        116,
+        32
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 64,
+      "name": "Peach Red",
+      "hex": "#f15a30",
+      "rgb": [
+        241,
+        90,
+        48
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 65,
+      "name": "English Red",
+      "hex": "#d96629",
+      "rgb": [
+        217,
+        102,
+        41
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 66,
+      "name": "Cinnamon Rufous",
+      "hex": "#c27544",
+      "rgb": [
+        194,
+        117,
+        68
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 67,
+      "name": "Orange Rufous",
+      "hex": "#c16b27",
+      "rgb": [
+        193,
+        107,
+        39
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 68,
+      "name": "Sulphine Yellow",
+      "hex": "#c19f2c",
+      "rgb": [
+        193,
+        159,
+        44
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 69,
+      "name": "Khaki",
+      "hex": "#bc892b",
+      "rgb": [
+        188,
+        137,
+        43
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 70,
+      "name": "Citron Yellow",
+      "hex": "#b2b73e",
+      "rgb": [
+        178,
+        183,
+        62
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 71,
+      "name": "Citrine",
+      "hex": "#b09f36",
+      "rgb": [
+        176,
+        159,
+        54
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 72,
+      "name": "Buffy Citrine",
+      "hex": "#96874d",
+      "rgb": [
+        150,
+        135,
+        77
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 73,
+      "name": "Dark Citrine",
+      "hex": "#8b835b",
+      "rgb": [
+        139,
+        131,
+        91
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 74,
+      "name": "Light Grayish Olive",
+      "hex": "#848061",
+      "rgb": [
+        132,
+        128,
+        97
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 75,
+      "name": "Krongbergs Green",
+      "hex": "#84875e",
+      "rgb": [
+        132,
+        135,
+        94
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 76,
+      "name": "Olive",
+      "hex": "#837e31",
+      "rgb": [
+        131,
+        126,
+        49
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 77,
+      "name": "Orange Citrine",
+      "hex": "#986f2d",
+      "rgb": [
+        152,
+        111,
+        45
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 78,
+      "name": "Sudan Brown",
+      "hex": "#a36752",
+      "rgb": [
+        163,
+        103,
+        82
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 79,
+      "name": "Olive Green",
+      "hex": "#6b7140",
+      "rgb": [
+        107,
+        113,
+        64
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 80,
+      "name": "Light Brownish Olive",
+      "hex": "#806e4b",
+      "rgb": [
+        128,
+        110,
+        75
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 81,
+      "name": "Deep Grayish Olive",
+      "hex": "#635a3a",
+      "rgb": [
+        99,
+        90,
+        58
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 82,
+      "name": "Pale Raw Umber",
+      "hex": "#71502f",
+      "rgb": [
+        113,
+        80,
+        47
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 83,
+      "name": "Sepia",
+      "hex": "#644b1e",
+      "rgb": [
+        100,
+        75,
+        30
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 84,
+      "name": "Madder Brown",
+      "hex": "#762c19",
+      "rgb": [
+        118,
+        44,
+        25
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 85,
+      "name": "Mars Brown Tobacco",
+      "hex": "#653514",
+      "rgb": [
+        101,
+        53,
+        20
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 86,
+      "name": "Vandyke Brown",
+      "hex": "#4b3317",
+      "rgb": [
+        75,
+        51,
+        23
+      ],
+      "swatch": 1
+    },
+    {
+      "id": 87,
+      "name": "Turquoise Green",
+      "hex": "#b5decc",
+      "rgb": [
+        181,
+        222,
+        204
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 88,
+      "name": "Glaucous Green",
+      "hex": "#b4cdc2",
+      "rgb": [
+        180,
+        205,
+        194
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 89,
+      "name": "Dark Greenish Glaucous",
+      "hex": "#b7c2a9",
+      "rgb": [
+        183,
+        194,
+        169
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 90,
+      "name": "Yellow Green",
+      "hex": "#afd472",
+      "rgb": [
+        175,
+        212,
+        114
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 91,
+      "name": "Light Green Yellow",
+      "hex": "#c7d14f",
+      "rgb": [
+        199,
+        209,
+        79
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 92,
+      "name": "Night Green",
+      "hex": "#87c540",
+      "rgb": [
+        135,
+        197,
+        64
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 93,
+      "name": "Olive Yellow",
+      "hex": "#a6a159",
+      "rgb": [
+        166,
+        161,
+        89
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 94,
+      "name": "Artemesia Green",
+      "hex": "#709390",
+      "rgb": [
+        112,
+        147,
+        144
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 95,
+      "name": "Andover Green",
+      "hex": "#6d7e77",
+      "rgb": [
+        109,
+        126,
+        119
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 96,
+      "name": "Rainette Green",
+      "hex": "#8fa071",
+      "rgb": [
+        143,
+        160,
+        113
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 97,
+      "name": "Chromium Green",
+      "hex": "#719470",
+      "rgb": [
+        113,
+        148,
+        112
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 98,
+      "name": "Pistachio Green",
+      "hex": "#648f7b",
+      "rgb": [
+        100,
+        143,
+        123
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 99,
+      "name": "Sea Green",
+      "hex": "#00b49b",
+      "rgb": [
+        0,
+        180,
+        155
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 100,
+      "name": "Benzol Green",
+      "hex": "#00978d",
+      "rgb": [
+        0,
+        151,
+        141
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 101,
+      "name": "Light Porcelain Green",
+      "hex": "#00908a",
+      "rgb": [
+        0,
+        144,
+        138
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 102,
+      "name": "Green",
+      "hex": "#489b6e",
+      "rgb": [
+        72,
+        155,
+        110
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 103,
+      "name": "Dull Viridian Green",
+      "hex": "#009465",
+      "rgb": [
+        0,
+        148,
+        101
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 104,
+      "name": "Oil Green",
+      "hex": "#819238",
+      "rgb": [
+        129,
+        146,
+        56
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 105,
+      "name": "Diamine Green",
+      "hex": "#1a7444",
+      "rgb": [
+        26,
+        116,
+        68
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 106,
+      "name": "Cossack Green",
+      "hex": "#437742",
+      "rgb": [
+        67,
+        119,
+        66
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 107,
+      "name": "Lincoln Green",
+      "hex": "#555832",
+      "rgb": [
+        85,
+        88,
+        50
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 108,
+      "name": "Blackish Olive",
+      "hex": "#42533e",
+      "rgb": [
+        66,
+        83,
+        62
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 109,
+      "name": "Deep Slate Olive",
+      "hex": "#253122",
+      "rgb": [
+        37,
+        49,
+        34
+      ],
+      "swatch": 2
+    },
+    {
+      "id": 110,
+      "name": "Nile Blue",
+      "hex": "#bce4e5",
+      "rgb": [
+        188,
+        228,
+        229
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 111,
+      "name": "Pale King's Blue",
+      "hex": "#a7d4e4",
+      "rgb": [
+        167,
+        212,
+        228
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 112,
+      "name": "Light Glaucous Blue",
+      "hex": "#a5c8d1",
+      "rgb": [
+        165,
+        200,
+        209
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 113,
+      "name": "Salvia Blue",
+      "hex": "#97acc8",
+      "rgb": [
+        151,
+        172,
+        200
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 114,
+      "name": "Cobalt Green",
+      "hex": "#96d1aa",
+      "rgb": [
+        150,
+        209,
+        170
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 115,
+      "name": "Calamine BLue",
+      "hex": "#78cdd0",
+      "rgb": [
+        120,
+        205,
+        208
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 116,
+      "name": "Venice Green",
+      "hex": "#62c6bf",
+      "rgb": [
+        98,
+        198,
+        191
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 117,
+      "name": "Cerulian Blue",
+      "hex": "#0093a5",
+      "rgb": [
+        0,
+        147,
+        165
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 118,
+      "name": "Peacock Blue",
+      "hex": "#00939b",
+      "rgb": [
+        0,
+        147,
+        155
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 119,
+      "name": "Green Blue",
+      "hex": "#099197",
+      "rgb": [
+        9,
+        145,
+        151
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 120,
+      "name": "Olympic Blue",
+      "hex": "#5a82b3",
+      "rgb": [
+        90,
+        130,
+        179
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 121,
+      "name": "Blue",
+      "hex": "#006eb8",
+      "rgb": [
+        0,
+        110,
+        184
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 122,
+      "name": "Antwarp Blue",
+      "hex": "#007190",
+      "rgb": [
+        0,
+        113,
+        144
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 123,
+      "name": "Helvetia Blue",
+      "hex": "#005b8d",
+      "rgb": [
+        0,
+        91,
+        141
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 124,
+      "name": "Dark Medici Blue",
+      "hex": "#547076",
+      "rgb": [
+        84,
+        112,
+        118
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 125,
+      "name": "Dusky Green",
+      "hex": "#004f46",
+      "rgb": [
+        0,
+        79,
+        70
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 126,
+      "name": "Deep Lyons Blue",
+      "hex": "#1c4286",
+      "rgb": [
+        28,
+        66,
+        134
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 127,
+      "name": "Violet Blue",
+      "hex": "#40456a",
+      "rgb": [
+        64,
+        69,
+        106
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 128,
+      "name": "Vandar Poel's Blue",
+      "hex": "#064f6e",
+      "rgb": [
+        6,
+        79,
+        110
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 129,
+      "name": "Dark Tyrian Blue",
+      "hex": "#12354e",
+      "rgb": [
+        18,
+        53,
+        78
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 130,
+      "name": "Dull Violet Black",
+      "hex": "#1e0e3f",
+      "rgb": [
+        30,
+        14,
+        63
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 131,
+      "name": "Deep Indigo",
+      "hex": "#051230",
+      "rgb": [
+        5,
+        18,
+        48
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 132,
+      "name": "Deep Slate Green",
+      "hex": "#112f2c",
+      "rgb": [
+        17,
+        47,
+        44
+      ],
+      "swatch": 3
+    },
+    {
+      "id": 133,
+      "name": "Grayish Lavender - A",
+      "hex": "#b5b1d8",
+      "rgb": [
+        181,
+        177,
+        216
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 134,
+      "name": "Grayish Lavender - B",
+      "hex": "#c0a9b3",
+      "rgb": [
+        192,
+        169,
+        179
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 135,
+      "name": "Laelia Pink",
+      "hex": "#ca92a8",
+      "rgb": [
+        202,
+        146,
+        168
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 136,
+      "name": "Lilac",
+      "hex": "#b984af",
+      "rgb": [
+        185,
+        132,
+        175
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 137,
+      "name": "Eupatorium Purple",
+      "hex": "#bf5892",
+      "rgb": [
+        191,
+        88,
+        146
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 138,
+      "name": "Light Mauve",
+      "hex": "#9a72aa",
+      "rgb": [
+        154,
+        114,
+        170
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 139,
+      "name": "Aconite Violet",
+      "hex": "#a36aa5",
+      "rgb": [
+        163,
+        106,
+        165
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 140,
+      "name": "Dull Blue Violet",
+      "hex": "#80719e",
+      "rgb": [
+        128,
+        113,
+        158
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 141,
+      "name": "Dark Soft Violet",
+      "hex": "#66629c",
+      "rgb": [
+        102,
+        98,
+        156
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 142,
+      "name": "Blue Violet",
+      "hex": "#6450a1",
+      "rgb": [
+        100,
+        80,
+        161
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 143,
+      "name": "Purple Drab",
+      "hex": "#84565b",
+      "rgb": [
+        132,
+        86,
+        91
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 144,
+      "name": "Deep Violet / Plumbeous",
+      "hex": "#70727c",
+      "rgb": [
+        112,
+        114,
+        124
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 145,
+      "name": "Veronia Purple",
+      "hex": "#8c4c62",
+      "rgb": [
+        140,
+        76,
+        98
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 146,
+      "name": "Dark Slate Purple",
+      "hex": "#704357",
+      "rgb": [
+        112,
+        67,
+        87
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 147,
+      "name": "Taupe Brown",
+      "hex": "#7a4456",
+      "rgb": [
+        122,
+        68,
+        86
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 148,
+      "name": "Violet Carmine",
+      "hex": "#713b4c",
+      "rgb": [
+        113,
+        59,
+        76
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 149,
+      "name": "Violet",
+      "hex": "#4f4086",
+      "rgb": [
+        79,
+        64,
+        134
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 150,
+      "name": "Red Violet",
+      "hex": "#59256a",
+      "rgb": [
+        89,
+        37,
+        106
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 151,
+      "name": "Cotinga Purple",
+      "hex": "#501345",
+      "rgb": [
+        80,
+        19,
+        69
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 152,
+      "name": "Dusky Madder Violet",
+      "hex": "#4e1d4c",
+      "rgb": [
+        78,
+        29,
+        76
+      ],
+      "swatch": 4
+    },
+    {
+      "id": 153,
+      "name": "White",
+      "hex": "#ffffff",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "swatch": 5
+    },
+    {
+      "id": 154,
+      "name": "Neutral Gray",
+      "hex": "#b6bfc1",
+      "rgb": [
+        182,
+        191,
+        193
+      ],
+      "swatch": 5
+    },
+    {
+      "id": 155,
+      "name": "Mineral Gray",
+      "hex": "#a2b0ad",
+      "rgb": [
+        162,
+        176,
+        173
+      ],
+      "swatch": 5
+    },
+    {
+      "id": 156,
+      "name": "Warm Gray",
+      "hex": "#a1a39a",
+      "rgb": [
+        161,
+        163,
+        154
+      ],
+      "swatch": 5
+    },
+    {
+      "id": 157,
+      "name": "Slate Color",
+      "hex": "#34454c",
+      "rgb": [
+        52,
+        69,
+        76
+      ],
+      "swatch": 5
+    },
+    {
+      "id": 158,
+      "name": "Black",
+      "hex": "#111314",
+      "rgb": [
+        17,
+        19,
+        20
+      ],
+      "swatch": 5
+    }
+  ],
+  "combinations": [
+    {
+      "id": 1,
+      "colorIds": [
+        65,
+        117
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 1.03
+    },
+    {
+      "id": 2,
+      "colorIds": [
+        61,
+        129
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 6
+    },
+    {
+      "id": 3,
+      "colorIds": [
+        13,
+        39
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "amarillos"
+      ],
+      "maxContrast": 3.31
+    },
+    {
+      "id": 4,
+      "colorIds": [
+        50,
+        150
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "violetas"
+      ],
+      "maxContrast": 4.73
+    },
+    {
+      "id": 5,
+      "colorIds": [
+        106,
+        128
+      ],
+      "size": 2,
+      "tones": [
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 1.68
+    },
+    {
+      "id": 6,
+      "colorIds": [
+        7,
+        131
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 7.16
+    },
+    {
+      "id": 7,
+      "colorIds": [
+        63,
+        88
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 1.7
+    },
+    {
+      "id": 8,
+      "colorIds": [
+        66,
+        133
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 1.73
+    },
+    {
+      "id": 9,
+      "colorIds": [
+        36,
+        140
+      ],
+      "size": 2,
+      "tones": [
+        "violetas"
+      ],
+      "maxContrast": 2.3
+    },
+    {
+      "id": 10,
+      "colorIds": [
+        66,
+        73
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "amarillos"
+      ],
+      "maxContrast": 1.08
+    },
+    {
+      "id": 11,
+      "colorIds": [
+        41,
+        155
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "neutros"
+      ],
+      "maxContrast": 1.54
+    },
+    {
+      "id": 12,
+      "colorIds": [
+        50,
+        119
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 1.63
+    },
+    {
+      "id": 13,
+      "colorIds": [
+        13,
+        145
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "rojos"
+      ],
+      "maxContrast": 1.65
+    },
+    {
+      "id": 14,
+      "colorIds": [
+        9,
+        40
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "amarillos"
+      ],
+      "maxContrast": 2.23
+    },
+    {
+      "id": 15,
+      "colorIds": [
+        100,
+        133
+      ],
+      "size": 2,
+      "tones": [
+        "azules"
+      ],
+      "maxContrast": 1.76
+    },
+    {
+      "id": 16,
+      "colorIds": [
+        33,
+        111
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 5.93
+    },
+    {
+      "id": 17,
+      "colorIds": [
+        12,
+        99
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 1.5
+    },
+    {
+      "id": 18,
+      "colorIds": [
+        3,
+        152
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "violetas"
+      ],
+      "maxContrast": 6.53
+    },
+    {
+      "id": 19,
+      "colorIds": [
+        85,
+        92
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 4.87
+    },
+    {
+      "id": 20,
+      "colorIds": [
+        115,
+        135
+      ],
+      "size": 2,
+      "tones": [
+        "azules",
+        "rojos"
+      ],
+      "maxContrast": 1.4
+    },
+    {
+      "id": 21,
+      "colorIds": [
+        7,
+        99
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 1.02
+    },
+    {
+      "id": 22,
+      "colorIds": [
+        54,
+        126
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 8.26
+    },
+    {
+      "id": 23,
+      "colorIds": [
+        45,
+        138
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "violetas"
+      ],
+      "maxContrast": 2.51
+    },
+    {
+      "id": 24,
+      "colorIds": [
+        83,
+        145
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "rojos"
+      ],
+      "maxContrast": 1.3
+    },
+    {
+      "id": 25,
+      "colorIds": [
+        18,
+        110
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 3.27
+    },
+    {
+      "id": 26,
+      "colorIds": [
+        47,
+        82
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas"
+      ],
+      "maxContrast": 3.5
+    },
+    {
+      "id": 27,
+      "colorIds": [
+        1,
+        157
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 5.9
+    },
+    {
+      "id": 28,
+      "colorIds": [
+        84,
+        131
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 1.89
+    },
+    {
+      "id": 29,
+      "colorIds": [
+        75,
+        113
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 1.61
+    },
+    {
+      "id": 30,
+      "colorIds": [
+        29,
+        155
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 3.07
+    },
+    {
+      "id": 31,
+      "colorIds": [
+        17,
+        39
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "amarillos"
+      ],
+      "maxContrast": 3.76
+    },
+    {
+      "id": 32,
+      "colorIds": [
+        49,
+        92
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 1.07
+    },
+    {
+      "id": 33,
+      "colorIds": [
+        13,
+        157
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 2.62
+    },
+    {
+      "id": 34,
+      "colorIds": [
+        8,
+        154
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 1.35
+    },
+    {
+      "id": 35,
+      "colorIds": [
+        4,
+        28
+      ],
+      "size": 2,
+      "tones": [
+        "rojos"
+      ],
+      "maxContrast": 2.49
+    },
+    {
+      "id": 36,
+      "colorIds": [
+        68,
+        87
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 1.73
+    },
+    {
+      "id": 37,
+      "colorIds": [
+        27,
+        150
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "violetas"
+      ],
+      "maxContrast": 1.83
+    },
+    {
+      "id": 38,
+      "colorIds": [
+        105,
+        126
+      ],
+      "size": 2,
+      "tones": [
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 1.67
+    },
+    {
+      "id": 39,
+      "colorIds": [
+        22,
+        123
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 1.29
+    },
+    {
+      "id": 40,
+      "colorIds": [
+        14,
+        70
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "amarillos"
+      ],
+      "maxContrast": 1.9
+    },
+    {
+      "id": 41,
+      "colorIds": [
+        73,
+        115
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 2.08
+    },
+    {
+      "id": 42,
+      "colorIds": [
+        59,
+        149
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.53
+    },
+    {
+      "id": 43,
+      "colorIds": [
+        1,
+        139
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "violetas"
+      ],
+      "maxContrast": 2.4
+    },
+    {
+      "id": 44,
+      "colorIds": [
+        101,
+        120
+      ],
+      "size": 2,
+      "tones": [
+        "azules"
+      ],
+      "maxContrast": 1.01
+    },
+    {
+      "id": 45,
+      "colorIds": [
+        42,
+        55
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "amarillos"
+      ],
+      "maxContrast": 1.12
+    },
+    {
+      "id": 46,
+      "colorIds": [
+        63,
+        158
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "neutros"
+      ],
+      "maxContrast": 6.5
+    },
+    {
+      "id": 47,
+      "colorIds": [
+        18,
+        134
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "violetas"
+      ],
+      "maxContrast": 2.03
+    },
+    {
+      "id": 48,
+      "colorIds": [
+        24,
+        123
+      ],
+      "size": 2,
+      "tones": [
+        "violetas",
+        "azules"
+      ],
+      "maxContrast": 1.38
+    },
+    {
+      "id": 49,
+      "colorIds": [
+        111,
+        121
+      ],
+      "size": 2,
+      "tones": [
+        "azules"
+      ],
+      "maxContrast": 3.36
+    },
+    {
+      "id": 50,
+      "colorIds": [
+        41,
+        152
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "violetas"
+      ],
+      "maxContrast": 8.96
+    },
+    {
+      "id": 51,
+      "colorIds": [
+        28,
+        121
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 1.29
+    },
+    {
+      "id": 52,
+      "colorIds": [
+        38,
+        158
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "neutros"
+      ],
+      "maxContrast": 15.67
+    },
+    {
+      "id": 53,
+      "colorIds": [
+        61,
+        152
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "violetas"
+      ],
+      "maxContrast": 6.15
+    },
+    {
+      "id": 54,
+      "colorIds": [
+        100,
+        112
+      ],
+      "size": 2,
+      "tones": [
+        "azules"
+      ],
+      "maxContrast": 2.03
+    },
+    {
+      "id": 55,
+      "colorIds": [
+        10,
+        153
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 3.35
+    },
+    {
+      "id": 56,
+      "colorIds": [
+        134,
+        149
+      ],
+      "size": 2,
+      "tones": [
+        "violetas",
+        "azules"
+      ],
+      "maxContrast": 3.97
+    },
+    {
+      "id": 57,
+      "colorIds": [
+        147,
+        157
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 1.33
+    },
+    {
+      "id": 58,
+      "colorIds": [
+        32,
+        99
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 3.46
+    },
+    {
+      "id": 59,
+      "colorIds": [
+        8,
+        71
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "amarillos"
+      ],
+      "maxContrast": 1.05
+    },
+    {
+      "id": 60,
+      "colorIds": [
+        39,
+        129
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 11.07
+    },
+    {
+      "id": 61,
+      "colorIds": [
+        91,
+        151
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "violetas"
+      ],
+      "maxContrast": 8.33
+    },
+    {
+      "id": 62,
+      "colorIds": [
+        54,
+        158
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "neutros"
+      ],
+      "maxContrast": 15.93
+    },
+    {
+      "id": 63,
+      "colorIds": [
+        37,
+        117
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 2.29
+    },
+    {
+      "id": 64,
+      "colorIds": [
+        139,
+        141
+      ],
+      "size": 2,
+      "tones": [
+        "violetas",
+        "azules"
+      ],
+      "maxContrast": 1.36
+    },
+    {
+      "id": 65,
+      "colorIds": [
+        68,
+        115
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 1.38
+    },
+    {
+      "id": 66,
+      "colorIds": [
+        58,
+        79
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos"
+      ],
+      "maxContrast": 2.57
+    },
+    {
+      "id": 67,
+      "colorIds": [
+        120,
+        129
+      ],
+      "size": 2,
+      "tones": [
+        "azules"
+      ],
+      "maxContrast": 3.21
+    },
+    {
+      "id": 68,
+      "colorIds": [
+        4,
+        54
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "amarillos"
+      ],
+      "maxContrast": 2.38
+    },
+    {
+      "id": 69,
+      "colorIds": [
+        156,
+        158
+      ],
+      "size": 2,
+      "tones": [
+        "neutros"
+      ],
+      "maxContrast": 7.29
+    },
+    {
+      "id": 70,
+      "colorIds": [
+        13,
+        107
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "amarillos"
+      ],
+      "maxContrast": 1.95
+    },
+    {
+      "id": 71,
+      "colorIds": [
+        29,
+        49
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "naranjas"
+      ],
+      "maxContrast": 3.1
+    },
+    {
+      "id": 72,
+      "colorIds": [
+        38,
+        111
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 1.34
+    },
+    {
+      "id": 73,
+      "colorIds": [
+        82,
+        96
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 2.57
+    },
+    {
+      "id": 74,
+      "colorIds": [
+        87,
+        119
+      ],
+      "size": 2,
+      "tones": [
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 2.59
+    },
+    {
+      "id": 75,
+      "colorIds": [
+        111,
+        127
+      ],
+      "size": 2,
+      "tones": [
+        "azules"
+      ],
+      "maxContrast": 5.79
+    },
+    {
+      "id": 76,
+      "colorIds": [
+        39,
+        156
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "neutros"
+      ],
+      "maxContrast": 2.22
+    },
+    {
+      "id": 77,
+      "colorIds": [
+        12,
+        128
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 2.27
+    },
+    {
+      "id": 78,
+      "colorIds": [
+        44,
+        116
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 1.11
+    },
+    {
+      "id": 79,
+      "colorIds": [
+        84,
+        119
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 2.57
+    },
+    {
+      "id": 80,
+      "colorIds": [
+        38,
+        138
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "violetas"
+      ],
+      "maxContrast": 3.29
+    },
+    {
+      "id": 81,
+      "colorIds": [
+        47,
+        156
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "neutros"
+      ],
+      "maxContrast": 1.23
+    },
+    {
+      "id": 82,
+      "colorIds": [
+        32,
+        152
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "violetas"
+      ],
+      "maxContrast": 1.44
+    },
+    {
+      "id": 83,
+      "colorIds": [
+        52,
+        127
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 5.09
+    },
+    {
+      "id": 84,
+      "colorIds": [
+        42,
+        132
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 10.45
+    },
+    {
+      "id": 85,
+      "colorIds": [
+        14,
+        122
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 1.36
+    },
+    {
+      "id": 86,
+      "colorIds": [
+        13,
+        99
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 1.45
+    },
+    {
+      "id": 87,
+      "colorIds": [
+        1,
+        70
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "amarillos"
+      ],
+      "maxContrast": 1.27
+    },
+    {
+      "id": 88,
+      "colorIds": [
+        42,
+        121
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 3.91
+    },
+    {
+      "id": 89,
+      "colorIds": [
+        61,
+        127
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.33
+    },
+    {
+      "id": 90,
+      "colorIds": [
+        8,
+        139
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "violetas"
+      ],
+      "maxContrast": 1.6
+    },
+    {
+      "id": 91,
+      "colorIds": [
+        37,
+        67
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "naranjas"
+      ],
+      "maxContrast": 2.17
+    },
+    {
+      "id": 92,
+      "colorIds": [
+        5,
+        100
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 1.56
+    },
+    {
+      "id": 93,
+      "colorIds": [
+        71,
+        112
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 1.5
+    },
+    {
+      "id": 94,
+      "colorIds": [
+        41,
+        125
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 6.51
+    },
+    {
+      "id": 95,
+      "colorIds": [
+        32,
+        130
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "violetas"
+      ],
+      "maxContrast": 1.95
+    },
+    {
+      "id": 96,
+      "colorIds": [
+        59,
+        76
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "amarillos"
+      ],
+      "maxContrast": 2.19
+    },
+    {
+      "id": 97,
+      "colorIds": [
+        1,
+        18
+      ],
+      "size": 2,
+      "tones": [
+        "rojos"
+      ],
+      "maxContrast": 2.64
+    },
+    {
+      "id": 98,
+      "colorIds": [
+        84,
+        127
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 1.06
+    },
+    {
+      "id": 99,
+      "colorIds": [
+        39,
+        117
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 3.19
+    },
+    {
+      "id": 100,
+      "colorIds": [
+        72,
+        140
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "violetas"
+      ],
+      "maxContrast": 1.23
+    },
+    {
+      "id": 101,
+      "colorIds": [
+        2,
+        126
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 5.2
+    },
+    {
+      "id": 102,
+      "colorIds": [
+        41,
+        67
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas"
+      ],
+      "maxContrast": 2.66
+    },
+    {
+      "id": 103,
+      "colorIds": [
+        66,
+        152
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "violetas"
+      ],
+      "maxContrast": 3.69
+    },
+    {
+      "id": 104,
+      "colorIds": [
+        28,
+        38
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "amarillos"
+      ],
+      "maxContrast": 5.82
+    },
+    {
+      "id": 105,
+      "colorIds": [
+        2,
+        97
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "verdes"
+      ],
+      "maxContrast": 1.83
+    },
+    {
+      "id": 106,
+      "colorIds": [
+        122,
+        130
+      ],
+      "size": 2,
+      "tones": [
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 3.16
+    },
+    {
+      "id": 107,
+      "colorIds": [
+        56,
+        74
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos"
+      ],
+      "maxContrast": 2.98
+    },
+    {
+      "id": 108,
+      "colorIds": [
+        8,
+        27
+      ],
+      "size": 2,
+      "tones": [
+        "rojos"
+      ],
+      "maxContrast": 2.39
+    },
+    {
+      "id": 109,
+      "colorIds": [
+        39,
+        108
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 7.17
+    },
+    {
+      "id": 110,
+      "colorIds": [
+        31,
+        86
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas"
+      ],
+      "maxContrast": 1.49
+    },
+    {
+      "id": 111,
+      "colorIds": [
+        39,
+        90
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 1.46
+    },
+    {
+      "id": 112,
+      "colorIds": [
+        7,
+        158
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 7.21
+    },
+    {
+      "id": 113,
+      "colorIds": [
+        42,
+        86
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas"
+      ],
+      "maxContrast": 8.59
+    },
+    {
+      "id": 114,
+      "colorIds": [
+        60,
+        122
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 3.08
+    },
+    {
+      "id": 115,
+      "colorIds": [
+        40,
+        64
+      ],
+      "size": 2,
+      "tones": [
+        "amarillos",
+        "rojos"
+      ],
+      "maxContrast": 2.71
+    },
+    {
+      "id": 116,
+      "colorIds": [
+        2,
+        142
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 3.52
+    },
+    {
+      "id": 117,
+      "colorIds": [
+        22,
+        158
+      ],
+      "size": 2,
+      "tones": [
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 3.29
+    },
+    {
+      "id": 118,
+      "colorIds": [
+        59,
+        86
+      ],
+      "size": 2,
+      "tones": [
+        "naranjas"
+      ],
+      "maxContrast": 6.12
+    },
+    {
+      "id": 119,
+      "colorIds": [
+        112,
+        129
+      ],
+      "size": 2,
+      "tones": [
+        "azules"
+      ],
+      "maxContrast": 7.16
+    },
+    {
+      "id": 120,
+      "colorIds": [
+        2,
+        29
+      ],
+      "size": 2,
+      "tones": [
+        "rojos"
+      ],
+      "maxContrast": 3.71
+    },
+    {
+      "id": 121,
+      "colorIds": [
+        31,
+        49,
+        107
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "amarillos"
+      ],
+      "maxContrast": 3.54
+    },
+    {
+      "id": 122,
+      "colorIds": [
+        22,
+        46,
+        100
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 3.46
+    },
+    {
+      "id": 123,
+      "colorIds": [
+        5,
+        55,
+        147
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos"
+      ],
+      "maxContrast": 6.16
+    },
+    {
+      "id": 124,
+      "colorIds": [
+        35,
+        59,
+        93
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "amarillos"
+      ],
+      "maxContrast": 4.91
+    },
+    {
+      "id": 125,
+      "colorIds": [
+        3,
+        117,
+        127
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 4.6
+    },
+    {
+      "id": 126,
+      "colorIds": [
+        41,
+        59,
+        126
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 6.61
+    },
+    {
+      "id": 127,
+      "colorIds": [
+        45,
+        98,
+        141
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 3.55
+    },
+    {
+      "id": 128,
+      "colorIds": [
+        1,
+        116,
+        138
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 2.31
+    },
+    {
+      "id": 129,
+      "colorIds": [
+        56,
+        69,
+        113
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 2.31
+    },
+    {
+      "id": 130,
+      "colorIds": [
+        13,
+        28,
+        149
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 2.28
+    },
+    {
+      "id": 131,
+      "colorIds": [
+        13,
+        65,
+        118
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 1.07
+    },
+    {
+      "id": 132,
+      "colorIds": [
+        38,
+        47,
+        71
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "naranjas"
+      ],
+      "maxContrast": 2.25
+    },
+    {
+      "id": 133,
+      "colorIds": [
+        33,
+        71,
+        99
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 3.6
+    },
+    {
+      "id": 134,
+      "colorIds": [
+        8,
+        138,
+        150
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "violetas"
+      ],
+      "maxContrast": 4.36
+    },
+    {
+      "id": 135,
+      "colorIds": [
+        38,
+        106,
+        113
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 4.46
+    },
+    {
+      "id": 136,
+      "colorIds": [
+        21,
+        103,
+        150
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "verdes",
+        "violetas"
+      ],
+      "maxContrast": 2.86
+    },
+    {
+      "id": 137,
+      "colorIds": [
+        18,
+        45,
+        98
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 2.86
+    },
+    {
+      "id": 138,
+      "colorIds": [
+        47,
+        55,
+        116
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 1.7
+    },
+    {
+      "id": 139,
+      "colorIds": [
+        113,
+        131,
+        154
+      ],
+      "size": 3,
+      "tones": [
+        "azules",
+        "neutros"
+      ],
+      "maxContrast": 9.87
+    },
+    {
+      "id": 140,
+      "colorIds": [
+        47,
+        122,
+        157
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.81
+    },
+    {
+      "id": 141,
+      "colorIds": [
+        63,
+        90,
+        129
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 7.59
+    },
+    {
+      "id": 142,
+      "colorIds": [
+        26,
+        68,
+        113
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 2.54
+    },
+    {
+      "id": 143,
+      "colorIds": [
+        121,
+        136,
+        156
+      ],
+      "size": 3,
+      "tones": [
+        "azules",
+        "violetas",
+        "neutros"
+      ],
+      "maxContrast": 2.1
+    },
+    {
+      "id": 144,
+      "colorIds": [
+        24,
+        63,
+        158
+      ],
+      "size": 3,
+      "tones": [
+        "violetas",
+        "naranjas",
+        "neutros"
+      ],
+      "maxContrast": 6.5
+    },
+    {
+      "id": 145,
+      "colorIds": [
+        31,
+        70,
+        130
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "violetas"
+      ],
+      "maxContrast": 8.18
+    },
+    {
+      "id": 146,
+      "colorIds": [
+        69,
+        81,
+        105
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 2.21
+    },
+    {
+      "id": 147,
+      "colorIds": [
+        9,
+        33,
+        87
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "verdes"
+      ],
+      "maxContrast": 6.43
+    },
+    {
+      "id": 148,
+      "colorIds": [
+        58,
+        60,
+        117
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 2.03
+    },
+    {
+      "id": 149,
+      "colorIds": [
+        58,
+        63,
+        132
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 7.13
+    },
+    {
+      "id": 150,
+      "colorIds": [
+        42,
+        70,
+        88
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 1.57
+    },
+    {
+      "id": 151,
+      "colorIds": [
+        38,
+        61,
+        128
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 7.51
+    },
+    {
+      "id": 152,
+      "colorIds": [
+        18,
+        32,
+        112
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 5.09
+    },
+    {
+      "id": 153,
+      "colorIds": [
+        8,
+        60,
+        70
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "amarillos"
+      ],
+      "maxContrast": 1.4
+    },
+    {
+      "id": 154,
+      "colorIds": [
+        22,
+        54,
+        121
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 4.84
+    },
+    {
+      "id": 155,
+      "colorIds": [
+        15,
+        100,
+        131
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "azules",
+        "neutros"
+      ],
+      "maxContrast": 5.12
+    },
+    {
+      "id": 156,
+      "colorIds": [
+        58,
+        114,
+        149
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 4.98
+    },
+    {
+      "id": 157,
+      "colorIds": [
+        34,
+        58,
+        120
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 5.16
+    },
+    {
+      "id": 158,
+      "colorIds": [
+        55,
+        66,
+        92
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 2.9
+    },
+    {
+      "id": 159,
+      "colorIds": [
+        69,
+        115,
+        133
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 1.69
+    },
+    {
+      "id": 160,
+      "colorIds": [
+        68,
+        82,
+        124
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 2.86
+    },
+    {
+      "id": 161,
+      "colorIds": [
+        31,
+        44,
+        123
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.31
+    },
+    {
+      "id": 162,
+      "colorIds": [
+        10,
+        96,
+        136
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "verdes",
+        "violetas"
+      ],
+      "maxContrast": 1.19
+    },
+    {
+      "id": 163,
+      "colorIds": [
+        56,
+        87,
+        122
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 4.14
+    },
+    {
+      "id": 164,
+      "colorIds": [
+        17,
+        60,
+        149
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.81
+    },
+    {
+      "id": 165,
+      "colorIds": [
+        2,
+        9,
+        37
+      ],
+      "size": 3,
+      "tones": [
+        "rojos"
+      ],
+      "maxContrast": 4.53
+    },
+    {
+      "id": 166,
+      "colorIds": [
+        7,
+        40,
+        132
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 11.54
+    },
+    {
+      "id": 167,
+      "colorIds": [
+        53,
+        111,
+        128
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 5.61
+    },
+    {
+      "id": 168,
+      "colorIds": [
+        55,
+        128,
+        145
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "azules",
+        "rojos"
+      ],
+      "maxContrast": 7.31
+    },
+    {
+      "id": 169,
+      "colorIds": [
+        1,
+        39,
+        156
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "neutros"
+      ],
+      "maxContrast": 2.22
+    },
+    {
+      "id": 170,
+      "colorIds": [
+        24,
+        60,
+        150
+      ],
+      "size": 3,
+      "tones": [
+        "violetas",
+        "naranjas"
+      ],
+      "maxContrast": 6.11
+    },
+    {
+      "id": 171,
+      "colorIds": [
+        35,
+        61,
+        88
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 5.6
+    },
+    {
+      "id": 172,
+      "colorIds": [
+        66,
+        122,
+        150
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 3.12
+    },
+    {
+      "id": 173,
+      "colorIds": [
+        55,
+        84,
+        87
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "rojos",
+        "verdes"
+      ],
+      "maxContrast": 8.01
+    },
+    {
+      "id": 174,
+      "colorIds": [
+        1,
+        134,
+        147
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "violetas"
+      ],
+      "maxContrast": 4.44
+    },
+    {
+      "id": 175,
+      "colorIds": [
+        44,
+        52,
+        142
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 3.62
+    },
+    {
+      "id": 176,
+      "colorIds": [
+        0,
+        42,
+        115
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 1.34
+    },
+    {
+      "id": 177,
+      "colorIds": [
+        35,
+        72,
+        133
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 4.61
+    },
+    {
+      "id": 178,
+      "colorIds": [
+        41,
+        112,
+        119
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 2.61
+    },
+    {
+      "id": 179,
+      "colorIds": [
+        17,
+        47,
+        126
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.66
+    },
+    {
+      "id": 180,
+      "colorIds": [
+        45,
+        138,
+        154
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "violetas",
+        "neutros"
+      ],
+      "maxContrast": 2.51
+    },
+    {
+      "id": 181,
+      "colorIds": [
+        28,
+        149,
+        151
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 2
+    },
+    {
+      "id": 182,
+      "colorIds": [
+        13,
+        86,
+        131
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "neutros"
+      ],
+      "maxContrast": 4.84
+    },
+    {
+      "id": 183,
+      "colorIds": [
+        144,
+        145,
+        150
+      ],
+      "size": 3,
+      "tones": [
+        "neutros",
+        "rojos",
+        "violetas"
+      ],
+      "maxContrast": 2.31
+    },
+    {
+      "id": 184,
+      "colorIds": [
+        9,
+        41,
+        74
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "amarillos"
+      ],
+      "maxContrast": 2.74
+    },
+    {
+      "id": 185,
+      "colorIds": [
+        4,
+        18,
+        39
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos"
+      ],
+      "maxContrast": 3.87
+    },
+    {
+      "id": 186,
+      "colorIds": [
+        32,
+        49,
+        121
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.08
+    },
+    {
+      "id": 187,
+      "colorIds": [
+        123,
+        134,
+        139
+      ],
+      "size": 3,
+      "tones": [
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 3.32
+    },
+    {
+      "id": 188,
+      "colorIds": [
+        96,
+        113,
+        114
+      ],
+      "size": 3,
+      "tones": [
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 1.61
+    },
+    {
+      "id": 189,
+      "colorIds": [
+        55,
+        109,
+        116
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 11.15
+    },
+    {
+      "id": 190,
+      "colorIds": [
+        41,
+        65,
+        158
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "neutros"
+      ],
+      "maxContrast": 12.75
+    },
+    {
+      "id": 191,
+      "colorIds": [
+        4,
+        59,
+        121
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 2.78
+    },
+    {
+      "id": 192,
+      "colorIds": [
+        46,
+        86,
+        144
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "neutros"
+      ],
+      "maxContrast": 7.19
+    },
+    {
+      "id": 193,
+      "colorIds": [
+        7,
+        40,
+        101
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 3.16
+    },
+    {
+      "id": 194,
+      "colorIds": [
+        15,
+        42,
+        120
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 2.9
+    },
+    {
+      "id": 195,
+      "colorIds": [
+        9,
+        39,
+        154
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "neutros"
+      ],
+      "maxContrast": 2.4
+    },
+    {
+      "id": 196,
+      "colorIds": [
+        70,
+        111,
+        142
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 4.11
+    },
+    {
+      "id": 197,
+      "colorIds": [
+        8,
+        141,
+        154
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "azules",
+        "neutros"
+      ],
+      "maxContrast": 2.96
+    },
+    {
+      "id": 198,
+      "colorIds": [
+        19,
+        56,
+        102
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 3.87
+    },
+    {
+      "id": 199,
+      "colorIds": [
+        20,
+        80,
+        126
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 1.96
+    },
+    {
+      "id": 200,
+      "colorIds": [
+        28,
+        52,
+        97
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 3.82
+    },
+    {
+      "id": 201,
+      "colorIds": [
+        7,
+        76,
+        114
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 2.4
+    },
+    {
+      "id": 202,
+      "colorIds": [
+        87,
+        114,
+        157
+      ],
+      "size": 3,
+      "tones": [
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 6.8
+    },
+    {
+      "id": 203,
+      "colorIds": [
+        39,
+        48,
+        107
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "rojos"
+      ],
+      "maxContrast": 6.44
+    },
+    {
+      "id": 204,
+      "colorIds": [
+        24,
+        66,
+        112
+      ],
+      "size": 3,
+      "tones": [
+        "violetas",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 2.96
+    },
+    {
+      "id": 205,
+      "colorIds": [
+        35,
+        48,
+        149
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 4.74
+    },
+    {
+      "id": 206,
+      "colorIds": [
+        1,
+        47,
+        66
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas"
+      ],
+      "maxContrast": 2.09
+    },
+    {
+      "id": 207,
+      "colorIds": [
+        78,
+        88,
+        158
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "verdes",
+        "neutros"
+      ],
+      "maxContrast": 11.05
+    },
+    {
+      "id": 208,
+      "colorIds": [
+        38,
+        119,
+        122
+      ],
+      "size": 3,
+      "tones": [
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 4.69
+    },
+    {
+      "id": 209,
+      "colorIds": [
+        41,
+        61,
+        113
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 1.59
+    },
+    {
+      "id": 210,
+      "colorIds": [
+        45,
+        55,
+        107
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "amarillos"
+      ],
+      "maxContrast": 6.08
+    },
+    {
+      "id": 211,
+      "colorIds": [
+        62,
+        93,
+        131
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "neutros"
+      ],
+      "maxContrast": 7.74
+    },
+    {
+      "id": 212,
+      "colorIds": [
+        29,
+        77,
+        113
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 2.97
+    },
+    {
+      "id": 213,
+      "colorIds": [
+        48,
+        56,
+        111
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 1.48
+    },
+    {
+      "id": 214,
+      "colorIds": [
+        41,
+        78,
+        149
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 5.96
+    },
+    {
+      "id": 215,
+      "colorIds": [
+        46,
+        121,
+        137
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 3.27
+    },
+    {
+      "id": 216,
+      "colorIds": [
+        15,
+        102,
+        158
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "verdes",
+        "neutros"
+      ],
+      "maxContrast": 5.49
+    },
+    {
+      "id": 217,
+      "colorIds": [
+        35,
+        49,
+        105
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 4.25
+    },
+    {
+      "id": 218,
+      "colorIds": [
+        123,
+        133,
+        144
+      ],
+      "size": 3,
+      "tones": [
+        "azules",
+        "neutros"
+      ],
+      "maxContrast": 3.56
+    },
+    {
+      "id": 219,
+      "colorIds": [
+        15,
+        97,
+        125
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 2.8
+    },
+    {
+      "id": 220,
+      "colorIds": [
+        25,
+        49,
+        139
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "violetas"
+      ],
+      "maxContrast": 2.82
+    },
+    {
+      "id": 221,
+      "colorIds": [
+        28,
+        154,
+        158
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 9.95
+    },
+    {
+      "id": 222,
+      "colorIds": [
+        59,
+        61,
+        67
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas"
+      ],
+      "maxContrast": 2.02
+    },
+    {
+      "id": 223,
+      "colorIds": [
+        4,
+        49,
+        87
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 1.89
+    },
+    {
+      "id": 224,
+      "colorIds": [
+        9,
+        124,
+        147
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 2.72
+    },
+    {
+      "id": 225,
+      "colorIds": [
+        22,
+        125,
+        146
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 1.68
+    },
+    {
+      "id": 226,
+      "colorIds": [
+        37,
+        46,
+        149
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 5.32
+    },
+    {
+      "id": 227,
+      "colorIds": [
+        0,
+        112,
+        117
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 2.37
+    },
+    {
+      "id": 228,
+      "colorIds": [
+        28,
+        39,
+        154
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "neutros"
+      ],
+      "maxContrast": 6
+    },
+    {
+      "id": 229,
+      "colorIds": [
+        47,
+        109,
+        154
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "verdes",
+        "neutros"
+      ],
+      "maxContrast": 7.27
+    },
+    {
+      "id": 230,
+      "colorIds": [
+        7,
+        87,
+        114
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "verdes"
+      ],
+      "maxContrast": 1.76
+    },
+    {
+      "id": 231,
+      "colorIds": [
+        2,
+        32,
+        120
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 4.88
+    },
+    {
+      "id": 232,
+      "colorIds": [
+        22,
+        44,
+        131
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "neutros"
+      ],
+      "maxContrast": 10.1
+    },
+    {
+      "id": 233,
+      "colorIds": [
+        28,
+        72,
+        127
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 2.58
+    },
+    {
+      "id": 234,
+      "colorIds": [
+        45,
+        82,
+        111
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.66
+    },
+    {
+      "id": 235,
+      "colorIds": [
+        41,
+        61,
+        134
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "violetas"
+      ],
+      "maxContrast": 1.5
+    },
+    {
+      "id": 236,
+      "colorIds": [
+        69,
+        126,
+        143
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "azules",
+        "rojos"
+      ],
+      "maxContrast": 3.11
+    },
+    {
+      "id": 237,
+      "colorIds": [
+        28,
+        84,
+        113
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 4.22
+    },
+    {
+      "id": 238,
+      "colorIds": [
+        49,
+        151,
+        156
+      ],
+      "size": 3,
+      "tones": [
+        "naranjas",
+        "violetas",
+        "neutros"
+      ],
+      "maxContrast": 6.21
+    },
+    {
+      "id": 239,
+      "colorIds": [
+        4,
+        57,
+        88
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 1.65
+    },
+    {
+      "id": 240,
+      "colorIds": [
+        6,
+        54,
+        117
+      ],
+      "size": 3,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 3.14
+    },
+    {
+      "id": 241,
+      "colorIds": [
+        17,
+        39,
+        50,
+        124
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.6
+    },
+    {
+      "id": 242,
+      "colorIds": [
+        8,
+        19,
+        105,
+        158
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes",
+        "neutros"
+      ],
+      "maxContrast": 7.34
+    },
+    {
+      "id": 243,
+      "colorIds": [
+        13,
+        41,
+        79,
+        157
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 6.84
+    },
+    {
+      "id": 244,
+      "colorIds": [
+        4,
+        14,
+        95,
+        122
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "neutros",
+        "azules"
+      ],
+      "maxContrast": 2.01
+    },
+    {
+      "id": 245,
+      "colorIds": [
+        28,
+        104,
+        129,
+        157
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 3.71
+    },
+    {
+      "id": 246,
+      "colorIds": [
+        1,
+        27,
+        38,
+        45
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "naranjas"
+      ],
+      "maxContrast": 5.09
+    },
+    {
+      "id": 247,
+      "colorIds": [
+        13,
+        56,
+        100,
+        126
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 7.18
+    },
+    {
+      "id": 248,
+      "colorIds": [
+        8,
+        69,
+        133,
+        146
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 3.9
+    },
+    {
+      "id": 249,
+      "colorIds": [
+        32,
+        53,
+        58,
+        124
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 4.52
+    },
+    {
+      "id": 250,
+      "colorIds": [
+        57,
+        64,
+        99,
+        110
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 2.46
+    },
+    {
+      "id": 251,
+      "colorIds": [
+        30,
+        54,
+        105,
+        157
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 8.54
+    },
+    {
+      "id": 252,
+      "colorIds": [
+        12,
+        13,
+        68,
+        119
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 1.55
+    },
+    {
+      "id": 253,
+      "colorIds": [
+        55,
+        62,
+        151,
+        157
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "naranjas",
+        "violetas",
+        "azules"
+      ],
+      "maxContrast": 11.31
+    },
+    {
+      "id": 254,
+      "colorIds": [
+        1,
+        38,
+        76,
+        135
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos"
+      ],
+      "maxContrast": 3.54
+    },
+    {
+      "id": 255,
+      "colorIds": [
+        13,
+        57,
+        115,
+        158
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "azules",
+        "neutros"
+      ],
+      "maxContrast": 10.15
+    },
+    {
+      "id": 256,
+      "colorIds": [
+        48,
+        63,
+        103,
+        158
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes",
+        "neutros"
+      ],
+      "maxContrast": 9.35
+    },
+    {
+      "id": 257,
+      "colorIds": [
+        16,
+        60,
+        121,
+        139
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 2.96
+    },
+    {
+      "id": 258,
+      "colorIds": [
+        35,
+        44,
+        76,
+        122
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 5.16
+    },
+    {
+      "id": 259,
+      "colorIds": [
+        55,
+        119,
+        123,
+        156
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "azules",
+        "neutros"
+      ],
+      "maxContrast": 5.97
+    },
+    {
+      "id": 260,
+      "colorIds": [
+        10,
+        48,
+        88,
+        99
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 1.99
+    },
+    {
+      "id": 261,
+      "colorIds": [
+        30,
+        39,
+        115,
+        156
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules",
+        "neutros"
+      ],
+      "maxContrast": 6.19
+    },
+    {
+      "id": 262,
+      "colorIds": [
+        12,
+        41,
+        71,
+        106
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 3.63
+    },
+    {
+      "id": 263,
+      "colorIds": [
+        19,
+        44,
+        87,
+        157
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 6.8
+    },
+    {
+      "id": 264,
+      "colorIds": [
+        1,
+        17,
+        89,
+        117
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 2.56
+    },
+    {
+      "id": 265,
+      "colorIds": [
+        10,
+        56,
+        93,
+        130
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "violetas"
+      ],
+      "maxContrast": 13.11
+    },
+    {
+      "id": 266,
+      "colorIds": [
+        16,
+        41,
+        96,
+        100
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 3.2
+    },
+    {
+      "id": 267,
+      "colorIds": [
+        46,
+        61,
+        100,
+        121
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 3.27
+    },
+    {
+      "id": 268,
+      "colorIds": [
+        4,
+        13,
+        109,
+        110
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 9.97
+    },
+    {
+      "id": 269,
+      "colorIds": [
+        13,
+        35,
+        139,
+        158
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "rojos",
+        "violetas",
+        "neutros"
+      ],
+      "maxContrast": 4.88
+    },
+    {
+      "id": 270,
+      "colorIds": [
+        12,
+        38,
+        79,
+        106
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 4.46
+    },
+    {
+      "id": 271,
+      "colorIds": [
+        25,
+        114,
+        119,
+        132
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 8.18
+    },
+    {
+      "id": 272,
+      "colorIds": [
+        39,
+        63,
+        87,
+        113
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "naranjas",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 2.48
+    },
+    {
+      "id": 273,
+      "colorIds": [
+        0,
+        34,
+        78,
+        154
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 6.69
+    },
+    {
+      "id": 274,
+      "colorIds": [
+        64,
+        73,
+        120,
+        138
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 1.18
+    },
+    {
+      "id": 275,
+      "colorIds": [
+        18,
+        53,
+        84,
+        147
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas"
+      ],
+      "maxContrast": 4.56
+    },
+    {
+      "id": 276,
+      "colorIds": [
+        8,
+        42,
+        90,
+        158
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes",
+        "neutros"
+      ],
+      "maxContrast": 13.6
+    },
+    {
+      "id": 277,
+      "colorIds": [
+        9,
+        24,
+        76,
+        130
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "violetas",
+        "amarillos"
+      ],
+      "maxContrast": 6.38
+    },
+    {
+      "id": 278,
+      "colorIds": [
+        46,
+        58,
+        106,
+        125
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 5.81
+    },
+    {
+      "id": 279,
+      "colorIds": [
+        13,
+        48,
+        53,
+        129
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 6.41
+    },
+    {
+      "id": 280,
+      "colorIds": [
+        12,
+        107,
+        135,
+        147
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos"
+      ],
+      "maxContrast": 2.94
+    },
+    {
+      "id": 281,
+      "colorIds": [
+        39,
+        100,
+        114,
+        122
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "azules",
+        "verdes"
+      ],
+      "maxContrast": 4.84
+    },
+    {
+      "id": 282,
+      "colorIds": [
+        12,
+        51,
+        114,
+        136
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes",
+        "violetas"
+      ],
+      "maxContrast": 2.24
+    },
+    {
+      "id": 283,
+      "colorIds": [
+        20,
+        35,
+        97,
+        116
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 4.66
+    },
+    {
+      "id": 284,
+      "colorIds": [
+        11,
+        56,
+        99,
+        125
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 7.07
+    },
+    {
+      "id": 285,
+      "colorIds": [
+        4,
+        19,
+        64,
+        87
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 3.54
+    },
+    {
+      "id": 286,
+      "colorIds": [
+        19,
+        60,
+        118,
+        127
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 5.09
+    },
+    {
+      "id": 287,
+      "colorIds": [
+        8,
+        57,
+        111,
+        115
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 1.59
+    },
+    {
+      "id": 288,
+      "colorIds": [
+        61,
+        83,
+        147,
+        158
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 8.75
+    },
+    {
+      "id": 289,
+      "colorIds": [
+        55,
+        91,
+        127,
+        130
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 14.44
+    },
+    {
+      "id": 290,
+      "colorIds": [
+        37,
+        39,
+        107,
+        114
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 7.31
+    },
+    {
+      "id": 291,
+      "colorIds": [
+        91,
+        99,
+        114,
+        115
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "azules",
+        "verdes"
+      ],
+      "maxContrast": 1.58
+    },
+    {
+      "id": 292,
+      "colorIds": [
+        39,
+        44,
+        50,
+        53
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "naranjas"
+      ],
+      "maxContrast": 2.03
+    },
+    {
+      "id": 293,
+      "colorIds": [
+        13,
+        87,
+        94,
+        102
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "verdes",
+        "neutros"
+      ],
+      "maxContrast": 2.6
+    },
+    {
+      "id": 294,
+      "colorIds": [
+        38,
+        46,
+        106,
+        113
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "naranjas",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 4.46
+    },
+    {
+      "id": 295,
+      "colorIds": [
+        46,
+        54,
+        121,
+        130
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 15.09
+    },
+    {
+      "id": 296,
+      "colorIds": [
+        38,
+        49,
+        82,
+        157
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 8.4
+    },
+    {
+      "id": 297,
+      "colorIds": [
+        19,
+        61,
+        79,
+        127
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 4.33
+    },
+    {
+      "id": 298,
+      "colorIds": [
+        13,
+        55,
+        64,
+        158
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 15.25
+    },
+    {
+      "id": 299,
+      "colorIds": [
+        23,
+        48,
+        104,
+        122
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 2.8
+    },
+    {
+      "id": 300,
+      "colorIds": [
+        7,
+        46,
+        87,
+        115
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 1.76
+    },
+    {
+      "id": 301,
+      "colorIds": [
+        16,
+        41,
+        96,
+        139
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes",
+        "violetas"
+      ],
+      "maxContrast": 3.2
+    },
+    {
+      "id": 302,
+      "colorIds": [
+        46,
+        53,
+        110,
+        122
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.08
+    },
+    {
+      "id": 303,
+      "colorIds": [
+        40,
+        64,
+        109,
+        154
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "rojos",
+        "verdes",
+        "neutros"
+      ],
+      "maxContrast": 10.98
+    },
+    {
+      "id": 304,
+      "colorIds": [
+        32,
+        46,
+        73,
+        100
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 5.54
+    },
+    {
+      "id": 305,
+      "colorIds": [
+        44,
+        56,
+        70,
+        87
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 1.6
+    },
+    {
+      "id": 306,
+      "colorIds": [
+        55,
+        100,
+        103,
+        110
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "azules",
+        "verdes"
+      ],
+      "maxContrast": 3.17
+    },
+    {
+      "id": 307,
+      "colorIds": [
+        22,
+        133,
+        139,
+        151
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 6.74
+    },
+    {
+      "id": 308,
+      "colorIds": [
+        3,
+        21,
+        65,
+        114
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 2.98
+    },
+    {
+      "id": 309,
+      "colorIds": [
+        47,
+        62,
+        127,
+        128
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.44
+    },
+    {
+      "id": 310,
+      "colorIds": [
+        38,
+        44,
+        76,
+        109
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 11.46
+    },
+    {
+      "id": 311,
+      "colorIds": [
+        29,
+        46,
+        89,
+        91
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes",
+        "amarillos"
+      ],
+      "maxContrast": 4.22
+    },
+    {
+      "id": 312,
+      "colorIds": [
+        19,
+        61,
+        94,
+        123
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "neutros",
+        "azules"
+      ],
+      "maxContrast": 3.42
+    },
+    {
+      "id": 313,
+      "colorIds": [
+        22,
+        54,
+        105,
+        158
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "verdes",
+        "neutros"
+      ],
+      "maxContrast": 15.93
+    },
+    {
+      "id": 314,
+      "colorIds": [
+        8,
+        32,
+        126,
+        152
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 5.16
+    },
+    {
+      "id": 315,
+      "colorIds": [
+        7,
+        38,
+        47,
+        137
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "naranjas",
+        "violetas"
+      ],
+      "maxContrast": 3.51
+    },
+    {
+      "id": 316,
+      "colorIds": [
+        33,
+        103,
+        149,
+        150
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "verdes",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 2.86
+    },
+    {
+      "id": 317,
+      "colorIds": [
+        43,
+        53,
+        55,
+        87
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 1.76
+    },
+    {
+      "id": 318,
+      "colorIds": [
+        80,
+        108,
+        125,
+        132
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 2.9
+    },
+    {
+      "id": 319,
+      "colorIds": [
+        13,
+        56,
+        61,
+        106
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 3.94
+    },
+    {
+      "id": 320,
+      "colorIds": [
+        5,
+        38,
+        104,
+        112
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 2.89
+    },
+    {
+      "id": 321,
+      "colorIds": [
+        4,
+        38,
+        109,
+        113
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 11.46
+    },
+    {
+      "id": 322,
+      "colorIds": [
+        16,
+        27,
+        137,
+        142
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "violetas",
+        "azules"
+      ],
+      "maxContrast": 1.57
+    },
+    {
+      "id": 323,
+      "colorIds": [
+        45,
+        70,
+        84,
+        158
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 11.95
+    },
+    {
+      "id": 324,
+      "colorIds": [
+        29,
+        120,
+        139,
+        154
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "azules",
+        "violetas",
+        "neutros"
+      ],
+      "maxContrast": 3.68
+    },
+    {
+      "id": 325,
+      "colorIds": [
+        12,
+        40,
+        59,
+        132
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 11.54
+    },
+    {
+      "id": 326,
+      "colorIds": [
+        38,
+        64,
+        90,
+        92
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "rojos",
+        "verdes"
+      ],
+      "maxContrast": 2.83
+    },
+    {
+      "id": 327,
+      "colorIds": [
+        8,
+        13,
+        53,
+        134
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "violetas"
+      ],
+      "maxContrast": 1.78
+    },
+    {
+      "id": 328,
+      "colorIds": [
+        27,
+        62,
+        86,
+        101
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.92
+    },
+    {
+      "id": 329,
+      "colorIds": [
+        46,
+        134,
+        151,
+        157
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "violetas",
+        "azules"
+      ],
+      "maxContrast": 8.44
+    },
+    {
+      "id": 330,
+      "colorIds": [
+        52,
+        110,
+        113,
+        119
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 2.79
+    },
+    {
+      "id": 331,
+      "colorIds": [
+        23,
+        130,
+        138,
+        149
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "violetas",
+        "azules"
+      ],
+      "maxContrast": 4.51
+    },
+    {
+      "id": 332,
+      "colorIds": [
+        5,
+        21,
+        109,
+        125
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 5.9
+    },
+    {
+      "id": 333,
+      "colorIds": [
+        19,
+        55,
+        114,
+        121
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 4.38
+    },
+    {
+      "id": 334,
+      "colorIds": [
+        42,
+        76,
+        90,
+        122
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 4.07
+    },
+    {
+      "id": 335,
+      "colorIds": [
+        33,
+        61,
+        149,
+        157
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 4.69
+    },
+    {
+      "id": 336,
+      "colorIds": [
+        8,
+        32,
+        39,
+        108
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "amarillos",
+        "verdes"
+      ],
+      "maxContrast": 7.86
+    },
+    {
+      "id": 337,
+      "colorIds": [
+        37,
+        135,
+        148,
+        158
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "neutros"
+      ],
+      "maxContrast": 7.27
+    },
+    {
+      "id": 338,
+      "colorIds": [
+        28,
+        60,
+        125,
+        134
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 5.26
+    },
+    {
+      "id": 339,
+      "colorIds": [
+        49,
+        65,
+        112,
+        127
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "azules"
+      ],
+      "maxContrast": 5.17
+    },
+    {
+      "id": 340,
+      "colorIds": [
+        64,
+        99,
+        154,
+        158
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "azules",
+        "neutros"
+      ],
+      "maxContrast": 9.95
+    },
+    {
+      "id": 341,
+      "colorIds": [
+        7,
+        106,
+        109,
+        112
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "verdes",
+        "azules"
+      ],
+      "maxContrast": 7.65
+    },
+    {
+      "id": 342,
+      "colorIds": [
+        1,
+        46,
+        77,
+        109
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "naranjas",
+        "verdes"
+      ],
+      "maxContrast": 8.32
+    },
+    {
+      "id": 343,
+      "colorIds": [
+        19,
+        41,
+        81,
+        128
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "amarillos",
+        "azules"
+      ],
+      "maxContrast": 6.11
+    },
+    {
+      "id": 344,
+      "colorIds": [
+        45,
+        126,
+        139,
+        158
+      ],
+      "size": 4,
+      "tones": [
+        "naranjas",
+        "azules",
+        "violetas",
+        "neutros"
+      ],
+      "maxContrast": 11.95
+    },
+    {
+      "id": 345,
+      "colorIds": [
+        32,
+        110,
+        116,
+        142
+      ],
+      "size": 4,
+      "tones": [
+        "rojos",
+        "azules"
+      ],
+      "maxContrast": 6.64
+    },
+    {
+      "id": 346,
+      "colorIds": [
+        24,
+        87,
+        91,
+        95
+      ],
+      "size": 4,
+      "tones": [
+        "violetas",
+        "verdes",
+        "amarillos",
+        "neutros"
+      ],
+      "maxContrast": 3.59
+    },
+    {
+      "id": 347,
+      "colorIds": [
+        93,
+        99,
+        123,
+        136
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "azules",
+        "violetas"
+      ],
+      "maxContrast": 2.78
+    },
+    {
+      "id": 348,
+      "colorIds": [
+        52,
+        106,
+        109,
+        151
+      ],
+      "size": 4,
+      "tones": [
+        "amarillos",
+        "verdes",
+        "violetas"
+      ],
+      "maxContrast": 7.62
+    }
+  ]
+}

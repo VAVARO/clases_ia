@@ -7,7 +7,9 @@ const files = [
   'data/ejercicios.json',
   'data/recursos.json',
   'data/materiales.json',
-  'data/autores.json'
+  'data/autores.json',
+  'data/paletas.json',
+  'data/fuentes.json'
 ];
 
 // Broad emoji regex

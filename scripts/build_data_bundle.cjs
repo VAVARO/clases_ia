@@ -8,6 +8,10 @@ const recursos = JSON.parse(fs.readFileSync(path.join(dataDir, 'recursos.json'),
 const materiales = JSON.parse(fs.readFileSync(path.join(dataDir, 'materiales.json'), 'utf8'));
 const autoresPath = path.join(dataDir, 'autores.json');
 const autores = fs.existsSync(autoresPath) ? JSON.parse(fs.readFileSync(autoresPath, 'utf8')) : [];
+const paletasPath = path.join(dataDir, 'paletas.json');
+const paletas = fs.existsSync(paletasPath) ? JSON.parse(fs.readFileSync(paletasPath, 'utf8')) : { colors: [], combinations: [] };
+const fuentesPath = path.join(dataDir, 'fuentes.json');
+const fuentes = fs.existsSync(fuentesPath) ? JSON.parse(fs.readFileSync(fuentesPath, 'utf8')) : [];
 
 const jsContent = `// Repositorio de Clases de IA - Datos embebidos para compatibilidad local y web
 (function() {
@@ -17,7 +21,9 @@ const jsContent = `// Repositorio de Clases de IA - Datos embebidos para compati
     ejercicios: ${JSON.stringify(ejercicios, null, 2)},
     recursos: ${JSON.stringify(recursos, null, 2)},
     materiales: ${JSON.stringify(materiales, null, 2)},
-    autores: ${JSON.stringify(autores, null, 2)}
+    autores: ${JSON.stringify(autores, null, 2)},
+    paletas: ${JSON.stringify(paletas)},
+    fuentes: ${JSON.stringify(fuentes)}
   };
 })();
 `;

@@ -164,6 +164,51 @@
     .d3-node.dimmed {
       opacity: 0.15;
     }
+
+    /* Estudio UI: Edicion directa sobre el lienzo sin alterar el layout */
+    [data-ui-editable] {
+      outline: 1px dashed transparent;
+      outline-offset: 4px;
+      border-radius: 4px;
+      transition: outline-color 140ms var(--ease-out);
+      cursor: text;
+    }
+    [data-ui-editable]:hover {
+      outline-color: rgba(128, 128, 128, 0.45);
+    }
+    [data-ui-editable]:focus {
+      outline: 2px solid currentColor;
+      outline-offset: 4px;
+    }
+
+    .ui-range {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(28, 27, 27, 0.14);
+      outline: none;
+    }
+    .ui-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #00357f;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    }
+    .ui-range::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #00357f;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    }
   </style>
 </head>
 
@@ -189,7 +234,7 @@
       <!-- Acciones de cabecera -->
       <div class="flex items-center gap-2 sm:gap-4">
         <!-- Buscador rápido en header -->
-        <div class="relative hidden sm:block">
+        <div id="header-search-wrap" class="relative hidden sm:block">
           <input 
             type="search" 
             id="global-search-input" 
@@ -217,7 +262,7 @@
   </header>
 
   <!-- HERO EDITORIAL LIMPIO & SECCIONES DIRECTAS -->
-  <section class="border-b border-border-subtle bg-gradient-to-b from-background via-surface-alt/25 to-background">
+  <section id="main-hero-section" class="border-b border-border-subtle bg-gradient-to-b from-background via-surface-alt/25 to-background">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-8 sm:pt-12 sm:pb-10">
       
       <div class="max-w-3xl">
@@ -269,7 +314,7 @@
   </section>
 
   <!-- NAVIGATION TABS (Segmented Control con Azul Cobalto Protagónico) -->
-  <nav class="sticky top-16 sm:top-18 z-30 glass-surface border-b border-border-subtle" aria-label="Secciones">
+  <nav id="main-tabs-nav" class="sticky top-16 sm:top-18 z-30 glass-surface border-b border-border-subtle" aria-label="Secciones">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="flex items-center justify-between overflow-x-auto py-2.5 no-scrollbar gap-2 sm:gap-4">
         
@@ -330,7 +375,7 @@
   </nav>
 
   <!-- CONTROLS & SUBFILTERS BAR -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-5 pb-2 w-full">
+  <section id="controls-bar" class="max-w-6xl mx-auto px-4 sm:px-6 pt-5 pb-2 w-full">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
       
       <!-- Chips de filtro por categoría dinámicos -->
@@ -593,6 +638,428 @@
       </div>
     </div>
 
+    <!-- SECCIÓN SECRETA: ESTUDIO DE CRITERIO UI (PALETAS & TIPOGRAFÍAS) -->
+    <div id="view-ui" class="tab-view hidden space-y-6 py-4">
+
+      <!-- Cabecera Editorial del Laboratorio -->
+      <div class="pb-6 border-b border-border-subtle flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div class="max-w-2xl">
+          <h1 class="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-on-surface leading-tight mb-2">
+            Estudio de Criterio UI
+          </h1>
+          <p class="font-sans text-sm text-on-surface/80 leading-relaxed">
+            Explora 348 combinaciones cromáticas de Sanzo Wada (en HEX y RGB) y 94 tipografías abiertas de Google Fonts. Combina una o dos fuentes, edita los textos directamente y verifica el contraste antes de diseñar.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 shrink-0">
+          <button
+            onclick="uiRandomizeAll()"
+            class="btn-action inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-border-subtle bg-white hover:border-primary text-xs font-medium text-on-surface hover:text-primary transition-colors"
+            title="Elegir una paleta y dupla tipográfica aleatoria"
+          >
+            <span class="material-symbols-outlined text-[16px] text-primary">shuffle</span>
+            <span>Mezclar todo</span>
+          </button>
+
+          <button
+            onclick="uiCopyCssBundle()"
+            class="btn-action inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-primary hover:bg-primary-dark text-white text-xs font-semibold transition-colors shadow-xs"
+            title="Copiar variables CSS e importación de Google Fonts"
+          >
+            <span class="material-symbols-outlined text-[16px]">code</span>
+            <span>Copiar CSS</span>
+          </button>
+
+          <button
+            onclick="uiExitStudio()"
+            class="btn-action inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-border-subtle bg-white hover:border-on-surface text-xs font-mono text-muted hover:text-on-surface transition-colors"
+          >
+            <span class="material-symbols-outlined text-[15px]">arrow_back</span>
+            <span>Salir</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Espacio de Trabajo: Selector (Izquierda) + Evaluador en Vivo (Derecha Sticky) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+        <!-- COLUMNA IZQUIERDA: EXPLORADOR DE PALETAS Y TIPOGRAFÍAS -->
+        <section class="order-2 lg:order-1 lg:col-span-5 bg-white border border-border-subtle rounded-2xl overflow-hidden" aria-label="Explorador de paletas y tipografías">
+
+          <!-- Selector de Catálogo: Paletas vs Tipografías -->
+          <div class="grid grid-cols-2 border-b border-border-subtle">
+            <button
+              id="ui-explorer-tab-paletas"
+              onclick="uiSetExplorerTab('paletas')"
+              class="px-4 py-3 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 border-b-2 border-primary text-primary bg-white transition-colors"
+            >
+              <span class="material-symbols-outlined text-[17px]">palette</span>
+              <span>Paletas (348)</span>
+            </button>
+            <button
+              id="ui-explorer-tab-fuentes"
+              onclick="uiSetExplorerTab('fuentes')"
+              class="px-4 py-3 text-xs sm:text-sm font-medium flex items-center justify-center gap-2 border-b-2 border-transparent text-muted hover:text-on-surface bg-white transition-colors"
+            >
+              <span class="material-symbols-outlined text-[17px]">text_fields</span>
+              <span>Tipografías (94)</span>
+            </button>
+          </div>
+
+          <!-- PANE A: EXPLORADOR DE PALETAS SANZO WADA -->
+          <div id="ui-pane-paletas" class="block">
+            <div class="p-4 space-y-3 border-b border-border-subtle">
+              <!-- Buscador + Subvista (Combinaciones vs 159 Colores) -->
+              <div class="flex items-center gap-2">
+                <div class="relative flex-1">
+                  <input
+                    type="search"
+                    id="ui-palette-search"
+                    placeholder="Buscar #190, Indigo, #ebd3a2..."
+                    aria-label="Buscar paletas o colores"
+                    class="w-full pl-8 pr-3 py-1.5 text-xs font-sans bg-background border border-border-subtle rounded-lg focus:outline-none focus:border-primary text-on-surface placeholder:text-muted/70"
+                  />
+                  <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-primary text-[16px] pointer-events-none">search</span>
+                </div>
+                <button
+                  onclick="uiRandomPalette()"
+                  class="px-2.5 py-1.5 rounded-lg border border-border-subtle hover:border-primary text-xs font-mono text-on-surface hover:text-primary flex items-center gap-1 shrink-0 transition-colors"
+                  title="Elegir una paleta aleatoria"
+                >
+                  <span class="material-symbols-outlined text-[15px]">shuffle</span>
+                  <span>Azar</span>
+                </button>
+              </div>
+
+              <!-- Subvista: Combinaciones vs Colores individuales -->
+              <div class="flex items-center justify-between gap-2 text-xs">
+                <div class="inline-flex items-center gap-1">
+                  <button
+                    id="ui-submode-combos"
+                    onclick="uiSetPaletteSubmode('combos')"
+                    class="px-2.5 py-1 rounded-md font-mono text-xs font-semibold bg-primary text-white transition-colors"
+                  >
+                    Combinaciones (348)
+                  </button>
+                  <button
+                    id="ui-submode-colors"
+                    onclick="uiSetPaletteSubmode('colors')"
+                    class="px-2.5 py-1 rounded-md font-mono text-xs text-muted hover:text-on-surface transition-colors"
+                  >
+                    Colores (159)
+                  </button>
+                </div>
+                <span id="ui-palette-count" class="font-mono text-xs text-muted">348 de 348</span>
+              </div>
+
+              <!-- Banner de color seleccionado (desde vista de 159 colores) -->
+              <div id="ui-active-color-filter" class="hidden pt-2 border-t border-border-subtle flex items-center justify-between gap-2 text-xs">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span id="ui-active-color-dot" class="w-3.5 h-3.5 rounded-full border border-black/15 shrink-0"></span>
+                  <span id="ui-active-color-label" class="font-mono text-xs text-on-surface truncate"></span>
+                </div>
+                <button onclick="uiClearColorFilter()" class="font-mono text-xs text-primary hover:underline shrink-0">
+                  Quitar filtro
+                </button>
+              </div>
+
+              <!-- Filtros de tamaño / contraste (solo en modo combinaciones) -->
+              <div id="ui-palette-filters-wrap" class="space-y-2 pt-1">
+                <div id="ui-palette-size-filters" class="flex flex-wrap items-center gap-1.5"></div>
+                <div id="ui-palette-tone-filters" class="flex flex-wrap items-center gap-1.5"></div>
+              </div>
+            </div>
+
+            <!-- Grilla scrolleable de paletas o colores -->
+            <div id="ui-palettes-list" class="max-h-[540px] overflow-y-auto p-4 grid grid-cols-2 gap-3">
+              <!-- Renderizado dinámico -->
+            </div>
+          </div>
+
+          <!-- PANE B: EXPLORADOR DE TIPOGRAFÍAS (94 GOOGLE FONTS) -->
+          <div id="ui-pane-fuentes" class="hidden">
+            <div class="p-4 space-y-3 border-b border-border-subtle">
+              <!-- Modo 1 vs 2 Fuentes + Acciones -->
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="inline-flex items-center gap-1">
+                  <button
+                    id="ui-mode-pair"
+                    onclick="uiSetFontMode('pair')"
+                    class="px-2.5 py-1 rounded-md font-mono text-xs font-semibold bg-primary text-white transition-colors"
+                  >
+                    2 Fuentes (Título + Cuerpo)
+                  </button>
+                  <button
+                    id="ui-mode-single"
+                    onclick="uiSetFontMode('single')"
+                    class="px-2.5 py-1 rounded-md font-mono text-xs text-muted hover:text-on-surface transition-colors"
+                  >
+                    1 Fuente
+                  </button>
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                  <button
+                    id="ui-btn-swap-fonts"
+                    onclick="uiSwapFonts()"
+                    class="px-2 py-1 rounded-md border border-border-subtle hover:border-primary text-xs font-mono text-on-surface hover:text-primary flex items-center gap-1 transition-colors"
+                    title="Intercambiar fuente de título y de cuerpo"
+                  >
+                    <span class="material-symbols-outlined text-[14px]">swap_horiz</span>
+                    <span>Invertir</span>
+                  </button>
+                  <button
+                    onclick="uiRandomFonts()"
+                    class="px-2 py-1 rounded-md border border-border-subtle hover:border-primary text-xs font-mono text-on-surface hover:text-primary flex items-center gap-1 transition-colors"
+                    title="Elegir tipografías al azar"
+                  >
+                    <span class="material-symbols-outlined text-[14px]">shuffle</span>
+                    <span>Azar</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Buscador de fuentes -->
+              <div class="relative">
+                <input
+                  type="search"
+                  id="ui-font-search"
+                  placeholder="Buscar por nombre o rasgo (editorial, geométrica, serif...)"
+                  aria-label="Buscar tipografías"
+                  class="w-full pl-8 pr-3 py-1.5 text-xs font-sans bg-background border border-border-subtle rounded-lg focus:outline-none focus:border-primary text-on-surface placeholder:text-muted/70"
+                />
+                <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-primary text-[16px] pointer-events-none">search</span>
+              </div>
+
+              <!-- Filtros de categoría + contador -->
+              <div class="flex items-start justify-between gap-2">
+                <div id="ui-font-category-filters" class="flex flex-wrap items-center gap-1.5"></div>
+                <span id="ui-font-count" class="font-mono text-xs text-muted shrink-0 pt-1">94 de 94</span>
+              </div>
+            </div>
+
+            <!-- Lista de 94 fuentes con vista previa real -->
+            <div id="ui-fonts-list" class="max-h-[540px] overflow-y-auto divide-y divide-border-subtle">
+              <!-- Renderizado dinámico -->
+            </div>
+          </div>
+
+        </section>
+
+        <!-- COLUMNA DERECHA: INSPECTOR ACTIVO Y LIENZO DE EVALUACIÓN EN VIVO -->
+        <section class="order-1 lg:order-2 lg:col-span-7 lg:sticky lg:top-20 space-y-5" aria-label="Evaluación en vivo">
+
+          <!-- INSPECTOR DE PALETA ACTIVA, ROLES Y TIPOGRAFÍA -->
+          <div class="bg-white border border-border-subtle rounded-2xl overflow-hidden">
+
+            <!-- Cabecera de Paleta Activa y Modo de Aplicación -->
+            <div class="p-4 sm:p-5 space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span id="ui-active-palette-title" class="font-serif text-lg sm:text-xl font-bold text-on-surface">
+                    Combinación #190
+                  </span>
+                  <span id="ui-active-palette-meta" class="font-mono text-xs text-muted">
+                    3 colores
+                  </span>
+                </div>
+
+                <!-- Modos de aplicación cromática -->
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <button
+                    id="ui-apply-pure"
+                    onclick="uiSetColorApplyMode('pure')"
+                    class="px-2.5 py-1 rounded-md font-mono text-xs font-semibold bg-primary text-white transition-colors"
+                    title="Usa únicamente los colores de la paleta seleccionada"
+                  >
+                    Paleta pura
+                  </button>
+                  <button
+                    id="ui-apply-paper"
+                    onclick="uiSetColorApplyMode('paper')"
+                    class="px-2.5 py-1 rounded-md font-mono text-xs text-muted hover:text-on-surface border border-border-subtle transition-colors"
+                    title="Usa papel claro (#fcf9f8) y tinta oscura (#1c1b1b) con la paleta como acentos"
+                  >
+                    Papel + Paleta
+                  </button>
+                  <button
+                    id="ui-apply-dark"
+                    onclick="uiSetColorApplyMode('dark')"
+                    class="px-2.5 py-1 rounded-md font-mono text-xs text-muted hover:text-on-surface border border-border-subtle transition-colors"
+                    title="Usa fondo oscuro (#141413) y texto claro con la paleta como acentos"
+                  >
+                    Oscuro + Paleta
+                  </button>
+                </div>
+              </div>
+
+              <!-- Muestras de color naturales con HEX y RGB copiables -->
+              <div id="ui-active-swatches" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                <!-- Renderizado dinámico -->
+              </div>
+            </div>
+
+            <!-- Roles Asignados + Evaluación de Contraste WCAG -->
+            <div class="px-4 sm:px-5 py-3 border-t border-border-subtle flex flex-wrap items-center justify-between gap-3">
+              <div class="flex flex-wrap items-center gap-1.5" id="ui-role-controls">
+                <!-- Botones para rotar color por rol (Fondo, Títulos, Cuerpo, Acento) -->
+              </div>
+
+              <div class="flex items-center gap-2 flex-wrap">
+                <button
+                  onclick="uiRotatePaletteRoles()"
+                  class="px-2.5 py-1 rounded-md border border-border-subtle hover:border-primary font-mono text-xs text-on-surface hover:text-primary flex items-center gap-1 transition-colors"
+                  title="Probar otra distribución de los colores de la paleta"
+                >
+                  <span class="material-symbols-outlined text-[14px]">autorenew</span>
+                  <span>Rotar roles</span>
+                </button>
+                <div id="ui-contrast-status" class="font-mono text-xs flex items-center gap-1.5">
+                  <!-- Calculado en vivo -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Controles Tipográficos Activos (Títulos y Cuerpo) -->
+            <div class="px-4 sm:px-5 py-3.5 border-t border-border-subtle grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Control Títulos -->
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-1.5 min-w-0">
+                    <span class="font-mono text-xs text-muted uppercase">Títulos:</span>
+                    <button
+                      onclick="uiFocusFontExplorer('heading')"
+                      id="ui-ctrl-heading-name"
+                      class="font-sans text-xs font-semibold text-primary hover:underline truncate"
+                      title="Cambiar tipografía de títulos"
+                    >
+                      Fraunces
+                    </button>
+                    <a
+                      id="ui-ctrl-heading-link"
+                      href="https://fonts.google.com/specimen/Fraunces"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-muted hover:text-primary shrink-0"
+                      title="Abrir ficha en Google Fonts"
+                    >
+                      <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                    </a>
+                  </div>
+                  <select
+                    id="ui-ctrl-heading-weight"
+                    onchange="uiSetHeadingWeight(this.value)"
+                    aria-label="Peso de títulos"
+                    class="font-mono text-xs bg-background border border-border-subtle rounded px-1.5 py-0.5 text-on-surface focus:outline-none focus:border-primary"
+                  ></select>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input
+                    id="ui-ctrl-heading-size"
+                    type="range"
+                    min="22"
+                    max="56"
+                    value="36"
+                    oninput="uiSetHeadingSize(this.value)"
+                    aria-label="Tamaño de títulos"
+                    class="ui-range flex-1"
+                  />
+                  <span id="ui-ctrl-heading-size-val" class="font-mono text-xs text-muted w-9 text-right">36px</span>
+                </div>
+              </div>
+
+              <!-- Control Cuerpo -->
+              <div id="ui-ctrl-body-wrap" class="space-y-1.5">
+                <div class="flex items-center justify-between gap-2">
+                  <div class="flex items-center gap-1.5 min-w-0">
+                    <span class="font-mono text-xs text-muted uppercase">Cuerpo:</span>
+                    <button
+                      onclick="uiFocusFontExplorer('body')"
+                      id="ui-ctrl-body-name"
+                      class="font-sans text-xs font-semibold text-primary hover:underline truncate"
+                      title="Cambiar tipografía de cuerpo"
+                    >
+                      Plus Jakarta Sans
+                    </button>
+                    <a
+                      id="ui-ctrl-body-link"
+                      href="https://fonts.google.com/specimen/Plus+Jakarta+Sans"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-muted hover:text-primary shrink-0"
+                      title="Abrir ficha en Google Fonts"
+                    >
+                      <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                    </a>
+                  </div>
+                  <select
+                    id="ui-ctrl-body-weight"
+                    onchange="uiSetBodyWeight(this.value)"
+                    aria-label="Peso de cuerpo"
+                    class="font-mono text-xs bg-background border border-border-subtle rounded px-1.5 py-0.5 text-on-surface focus:outline-none focus:border-primary"
+                  ></select>
+                </div>
+                <div class="flex items-center gap-2">
+                  <input
+                    id="ui-ctrl-body-size"
+                    type="range"
+                    min="13"
+                    max="22"
+                    value="16"
+                    oninput="uiSetBodySize(this.value)"
+                    aria-label="Tamaño de cuerpo"
+                    class="ui-range flex-1"
+                  />
+                  <span id="ui-ctrl-body-size-val" class="font-mono text-xs text-muted w-9 text-right">16px</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LIENZO DE EVALUACIÓN EN VIVO (TEXTO EDITABLE SOBRE PALETA + FUENTES) -->
+          <div id="ui-preview-card" class="rounded-2xl border border-border-subtle overflow-hidden shadow-editorial bg-white">
+            <!-- Barra superior de frases prediseñadas -->
+            <div class="px-4 py-2.5 bg-white border-b border-border-subtle flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-1 overflow-x-auto no-scrollbar" id="ui-preset-buttons">
+                <button onclick="uiSetPreset('editorial')" data-preset="editorial" class="ui-preset-btn px-2.5 py-1 rounded-md font-mono text-xs font-semibold bg-primary text-white transition-colors whitespace-nowrap">
+                  Editorial
+                </button>
+                <button onclick="uiSetPreset('pangram')" data-preset="pangram" class="ui-preset-btn px-2.5 py-1 rounded-md font-mono text-xs text-muted hover:text-on-surface transition-colors whitespace-nowrap">
+                  Quick Fox / Pangrama
+                </button>
+                <button onclick="uiSetPreset('interface')" data-preset="interface" class="ui-preset-btn px-2.5 py-1 rounded-md font-mono text-xs text-muted hover:text-on-surface transition-colors whitespace-nowrap">
+                  Interfaz UI
+                </button>
+                <button onclick="uiSetPreset('scale')" data-preset="scale" class="ui-preset-btn px-2.5 py-1 rounded-md font-mono text-xs text-muted hover:text-on-surface transition-colors whitespace-nowrap">
+                  Jerarquía
+                </button>
+              </div>
+
+              <div class="flex items-center gap-2.5 shrink-0">
+                <span class="hidden sm:inline font-mono text-xs text-muted">Haz clic en el texto para escribir</span>
+                <button
+                  onclick="uiResetPresetText()"
+                  class="inline-flex items-center gap-1 font-mono text-xs text-primary hover:underline"
+                  title="Restaurar frase prediseñada original"
+                >
+                  <span class="material-symbols-outlined text-[14px]">restart_alt</span>
+                  <span>Restaurar</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Superficie dinámica renderizada con la paleta y fuentes elegidas -->
+            <div id="ui-preview-surface" class="p-6 sm:p-8 lg:p-10 transition-colors duration-200 min-h-[340px]">
+              <!-- Renderizado dinámico del espécimen editable -->
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+
     <!-- ESTADO VACÍO (Si la búsqueda no da resultados) -->
     <div id="empty-state" class="hidden py-16 text-center max-w-md mx-auto">
       <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3">
@@ -752,7 +1219,9 @@
         ejercicios: [],
         recursos: [],
         materiales: [],
-        autores: []
+        autores: [],
+        paletas: { colors: [], combinations: [] },
+        fuentes: []
       },
       graph: {
         simulation: null,
@@ -766,7 +1235,7 @@
 
     // Inicializar datos locales
     if (window.AI_REPOSITORY_DATA) {
-      AppState.data = window.AI_REPOSITORY_DATA;
+      AppState.data = Object.assign({}, AppState.data, window.AI_REPOSITORY_DATA);
     }
 
     // Inicialización del DOM
@@ -781,7 +1250,10 @@
 
     function handleHashRouting() {
       const hash = (window.location.hash || '').toLowerCase();
-      if (hash === '#ejercicios' || hash.startsWith('#ej-')) {
+      const secretHashes = ['#ui', '#criterio', '#estetica', '#diseno', '#paletas', '#fuentes'];
+      if (secretHashes.includes(hash)) {
+        switchTab('ui');
+      } else if (hash === '#ejercicios' || hash.startsWith('#ej-')) {
         switchTab('ejercicios');
         if (hash.startsWith('#ej-')) {
           const ejId = hash.replace('#', '');
@@ -802,12 +1274,14 @@
 
     async function loadDynamicData() {
       try {
-        const [cRes, eRes, rRes, mRes, aRes] = await Promise.allSettled([
+        const [cRes, eRes, rRes, mRes, aRes, pRes, fRes] = await Promise.allSettled([
           fetch('data/conceptos.json', { cache: 'no-store' }).then(r => r.json()),
           fetch('data/ejercicios.json', { cache: 'no-store' }).then(r => r.json()),
           fetch('data/recursos.json', { cache: 'no-store' }).then(r => r.json()),
           fetch('data/materiales.json', { cache: 'no-store' }).then(r => r.json()),
-          fetch('data/autores.json', { cache: 'no-store' }).then(r => r.json())
+          fetch('data/autores.json', { cache: 'no-store' }).then(r => r.json()),
+          fetch('data/paletas.json', { cache: 'no-store' }).then(r => r.json()),
+          fetch('data/fuentes.json', { cache: 'no-store' }).then(r => r.json())
         ]);
 
         if (cRes.status === 'fulfilled') AppState.data.conceptos = cRes.value;
@@ -815,6 +1289,8 @@
         if (rRes.status === 'fulfilled') AppState.data.recursos = rRes.value;
         if (mRes.status === 'fulfilled') AppState.data.materiales = mRes.value;
         if (aRes.status === 'fulfilled') AppState.data.autores = aRes.value;
+        if (pRes.status === 'fulfilled') AppState.data.paletas = pRes.value;
+        if (fRes.status === 'fulfilled') AppState.data.fuentes = fRes.value;
 
         updateBadgesCount();
         renderActiveView();
@@ -837,13 +1313,38 @@
       AppState.activeTab = tabId;
       AppState.activeCategoryFilter = 'all';
 
+      const isSecretUI = tabId === 'ui';
+      const heroEl = document.getElementById('main-hero-section');
+      const navEl = document.getElementById('main-tabs-nav');
+      const controlsEl = document.getElementById('controls-bar');
+      const headerSearchEl = document.getElementById('header-search-wrap');
+      const emptyEl = document.getElementById('empty-state');
+      const uiViewEl = document.getElementById('view-ui');
+
+      if (heroEl) heroEl.classList.toggle('hidden', isSecretUI);
+      if (navEl) navEl.classList.toggle('hidden', isSecretUI);
+      if (controlsEl) controlsEl.classList.toggle('hidden', isSecretUI);
+      if (headerSearchEl) {
+        if (isSecretUI) headerSearchEl.classList.add('sm:hidden');
+        else headerSearchEl.classList.remove('sm:hidden');
+      }
+      if (emptyEl && isSecretUI) emptyEl.classList.add('hidden');
+      if (uiViewEl) {
+        uiViewEl.classList.toggle('hidden', !isSecretUI);
+        uiViewEl.classList.toggle('block', isSecretUI);
+      }
+
+      document.title = isSecretUI
+        ? 'Estudio de Criterio UI — Álvaro Contreras Barrios'
+        : 'Recursos — Álvaro Contreras Barrios';
+
       const tabs = ['conceptos', 'ejercicios', 'recursos', 'materiales'];
       tabs.forEach(t => {
         const btn = document.getElementById(`tab-btn-${t}`);
         const view = document.getElementById(`view-${t}`);
         const badge = document.getElementById(`badge-count-${t}`);
 
-        if (t === tabId) {
+        if (t === tabId && !isSecretUI) {
           btn.className = 'tab-button px-4 py-1.5 rounded-full flex items-center gap-2 transition-all bg-primary text-white shadow-sm font-semibold';
           btn.setAttribute('aria-selected', 'true');
           badge.className = 'ml-0.5 text-xs font-mono bg-white/20 text-white px-1.5 py-0.5 rounded-full font-bold';
@@ -857,6 +1358,11 @@
           view.classList.remove('block');
         }
       });
+
+      if (isSecretUI) {
+        renderActiveView();
+        return;
+      }
 
       // Mostrar selector de modo solo en conceptos
       const modeSelector = document.getElementById('concept-view-mode-selector');
@@ -971,6 +1477,7 @@
       } else if (AppState.activeTab === 'ejercicios') renderEjercicios();
       else if (AppState.activeTab === 'recursos') renderRecursos();
       else if (AppState.activeTab === 'materiales') renderMateriales();
+      else if (AppState.activeTab === 'ui') initOrRenderUIStudio();
     }
 
     // ==========================================
@@ -2018,7 +2525,15 @@
           return;
         }
 
-        if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+        const active = document.activeElement;
+        const isTyping = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable);
+
+        if (e.key === 'Escape' && active && active.isContentEditable) {
+          active.blur();
+          return;
+        }
+
+        if (e.key === '/' && !isTyping && AppState.activeTab !== 'ui') {
           e.preventDefault();
           const input = document.getElementById('global-search-input');
           input.focus();
@@ -2204,6 +2719,1128 @@
         toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
         toast.classList.remove('opacity-100', 'translate-y-0');
       }, 3500);
+    }
+
+    // ==========================================
+    // 5. ESTUDIO SECRETO DE CRITERIO UI (PALETAS + FUENTES)
+    // ==========================================
+    const UI_PRESET_DEFAULTS = {
+      editorial: {
+        tag: 'Criterio Visual · Estudio',
+        heading: 'El criterio estético convierte una herramienta común en una obra memorable.',
+        lead: 'Evalúa cómo dialogan tus tipografías y una paleta histórica antes de diseñar o escribir una línea de código.',
+        body: 'La inteligencia artificial puede proponer decenas de variaciones en segundos, pero solo la curaduría humana distingue la proporción, el ritmo de lectura y el contraste justo. Haz clic sobre cualquier párrafo para escribir el texto real de tu proyecto.',
+        cta: 'Explorar propuesta',
+        link: 'Conocer el enfoque'
+      },
+      pangram: {
+        heading: 'The quick brown fox jumps over the lazy dog.',
+        lead: 'El veloz murciélago hindú comía feliz cardillo y kiwi.',
+        body: 'La cigüeña tocaba el saxofón detrás del palenque de paja. Benjamín pidió una bebida de kiwi y fresa; Noé, sin vergüenza, la más exquisita champaña del menú.',
+        alphabet: 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ · abcdefghijklmnñopqrstuvwxyz',
+        numerals: '0123456789 · ¿¡$%&@#?! · áéíóúü ÁÉÍÓÚÜ'
+      },
+      interface: {
+        brand: 'Taller Austral',
+        nav1: 'Catálogo',
+        nav2: 'Archivo',
+        nav3: 'Contacto',
+        heading: 'Diseña con intención, no por defecto.',
+        body: 'Compara títulos, párrafos y botones sobre combinaciones cromáticas reales. Un sistema sólido equilibra carácter tipográfico, aire entre bloques y legibilidad sostenida en cualquier pantalla.',
+        badge1: 'Lectura verificada',
+        badge2: 'Contraste real',
+        cta: 'Comenzar ahora',
+        cta2: 'Ver detalles'
+      },
+      scale: {
+        h1: 'Titular principal de nivel uno',
+        h2: 'Subtítulo de sección para marcar el ritmo',
+        h3: 'Encabezado de apoyo o ficha técnica',
+        body: 'Párrafo de lectura continua diseñado para comprobar la densidad del trazo, la apertura de las contraformas y la comodidad visual tras varias líneas seguidas.',
+        quote: '«Los detalles invisibles se acumulan hasta producir una pieza que se siente inevitable.»',
+        cta: 'Acción principal'
+      }
+    };
+
+    const UIState = {
+      initialized: false,
+      listenersAttached: false,
+      dataVersion: '',
+      explorerTab: 'paletas',
+      paletteSubmode: 'combos',
+      paletteSearch: '',
+      paletteSizeFilter: 'all',
+      paletteToneFilter: 'all',
+      selectedColorFilterId: null,
+      selectedComboId: 190,
+      colorApplyMode: 'pure',
+      roleIndices: { bg: 0, text: 2, heading: 2, accent: 1 },
+      fontMode: 'pair',
+      fontSearch: '',
+      fontCategoryFilter: 'all',
+      headingFontName: 'Fraunces',
+      headingWeight: 700,
+      headingSize: 36,
+      bodyFontName: 'Plus Jakarta Sans',
+      bodyWeight: 400,
+      bodySize: 16,
+      activePreset: 'editorial',
+      editedTexts: {},
+      loadedFonts: new Set(),
+      queuedFonts: new Map(),
+      flushTimer: null,
+      fontObserver: null
+    };
+
+    function uiLuminance(rgb) {
+      if (!rgb || rgb.length < 3) return 0.5;
+      const a = rgb.map(v => {
+        const s = v / 255;
+        return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+      });
+      return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+    }
+
+    function uiContrast(rgb1, rgb2) {
+      const l1 = uiLuminance(rgb1);
+      const l2 = uiLuminance(rgb2);
+      return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+    }
+
+    function uiGetFontObj(name) {
+      const fonts = AppState.data.fuentes || [];
+      return fonts.find(f => f.name === name) || fonts[0] || null;
+    }
+
+    function uiFontCssFallback(category) {
+      if (category === 'Serif') return 'Georgia, serif';
+      if (category === 'Monospace') return 'ui-monospace, SFMono-Regular, monospace';
+      if (category === 'Handwriting') return 'cursive';
+      return '-apple-system, BlinkMacSystemFont, sans-serif';
+    }
+
+    function uiEnsureFontsLoaded(fontObjs) {
+      const toLoad = [];
+      (fontObjs || []).forEach(f => {
+        if (f && f.name && !UIState.loadedFonts.has(f.name)) {
+          UIState.loadedFonts.add(f.name);
+          toLoad.push(f);
+        }
+      });
+      if (!toLoad.length) return;
+      for (let i = 0; i < toLoad.length; i += 12) {
+        const chunk = toLoad.slice(i, i + 12);
+        const params = chunk.map(f => `family=${f.cssFamilyParam}`).join('&');
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `https://fonts.googleapis.com/css2?${params}&display=swap`;
+        document.head.appendChild(link);
+      }
+    }
+
+    function uiQueueFontLoad(fontObj) {
+      if (!fontObj || UIState.loadedFonts.has(fontObj.name)) return;
+      UIState.queuedFonts.set(fontObj.name, fontObj);
+      clearTimeout(UIState.flushTimer);
+      UIState.flushTimer = setTimeout(() => {
+        const batch = Array.from(UIState.queuedFonts.values());
+        UIState.queuedFonts.clear();
+        uiEnsureFontsLoaded(batch);
+      }, 60);
+    }
+
+    function uiGetComboColors(combo) {
+      const allColors = (AppState.data.paletas && AppState.data.paletas.colors) || [];
+      if (!combo || !Array.isArray(combo.colorIds)) return [];
+      return combo.colorIds.map(id => allColors[id]).filter(Boolean);
+    }
+
+    function uiGetActiveCombo() {
+      const combos = (AppState.data.paletas && AppState.data.paletas.combinations) || [];
+      return combos.find(c => c.id === UIState.selectedComboId) || combos[0] || null;
+    }
+
+    function uiComputeDefaultRoleIndices(paletteColors) {
+      const len = paletteColors.length;
+      if (len === 0) return { bg: 0, text: 0, heading: 0, accent: 0 };
+      if (len === 1) return { bg: 0, text: 0, heading: 0, accent: 0 };
+
+      let bestI = 0, bestJ = 1, bestRatio = -1;
+      for (let i = 0; i < len; i++) {
+        for (let j = i + 1; j < len; j++) {
+          const ratio = uiContrast(paletteColors[i].rgb, paletteColors[j].rgb);
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestI = i;
+            bestJ = j;
+          }
+        }
+      }
+
+      const lumI = uiLuminance(paletteColors[bestI].rgb);
+      const lumJ = uiLuminance(paletteColors[bestJ].rgb);
+      const bg = lumI >= lumJ ? bestI : bestJ;
+      const text = bg === bestI ? bestJ : bestI;
+
+      let accent = -1;
+      for (let k = 0; k < len; k++) {
+        if (k !== bg && k !== text) {
+          accent = k;
+          break;
+        }
+      }
+      if (accent === -1) accent = text;
+
+      let heading = text;
+      if (len >= 3 && accent !== text) {
+        const headingRatio = uiContrast(paletteColors[accent].rgb, paletteColors[bg].rgb);
+        if (headingRatio >= 4.2) {
+          heading = accent;
+        }
+      }
+
+      return { bg, text, heading, accent };
+    }
+
+    function uiResolveAppliedColors() {
+      const combo = uiGetActiveCombo();
+      const paletteColors = uiGetComboColors(combo);
+      const fallback = { name: 'Papel', hex: '#fcf9f8', rgb: [252, 249, 248] };
+      const getAt = (idx) => paletteColors[idx % Math.max(1, paletteColors.length)] || fallback;
+
+      if (UIState.colorApplyMode === 'paper') {
+        const paperBg = { name: 'Papel cálido', hex: '#fcf9f8', rgb: [252, 249, 248] };
+        const paperText = { name: 'Carbón', hex: '#1c1b1b', rgb: [28, 27, 27] };
+        const heading = getAt(UIState.roleIndices.heading);
+        let accent = getAt(UIState.roleIndices.accent);
+        if (paletteColors.length >= 2 && accent.hex === heading.hex) {
+          accent = paletteColors.find(c => c.hex !== heading.hex) || accent;
+        }
+        return { bg: paperBg, text: paperText, heading, accent, paletteColors };
+      }
+
+      if (UIState.colorApplyMode === 'dark') {
+        const darkBg = { name: 'Carbón profundo', hex: '#141413', rgb: [20, 20, 19] };
+        const darkText = { name: 'Marfil claro', hex: '#f4f1ea', rgb: [244, 241, 234] };
+        const heading = getAt(UIState.roleIndices.heading);
+        let accent = getAt(UIState.roleIndices.accent);
+        if (paletteColors.length >= 2 && accent.hex === heading.hex) {
+          accent = paletteColors.find(c => c.hex !== heading.hex) || accent;
+        }
+        return { bg: darkBg, text: darkText, heading, accent, paletteColors };
+      }
+
+      return {
+        bg: getAt(UIState.roleIndices.bg),
+        text: getAt(UIState.roleIndices.text),
+        heading: getAt(UIState.roleIndices.heading),
+        accent: getAt(UIState.roleIndices.accent),
+        paletteColors
+      };
+    }
+
+    function uiPickBestButtonInk(accentRgb, paletteColors) {
+      const white = { hex: '#ffffff', rgb: [255, 255, 255] };
+      const dark = { hex: '#1c1b1b', rgb: [28, 27, 27] };
+      if (UIState.colorApplyMode === 'pure' && paletteColors.length) {
+        let best = null, bestC = 0;
+        paletteColors.forEach(c => {
+          const r = uiContrast(c.rgb, accentRgb);
+          if (r > bestC) { bestC = r; best = c; }
+        });
+        if (best && bestC >= 4.5) return best.hex;
+      }
+      return uiContrast(white.rgb, accentRgb) >= uiContrast(dark.rgb, accentRgb) ? white.hex : dark.hex;
+    }
+
+    function initOrRenderUIStudio() {
+      const paletas = AppState.data.paletas || { colors: [], combinations: [] };
+      const fuentes = AppState.data.fuentes || [];
+      const version = `${(paletas.combinations || []).length}-${fuentes.length}`;
+
+      if (!UIState.listenersAttached) {
+        UIState.listenersAttached = true;
+        const palSearch = document.getElementById('ui-palette-search');
+        const fontSearch = document.getElementById('ui-font-search');
+        const previewSurface = document.getElementById('ui-preview-surface');
+
+        if (palSearch) {
+          palSearch.addEventListener('input', (e) => {
+            UIState.paletteSearch = e.target.value;
+            uiRenderPalettesPane();
+          });
+        }
+        if (fontSearch) {
+          fontSearch.addEventListener('input', (e) => {
+            UIState.fontSearch = e.target.value;
+            uiRenderFontsList();
+          });
+        }
+        if (previewSurface) {
+          previewSurface.addEventListener('input', (e) => {
+            const el = e.target.closest('[data-ui-editable]');
+            if (!el) return;
+            const key = el.getAttribute('data-ui-editable');
+            if (!UIState.editedTexts[UIState.activePreset]) {
+              UIState.editedTexts[UIState.activePreset] = {};
+            }
+            UIState.editedTexts[UIState.activePreset][key] = el.innerText;
+          });
+          previewSurface.addEventListener('paste', (e) => {
+            const el = e.target.closest('[data-ui-editable]');
+            if (!el) return;
+            e.preventDefault();
+            const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+            document.execCommand('insertText', false, text);
+          });
+        }
+      }
+
+      if (!UIState.initialized || UIState.dataVersion !== version) {
+        UIState.dataVersion = version;
+        if (!UIState.initialized) {
+          UIState.initialized = true;
+          const combo = uiGetActiveCombo();
+          if (combo) {
+            UIState.roleIndices = uiComputeDefaultRoleIndices(uiGetComboColors(combo));
+          }
+          const hFont = uiGetFontObj(UIState.headingFontName);
+          const bFont = uiGetFontObj(UIState.bodyFontName);
+          if (hFont) UIState.headingFontName = hFont.name;
+          if (bFont) UIState.bodyFontName = bFont.name;
+          uiEnsureFontsLoaded([hFont, bFont]);
+        }
+        uiRenderPaletteFilters();
+        uiRenderPalettesPane();
+        uiRenderFontCategoryFilters();
+        uiRenderFontsList();
+        uiRenderInspector();
+        uiRenderPreviewCanvas();
+      }
+    }
+
+    function uiExitStudio() {
+      window.location.hash = '#conceptos';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function uiSetExplorerTab(tab) {
+      UIState.explorerTab = tab;
+      const tabPal = document.getElementById('ui-explorer-tab-paletas');
+      const tabFnt = document.getElementById('ui-explorer-tab-fuentes');
+      const panePal = document.getElementById('ui-pane-paletas');
+      const paneFnt = document.getElementById('ui-pane-fuentes');
+
+      if (tab === 'paletas') {
+        tabPal.className = 'px-4 py-3 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 border-b-2 border-primary text-primary bg-white transition-colors';
+        tabFnt.className = 'px-4 py-3 text-xs sm:text-sm font-medium flex items-center justify-center gap-2 border-b-2 border-transparent text-muted hover:text-on-surface bg-white transition-colors';
+        panePal.classList.remove('hidden');
+        paneFnt.classList.add('hidden');
+      } else {
+        tabFnt.className = 'px-4 py-3 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 border-b-2 border-primary text-primary bg-white transition-colors';
+        tabPal.className = 'px-4 py-3 text-xs sm:text-sm font-medium flex items-center justify-center gap-2 border-b-2 border-transparent text-muted hover:text-on-surface bg-white transition-colors';
+        paneFnt.classList.remove('hidden');
+        panePal.classList.add('hidden');
+        uiRenderFontsList();
+      }
+    }
+
+    function uiSetPaletteSubmode(mode) {
+      UIState.paletteSubmode = mode;
+      const btnCombos = document.getElementById('ui-submode-combos');
+      const btnColors = document.getElementById('ui-submode-colors');
+      const filtersWrap = document.getElementById('ui-palette-filters-wrap');
+
+      if (mode === 'combos') {
+        btnCombos.className = 'px-2.5 py-1 rounded-md font-mono text-xs font-semibold bg-primary text-white transition-colors';
+        btnColors.className = 'px-2.5 py-1 rounded-md font-mono text-xs text-muted hover:text-on-surface transition-colors';
+        filtersWrap.classList.remove('hidden');
+      } else {
+        btnColors.className = 'px-2.5 py-1 rounded-md font-mono text-xs font-semibold bg-primary text-white transition-colors';
+        btnCombos.className = 'px-2.5 py-1 rounded-md font-mono text-xs text-muted hover:text-on-surface transition-colors';
+        filtersWrap.classList.add('hidden');
+      }
+      uiRenderPalettesPane();
+    }
+
+    function uiRenderPaletteFilters() {
+      const combos = (AppState.data.paletas && AppState.data.paletas.combinations) || [];
+      const sizeContainer = document.getElementById('ui-palette-size-filters');
+      const toneContainer = document.getElementById('ui-palette-tone-filters');
+
+      const sizeOpts = [
+        { id: 'all', label: `Todas (${combos.length})` },
+        { id: '2', label: '2 colores' },
+        { id: '3', label: '3 colores' },
+        { id: '4', label: '4 colores' },
+        { id: 'high-contrast', label: 'Alto contraste' }
+      ];
+
+      sizeContainer.innerHTML = sizeOpts.map(opt => {
+        const active = UIState.paletteSizeFilter === opt.id;
+        return `<button onclick="uiSetPaletteSizeFilter('${opt.id}')" class="px-2.5 py-1 rounded-full font-mono text-xs whitespace-nowrap transition-colors ${
+          active ? 'bg-primary text-white font-semibold' : 'bg-background text-muted hover:text-on-surface border border-border-subtle'
+        }">${opt.label}</button>`;
+      }).join('');
+
+      const toneOpts = [
+        { id: 'all', label: 'Todos los tonos' },
+        { id: 'azules', label: 'Azules' },
+        { id: 'verdes', label: 'Verdes' },
+        { id: 'rojos', label: 'Rojos' },
+        { id: 'naranjas', label: 'Naranjas' },
+        { id: 'amarillos', label: 'Amarillos' },
+        { id: 'violetas', label: 'Violetas' },
+        { id: 'neutros', label: 'Neutros' }
+      ];
+
+      toneContainer.innerHTML = toneOpts.map(opt => {
+        const active = UIState.paletteToneFilter === opt.id;
+        return `<button onclick="uiSetPaletteToneFilter('${opt.id}')" class="px-2.5 py-1 rounded-full font-mono text-xs whitespace-nowrap transition-colors ${
+          active ? 'bg-on-surface text-white font-semibold' : 'bg-white text-muted hover:text-on-surface border border-border-subtle'
+        }">${opt.label}</button>`;
+      }).join('');
+    }
+
+    function uiSetPaletteSizeFilter(val) {
+      UIState.paletteSizeFilter = val;
+      uiRenderPaletteFilters();
+      uiRenderPalettesPane();
+    }
+
+    function uiSetPaletteToneFilter(val) {
+      UIState.paletteToneFilter = val;
+      uiRenderPaletteFilters();
+      uiRenderPalettesPane();
+    }
+
+    function uiClearColorFilter() {
+      UIState.selectedColorFilterId = null;
+      uiRenderPalettesPane();
+    }
+
+    function uiFilterByColorId(colorId) {
+      UIState.selectedColorFilterId = colorId;
+      uiSetPaletteSubmode('combos');
+    }
+
+    function uiGetFilteredCombos() {
+      const paletas = AppState.data.paletas || { colors: [], combinations: [] };
+      const allColors = paletas.colors || [];
+      const combos = paletas.combinations || [];
+      const q = UIState.paletteSearch.trim().toLowerCase().replace(/^#/, '');
+
+      return combos.filter(c => {
+        if (UIState.selectedColorFilterId !== null && !c.colorIds.includes(UIState.selectedColorFilterId)) {
+          return false;
+        }
+        if (UIState.paletteSizeFilter === 'high-contrast') {
+          if (c.maxContrast < 4.5) return false;
+        } else if (UIState.paletteSizeFilter !== 'all') {
+          if (String(c.size) !== UIState.paletteSizeFilter) return false;
+        }
+        if (UIState.paletteToneFilter !== 'all') {
+          if (!c.tones || !c.tones.includes(UIState.paletteToneFilter)) return false;
+        }
+        if (q) {
+          const idMatch = String(c.id) === q || String(c.id).padStart(3, '0').includes(q);
+          const colorMatch = c.colorIds.some(cid => {
+            const col = allColors[cid];
+            if (!col) return false;
+            return col.name.toLowerCase().includes(q) || col.hex.toLowerCase().includes(q);
+          });
+          if (!idMatch && !colorMatch) return false;
+        }
+        return true;
+      });
+    }
+
+    function uiRenderPalettesPane() {
+      const container = document.getElementById('ui-palettes-list');
+      const countEl = document.getElementById('ui-palette-count');
+      const colorBanner = document.getElementById('ui-active-color-filter');
+      const paletas = AppState.data.paletas || { colors: [], combinations: [] };
+      const allColors = paletas.colors || [];
+
+      if (UIState.selectedColorFilterId !== null && allColors[UIState.selectedColorFilterId]) {
+        const c = allColors[UIState.selectedColorFilterId];
+        colorBanner.classList.remove('hidden');
+        document.getElementById('ui-active-color-dot').style.backgroundColor = c.hex;
+        document.getElementById('ui-active-color-label').textContent = `Con ${c.name} (${c.hex})`;
+      } else {
+        colorBanner.classList.add('hidden');
+      }
+
+      if (UIState.paletteSubmode === 'colors') {
+        const q = UIState.paletteSearch.trim().toLowerCase();
+        const filteredColors = allColors.filter(c => {
+          if (!q) return true;
+          return c.name.toLowerCase().includes(q) || c.hex.toLowerCase().includes(q) || String(c.rgb.join(',')).includes(q);
+        });
+        countEl.textContent = `${filteredColors.length} de ${allColors.length}`;
+        if (filteredColors.length === 0) {
+          container.className = 'max-h-[540px] overflow-y-auto p-6 text-center text-xs text-muted';
+          container.innerHTML = 'No hay colores que coincidan con la búsqueda.';
+          return;
+        }
+        container.className = 'max-h-[540px] overflow-y-auto p-4 grid grid-cols-2 sm:grid-cols-3 gap-2.5';
+        container.innerHTML = filteredColors.map(c => `
+          <button
+            onclick="uiFilterByColorId(${c.id})"
+            class="text-left rounded-xl border border-border-subtle hover:border-primary overflow-hidden bg-white transition-all group"
+            title="Ver combinaciones que incluyen ${escapeHtml(c.name)}"
+          >
+            <div class="h-12 w-full" style="background-color: ${c.hex};"></div>
+            <div class="p-2">
+              <div class="font-sans text-xs font-medium text-on-surface truncate group-hover:text-primary">${escapeHtml(c.name)}</div>
+              <div class="font-mono text-xs text-muted">${c.hex}</div>
+            </div>
+          </button>
+        `).join('');
+        return;
+      }
+
+      const filtered = uiGetFilteredCombos();
+      countEl.textContent = `${filtered.length} de ${(paletas.combinations || []).length}`;
+
+      if (filtered.length === 0) {
+        container.className = 'max-h-[540px] overflow-y-auto p-6 text-center text-xs text-muted';
+        container.innerHTML = 'No hay paletas que coincidan con los filtros seleccionados.';
+        return;
+      }
+
+      container.className = 'max-h-[540px] overflow-y-auto p-4 grid grid-cols-2 gap-3';
+      container.innerHTML = filtered.map(c => {
+        const colors = uiGetComboColors(c);
+        const isSelected = c.id === UIState.selectedComboId;
+        const swatchesHtml = colors.map(col =>
+          `<span class="flex-1 h-full" style="background-color: ${col.hex};" title="${escapeHtml(col.name)} (${col.hex})"></span>`
+        ).join('');
+        const contrastBadge = c.maxContrast >= 4.5
+          ? '<span class="font-mono text-xs text-primary font-semibold" title="Incluye par con contraste AA para texto">AA</span>'
+          : '';
+
+        return `
+          <button
+            onclick="uiSelectPalette(${c.id})"
+            data-combo-id="${c.id}"
+            class="text-left rounded-xl border p-2 transition-all bg-white ${
+              isSelected ? 'border-primary ring-2 ring-primary' : 'border-border-subtle hover:border-primary/60'
+            }"
+          >
+            <div class="h-11 w-full rounded-lg overflow-hidden flex border border-black/10">
+              ${swatchesHtml}
+            </div>
+            <div class="mt-1.5 flex items-center justify-between gap-1 px-0.5">
+              <span class="font-mono text-xs font-semibold text-on-surface">#${String(c.id).padStart(3, '0')}</span>
+              <span class="flex items-center gap-1.5 font-mono text-xs text-muted">
+                ${contrastBadge}
+                <span>${c.size}c</span>
+              </span>
+            </div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function uiSelectPalette(comboId) {
+      UIState.selectedComboId = comboId;
+      const combo = uiGetActiveCombo();
+      if (combo) {
+        UIState.roleIndices = uiComputeDefaultRoleIndices(uiGetComboColors(combo));
+      }
+      uiRenderPalettesPane();
+      uiRenderInspector();
+      uiRenderPreviewCanvas();
+    }
+
+    function uiRandomPalette() {
+      const pool = uiGetFilteredCombos();
+      const list = pool.length ? pool : ((AppState.data.paletas && AppState.data.paletas.combinations) || []);
+      if (!list.length) return;
+      const pick = list[Math.floor(Math.random() * list.length)];
+      uiSelectPalette(pick.id);
+      const activeBtn = document.querySelector(`[data-combo-id="${pick.id}"]`);
+      if (activeBtn) activeBtn.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+
+    function uiSetColorApplyMode(mode) {
+      UIState.colorApplyMode = mode;
+      uiRenderInspector();
+      uiRenderPreviewCanvas();
+    }
+
+    function uiCycleRoleColor(roleKey) {
+      const combo = uiGetActiveCombo();
+      const colors = uiGetComboColors(combo);
+      if (!colors.length) return;
+      UIState.roleIndices[roleKey] = (UIState.roleIndices[roleKey] + 1) % colors.length;
+      uiRenderInspector();
+      uiRenderPreviewCanvas();
+    }
+
+    function uiRotatePaletteRoles() {
+      const combo = uiGetActiveCombo();
+      const colors = uiGetComboColors(combo);
+      const len = colors.length;
+      if (len < 2) return;
+      if (UIState.colorApplyMode === 'pure') {
+        UIState.roleIndices = {
+          bg: (UIState.roleIndices.bg + 1) % len,
+          text: (UIState.roleIndices.text + 1) % len,
+          heading: (UIState.roleIndices.heading + 1) % len,
+          accent: (UIState.roleIndices.accent + 1) % len
+        };
+      } else {
+        UIState.roleIndices.heading = (UIState.roleIndices.heading + 1) % len;
+        UIState.roleIndices.accent = (UIState.roleIndices.accent + 1) % len;
+      }
+      uiRenderInspector();
+      uiRenderPreviewCanvas();
+    }
+
+    function uiRenderFontCategoryFilters() {
+      const fuentes = AppState.data.fuentes || [];
+      const container = document.getElementById('ui-font-category-filters');
+      const counts = {};
+      fuentes.forEach(f => { counts[f.category] = (counts[f.category] || 0) + 1; });
+
+      const opts = [
+        { id: 'all', label: `Todas (${fuentes.length})` },
+        { id: 'Sans Serif', label: `Sans (${counts['Sans Serif'] || 0})` },
+        { id: 'Serif', label: `Serif (${counts['Serif'] || 0})` },
+        { id: 'Display', label: `Display (${counts['Display'] || 0})` },
+        { id: 'Monospace', label: `Mono (${counts['Monospace'] || 0})` },
+        { id: 'Handwriting', label: `Script (${counts['Handwriting'] || 0})` }
+      ];
+
+      container.innerHTML = opts.map(opt => {
+        const active = UIState.fontCategoryFilter === opt.id;
+        return `<button onclick="uiSetFontCategoryFilter('${opt.id}')" class="px-2.5 py-1 rounded-full font-mono text-xs whitespace-nowrap transition-colors ${
+          active ? 'bg-primary text-white font-semibold' : 'bg-background text-muted hover:text-on-surface border border-border-subtle'
+        }">${opt.label}</button>`;
+      }).join('');
+    }
+
+    function uiSetFontCategoryFilter(cat) {
+      UIState.fontCategoryFilter = cat;
+      uiRenderFontCategoryFilters();
+      uiRenderFontsList();
+    }
+
+    function uiSetFontMode(mode) {
+      UIState.fontMode = mode;
+      const btnPair = document.getElementById('ui-mode-pair');
+      const btnSingle = document.getElementById('ui-mode-single');
+      const btnSwap = document.getElementById('ui-btn-swap-fonts');
+
+      if (mode === 'pair') {
+        btnPair.className = 'px-2.5 py-1 rounded-md font-mono text-xs font-semibold bg-primary text-white transition-colors';
+        btnSingle.className = 'px-2.5 py-1 rounded-md font-mono text-xs text-muted hover:text-on-surface transition-colors';
+        if (btnSwap) btnSwap.classList.remove('hidden');
+      } else {
+        btnSingle.className = 'px-2.5 py-1 rounded-md font-mono text-xs font-semibold bg-primary text-white transition-colors';
+        btnPair.className = 'px-2.5 py-1 rounded-md font-mono text-xs text-muted hover:text-on-surface transition-colors';
+        if (btnSwap) btnSwap.classList.add('hidden');
+      }
+      uiRenderFontsList();
+      uiRenderInspector();
+      uiRenderPreviewCanvas();
+    }
+
+    function uiFocusFontExplorer(role) {
+      uiSetExplorerTab('fuentes');
+      const activeName = role === 'body' && UIState.fontMode === 'pair' ? UIState.bodyFontName : UIState.headingFontName;
+      const el = document.querySelector(`[data-font-row="${CSS.escape(activeName)}"]`);
+      if (el) el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }
+
+    function uiSetHeadingFont(name) {
+      const f = uiGetFontObj(name);
+      if (!f) return;
+      UIState.headingFontName = f.name;
+      if (!f.weights.includes(UIState.headingWeight)) {
+        UIState.headingWeight = f.weights.includes(700) ? 700 : (f.weights[f.weights.length - 1] || 400);
+      }
+      if (UIState.fontMode === 'single') {
+        UIState.bodyFontName = f.name;
+        if (!f.weights.includes(UIState.bodyWeight)) {
+          UIState.bodyWeight = f.weights.includes(400) ? 400 : (f.weights[0] || 400);
+        }
+      }
+      uiEnsureFontsLoaded([f]);
+      uiSyncFontListButtonStates();
+      uiRenderInspector();
+      uiRenderPreviewCanvas();
+    }
+
+    function uiSetBodyFont(name) {
+      const f = uiGetFontObj(name);
+      if (!f) return;
+      UIState.bodyFontName = f.name;
+      if (!f.weights.includes(UIState.bodyWeight)) {
+        UIState.bodyWeight = f.weights.includes(400) ? 400 : (f.weights[0] || 400);
+      }
+      uiEnsureFontsLoaded([f]);
+      uiSyncFontListButtonStates();
+      uiRenderInspector();
+      uiRenderPreviewCanvas();
+    }
+
+    function uiSwapFonts() {
+      if (UIState.fontMode !== 'pair') return;
+      const prevH = UIState.headingFontName;
+      const prevB = UIState.bodyFontName;
+      UIState.headingFontName = prevB;
+      UIState.bodyFontName = prevH;
+      const hObj = uiGetFontObj(UIState.headingFontName);
+      const bObj = uiGetFontObj(UIState.bodyFontName);
+      if (hObj && !hObj.weights.includes(UIState.headingWeight)) {
+        UIState.headingWeight = hObj.weights.includes(700) ? 700 : (hObj.weights[hObj.weights.length - 1] || 400);
+      }
+      if (bObj && !bObj.weights.includes(UIState.bodyWeight)) {
+        UIState.bodyWeight = bObj.weights.includes(400) ? 400 : (bObj.weights[0] || 400);
+      }
+      uiSyncFontListButtonStates();
+      uiRenderInspector();
+      uiRenderPreviewCanvas();
+    }
+
+    function uiRandomFonts() {
+      const fuentes = AppState.data.fuentes || [];
+      if (!fuentes.length) return;
+      if (UIState.fontMode === 'single') {
+        const readable = fuentes.filter(f => f.category === 'Sans Serif' || f.category === 'Serif');
+        const pool = readable.length ? readable : fuentes;
+        const pick = pool[Math.floor(Math.random() * pool.length)];
+        uiSetHeadingFont(pick.name);
+        return;
+      }
+      const headingPool = fuentes.filter(f => f.category === 'Serif' || f.category === 'Display' || f.category === 'Sans Serif');
+      const bodyPool = fuentes.filter(f => f.category === 'Sans Serif' || f.category === 'Serif');
+      const hPick = headingPool[Math.floor(Math.random() * headingPool.length)];
+      let bPick = bodyPool[Math.floor(Math.random() * bodyPool.length)];
+      if (bPick.name === hPick.name && bodyPool.length > 1) {
+        bPick = bodyPool.find(f => f.name !== hPick.name) || bPick;
+      }
+      UIState.headingFontName = hPick.name;
+      UIState.bodyFontName = bPick.name;
+      UIState.headingWeight = hPick.weights.includes(700) ? 700 : (hPick.weights[hPick.weights.length - 1] || 400);
+      UIState.bodyWeight = bPick.weights.includes(400) ? 400 : (bPick.weights[0] || 400);
+      uiEnsureFontsLoaded([hPick, bPick]);
+      uiSyncFontListButtonStates();
+      uiRenderInspector();
+      uiRenderPreviewCanvas();
+    }
+
+    function uiRandomizeAll() {
+      uiRandomPalette();
+      uiRandomFonts();
+    }
+
+    function uiSetHeadingWeight(w) {
+      UIState.headingWeight = Number(w);
+      uiRenderPreviewCanvas();
+    }
+
+    function uiSetBodyWeight(w) {
+      UIState.bodyWeight = Number(w);
+      uiRenderPreviewCanvas();
+    }
+
+    function uiSetHeadingSize(px) {
+      UIState.headingSize = Number(px);
+      document.getElementById('ui-ctrl-heading-size-val').textContent = `${px}px`;
+      uiRenderPreviewCanvas();
+    }
+
+    function uiSetBodySize(px) {
+      UIState.bodySize = Number(px);
+      document.getElementById('ui-ctrl-body-size-val').textContent = `${px}px`;
+      uiRenderPreviewCanvas();
+    }
+
+    function uiRenderFontsList() {
+      const container = document.getElementById('ui-fonts-list');
+      const countEl = document.getElementById('ui-font-count');
+      const fuentes = AppState.data.fuentes || [];
+      const q = UIState.fontSearch.trim().toLowerCase();
+
+      const filtered = fuentes.filter(f => {
+        if (UIState.fontCategoryFilter !== 'all' && f.category !== UIState.fontCategoryFilter) return false;
+        if (q) {
+          const match = f.name.toLowerCase().includes(q) ||
+            f.category.toLowerCase().includes(q) ||
+            (f.description && f.description.toLowerCase().includes(q));
+          if (!match) return false;
+        }
+        return true;
+      });
+
+      countEl.textContent = `${filtered.length} de ${fuentes.length}`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="p-6 text-center text-xs text-muted">No hay tipografías que coincidan con tu búsqueda.</div>';
+        return;
+      }
+
+      if (UIState.fontObserver) {
+        UIState.fontObserver.disconnect();
+      }
+
+      container.innerHTML = filtered.map(f => {
+        const isH = UIState.headingFontName === f.name;
+        const isB = UIState.fontMode === 'pair' && UIState.bodyFontName === f.name;
+        const fallback = uiFontCssFallback(f.category);
+        const weightsText = f.weights.length > 1 ? `${f.weights.length} pesos` : 'Peso único 400';
+
+        const actionBtns = UIState.fontMode === 'single'
+          ? `<button onclick="uiSetHeadingFont('${escapeHtml(f.name).replace(/'/g, "\\'")}')" data-role="single" data-font="${escapeHtml(f.name)}" class="ui-font-btn px-2.5 py-1 rounded-md font-mono text-xs transition-colors ${
+              isH ? 'bg-primary text-white font-semibold' : 'border border-border-subtle text-on-surface hover:border-primary hover:text-primary'
+            }">${isH ? 'Activa' : 'Usar'}</button>`
+          : `<button onclick="uiSetHeadingFont('${escapeHtml(f.name).replace(/'/g, "\\'")}')" data-role="heading" data-font="${escapeHtml(f.name)}" class="ui-font-btn px-2 py-1 rounded-md font-mono text-xs transition-colors ${
+              isH ? 'bg-primary text-white font-semibold' : 'border border-border-subtle text-on-surface hover:border-primary hover:text-primary'
+            }">Título</button>
+             <button onclick="uiSetBodyFont('${escapeHtml(f.name).replace(/'/g, "\\'")}')" data-role="body" data-font="${escapeHtml(f.name)}" class="ui-font-btn px-2 py-1 rounded-md font-mono text-xs transition-colors ${
+              isB ? 'bg-primary text-white font-semibold' : 'border border-border-subtle text-on-surface hover:border-primary hover:text-primary'
+            }">Cuerpo</button>`;
+
+        return `
+          <div class="p-4 hover:bg-surface-alt/35 transition-colors" data-font-row="${escapeHtml(f.name)}">
+            <div class="flex items-start justify-between gap-3">
+              <div class="min-w-0 flex-1">
+                <div class="text-xl leading-snug text-on-surface truncate" style="font-family: '${escapeHtml(f.name)}', ${fallback};">
+                  ${escapeHtml(f.name)}
+                </div>
+                <div class="text-xs text-on-surface/75 mt-0.5 truncate" style="font-family: '${escapeHtml(f.name)}', ${fallback};">
+                  Aa Bb Gg Ññ 0123 · El veloz murciélago hindú
+                </div>
+              </div>
+              <div class="flex items-center gap-1 shrink-0">
+                ${actionBtns}
+              </div>
+            </div>
+            <div class="mt-2 flex items-center justify-between gap-2 text-xs text-muted">
+              <span class="font-mono">${escapeHtml(f.category)} · ${weightsText}</span>
+              <a href="${escapeHtml(f.specimenUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-mono text-primary hover:underline shrink-0" title="Ver en Google Fonts">
+                <span>Google Fonts</span>
+                <span class="material-symbols-outlined text-[13px]">open_in_new</span>
+              </a>
+            </div>
+            ${f.description ? `<p class="mt-1.5 text-xs text-muted/90 leading-relaxed line-clamp-2">${escapeHtml(f.description)}</p>` : ''}
+          </div>
+        `;
+      }).join('');
+
+      UIState.fontObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const name = entry.target.getAttribute('data-font-row');
+            const f = uiGetFontObj(name);
+            if (f) uiQueueFontLoad(f);
+            UIState.fontObserver.unobserve(entry.target);
+          }
+        });
+      }, { root: container, rootMargin: '140px' });
+
+      container.querySelectorAll('[data-font-row]').forEach(el => UIState.fontObserver.observe(el));
+    }
+
+    function uiSyncFontListButtonStates() {
+      document.querySelectorAll('.ui-font-btn').forEach(btn => {
+        const font = btn.getAttribute('data-font');
+        const role = btn.getAttribute('data-role');
+        const active = (role === 'heading' || role === 'single')
+          ? UIState.headingFontName === font
+          : UIState.bodyFontName === font;
+        if (role === 'single') {
+          btn.textContent = active ? 'Activa' : 'Usar';
+          btn.className = `ui-font-btn px-2.5 py-1 rounded-md font-mono text-xs transition-colors ${
+            active ? 'bg-primary text-white font-semibold' : 'border border-border-subtle text-on-surface hover:border-primary hover:text-primary'
+          }`;
+        } else {
+          btn.className = `ui-font-btn px-2 py-1 rounded-md font-mono text-xs transition-colors ${
+            active ? 'bg-primary text-white font-semibold' : 'border border-border-subtle text-on-surface hover:border-primary hover:text-primary'
+          }`;
+        }
+      });
+    }
+
+    function uiCopyValue(val, label) {
+      const done = () => showToast(`${label} copiado: ${val}`);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(val).then(done).catch(() => { fallbackCopyText(val); done(); });
+      } else {
+        fallbackCopyText(val);
+        done();
+      }
+    }
+
+    function uiRenderInspector() {
+      const combo = uiGetActiveCombo();
+      const resolved = uiResolveAppliedColors();
+      const colors = resolved.paletteColors;
+
+      document.getElementById('ui-active-palette-title').textContent = combo ? `Combinación #${String(combo.id).padStart(3, '0')}` : 'Sin paleta';
+      document.getElementById('ui-active-palette-meta').textContent = combo ? `${combo.size} colores` : '';
+
+      // Mode pills
+      ['pure', 'paper', 'dark'].forEach(m => {
+        const btn = document.getElementById(`ui-apply-${m}`);
+        if (!btn) return;
+        btn.className = UIState.colorApplyMode === m
+          ? 'px-2.5 py-1 rounded-md font-mono text-xs font-semibold bg-primary text-white transition-colors'
+          : 'px-2.5 py-1 rounded-md font-mono text-xs text-muted hover:text-on-surface border border-border-subtle transition-colors';
+      });
+
+      // Swatches with HEX and RGB copy buttons
+      const swatchesEl = document.getElementById('ui-active-swatches');
+      swatchesEl.innerHTML = colors.map(col => {
+        const rgbStr = `rgb(${col.rgb.join(', ')})`;
+        return `
+          <div class="space-y-1.5">
+            <div class="h-14 w-full rounded-lg border border-black/10" style="background-color: ${col.hex};"></div>
+            <div class="font-sans text-xs font-semibold text-on-surface truncate" title="${escapeHtml(col.name)}">${escapeHtml(col.name)}</div>
+            <div class="flex flex-col gap-0.5 font-mono text-xs text-muted">
+              <button onclick="uiCopyValue('${col.hex}', 'HEX')" class="text-left hover:text-primary transition-colors flex items-center justify-between gap-1" title="Copiar HEX">
+                <span>${col.hex}</span>
+                <span class="material-symbols-outlined text-[12px]">content_copy</span>
+              </button>
+              <button onclick="uiCopyValue('${rgbStr}', 'RGB')" class="text-left hover:text-primary transition-colors flex items-center justify-between gap-1" title="Copiar RGB">
+                <span class="truncate">${col.rgb.join(', ')}</span>
+                <span class="material-symbols-outlined text-[12px]">content_copy</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Role controls
+      const rolesWrap = document.getElementById('ui-role-controls');
+      const roleDefs = UIState.colorApplyMode === 'pure'
+        ? [
+            { key: 'bg', label: 'Fondo', col: resolved.bg },
+            { key: 'heading', label: 'Títulos', col: resolved.heading },
+            { key: 'text', label: 'Cuerpo', col: resolved.text },
+            { key: 'accent', label: 'Acento', col: resolved.accent }
+          ]
+        : [
+            { key: 'heading', label: 'Títulos', col: resolved.heading },
+            { key: 'accent', label: 'Acento', col: resolved.accent }
+          ];
+
+      rolesWrap.innerHTML = roleDefs.map(r => `
+        <button
+          onclick="uiCycleRoleColor('${r.key}')"
+          class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-border-subtle hover:border-primary bg-white text-xs font-mono text-on-surface transition-colors"
+          title="Cambiar color asignado a ${r.label}"
+        >
+          <span class="w-3 h-3 rounded-full border border-black/15 shrink-0" style="background-color: ${r.col.hex};"></span>
+          <span>${r.label}</span>
+        </button>
+      `).join('');
+
+      // WCAG contrast readout
+      const ratio = uiContrast(resolved.text.rgb, resolved.bg.rgb);
+      const contrastEl = document.getElementById('ui-contrast-status');
+      let statusLabel = 'Bajo contraste';
+      let icon = 'warning';
+      let toneClass = 'text-amber-700';
+      if (ratio >= 7) {
+        statusLabel = 'AAA';
+        icon = 'verified';
+        toneClass = 'text-emerald-700';
+      } else if (ratio >= 4.5) {
+        statusLabel = 'AA';
+        icon = 'check_circle';
+        toneClass = 'text-emerald-700';
+      } else if (ratio >= 3) {
+        statusLabel = 'Solo títulos (AA Grande)';
+        icon = 'info';
+        toneClass = 'text-amber-700';
+      }
+
+      const quickPaperBtn = ratio < 4.5 && UIState.colorApplyMode === 'pure'
+        ? `<button onclick="uiSetColorApplyMode('paper')" class="ml-1 text-primary underline hover:text-primary-dark">Usar papel legible</button>`
+        : '';
+
+      contrastEl.innerHTML = `
+        <span class="material-symbols-outlined text-[15px] ${toneClass}">${icon}</span>
+        <span class="${toneClass} font-semibold">${ratio.toFixed(1)}:1 · ${statusLabel}</span>
+        ${quickPaperBtn}
+      `;
+
+      // Typography inspector
+      const hFont = uiGetFontObj(UIState.headingFontName);
+      const effectiveBodyName = UIState.fontMode === 'single' ? UIState.headingFontName : UIState.bodyFontName;
+      const bFont = uiGetFontObj(effectiveBodyName);
+
+      if (hFont) {
+        document.getElementById('ui-ctrl-heading-name').textContent = hFont.name;
+        document.getElementById('ui-ctrl-heading-link').href = hFont.specimenUrl;
+        const hWeightSel = document.getElementById('ui-ctrl-heading-weight');
+        hWeightSel.innerHTML = hFont.weights.map(w =>
+          `<option value="${w}" ${w === UIState.headingWeight ? 'selected' : ''}>${w}</option>`
+        ).join('');
+      }
+
+      const bodyNameEl = document.getElementById('ui-ctrl-body-name');
+      const bodyLinkEl = document.getElementById('ui-ctrl-body-link');
+      const bodyWeightSel = document.getElementById('ui-ctrl-body-weight');
+      if (bFont) {
+        bodyNameEl.textContent = UIState.fontMode === 'single' ? `${bFont.name} (Unificada)` : bFont.name;
+        bodyLinkEl.href = bFont.specimenUrl;
+        bodyWeightSel.innerHTML = bFont.weights.map(w =>
+          `<option value="${w}" ${w === UIState.bodyWeight ? 'selected' : ''}>${w}</option>`
+        ).join('');
+      }
+      document.getElementById('ui-ctrl-heading-size').value = UIState.headingSize;
+      document.getElementById('ui-ctrl-heading-size-val').textContent = `${UIState.headingSize}px`;
+      document.getElementById('ui-ctrl-body-size').value = UIState.bodySize;
+      document.getElementById('ui-ctrl-body-size-val').textContent = `${UIState.bodySize}px`;
+    }
+
+    function uiSetPreset(presetId) {
+      UIState.activePreset = presetId;
+      document.querySelectorAll('.ui-preset-btn').forEach(btn => {
+        const active = btn.getAttribute('data-preset') === presetId;
+        btn.className = `ui-preset-btn px-2.5 py-1 rounded-md font-mono text-xs transition-colors whitespace-nowrap ${
+          active ? 'bg-primary text-white font-semibold' : 'text-muted hover:text-on-surface'
+        }`;
+      });
+      uiRenderPreviewCanvas();
+    }
+
+    function uiResetPresetText() {
+      delete UIState.editedTexts[UIState.activePreset];
+      uiRenderPreviewCanvas();
+      showToast('Texto prediseñado restaurado.');
+    }
+
+    function uiGetFieldText(preset, key) {
+      const edited = UIState.editedTexts[preset];
+      if (edited && typeof edited[key] === 'string') return edited[key];
+      return (UI_PRESET_DEFAULTS[preset] && UI_PRESET_DEFAULTS[preset][key]) || '';
+    }
+
+    function uiRenderPreviewCanvas() {
+      const surface = document.getElementById('ui-preview-surface');
+      if (!surface) return;
+
+      const resolved = uiResolveAppliedColors();
+      const hFont = uiGetFontObj(UIState.headingFontName);
+      const effectiveBodyName = UIState.fontMode === 'single' ? UIState.headingFontName : UIState.bodyFontName;
+      const bFont = uiGetFontObj(effectiveBodyName);
+
+      const hFamily = hFont ? `'${hFont.name}', ${uiFontCssFallback(hFont.category)}` : `'Playfair Display', serif`;
+      const bFamily = bFont ? `'${bFont.name}', ${uiFontCssFallback(bFont.category)}` : `'Inter', sans-serif`;
+
+      const bgLum = uiLuminance(resolved.bg.rgb);
+      const isDarkBg = bgLum < 0.25;
+      const borderCol = isDarkBg ? 'rgba(255, 255, 255, 0.20)' : 'rgba(28, 27, 27, 0.14)';
+      const btnInk = uiPickBestButtonInk(resolved.accent.rgb, resolved.paletteColors);
+
+      surface.style.backgroundColor = resolved.bg.hex;
+      surface.style.color = resolved.text.hex;
+
+      const hStyle = `font-family: ${hFamily}; font-weight: ${UIState.headingWeight}; color: ${resolved.heading.hex};`;
+      const bStyle = `font-family: ${bFamily}; font-weight: ${UIState.bodyWeight}; color: ${resolved.text.hex};`;
+      const p = UIState.activePreset;
+
+      if (p === 'pangram') {
+        surface.innerHTML = `
+          <div class="space-y-6">
+            <h2 data-ui-editable="heading" contenteditable="true" spellcheck="false" style="${hStyle} font-size: ${UIState.headingSize}px; line-height: 1.15;">${escapeHtml(uiGetFieldText('pangram', 'heading'))}</h2>
+            <p data-ui-editable="lead" contenteditable="true" spellcheck="false" style="${hStyle} font-size: ${Math.max(18, Math.round(UIState.headingSize * 0.6))}px; line-height: 1.3; color: ${resolved.accent.hex};">${escapeHtml(uiGetFieldText('pangram', 'lead'))}</p>
+            <p data-ui-editable="body" contenteditable="true" spellcheck="false" style="${bStyle} font-size: ${UIState.bodySize}px; line-height: 1.65;">${escapeHtml(uiGetFieldText('pangram', 'body'))}</p>
+            <div class="pt-5 space-y-2" style="border-top: 1px solid ${borderCol};">
+              <div data-ui-editable="alphabet" contenteditable="true" spellcheck="false" style="${bStyle} font-size: ${Math.max(13, UIState.bodySize - 1)}px; line-height: 1.6; opacity: 0.9;">${escapeHtml(uiGetFieldText('pangram', 'alphabet'))}</div>
+              <div data-ui-editable="numerals" contenteditable="true" spellcheck="false" style="${bStyle} font-size: ${Math.max(13, UIState.bodySize - 1)}px; line-height: 1.6; color: ${resolved.accent.hex};">${escapeHtml(uiGetFieldText('pangram', 'numerals'))}</div>
+            </div>
+          </div>
+        `;
+      } else if (p === 'interface') {
+        surface.innerHTML = `
+          <div class="space-y-7">
+            <div class="pb-4 flex flex-wrap items-center justify-between gap-4" style="border-bottom: 1px solid ${borderCol};">
+              <span data-ui-editable="brand" contenteditable="true" spellcheck="false" style="${hStyle} font-size: 20px;">${escapeHtml(uiGetFieldText('interface', 'brand'))}</span>
+              <div class="flex items-center gap-5" style="${bStyle} font-size: 13px;">
+                <span data-ui-editable="nav1" contenteditable="true" spellcheck="false">${escapeHtml(uiGetFieldText('interface', 'nav1'))}</span>
+                <span data-ui-editable="nav2" contenteditable="true" spellcheck="false">${escapeHtml(uiGetFieldText('interface', 'nav2'))}</span>
+                <span data-ui-editable="nav3" contenteditable="true" spellcheck="false" style="color: ${resolved.accent.hex}; font-weight: 600;">${escapeHtml(uiGetFieldText('interface', 'nav3'))}</span>
+              </div>
+            </div>
+
+            <div class="space-y-4 max-w-xl">
+              <h2 data-ui-editable="heading" contenteditable="true" spellcheck="false" style="${hStyle} font-size: ${UIState.headingSize}px; line-height: 1.12;">${escapeHtml(uiGetFieldText('interface', 'heading'))}</h2>
+              <p data-ui-editable="body" contenteditable="true" spellcheck="false" style="${bStyle} font-size: ${UIState.bodySize}px; line-height: 1.65;">${escapeHtml(uiGetFieldText('interface', 'body'))}</p>
+            </div>
+
+            <div class="pt-4 flex flex-wrap items-center justify-between gap-4" style="border-top: 1px solid ${borderCol};">
+              <div class="flex flex-wrap items-center gap-3">
+                <span data-ui-editable="cta" contenteditable="true" spellcheck="false" class="inline-block px-5 py-2.5 rounded-lg" style="font-family: ${bFamily}; font-size: 14px; font-weight: 600; background-color: ${resolved.accent.hex}; color: ${btnInk};">${escapeHtml(uiGetFieldText('interface', 'cta'))}</span>
+                <span data-ui-editable="cta2" contenteditable="true" spellcheck="false" class="inline-block px-4 py-2.5 rounded-lg" style="font-family: ${bFamily}; font-size: 14px; font-weight: 500; border: 1px solid ${borderCol}; color: ${resolved.text.hex};">${escapeHtml(uiGetFieldText('interface', 'cta2'))}</span>
+              </div>
+              <div class="flex items-center gap-4" style="${bStyle} font-size: 12px; opacity: 0.85;">
+                <span data-ui-editable="badge1" contenteditable="true" spellcheck="false">${escapeHtml(uiGetFieldText('interface', 'badge1'))}</span>
+                <span>·</span>
+                <span data-ui-editable="badge2" contenteditable="true" spellcheck="false">${escapeHtml(uiGetFieldText('interface', 'badge2'))}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (p === 'scale') {
+        surface.innerHTML = `
+          <div class="space-y-5">
+            <h1 data-ui-editable="h1" contenteditable="true" spellcheck="false" style="${hStyle} font-size: ${UIState.headingSize}px; line-height: 1.12;">${escapeHtml(uiGetFieldText('scale', 'h1'))}</h1>
+            <h2 data-ui-editable="h2" contenteditable="true" spellcheck="false" style="${hStyle} font-size: ${Math.max(20, Math.round(UIState.headingSize * 0.7))}px; line-height: 1.2; color: ${resolved.accent.hex};">${escapeHtml(uiGetFieldText('scale', 'h2'))}</h2>
+            <h3 data-ui-editable="h3" contenteditable="true" spellcheck="false" style="${bStyle} font-size: ${Math.max(16, Math.round(UIState.bodySize * 1.15))}px; font-weight: 600; line-height: 1.35;">${escapeHtml(uiGetFieldText('scale', 'h3'))}</h3>
+            <p data-ui-editable="body" contenteditable="true" spellcheck="false" style="${bStyle} font-size: ${UIState.bodySize}px; line-height: 1.65;">${escapeHtml(uiGetFieldText('scale', 'body'))}</p>
+            <blockquote data-ui-editable="quote" contenteditable="true" spellcheck="false" class="pl-4 py-1" style="${hStyle} font-size: ${Math.max(17, Math.round(UIState.bodySize * 1.2))}px; line-height: 1.45; border-left: 3px solid ${resolved.accent.hex};">${escapeHtml(uiGetFieldText('scale', 'quote'))}</blockquote>
+            <div class="pt-2">
+              <span data-ui-editable="cta" contenteditable="true" spellcheck="false" class="inline-block px-5 py-2 rounded-lg" style="font-family: ${bFamily}; font-size: 14px; font-weight: 600; background-color: ${resolved.accent.hex}; color: ${btnInk};">${escapeHtml(uiGetFieldText('scale', 'cta'))}</span>
+            </div>
+          </div>
+        `;
+      } else {
+        surface.innerHTML = `
+          <div class="space-y-5">
+            <div data-ui-editable="tag" contenteditable="true" spellcheck="false" style="${bStyle} font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: ${resolved.accent.hex};">${escapeHtml(uiGetFieldText('editorial', 'tag'))}</div>
+            <h2 data-ui-editable="heading" contenteditable="true" spellcheck="false" style="${hStyle} font-size: ${UIState.headingSize}px; line-height: 1.14;">${escapeHtml(uiGetFieldText('editorial', 'heading'))}</h2>
+            <p data-ui-editable="lead" contenteditable="true" spellcheck="false" style="${bStyle} font-size: ${Math.min(24, UIState.bodySize + 3)}px; line-height: 1.5; opacity: 0.9;">${escapeHtml(uiGetFieldText('editorial', 'lead'))}</p>
+            <div class="pt-5" style="border-top: 1px solid ${borderCol};">
+              <p data-ui-editable="body" contenteditable="true" spellcheck="false" style="${bStyle} font-size: ${UIState.bodySize}px; line-height: 1.7;">${escapeHtml(uiGetFieldText('editorial', 'body'))}</p>
+            </div>
+            <div class="pt-3 flex flex-wrap items-center gap-4">
+              <span data-ui-editable="cta" contenteditable="true" spellcheck="false" class="inline-block px-5 py-2.5 rounded-lg" style="font-family: ${bFamily}; font-size: 14px; font-weight: 600; background-color: ${resolved.accent.hex}; color: ${btnInk};">${escapeHtml(uiGetFieldText('editorial', 'cta'))}</span>
+              <span data-ui-editable="link" contenteditable="true" spellcheck="false" style="font-family: ${bFamily}; font-size: 14px; font-weight: 600; color: ${resolved.accent.hex}; text-decoration: underline; text-underline-offset: 4px;">${escapeHtml(uiGetFieldText('editorial', 'link'))}</span>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function uiCopyCssBundle() {
+      const combo = uiGetActiveCombo();
+      const resolved = uiResolveAppliedColors();
+      const hFont = uiGetFontObj(UIState.headingFontName);
+      const bFont = uiGetFontObj(UIState.fontMode === 'single' ? UIState.headingFontName : UIState.bodyFontName);
+
+      const fontImports = [];
+      if (hFont) fontImports.push(`family=${hFont.cssFamilyParam}`);
+      if (bFont && (!hFont || bFont.name !== hFont.name)) fontImports.push(`family=${bFont.cssFamilyParam}`);
+
+      const importRule = fontImports.length
+        ? `@import url('https://fonts.googleapis.com/css2?${fontImports.join('&')}&display=swap');\n\n`
+        : '';
+
+      const paletteComments = resolved.paletteColors
+        .map(c => `/* ${c.name}: ${c.hex} | rgb(${c.rgb.join(', ')}) */`)
+        .join('\n');
+
+      const cssSnippet = `${importRule}/* Sanzo Wada · Combinación #${combo ? String(combo.id).padStart(3, '0') : '001'} */\n${paletteComments}\n:root {\n  --color-bg: ${resolved.bg.hex};\n  --color-heading: ${resolved.heading.hex};\n  --color-text: ${resolved.text.hex};\n  --color-accent: ${resolved.accent.hex};\n  --font-heading: '${hFont ? hFont.name : 'Playfair Display'}', ${uiFontCssFallback(hFont ? hFont.category : 'Serif')};\n  --font-body: '${bFont ? bFont.name : 'Inter'}', ${uiFontCssFallback(bFont ? bFont.category : 'Sans Serif')};\n}`;
+
+      uiCopyValue(cssSnippet, 'CSS');
     }
   </script>
 

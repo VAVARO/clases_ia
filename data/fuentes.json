@@ -1,0 +1,1460 @@
+[
+  {
+    "id": 1,
+    "name": "Lexend Deca",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Lexend+Deca",
+    "cssFamilyParam": "Lexend+Deca:wght@100..900",
+    "description": "Sans serif robusta y ligeramente ancha diseñada específicamente para mantener máxima legibilidad en tamaños pequeños tanto en pantalla como en imprenta."
+  },
+  {
+    "id": 2,
+    "name": "Shrikhand",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Shrikhand",
+    "cssFamilyParam": "Shrikhand",
+    "description": "Tipografía display gruesa, cálida y alegre de curvas generosas con espíritu retro de finales de los años 60 y 70 (incluye pesos e inclinación expresiva)."
+  },
+  {
+    "id": 3,
+    "name": "Texturina",
+    "category": "Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Texturina",
+    "cssFamilyParam": "Texturina:wght@100..900",
+    "description": "Híbrida entre blackletter y serif contemporánea que alterna trazos rectos con curvas cortas en las esquinas, manteniendo un ritmo caligráfico fluido."
+  },
+  {
+    "id": 4,
+    "name": "Libre Franklin",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Libre+Franklin",
+    "cssFamilyParam": "Libre+Franklin:wght@100..900",
+    "description": "Interpretación cálida y directa de las góticas estadounidenses clásicas del siglo XX, con excelente solidez estructural y cursivas dinámicas."
+  },
+  {
+    "id": 5,
+    "name": "Syne",
+    "category": "Sans Serif",
+    "weights": [
+      400,
+      500,
+      600,
+      700,
+      800
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Syne",
+    "cssFamilyParam": "Syne:wght@400..800",
+    "description": "Sans serif experimental y expresiva creada para centros de arte, pósters, branding y titulares con proporciones peculiares y pesos extremos."
+  },
+  {
+    "id": 6,
+    "name": "Spectral",
+    "category": "Serif",
+    "weights": [
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Spectral",
+    "cssFamilyParam": "Spectral:wght@200;300;400;500;600;700;800",
+    "description": "Amplia familia serif editorial y de branding con 7 pesos, cursivas y versalitas (Spectral SC), ideal para publicaciones ricas en contenido."
+  },
+  {
+    "id": 7,
+    "name": "Archivo",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Archivo",
+    "cssFamilyParam": "Archivo:wght@100..900",
+    "description": "Sans serif grotesca de corte industrial con ejes variables de ancho y peso, capaz de pasar de titulares imponentes a texto de cuerpo compacto."
+  },
+  {
+    "id": 8,
+    "name": "Fraunces",
+    "category": "Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Fraunces",
+    "cssFamilyParam": "Fraunces:wght@100..900",
+    "description": "Display híbrida ('soft-serif') que fusiona formas redondeadas con trazos caligráficos expresivos y eje variable 'Wonky' para generar tensión visual en titulares."
+  },
+  {
+    "id": 9,
+    "name": "Rubik",
+    "category": "Sans Serif",
+    "weights": [
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Rubik",
+    "cssFamilyParam": "Rubik:wght@300..900",
+    "description": "Sans serif geométrica de esquinas ligeramente redondeadas, versátil y con múltiples pesos y cursivas para resolver tanto branding como diseño editorial."
+  },
+  {
+    "id": 10,
+    "name": "Righteous",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Righteous",
+    "cssFamilyParam": "Righteous",
+    "description": "Geométrica inspirada en carteles y fotocomposición setentera con gran altura de x y formas unicase limpias y modernas."
+  },
+  {
+    "id": 11,
+    "name": "Fredoka",
+    "category": "Sans Serif",
+    "weights": [
+      300,
+      400,
+      500,
+      600,
+      700
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Fredoka",
+    "cssFamilyParam": "Fredoka:wght@300..700",
+    "description": "Tipografía display redondeada, regordeta y tubular (con eje de ancho y peso variable) que comparte el carácter lúdico y amigable de Hamster."
+  },
+  {
+    "id": 12,
+    "name": "EB Garamond",
+    "category": "Serif",
+    "weights": [
+      400,
+      500,
+      600,
+      700,
+      800
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/EB+Garamond",
+    "cssFamilyParam": "EB+Garamond:wght@400..800",
+    "description": "Revival contemporáneo de serifas clásicas europeas de los siglos XVI–XVII con florituras barrocas suavizadas, ligaduras históricas y cursivas elegantes."
+  },
+  {
+    "id": 13,
+    "name": "Work Sans",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Work+Sans",
+    "cssFamilyParam": "Work+Sans:wght@100..900",
+    "description": "Grotesca de amplio rango inspirada en diseños de principios del siglo XX, con proporciones compactas en pesos medios y detalles distintivos en display."
+  },
+  {
+    "id": 14,
+    "name": "Cormorant Garamond",
+    "category": "Serif",
+    "weights": [
+      300,
+      400,
+      500,
+      600,
+      700
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Cormorant+Garamond",
+    "cssFamilyParam": "Cormorant+Garamond:wght@300..700",
+    "description": "Serif editorial de marcado movimiento caligráfico con 45 archivos de fuente, alto contraste, cursivas expresivas y ligaduras refinadas."
+  },
+  {
+    "id": 15,
+    "name": "Schibsted Grotesk",
+    "category": "Sans Serif",
+    "weights": [
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Schibsted+Grotesk",
+    "cssFamilyParam": "Schibsted+Grotesk:wght@400..900",
+    "description": "Grotesca contemporánea de precisión industrial diseñada para rendir con carácter tanto en textos editoriales densos como en titulares a gran escala."
+  },
+  {
+    "id": 16,
+    "name": "Rubik Scribble",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Rubik+Scribble",
+    "cssFamilyParam": "Rubik+Scribble",
+    "description": "Variante display experimental y desenfadada de formas fluidas e irreverentes pensada para titulares que rompen la rigidez tradicional."
+  },
+  {
+    "id": 17,
+    "name": "Germania One",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Germania+One",
+    "cssFamilyParam": "Germania+One",
+    "description": "Tipografía display construida sobre contrastes históricos: fusiona la geometría sans serif con rasgos angulares y serifados de la tradición fraktur."
+  },
+  {
+    "id": 18,
+    "name": "Plus Jakarta Sans",
+    "category": "Sans Serif",
+    "weights": [
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Plus+Jakarta+Sans",
+    "cssFamilyParam": "Plus+Jakarta+Sans:wght@200..800",
+    "description": "Sans geométrica minimalista de proporciones asertivas y limpias, creada para proyectos de branding, editorial e interfaces UI modernas."
+  },
+  {
+    "id": 19,
+    "name": "Yeseva One",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Yeseva+One",
+    "cssFamilyParam": "Yeseva+One",
+    "description": "Display de alto contraste que combina curvas envolventes y suaves con terminales afilados en forma de gancho."
+  },
+  {
+    "id": 20,
+    "name": "Archivo Black",
+    "category": "Sans Serif",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Archivo+Black",
+    "cssFamilyParam": "Archivo+Black",
+    "description": "Tipografía display que gana su energía gracias a su masa visual contundente y sólida, ideal para logotipos, empaques y titulares de alto impacto."
+  },
+  {
+    "id": 21,
+    "name": "Bricolage Grotesque",
+    "category": "Sans Serif",
+    "weights": [
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Bricolage+Grotesque",
+    "cssFamilyParam": "Bricolage+Grotesque:wght@200..800",
+    "description": "Superfamilia variable ecléctica que combina referencias geométricas y expresivas con soporte multilingüe y ejes de ancho, peso y tamaño óptico."
+  },
+  {
+    "id": 22,
+    "name": "Unbounded",
+    "category": "Sans Serif",
+    "weights": [
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Unbounded",
+    "cssFamilyParam": "Unbounded:wght@200..900",
+    "description": "Sans serif display ancha y audaz que une precisión geométrica con curvas orgánicas y expansivas para una presencia imponente."
+  },
+  {
+    "id": 23,
+    "name": "Federo",
+    "category": "Sans Serif",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Federo",
+    "cssFamilyParam": "Federo",
+    "description": "Tipografía display que rescata un diseño de 1909, fusionando la elegancia orgánica del Art Nouveau con proporciones geométricas de cartel."
+  },
+  {
+    "id": 24,
+    "name": "Crimson Pro",
+    "category": "Serif",
+    "weights": [
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Crimson+Pro",
+    "cssFamilyParam": "Crimson+Pro:wght@200..900",
+    "description": "Serif de estilo antiguo francés (inspirada en la tradición Garamond/Elzevir) con cursivas elegantes, ligaduras y 16 estilos para edición."
+  },
+  {
+    "id": 25,
+    "name": "Orbitron",
+    "category": "Sans Serif",
+    "weights": [
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Orbitron",
+    "cssFamilyParam": "Orbitron:wght@400..900",
+    "description": "Familia geométrica de proporciones cuadradas y contrapunzones consistentes que transita desde pesos ligeros hasta negros de estética modular."
+  },
+  {
+    "id": 26,
+    "name": "Sora",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Sora",
+    "cssFamilyParam": "Sora:wght@100..800",
+    "description": "Fuente variable moderna, limpia y flexible con gran presencia técnica, ideal para sostener sistemas completos de identidad visual."
+  },
+  {
+    "id": 27,
+    "name": "Titan One",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Titan+One",
+    "cssFamilyParam": "Titan+One",
+    "description": "Fuente display audaz de trazos gruesos y curvas suaves y redondeadas, con un carácter alegre y desenfadado."
+  },
+  {
+    "id": 28,
+    "name": "Bungee Shade",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Bungee+Shade",
+    "cssFamilyParam": "Bungee+Shade",
+    "description": "Display geométrica de espíritu mid-century pensada para cartelería vertical y pósters, con capas de sombra/sobreimpresión integradas."
+  },
+  {
+    "id": 29,
+    "name": "Manrope",
+    "category": "Sans Serif",
+    "weights": [
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Manrope",
+    "cssFamilyParam": "Manrope:wght@200..800",
+    "description": "Grotesca geométrica limpia y moderna con 7 pesos, soporte completo de fuente variable y alternativas estilísticas funcionales."
+  },
+  {
+    "id": 30,
+    "name": "Cinzel Decorative",
+    "category": "Display",
+    "weights": [
+      400,
+      700,
+      900
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Cinzel+Decorative",
+    "cssFamilyParam": "Cinzel+Decorative:wght@400;700;900",
+    "description": "Basada en las proporciones clásicas de las capitales inscripcionales romanas del siglo I con trazos caligráficos ornamentales (además, Catich Color ya es gratuita para uso educativo/no comercial)."
+  },
+  {
+    "id": 31,
+    "name": "Modak",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Modak",
+    "cssFamilyParam": "Modak",
+    "description": "Tipografía display de máximo volumen ('chubby') con curvas infladas y contrapunzones estrechos que transmiten una personalidad jovial y rotunda."
+  },
+  {
+    "id": 32,
+    "name": "Staatliches",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Staatliches",
+    "cssFamilyParam": "Staatliches",
+    "description": "Sans serif en mayúsculas (all-caps) cálida, de alta energía y espaciado compacto, diseñada para grandes titulares y pósters de aventura."
+  },
+  {
+    "id": 33,
+    "name": "Grandstander",
+    "category": "Display",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Grandstander",
+    "cssFamilyParam": "Grandstander:wght@100..900",
+    "description": "Tipografía variable de 9 pesos que no se toma demasiado en serio a sí misma, con formas ligeramente inclinadas y lúdicas que rompen la rigidez geométrica."
+  },
+  {
+    "id": 34,
+    "name": "Rye",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Rye",
+    "cssFamilyParam": "Rye",
+    "description": "Inspirada en carteles clásicos de la cultura del oeste (Western) y rotulación vintage en madera, con formas audaces llenas de carácter artesanal."
+  },
+  {
+    "id": 35,
+    "name": "Outfit",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Outfit",
+    "cssFamilyParam": "Outfit:wght@100..900",
+    "description": "Sans serif geométrica nacida del modernismo limpio pero con ligaduras y detalles sutiles que evitan que se sienta rígida."
+  },
+  {
+    "id": 36,
+    "name": "Prompt",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Prompt",
+    "cssFamilyParam": "Prompt:wght@100;200;300;400;500;600;700;800;900",
+    "description": "Tipografía cálida y versátil de 18 estilos que tiende un puente armónico entre los alfabetos tailandés (Thai) y latino con proporciones amplias."
+  },
+  {
+    "id": 37,
+    "name": "Newsreader",
+    "category": "Serif",
+    "weights": [
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Newsreader",
+    "cssFamilyParam": "Newsreader:wght@200..800",
+    "description": "Serif de estilo antiguo de alto contraste con cursivas caligráficas expresivas y una generosa altura de x que asegura excelente legibilidad."
+  },
+  {
+    "id": 38,
+    "name": "Koulen",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Koulen",
+    "cssFamilyParam": "Koulen",
+    "description": "Tipografía display para escritura jemer (Khmer) y latina que reinterpreta las formas tradicionales mediante una geometría condensada y audaz."
+  },
+  {
+    "id": 39,
+    "name": "Eczar",
+    "category": "Serif",
+    "weights": [
+      400,
+      500,
+      600,
+      700,
+      800
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Eczar",
+    "cssFamilyParam": "Eczar:wght@400..800",
+    "description": "Familia display y de texto de alto contraste con curvas escultóricas, cortes angulares marcados y gran fuerza expresiva en sus pesos gruesos."
+  },
+  {
+    "id": 40,
+    "name": "Barlow Condensed",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Barlow+Condensed",
+    "cssFamilyParam": "Barlow+Condensed:wght@100;200;300;400;500;600;700;800;900",
+    "description": "Sans serif condensada moderna de 18 estilos pensada para espacios reducidos, con letras altas, estrechas y limpias."
+  },
+  {
+    "id": 41,
+    "name": "Figtree",
+    "category": "Sans Serif",
+    "weights": [
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Figtree",
+    "cssFamilyParam": "Figtree:wght@300..900",
+    "description": "Sans serif cálida pero minimalista que equilibra geometría y rasgos neogrotescos amigables para uso universal en branding e interfaces."
+  },
+  {
+    "id": 42,
+    "name": "Urbanist",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Urbanist",
+    "cssFamilyParam": "Urbanist:wght@100..900",
+    "description": "Sans serif geométrica versátil con eje de peso variable (de Thin a Black) para una lectura limpia y contemporánea."
+  },
+  {
+    "id": 43,
+    "name": "Antonio",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Antonio",
+    "cssFamilyParam": "Antonio:wght@100..700",
+    "description": "Sans serif comprimida y funcional que combina curvas externas más planas con interiores redondeados para titulares a gran escala."
+  },
+  {
+    "id": 44,
+    "name": "Quicksand",
+    "category": "Sans Serif",
+    "weights": [
+      300,
+      400,
+      500,
+      600,
+      700
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Quicksand",
+    "cssFamilyParam": "Quicksand:wght@300..700",
+    "description": "Sans moderna y limpia construida sobre bases geométricas con curvas juguetonas y terminales redondeados de personalidad fresca."
+  },
+  {
+    "id": 45,
+    "name": "Hanken Grotesk",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Hanken+Grotesk",
+    "cssFamilyParam": "Hanken+Grotesk:wght@100..900",
+    "description": "Grotesca versátil inspirada en diseños clásicos del siglo XX con un amplio rango de pesos y funciones OpenType tanto para titulares como para cuerpo de texto."
+  },
+  {
+    "id": 46,
+    "name": "Epilogue",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Epilogue",
+    "cssFamilyParam": "Epilogue:wght@100..900",
+    "description": "Sans serif variable de 18 estilos que combina el encanto de la rotulación clásica sin serifas con flexibilidad contemporánea."
+  },
+  {
+    "id": 47,
+    "name": "Permanent Marker",
+    "category": "Handwriting",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Permanent+Marker",
+    "cssFamilyParam": "Permanent+Marker",
+    "description": "Captura fielmente el trazo casual, energético y fluido de un marcador grueso sobre papel para títulos, logos y empaques."
+  },
+  {
+    "id": 48,
+    "name": "Bungee",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Bungee",
+    "cssFamilyParam": "Bungee",
+    "description": "Sans serif audaz en mayúsculas (all-caps) que combina impacto moderno con calidez urbana y formas redondeadas para titulares llamativos."
+  },
+  {
+    "id": 49,
+    "name": "Allerta Stencil",
+    "category": "Sans Serif",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Allerta+Stencil",
+    "cssFamilyParam": "Allerta+Stencil",
+    "description": "Tipografía esténcil (stencil) de cortes separados con carácter arquitectónico, cálida audacia y excelente legibilidad."
+  },
+  {
+    "id": 50,
+    "name": "Ultra",
+    "category": "Serif",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Ultra",
+    "cssFamilyParam": "Ultra",
+    "description": "Display inspirada en especímenes de tipos de madera (wood type) con proporciones audaces, esquinas trabajadas y gran presencia gráfica."
+  },
+  {
+    "id": 51,
+    "name": "League Spartan",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/League+Spartan",
+    "cssFamilyParam": "League+Spartan:wght@100..900",
+    "description": "Revival sans-serif geométrico de principios del siglo XX con formas equilibradas, conjunto de caracteres moderno y espíritu abierto."
+  },
+  {
+    "id": 52,
+    "name": "Italiana",
+    "category": "Sans Serif",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Italiana",
+    "cssFamilyParam": "Italiana",
+    "description": "Combina la precisión de una tipografía de alto contraste sin serifas pesadas con la calidez caligráfica y orgánica de los maestros italianos y el Art Nouveau."
+  },
+  {
+    "id": 53,
+    "name": "Rubik Iso",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Rubik+Iso",
+    "cssFamilyParam": "Rubik+Iso",
+    "description": "Lleva la experimentación tipográfica al límite con letras de bloques tridimensionales que parecen apilarse como piezas de construcción o Tetris."
+  },
+  {
+    "id": 54,
+    "name": "BioRhyme",
+    "category": "Serif",
+    "weights": [
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/BioRhyme",
+    "cssFamilyParam": "BioRhyme:wght@200..800",
+    "description": "Slab serif poco convencional (con variante BioRhyme Expanded) que mezcla influencias de Bookman y tipos gruesos en un diseño relajado pero seguro."
+  },
+  {
+    "id": 55,
+    "name": "Pirata One",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Pirata+One",
+    "cssFamilyParam": "Pirata+One",
+    "description": "Combina influencias blackletter con bordes tallados y contrapunzones limpios optimizados para lucir nítidos como una inscripción acuñada."
+  },
+  {
+    "id": 56,
+    "name": "Chango",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Chango",
+    "cssFamilyParam": "Chango",
+    "description": "Fuente display regordeta, pesada y juguetona inspirada en la rotulación publicitaria ilustrada, ideal para branding gastronómico y titulares alegres."
+  },
+  {
+    "id": 57,
+    "name": "Victor Mono",
+    "category": "Monospace",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Victor+Mono",
+    "cssFamilyParam": "Victor+Mono:wght@100..700",
+    "description": "Tipografía monoespaciada de clara inspiración caligráfica (con cursivas semi-conectadas) que equilibra nitidez en tamaños pequeños con personalidad en grande."
+  },
+  {
+    "id": 58,
+    "name": "Comfortaa",
+    "category": "Display",
+    "weights": [
+      300,
+      400,
+      500,
+      600,
+      700
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Comfortaa",
+    "cssFamilyParam": "Comfortaa:wght@300..700",
+    "description": "Fusiona la geometría redondeada de aires setenteros con toques modernos y simpáticos en una familia variable muy expresiva."
+  },
+  {
+    "id": 59,
+    "name": "DM Sans",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900,
+      1000
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/DM+Sans",
+    "cssFamilyParam": "DM+Sans:wght@100..1000",
+    "description": "Tipografía neogrotesca de bajo contraste que une claridad geométrica con sensibilidades de diseño contemporáneas."
+  },
+  {
+    "id": 60,
+    "name": "Caprasimo",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Caprasimo",
+    "cssFamilyParam": "Caprasimo",
+    "description": "Tipografía display audaz y festiva cuyos trazos gruesos y curvas generosas (inspiradas en Cooper Black) capturan energía y celebración."
+  },
+  {
+    "id": 61,
+    "name": "Nunito",
+    "category": "Sans Serif",
+    "weights": [
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900,
+      1000
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Nunito",
+    "cssFamilyParam": "Nunito:wght@200..1000",
+    "description": "Tipografía contemporánea y viva con pesos variables y terminales redondeados que aporta carácter amigable a branding y empaques."
+  },
+  {
+    "id": 62,
+    "name": "Playfair Display",
+    "category": "Serif",
+    "weights": [
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Playfair+Display",
+    "cssFamilyParam": "Playfair+Display:wght@400..900",
+    "description": "Reimagina el diseño serif de transición y las influencias Scotch Roman de finales del siglo XVIII con alto contraste y verdaderas cursivas."
+  },
+  {
+    "id": 63,
+    "name": "Rubik Distressed",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Rubik+Distressed",
+    "cssFamilyParam": "Rubik+Distressed",
+    "description": "Tipografía display audaz cuya textura gráfica evoca el grabado artesanal en madera (xilografía) y el juego con el espacio negativo."
+  },
+  {
+    "id": 64,
+    "name": "Calistoga",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Calistoga",
+    "cssFamilyParam": "Calistoga",
+    "description": "Tipografía alegre y veraniega llena de calidez y personalidad, con curvas vivas nacidas de los carteles ilustrados de los años 30."
+  },
+  {
+    "id": 65,
+    "name": "Chakra Petch",
+    "category": "Sans Serif",
+    "weights": [
+      300,
+      400,
+      500,
+      600,
+      700
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Chakra+Petch",
+    "cssFamilyParam": "Chakra+Petch:wght@300;400;500;600;700",
+    "description": "Sans serif geométrica de bordes afilados y esquinas biseladas con cortes angulares distintivos (además, Karst ofrece 2 pesos gratuitos: Thin y Bold)."
+  },
+  {
+    "id": 66,
+    "name": "Marcellus",
+    "category": "Serif",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Marcellus",
+    "cssFamilyParam": "Marcellus",
+    "description": "Diseño de proporciones geométricas con terminales ligeramente acampanados (flared) que aporta claridad cinematográfica y editorial."
+  },
+  {
+    "id": 67,
+    "name": "Red Hat Display",
+    "category": "Sans Serif",
+    "weights": [
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Red+Hat+Display",
+    "cssFamilyParam": "Red+Hat+Display:wght@300..900",
+    "description": "Combina estilos display expresivos y geométricos con una familia de texto más contenida (Red Hat Text), diseñada para impacto y versatilidad."
+  },
+  {
+    "id": 68,
+    "name": "Zilla Slab",
+    "category": "Serif",
+    "weights": [
+      300,
+      400,
+      500,
+      600,
+      700
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Zilla+Slab",
+    "cssFamilyParam": "Zilla+Slab:wght@300;400;500;600;700",
+    "description": "Familia tipográfica diseñada con precisión ingenieril y toque lúdico que ofrece una estructura slab moderna acompañada de estilo Highlight."
+  },
+  {
+    "id": 69,
+    "name": "Instrument Sans",
+    "category": "Sans Serif",
+    "weights": [
+      400,
+      500,
+      600,
+      700
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Instrument+Sans",
+    "cssFamilyParam": "Instrument+Sans:wght@400..700",
+    "description": "Sans serif variable refinada y con carácter que incorpora sutiles trampas de tinta y detalles contemporáneos en todos sus pesos."
+  },
+  {
+    "id": 70,
+    "name": "Share Tech Mono",
+    "category": "Monospace",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Share+Tech+Mono",
+    "cssFamilyParam": "Share+Tech+Mono",
+    "description": "Tipografía de inspiración retro-futurista basada en la rotulación informática clásica y caracteres técnicos de reconocimiento mecánico."
+  },
+  {
+    "id": 71,
+    "name": "BioRhyme Expanded",
+    "category": "Serif",
+    "weights": [
+      200,
+      300,
+      400,
+      700,
+      800
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/BioRhyme+Expanded",
+    "cssFamilyParam": "BioRhyme+Expanded:wght@200;300;400;700;800",
+    "description": "Permite jugar con el contraste de doble ancho al combinarla con BioRhyme normal, generando un ritmo visual dinámico y poco convencional."
+  },
+  {
+    "id": 72,
+    "name": "Young Serif",
+    "category": "Serif",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Young+Serif",
+    "cssFamilyParam": "Young+Serif",
+    "description": "Serif display pesada de estilo antiguo que rebosa carácter, curvas cálidas y buena onda sin perder legibilidad."
+  },
+  {
+    "id": 73,
+    "name": "Bodoni Moda",
+    "category": "Serif",
+    "weights": [
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Bodoni+Moda",
+    "cssFamilyParam": "Bodoni+Moda:wght@400..900",
+    "description": "Serif de homenaje a la tradición tipográfica italiana con eje de tamaño óptico, múltiples pesos, cursivas y amplias funciones OpenType."
+  },
+  {
+    "id": 74,
+    "name": "Bungee Spice",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Bungee+Spice",
+    "cssFamilyParam": "Bungee+Spice",
+    "description": "Fuente display de espíritu setentero con curvas audaces y cálidos degradados naranja/mandarina integrados."
+  },
+  {
+    "id": 75,
+    "name": "Instrument Serif",
+    "category": "Serif",
+    "weights": [
+      400
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Instrument+Serif",
+    "cssFamilyParam": "Instrument+Serif",
+    "description": "Serif condensada de trazos afilados que fusiona la elegancia editorial literaria clásica con una estética contemporánea."
+  },
+  {
+    "id": 76,
+    "name": "Silkscreen",
+    "category": "Display",
+    "weights": [
+      400,
+      700
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Silkscreen",
+    "cssFamilyParam": "Silkscreen:wght@400;700",
+    "description": "Representa la vertiente pixel/modular dentro de las cajas de herramientas tipográficas retro-digitales (junto con familias variables como Bricolage Grotesque)."
+  },
+  {
+    "id": 77,
+    "name": "Rubik Gemstones",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Rubik+Gemstones",
+    "cssFamilyParam": "Rubik+Gemstones",
+    "description": "Tipografía display lúdica e infantil construida mediante formas geométricas facetadas que parecen juguetes o piezas ensamblables."
+  },
+  {
+    "id": 78,
+    "name": "Poiret One",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Poiret+One",
+    "cssFamilyParam": "Poiret+One",
+    "description": "Tipografía display y de branding moderna con líneas geométricas elegantes, pensada para logotipos, pósters y titulares cortos."
+  },
+  {
+    "id": 79,
+    "name": "Gloock",
+    "category": "Serif",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Gloock",
+    "cssFamilyParam": "Gloock",
+    "description": "Serif display contemporánea con una atractiva mezcla de terminales puntiagudos y curvas suaves para titulares con carisma."
+  },
+  {
+    "id": 80,
+    "name": "Kalam",
+    "category": "Handwriting",
+    "weights": [
+      300,
+      400,
+      700
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Kalam",
+    "cssFamilyParam": "Kalam:wght@300;400;700",
+    "description": "Tipografía informal llena de carácter y dinamismo manual, diseñada para proyectos divertidos que buscan cercanía y espontaneidad."
+  },
+  {
+    "id": 81,
+    "name": "Bungee Inline",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Bungee+Inline",
+    "cssFamilyParam": "Bungee+Inline",
+    "description": "Sistema tipográfico experimental de capas combinables (Inline, Outline, Regular y Shade) para lograr un uso display de alto impacto."
+  },
+  {
+    "id": 82,
+    "name": "Inclusive Sans",
+    "category": "Sans Serif",
+    "weights": [
+      300,
+      400,
+      500,
+      600,
+      700
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Inclusive+Sans",
+    "cssFamilyParam": "Inclusive+Sans:wght@300..700",
+    "description": "La propia Inclusive Sans recomendada en este número ya es 100 % Open Source (SIL OFL en Google Fonts); como alternativa hermana destaca Atkinson Hyperlegible."
+  },
+  {
+    "id": 83,
+    "name": "Nunito Sans",
+    "category": "Sans Serif",
+    "weights": [
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900,
+      1000
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Nunito+Sans",
+    "cssFamilyParam": "Nunito+Sans:wght@200..1000",
+    "description": "Sans-serif geométrica y moderna con 7 pesos, versión variable, amplio conjunto de glifos y alternativas estilísticas."
+  },
+  {
+    "id": 84,
+    "name": "Familjen Grotesk",
+    "category": "Sans Serif",
+    "weights": [
+      400,
+      500,
+      600,
+      700
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Familjen+Grotesk",
+    "cssFamilyParam": "Familjen+Grotesk:wght@400..700",
+    "description": "Familia tipográfica sans-serif moderna caracterizada específicamente por sus pronunciadas trampas de tinta (ink traps)."
+  },
+  {
+    "id": 85,
+    "name": "Bungee Hairline",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Bungee+Hairline",
+    "cssFamilyParam": "Bungee+Hairline",
+    "description": "Diseño sans serif de trazo extrafino (hairline) y proporciones geométricas contemporáneas para titulares delicados y modernos."
+  },
+  {
+    "id": 86,
+    "name": "Bungee Outline",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Bungee+Outline",
+    "cssFamilyParam": "Bungee+Outline",
+    "description": "Tipografía display en mayúsculas de trazos internos calados y ritmo enérgico similar a un esténcil urbano."
+  },
+  {
+    "id": 87,
+    "name": "Tenor Sans",
+    "category": "Sans Serif",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Tenor+Sans",
+    "cssFamilyParam": "Tenor+Sans",
+    "description": "Sans-serif humanista moderna con un barrido dinámico en las curvas y transiciones moduladas llenas de carácter expresivo."
+  },
+  {
+    "id": 88,
+    "name": "Lexend",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Lexend",
+    "cssFamilyParam": "Lexend:wght@100..900",
+    "description": "Superfamilia sans-serif geométrica con toques retro-modernos distribuida en múltiples subfamilias de distintos anchos (Deca, Exa, Giga, Mega, Peta, Tera, Zetta)."
+  },
+  {
+    "id": 89,
+    "name": "Monoton",
+    "category": "Display",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Monoton",
+    "cssFamilyParam": "Monoton",
+    "description": "Tipografía geométrica y modular inspirada en los carteles publicitarios de estilo Art Decó y metalpress de principios del siglo XX (como Prisma de 1931)."
+  },
+  {
+    "id": 90,
+    "name": "Hepta Slab",
+    "category": "Serif",
+    "weights": [
+      1,
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Hepta+Slab",
+    "cssFamilyParam": "Hepta+Slab:wght@1..900",
+    "description": "Slab serif variable y dinámica basada en especímenes antiguos que abraza un espíritu expresivo y poco convencional en sus trazos."
+  },
+  {
+    "id": 91,
+    "name": "Prata",
+    "category": "Serif",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/Prata",
+    "cssFamilyParam": "Prata",
+    "description": "Serif moderna y afilada de alto contraste con terminales en gota, que combina elegancia editorial con una fuerte personalidad visual."
+  },
+  {
+    "id": 92,
+    "name": "Atkinson Hyperlegible Next",
+    "category": "Sans Serif",
+    "weights": [
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Atkinson+Hyperlegible+Next",
+    "cssFamilyParam": "Atkinson+Hyperlegible+Next:wght@200..800",
+    "description": "Sans serif audaz y expresiva con formas distintivas en cada carácter pensadas específicamente para potenciar al máximo la legibilidad ('Boost Legibility')."
+  },
+  {
+    "id": 93,
+    "name": "Public Sans",
+    "category": "Sans Serif",
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "hasItalic": true,
+    "specimenUrl": "https://fonts.google.com/specimen/Public+Sans",
+    "cssFamilyParam": "Public+Sans:wght@100..900",
+    "description": "Arraigada en el género grotesco clásico, es una sans-serif con proporciones vivas y cálidas que incluye pesos variables e itálicas."
+  },
+  {
+    "id": 94,
+    "name": "VT323",
+    "category": "Monospace",
+    "weights": [
+      400
+    ],
+    "hasItalic": false,
+    "specimenUrl": "https://fonts.google.com/specimen/VT323",
+    "cssFamilyParam": "VT323",
+    "description": "Tipografía con carácter retro-brutalista, glifos juguetones y geometría cruda inspirada en la señalética y terminales de los años 70 y 80."
+  }
+]
