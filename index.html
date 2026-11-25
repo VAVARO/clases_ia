@@ -54,7 +54,7 @@
   </script>
 
   <!-- Datos del repositorio (bundle local para funcionamiento instantáneo) -->
-  <script src="data/data.js?v=20261125"></script>
+  <script src="data/data.js?v=20261125d"></script>
 
   <style>
     :root {
@@ -217,6 +217,141 @@
       border: 2px solid #ffffff;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
     }
+
+    /* Matriz editorial 2x2 de Ejercicios (estilo Sistemas Complejos) */
+    .ej-matrix {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border: 1px solid #e4dedb;
+      background: #fcf9f8;
+    }
+
+    .ej-matrix-cell {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: clamp(275px, 36vh, 340px);
+      padding: 1.25rem 1.45rem;
+      border-right: 1px solid #e4dedb;
+      border-bottom: 1px solid #e4dedb;
+      text-decoration: none;
+      color: #1c1b1b;
+      background: #fcf9f8;
+      position: relative;
+      overflow: hidden;
+      transition: background-color 180ms ease;
+    }
+
+    .ej-matrix-cell:nth-child(2n) {
+      border-right: none;
+    }
+
+    .ej-matrix-cell:nth-child(n+3) {
+      border-bottom: none;
+    }
+
+    .ej-matrix-cell:hover {
+      background: #f4efec;
+    }
+
+    .ej-matrix-cell:focus-visible {
+      outline: 2px solid #00357f;
+      outline-offset: -2px;
+    }
+
+    .ej-cell-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ej-cell-ident {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      min-width: 0;
+    }
+
+    .ej-cell-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #00357f;
+      flex-shrink: 0;
+    }
+
+    .ej-cell-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.18rem, 1.8vw, 1.45rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: #1c1b1b;
+      transition: color 180ms ease;
+    }
+
+    .ej-matrix-cell:hover .ej-cell-title {
+      color: #00357f;
+    }
+
+    .ej-cell-arrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: #66625f;
+      transition: transform 180ms ease, color 180ms ease;
+      flex-shrink: 0;
+    }
+
+    .ej-matrix-cell:hover .ej-cell-arrow {
+      color: #00357f;
+      transform: translateX(4px);
+    }
+
+    .ej-cell-viz {
+      position: relative;
+      flex: 1;
+      min-height: 155px;
+      width: 100%;
+      margin: 0.35rem 0;
+    }
+
+    .ej-mini-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      pointer-events: none;
+    }
+
+    .ej-cell-need {
+      position: relative;
+      z-index: 2;
+      font-size: 0.84rem;
+      line-height: 1.45;
+      color: #4a4745;
+      padding-top: 0.65rem;
+      border-top: 1px solid rgba(28, 27, 27, 0.08);
+    }
+
+    @media (max-width: 720px) {
+      .ej-matrix {
+        grid-template-columns: 1fr;
+      }
+
+      .ej-matrix-cell {
+        border-right: none;
+        border-bottom: 1px solid #e4dedb;
+        min-height: 250px;
+      }
+
+      .ej-matrix-cell:last-child {
+        border-bottom: none;
+      }
+    }
   </style>
 </head>
 
@@ -298,7 +433,7 @@
             <span>Ejercicios</span>
             <span class="material-symbols-outlined text-sm text-primary transition-transform group-hover:translate-x-1">arrow_forward</span>
           </div>
-          <div class="text-xs text-muted mt-1">4 habilidades &amp; proyectos agénticos</div>
+          <div class="text-xs text-muted mt-1">4 talleres interactivos (3 etapas)</div>
         </button>
 
         <button onclick="switchTab('recursos')" class="text-left p-3.5 rounded-xl border border-transparent hover:border-primary/25 hover:bg-white hover:shadow-xs transition-all group">
@@ -515,95 +650,17 @@
 
     <!-- SECCIÓN 2: EJERCICIOS -->
     <div id="view-ejercicios" class="tab-view hidden">
-      <!-- Encabezado Editorial Simple y Despejado -->
-      <div class="mb-10 max-w-3xl">
-        <div class="text-xs font-mono uppercase tracking-wider text-primary font-semibold mb-2">
-          Taller de IA Agéntica &middot; Práctica Autónoma
-        </div>
-        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-on-surface mb-3 leading-tight">
-          Cuatro Habilidades para Desarrollar con IA
+      <div class="mb-7 max-w-3xl">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-on-surface mb-2.5 leading-tight">
+          Cuatro habilidades para trabajar con Inteligencia Artificial
         </h2>
-        <p class="text-sm text-on-surface/80 leading-relaxed mb-6">
-          Ejercicios guiados para experimentar con <strong>chatbots</strong>, <strong>agentes de ejecución o código</strong> (Claude Code, Codex, Antigravity, Cursor) y <strong>agentes proactivos</strong> (Meta Muse, OpenAI Dots, Google Gemini Spark). Cada prompt te entrevista paso a paso y entrega la propuesta y planificación de un proyecto con IA agéntica.
+        <p class="text-sm text-on-surface/80 leading-relaxed">
+          Talleres interactivos en tres etapas inspirados en el marco de cuatro habilidades de Ethan Mollick. Haz clic en la necesidad que mejor describe tu punto de partida para abrir el taller.
         </p>
-
-        <!-- Selección según necesidad: Selector táctil sin cajas anidadas -->
-        <div class="pt-6 border-t border-border-subtle">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3.5">
-            <span class="text-xs font-mono uppercase tracking-wider text-muted font-semibold">
-              Elige según el punto de partida de tu proyecto:
-            </span>
-            <button 
-              onclick="seleccionarEjercicio('all')" 
-              id="btn-ver-todas"
-              class="text-xs font-mono text-primary hover:underline cursor-pointer transition-colors text-left sm:text-right"
-            >
-              Ver las 4 habilidades juntas
-            </button>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="selector-situaciones">
-            <button 
-              onclick="seleccionarEjercicio('ej-01')" 
-              data-ej-id="ej-01"
-              class="btn-situacion p-4 rounded-xl border border-border-subtle bg-white hover:border-primary/60 hover:shadow-xs active:scale-[0.99] transition-all text-left flex items-center justify-between gap-3 cursor-pointer group"
-            >
-              <div class="flex items-start gap-3">
-                <span class="situacion-num font-mono text-xs font-bold text-primary shrink-0 mt-0.5">01.</span>
-                <span class="situacion-text text-sm font-medium text-on-surface group-hover:text-primary transition-colors leading-snug">
-                  Domino un tema u oficio y quiero convertir mi criterio en evals y una skill
-                </span>
-              </div>
-              <span class="material-symbols-outlined situacion-arrow text-base text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0">arrow_forward</span>
-            </button>
-
-            <button 
-              onclick="seleccionarEjercicio('ej-02')" 
-              data-ej-id="ej-02"
-              class="btn-situacion p-4 rounded-xl border border-border-subtle bg-white hover:border-primary/60 hover:shadow-xs active:scale-[0.99] transition-all text-left flex items-center justify-between gap-3 cursor-pointer group"
-            >
-              <div class="flex items-start gap-3">
-                <span class="situacion-num font-mono text-xs font-bold text-primary shrink-0 mt-0.5">02.</span>
-                <span class="situacion-text text-sm font-medium text-on-surface group-hover:text-primary transition-colors leading-snug">
-                  Tengo un proyecto rápido y quiero revisarlo desde otras disciplinas
-                </span>
-              </div>
-              <span class="material-symbols-outlined situacion-arrow text-base text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0">arrow_forward</span>
-            </button>
-
-            <button 
-              onclick="seleccionarEjercicio('ej-03')" 
-              data-ej-id="ej-03"
-              class="btn-situacion p-4 rounded-xl border border-border-subtle bg-white hover:border-primary/60 hover:shadow-xs active:scale-[0.99] transition-all text-left flex items-center justify-between gap-3 cursor-pointer group"
-            >
-              <div class="flex items-start gap-3">
-                <span class="situacion-num font-mono text-xs font-bold text-primary shrink-0 mt-0.5">03.</span>
-                <span class="situacion-text text-sm font-medium text-on-surface group-hover:text-primary transition-colors leading-snug">
-                  Quiero definir la estética de un paper, informe, póster o web sin aspecto genérico
-                </span>
-              </div>
-              <span class="material-symbols-outlined situacion-arrow text-base text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0">arrow_forward</span>
-            </button>
-
-            <button 
-              onclick="seleccionarEjercicio('ej-04')" 
-              data-ej-id="ej-04"
-              class="btn-situacion p-4 rounded-xl border border-border-subtle bg-white hover:border-primary/60 hover:shadow-xs active:scale-[0.99] transition-all text-left flex items-center justify-between gap-3 cursor-pointer group"
-            >
-              <div class="flex items-start gap-3">
-                <span class="situacion-num font-mono text-xs font-bold text-primary shrink-0 mt-0.5">04.</span>
-                <span class="situacion-text text-sm font-medium text-on-surface group-hover:text-primary transition-colors leading-snug">
-                  Solo he usado chatbots y quiero probar una tarea real con más autonomía esta semana
-                </span>
-              </div>
-              <span class="material-symbols-outlined situacion-arrow text-base text-muted group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0">arrow_forward</span>
-            </button>
-          </div>
-        </div>
       </div>
 
-      <!-- GRILLA DE EJERCICIOS -->
-      <div id="ejercicios-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- MATRIZ EDITORIAL 2x2 ESTILO SISTEMAS COMPLEJOS -->
+      <div id="ejercicios-grid" class="ej-matrix" aria-label="Cuatro habilidades para trabajar con Inteligencia Artificial">
         <!-- Renderizado dinámico -->
       </div>
     </div>
@@ -1432,6 +1489,8 @@
         if (hash.startsWith('#ej-')) {
           const ejId = hash.replace('#', '');
           setTimeout(() => seleccionarEjercicio(ejId), 200);
+        } else {
+          setTimeout(() => document.getElementById('main-tabs-nav')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
         }
       } else if (hash === '#recursos') {
         switchTab('recursos');
@@ -1488,21 +1547,30 @@
       AppState.activeCategoryFilter = 'all';
 
       const isSecretUI = tabId === 'ui';
+      const isEjercicios = tabId === 'ejercicios';
       const heroEl = document.getElementById('main-hero-section');
       const navEl = document.getElementById('main-tabs-nav');
       const controlsEl = document.getElementById('controls-bar');
       const headerSearchEl = document.getElementById('header-search-wrap');
+      const counterEl = document.getElementById('visible-items-counter');
       const emptyEl = document.getElementById('empty-state');
       const uiViewEl = document.getElementById('view-ui');
 
+      if (!isEjercicios && typeof stopEjMiniLoop === 'function') {
+        stopEjMiniLoop();
+      }
+
       if (heroEl) heroEl.classList.toggle('hidden', isSecretUI);
       if (navEl) navEl.classList.toggle('hidden', isSecretUI);
-      if (controlsEl) controlsEl.classList.toggle('hidden', isSecretUI);
+      if (controlsEl) controlsEl.classList.toggle('hidden', isSecretUI || isEjercicios);
       if (headerSearchEl) {
-        if (isSecretUI) headerSearchEl.classList.add('sm:hidden');
+        if (isSecretUI || isEjercicios) headerSearchEl.classList.add('sm:hidden');
         else headerSearchEl.classList.remove('sm:hidden');
       }
-      if (emptyEl && isSecretUI) emptyEl.classList.add('hidden');
+      if (counterEl && counterEl.parentElement) {
+        counterEl.parentElement.classList.toggle('invisible', isEjercicios);
+      }
+      if (emptyEl && (isSecretUI || isEjercicios)) emptyEl.classList.add('hidden');
       if (uiViewEl) {
         uiViewEl.classList.toggle('hidden', !isSecretUI);
         uiViewEl.classList.toggle('block', isSecretUI);
@@ -2118,177 +2186,449 @@
       `).join('');
     }
 
-    // 2. EJERCICIOS
+    // 2. EJERCICIOS (MATRIZ EDITORIAL 2x2 CON VISUALIZACIONES MÍNIMAS)
+    const EJ_REDUCED_MOTION = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let ejMiniCanvases = [];
+    let ejMiniRafId = null;
+    let ejLastDraw = 0;
+
+    function stopEjMiniLoop() {
+      if (ejMiniRafId !== null) {
+        cancelAnimationFrame(ejMiniRafId);
+        ejMiniRafId = null;
+      }
+    }
+
+    function resizeEjMiniCanvases() {
+      if (!ejMiniCanvases.length) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      ejMiniCanvases.forEach(item => {
+        const rect = item.canvas.parentElement.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        item.w = rect.width;
+        item.h = rect.height;
+        item.canvas.width = Math.round(rect.width * dpr);
+        item.canvas.height = Math.round(rect.height * dpr);
+        item.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      });
+      drawEjMiniatures(performance.now() / 1000);
+    }
+
+    function drawEjMiniatures(t) {
+      ejMiniCanvases.forEach(({ id, ctx, w, h }) => {
+        if (!w || !h) return;
+        ctx.clearRect(0, 0, w, h);
+
+        if (id === 'ej-01') {
+          // Conocimiento Profundo: Iceberg (punta visible en tinta, masa sumergida profunda en cobalto)
+          const waterY = h * 0.39;
+
+          // Línea de agua sutil con ondulación mínima
+          ctx.strokeStyle = 'rgba(0, 53, 127, 0.36)';
+          ctx.lineWidth = 1.1;
+          ctx.beginPath();
+          for (let x = w * 0.14; x <= w * 0.86; x += 12) {
+            const u = (x - w * 0.14) / (w * 0.72);
+            const dy = EJ_REDUCED_MOTION ? 0 : Math.sin(u * Math.PI * 4 + t * 1.1) * 1.4;
+            const y = waterY + dy;
+            if (x === w * 0.14) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+
+          // Punta visible sobre el agua (pequeña)
+          const cx = w * 0.50;
+          const peakTop = h * 0.11;
+          const tipLeft = cx - Math.min(w * 0.10, 42);
+          const tipRight = cx + Math.min(w * 0.09, 38);
+          ctx.strokeStyle = '#1c1b1b';
+          ctx.fillStyle = 'rgba(28, 27, 27, 0.04)';
+          ctx.lineWidth = 1.45;
+          ctx.beginPath();
+          ctx.moveTo(tipLeft, waterY);
+          ctx.lineTo(cx - 8, peakTop + 9);
+          ctx.lineTo(cx + 4, peakTop);
+          ctx.lineTo(tipRight, waterY);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+
+          // Arista interna de la punta
+          ctx.strokeStyle = 'rgba(28, 27, 27, 0.35)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(cx + 4, peakTop);
+          ctx.lineTo(cx - 2, waterY);
+          ctx.stroke();
+
+          // Masa sumergida bajo el agua (amplia y profunda)
+          const subL = cx - Math.min(w * 0.24, 98);
+          const subR = cx + Math.min(w * 0.25, 102);
+          const subMidL = cx - Math.min(w * 0.18, 72);
+          const subMidR = cx + Math.min(w * 0.16, 66);
+          const baseBot = h * 0.90;
+
+          ctx.strokeStyle = '#00357f';
+          ctx.fillStyle = 'rgba(0, 53, 127, 0.055)';
+          ctx.lineWidth = 1.45;
+          ctx.beginPath();
+          ctx.moveTo(tipLeft, waterY);
+          ctx.lineTo(subL, h * 0.58);
+          ctx.lineTo(subMidL, h * 0.78);
+          ctx.lineTo(cx - 6, baseBot);
+          ctx.lineTo(cx + 26, h * 0.85);
+          ctx.lineTo(subMidR, h * 0.72);
+          ctx.lineTo(subR, h * 0.54);
+          ctx.lineTo(tipRight, waterY);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+
+          // Facetas internas sumergidas
+          ctx.strokeStyle = 'rgba(0, 53, 127, 0.24)';
+          ctx.lineWidth = 0.95;
+          ctx.beginPath();
+          ctx.moveTo(cx - 2, waterY);
+          ctx.lineTo(cx - 10, h * 0.65);
+          ctx.lineTo(cx - 6, baseBot);
+          ctx.moveTo(cx - 10, h * 0.65);
+          ctx.lineTo(subL, h * 0.58);
+          ctx.moveTo(cx - 10, h * 0.65);
+          ctx.lineTo(subMidR, h * 0.72);
+          ctx.stroke();
+
+          // 3 puntos señalizadores en lo profundo
+          const signals = [
+            { x: cx - 10, y: h * 0.65, ph: 0 },
+            { x: cx - 26, y: h * 0.76, ph: 1.8 },
+            { x: cx + 18, y: h * 0.72, ph: 3.4 }
+          ];
+          signals.forEach(s => {
+            const p = EJ_REDUCED_MOTION ? 0.6 : (0.45 + 0.55 * Math.sin(t * 1.4 + s.ph));
+            ctx.fillStyle = `rgba(0, 53, 127, ${(0.35 + p * 0.5).toFixed(3)})`;
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, 2.3 + p * 0.8, 0, Math.PI * 2);
+            ctx.fill();
+          });
+
+        } else if (id === 'ej-02') {
+          // Conocimiento Amplio: 4 grupos disciplinarios enlazados por arcos en cobalto
+          const clusters = [
+            { cx: w * 0.22, cy: h * 0.30 },
+            { cx: w * 0.76, cy: h * 0.26 },
+            { cx: w * 0.28, cy: h * 0.76 },
+            { cx: w * 0.74, cy: h * 0.74 }
+          ];
+          const nodes = [];
+          clusters.forEach((cl, cIdx) => {
+            const group = [];
+            for (let k = 0; k < 4; k++) {
+              const a = (k / 4) * Math.PI * 2 + cIdx * 0.6 + (EJ_REDUCED_MOTION ? 0 : Math.sin(t * 0.5 + cIdx) * 0.08);
+              const rad = 14 + (k % 2) * 8;
+              group.push({ x: cl.cx + Math.cos(a) * rad, y: cl.cy + Math.sin(a) * rad });
+            }
+            nodes.push(group);
+
+            ctx.strokeStyle = 'rgba(28, 27, 27, 0.22)';
+            ctx.lineWidth = 0.9;
+            ctx.beginPath();
+            for (let i = 0; i < 4; i++) {
+              const n1 = group[i];
+              const n2 = group[(i + 1) % 4];
+              ctx.moveTo(n1.x, n1.y);
+              ctx.lineTo(n2.x, n2.y);
+            }
+            ctx.stroke();
+
+            group.forEach(n => {
+              ctx.fillStyle = '#1c1b1b';
+              ctx.beginPath();
+              ctx.arc(n.x, n.y, 2.3, 0, Math.PI * 2);
+              ctx.fill();
+            });
+          });
+
+          const bridges = [
+            [nodes[0][0], nodes[1][2], -26],
+            [nodes[1][3], nodes[3][1], 22],
+            [nodes[0][2], nodes[3][0], -10],
+            [nodes[2][1], nodes[1][0], 14]
+          ];
+          bridges.forEach(([a, b, lift], idx) => {
+            const mx = (a.x + b.x) * 0.5;
+            const my = (a.y + b.y) * 0.5 + lift;
+            ctx.strokeStyle = idx < 2 ? 'rgba(0, 53, 127, 0.65)' : 'rgba(0, 53, 127, 0.30)';
+            ctx.lineWidth = idx < 2 ? 1.4 : 1.0;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.quadraticCurveTo(mx, my, b.x, b.y);
+            ctx.stroke();
+
+            if (!EJ_REDUCED_MOTION && idx < 2) {
+              const u = ((t * 0.32 + idx * 0.45) % 1 + 1) % 1;
+              const inv = 1 - u;
+              const px = inv * inv * a.x + 2 * inv * u * mx + u * u * b.x;
+              const py = inv * inv * a.y + 2 * inv * u * my + u * u * b.y;
+              ctx.fillStyle = '#00357f';
+              ctx.beginPath();
+              ctx.arc(px, py, 3, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          });
+
+        } else if (id === 'ej-03') {
+          // Criterio o Gusto: Poda desde ruido disperso hacia 3 piezas proporcionadas
+          const splitX = w * 0.48;
+          ctx.strokeStyle = 'rgba(28, 27, 27, 0.16)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(splitX, h * 0.14);
+          ctx.lineTo(splitX, h * 0.86);
+          ctx.stroke();
+
+          // Izquierda: borradores dispersos
+          const clutter = [
+            [0.14, 0.22, 0.08, 0.12], [0.25, 0.18, 0.11, 0.07], [0.16, 0.42, 0.13, 0.09],
+            [0.32, 0.34, 0.09, 0.14], [0.20, 0.60, 0.08, 0.11], [0.31, 0.56, 0.11, 0.08],
+            [0.13, 0.74, 0.14, 0.07], [0.29, 0.72, 0.10, 0.12]
+          ];
+          ctx.strokeStyle = 'rgba(28, 27, 27, 0.24)';
+          ctx.lineWidth = 1;
+          clutter.forEach(([rx, ry, rw, rh]) => {
+            ctx.strokeRect(rx * w, ry * h, rw * w, rh * h);
+          });
+
+          // Derecha: 3 proporciones limpias y alineadas
+          const keep = [
+            { x: w * 0.56, y: h * 0.22, bw: w * 0.13, bh: h * 0.56, accent: false },
+            { x: w * 0.72, y: h * 0.22, bw: w * 0.15, bh: h * 0.25, accent: true },
+            { x: w * 0.72, y: h * 0.53, bw: w * 0.15, bh: h * 0.25, accent: false }
+          ];
+          const pulse = EJ_REDUCED_MOTION ? 0.8 : (0.55 + 0.45 * Math.sin(t * 1.2));
+          keep.forEach(box => {
+            ctx.strokeStyle = box.accent ? '#00357f' : '#1c1b1b';
+            ctx.fillStyle = box.accent ? `rgba(0, 53, 127, ${(0.05 + pulse * 0.06).toFixed(3)})` : 'transparent';
+            ctx.lineWidth = box.accent ? 1.6 : 1.2;
+            ctx.fillRect(box.x, box.y, box.bw, box.bh);
+            ctx.strokeRect(box.x, box.y, box.bw, box.bh);
+
+            if (box.accent) {
+              const tick = 5;
+              ctx.strokeStyle = '#00357f';
+              ctx.lineWidth = 1.2;
+              ctx.beginPath();
+              ctx.moveTo(box.x - tick, box.y); ctx.lineTo(box.x + tick, box.y);
+              ctx.moveTo(box.x, box.y - tick); ctx.lineTo(box.x, box.y + tick);
+              ctx.moveTo(box.x + box.bw - tick, box.y + box.bh); ctx.lineTo(box.x + box.bw + tick, box.y + box.bh);
+              ctx.moveTo(box.x + box.bw, box.y + box.bh - tick); ctx.lineTo(box.x + box.bw, box.y + box.bh + tick);
+              ctx.stroke();
+            }
+          });
+
+        } else if (id === 'ej-04') {
+          // Agencia: Origen de iniciativa disparando tres trayectorias activas (bucle + control humano + hitos)
+          const x0 = w * 0.16;
+          const xEnd = w * 0.85;
+          const yTop = h * 0.24;
+          const yMid = h * 0.52;
+          const yBot = h * 0.80;
+          const xLoop = w * 0.49;
+          const xGate = w * 0.71;
+          const loopR = Math.min(w, h) * 0.15;
+
+          const drawArrowHead = (x, y) => {
+            ctx.beginPath();
+            ctx.moveTo(x - 5, y - 3);
+            ctx.lineTo(x, y);
+            ctx.lineTo(x - 5, y + 3);
+            ctx.stroke();
+          };
+
+          // Rama superior (curva Bézier)
+          const ctrlTopX = w * 0.48, ctrlTopY = h * 0.18;
+          ctx.strokeStyle = 'rgba(28, 27, 27, 0.55)';
+          ctx.lineWidth = 1.15;
+          ctx.beginPath();
+          ctx.moveTo(x0, yMid);
+          ctx.quadraticCurveTo(ctrlTopX, ctrlTopY, xEnd - 7, yTop);
+          ctx.stroke();
+          drawArrowHead(xEnd - 7, yTop);
+
+          // Rama inferior (curva Bézier)
+          const ctrlBotX = w * 0.48, ctrlBotY = h * 0.86;
+          ctx.beginPath();
+          ctx.moveTo(x0, yMid);
+          ctx.quadraticCurveTo(ctrlBotX, ctrlBotY, xEnd - 7, yBot);
+          ctx.stroke();
+          drawArrowHead(xEnd - 7, yBot);
+
+          // Rama central (línea recta + bucle de ejecución + marca de control humano)
+          ctx.strokeStyle = '#1c1b1b';
+          ctx.lineWidth = 1.45;
+          ctx.beginPath();
+          ctx.moveTo(x0, yMid);
+          ctx.lineTo(xEnd - 7, yMid);
+          ctx.stroke();
+          drawArrowHead(xEnd - 7, yMid);
+
+          ctx.strokeStyle = 'rgba(28, 27, 27, 0.78)';
+          ctx.lineWidth = 1.25;
+          ctx.beginPath();
+          ctx.arc(xLoop, yMid - loopR, loopR, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.strokeStyle = '#00357f';
+          ctx.lineWidth = 1.7;
+          ctx.beginPath();
+          ctx.moveTo(xGate, yMid - 17);
+          ctx.lineTo(xGate, yMid + 17);
+          ctx.stroke();
+
+          // Tres hitos cuadrados a la derecha
+          [yTop, yMid, yBot].forEach((hy, idx) => {
+            ctx.strokeStyle = idx === 1 ? '#00357f' : 'rgba(28, 27, 27, 0.65)';
+            ctx.fillStyle = idx === 1 ? 'rgba(0, 53, 127, 0.12)' : 'transparent';
+            ctx.lineWidth = idx === 1 ? 1.5 : 1.1;
+            ctx.fillRect(xEnd - 3, hy - 3.5, 7, 7);
+            ctx.strokeRect(xEnd - 3, hy - 3.5, 7, 7);
+          });
+
+          // Origen de iniciativa a la izquierda con doble anillo pulsante
+          const ringP = EJ_REDUCED_MOTION ? 0.55 : ((t * 0.55) % 1);
+          ctx.strokeStyle = `rgba(0, 53, 127, ${((1 - ringP) * 0.48).toFixed(3)})`;
+          ctx.lineWidth = 1.1;
+          ctx.beginPath();
+          ctx.arc(x0, yMid, 5 + ringP * 11, 0, Math.PI * 2);
+          ctx.stroke();
+
+          const ringP2 = EJ_REDUCED_MOTION ? 0.25 : ((t * 0.55 + 0.5) % 1);
+          ctx.strokeStyle = `rgba(0, 53, 127, ${((1 - ringP2) * 0.42).toFixed(3)})`;
+          ctx.beginPath();
+          ctx.arc(x0, yMid, 5 + ringP2 * 11, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.fillStyle = '#00357f';
+          ctx.beginPath();
+          ctx.arc(x0, yMid, 4, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Pulsos viajando por las tres ramas (el central recorre el bucle real)
+          const uTop = EJ_REDUCED_MOTION ? 0.58 : ((t * 0.26) % 1);
+          const invT = 1 - uTop;
+          const ptx = invT * invT * x0 + 2 * invT * uTop * ctrlTopX + uTop * uTop * (xEnd - 7);
+          const pty = invT * invT * yMid + 2 * invT * uTop * ctrlTopY + uTop * uTop * yTop;
+          ctx.fillStyle = 'rgba(0, 53, 127, 0.72)';
+          ctx.beginPath();
+          ctx.arc(ptx, pty, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+
+          const uBot = EJ_REDUCED_MOTION ? 0.42 : ((t * 0.26 + 0.45) % 1);
+          const invB = 1 - uBot;
+          const pbx = invB * invB * x0 + 2 * invB * uBot * ctrlBotX + uBot * uBot * (xEnd - 7);
+          const pby = invB * invB * yMid + 2 * invB * uBot * ctrlBotY + uBot * uBot * yBot;
+          ctx.beginPath();
+          ctx.arc(pbx, pby, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+
+          const uMid = EJ_REDUCED_MOTION ? 0.46 : ((t * 0.22) % 1);
+          let pmx, pmy;
+          if (uMid < 0.28) {
+            const s = uMid / 0.28;
+            pmx = x0 + s * (xLoop - x0);
+            pmy = yMid;
+          } else if (uMid < 0.64) {
+            const s = (uMid - 0.28) / 0.36;
+            const ang = Math.PI * 0.5 - s * Math.PI * 2;
+            pmx = xLoop + Math.cos(ang) * loopR;
+            pmy = (yMid - loopR) + Math.sin(ang) * loopR;
+          } else {
+            let s = (uMid - 0.64) / 0.36;
+            s = s - 0.04 * Math.sin(s * Math.PI * 2);
+            pmx = xLoop + s * ((xEnd - 7) - xLoop);
+            pmy = yMid;
+          }
+          ctx.fillStyle = '#00357f';
+          ctx.beginPath();
+          ctx.arc(pmx, pmy, 3.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+    }
+
+    function renderEjMiniLoop(now) {
+      ejMiniRafId = null;
+      if (EJ_REDUCED_MOTION || document.hidden || AppState.activeTab !== 'ejercicios') return;
+      if (now - ejLastDraw >= 32) {
+        ejLastDraw = now;
+        drawEjMiniatures(now / 1000);
+      }
+      ejMiniRafId = requestAnimationFrame(renderEjMiniLoop);
+    }
+
+    function initEjMiniCanvases() {
+      const canvases = document.querySelectorAll('#ejercicios-grid .ej-mini-canvas');
+      ejMiniCanvases = Array.from(canvases).map(canvas => ({
+        id: canvas.getAttribute('data-viz-id'),
+        canvas,
+        ctx: canvas.getContext('2d'),
+        w: 0,
+        h: 0
+      }));
+      resizeEjMiniCanvases();
+      stopEjMiniLoop();
+      if (!EJ_REDUCED_MOTION && !document.hidden && AppState.activeTab === 'ejercicios') {
+        ejLastDraw = 0;
+        ejMiniRafId = requestAnimationFrame(renderEjMiniLoop);
+      }
+    }
+
+    let ejResizeTimer = null;
+    window.addEventListener('resize', () => {
+      if (AppState.activeTab !== 'ejercicios') return;
+      clearTimeout(ejResizeTimer);
+      ejResizeTimer = setTimeout(resizeEjMiniCanvases, 150);
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden || AppState.activeTab !== 'ejercicios') {
+        stopEjMiniLoop();
+      } else if (!EJ_REDUCED_MOTION && ejMiniCanvases.length) {
+        ejLastDraw = 0;
+        ejMiniRafId = requestAnimationFrame(renderEjMiniLoop);
+      }
+    });
+
     function renderEjercicios() {
       const grid = document.getElementById('ejercicios-grid');
       const emptyState = document.getElementById('empty-state');
-      const q = AppState.searchQuery.toLowerCase().trim();
-      const cat = AppState.activeCategoryFilter;
+      if (emptyState) emptyState.classList.add('hidden');
 
-      const filtered = AppState.data.ejercicios.filter(item => {
-        const matchesCategory = cat === 'all' || item.id === cat || item.skill === cat;
-        const matchesSearch = !q || 
-          item.skill.toLowerCase().includes(q) ||
-          item.title.toLowerCase().includes(q) ||
-          item.definition.toLowerCase().includes(q) ||
-          item.example.toLowerCase().includes(q) ||
-          item.trigger.toLowerCase().includes(q) ||
-          item.tags.some(t => t.toLowerCase().includes(q));
-        return matchesCategory && matchesSearch;
-      });
+      const items = AppState.data.ejercicios || [];
+      updateCounterText(items.length, items.length);
 
-      updateCounterText(filtered.length, AppState.data.ejercicios.length);
-
-      if (filtered.length === 0) {
-        grid.innerHTML = '';
-        emptyState.classList.remove('hidden');
-        return;
-      }
-      emptyState.classList.add('hidden');
-
-      grid.innerHTML = filtered.map((e, idx) => `
-        <article 
+      grid.innerHTML = items.map(e => `
+        <a
+          href="${escapeHtml(e.studioUrl || '#')}"
           id="card-${e.id}"
-          class="stagger-item p-6 sm:p-8 rounded-2xl bg-white border border-border-subtle shadow-xs hover:border-primary/40 transition-all flex flex-col justify-between ${filtered.length === 1 ? 'col-span-full max-w-3xl mx-auto w-full' : ''}"
-          style="animation-delay: ${Math.min(idx * 50, 200)}ms"
+          data-ej-id="${e.id}"
+          class="ej-matrix-cell"
         >
-          <div>
-            <!-- Cabecera de la Habilidad -->
-            <div class="flex items-center justify-between gap-4 pb-3 mb-4 border-b border-border-subtle">
-              <span class="font-mono text-xs text-primary font-semibold tracking-wide uppercase">
-                ${escapeHtml(e.number)} &middot; ${escapeHtml(e.skillEn)}
-              </span>
-              <span class="font-mono text-xs text-muted flex items-center gap-1">
-                <span class="material-symbols-outlined text-xs">schedule</span>
-                ${escapeHtml(e.estimatedTime)}
-              </span>
+          <div class="ej-cell-head">
+            <div class="ej-cell-ident">
+              <span class="ej-cell-num">${escapeHtml(e.number)}</span>
+              <h3 class="ej-cell-title">${escapeHtml(e.skill)}</h3>
             </div>
-
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-on-surface mb-1">
-              ${escapeHtml(e.skill)}
-            </h3>
-
-            <div class="text-sm font-semibold text-primary mb-4">
-              ${escapeHtml(e.title)}
-            </div>
-
-            <!-- Definicion Conceptual -->
-            <p class="text-sm text-on-surface/90 leading-relaxed mb-4">
-              ${escapeHtml(e.definition)}
-            </p>
-
-            <!-- Ejemplo: Párrafo continuo sin cajas anidadas -->
-            <p class="text-sm text-on-surface/80 leading-relaxed mb-6">
-              <strong class="font-semibold text-on-surface">Ejemplo:</strong> ${escapeHtml(e.example)}
-            </p>
-
-            ${e.studioUrl ? `
-            <div class="pt-4 pb-5 border-t border-border-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <span class="text-xs text-muted leading-snug">
-                Versión guiada en pantalla completa con selector de evals y prompts ensamblados.
-              </span>
-              <a
-                href="${escapeHtml(e.studioUrl)}"
-                class="btn-action inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-dark transition-all shadow-xs shrink-0"
-              >
-                <span>${escapeHtml(e.studioLabel || 'Abrir taller interactivo')}</span>
-                <span class="material-symbols-outlined text-base">arrow_forward</span>
-              </a>
-            </div>
-            ` : ''}
-
-            <!-- Centro de Acción: Prompt y Lanzadores de Chatbots y Agentes -->
-            <div class="space-y-3 mb-6 pt-4 border-t border-border-subtle">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <span class="font-mono text-xs uppercase tracking-wider text-muted font-semibold">
-                  Prompt entrevistador para planificar tu proyecto:
-                </span>
-                <button 
-                  onclick="copiarPrompt('${e.id}', this)" 
-                  id="btn-copy-${e.id}"
-                  class="btn-action w-full sm:w-auto px-4 py-2.5 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-primary-dark active:scale-95 shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <span class="material-symbols-outlined text-base">content_copy</span>
-                  <span>Copiar prompt</span>
-                </button>
-              </div>
-
-              <!-- Contenedor del Prompt -->
-              <div class="bg-surface-alt rounded-xl border border-border-subtle p-4 max-h-56 overflow-y-auto font-mono text-xs text-on-surface leading-relaxed select-all">
-                <pre class="whitespace-pre-wrap font-mono">${escapeHtml(e.prompt)}</pre>
-              </div>
-
-              <!-- Botones de Acción Rápida para Abrir Chatbots y Entornos Agénticos -->
-              <div class="flex flex-wrap items-center gap-2 pt-1">
-                <span class="text-xs font-mono text-muted uppercase tracking-wider shrink-0 mr-1">Abrir en:</span>
-                <a 
-                  href="https://chatgpt.com" 
-                  target="_blank" 
-                  rel="noopener" 
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white hover:border-primary hover:bg-primary/[0.04] text-xs font-medium text-on-surface hover:text-primary transition-all active:scale-95 shadow-xs"
-                >
-                  <span class="material-symbols-outlined text-sm text-primary">smart_toy</span>
-                  <span>ChatGPT / Dots</span>
-                </a>
-                <a 
-                  href="https://gemini.google.com" 
-                  target="_blank" 
-                  rel="noopener" 
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white hover:border-primary hover:bg-primary/[0.04] text-xs font-medium text-on-surface hover:text-primary transition-all active:scale-95 shadow-xs"
-                >
-                  <span class="material-symbols-outlined text-sm text-primary">auto_awesome</span>
-                  <span>Gemini / Spark</span>
-                </a>
-                <a 
-                  href="https://claude.ai" 
-                  target="_blank" 
-                  rel="noopener" 
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white hover:border-primary hover:bg-primary/[0.04] text-xs font-medium text-on-surface hover:text-primary transition-all active:scale-95 shadow-xs"
-                >
-                  <span class="material-symbols-outlined text-sm text-primary">psychology</span>
-                  <span>Claude</span>
-                </a>
-                <a 
-                  href="https://www.meta.ai" 
-                  target="_blank" 
-                  rel="noopener" 
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white hover:border-primary hover:bg-primary/[0.04] text-xs font-medium text-on-surface hover:text-primary transition-all active:scale-95 shadow-xs"
-                >
-                  <span class="material-symbols-outlined text-sm text-emerald-700">bolt</span>
-                  <span>Meta AI / Muse</span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Regla clave y resultado: Formato de lectura serena con acento cobalto lateral -->
-            <div class="pt-4 border-t border-border-subtle text-xs text-muted leading-relaxed space-y-2 border-l-2 border-primary pl-4 my-2">
-              <p>
-                <strong class="text-on-surface font-semibold">Regla clave en la conversación:</strong> Responde estrictamente una sola pregunta a la vez con datos reales de tu proyecto o flujo de trabajo. Si la IA formula más de una pregunta junta, respóndele: <em>«Sigue la instrucción: haz estrictamente una pregunta a la vez»</em>.
-              </p>
-              <p>
-                <strong class="text-on-surface font-semibold">Resultado final:</strong> ${escapeHtml(e.resultDeliverable)}
-              </p>
-            </div>
-
-            <!-- Desplegable metodológico sin fondos pesados -->
-            <details class="mt-4 pt-3 border-t border-border-subtle group text-xs text-muted">
-              <summary class="cursor-pointer hover:text-primary transition-colors flex items-center justify-between select-none py-1">
-                <span class="font-medium">¿Por qué este prompt está formulado de esta manera?</span>
-                <span class="material-symbols-outlined text-sm group-open:rotate-180 transition-transform">expand_more</span>
-              </summary>
-              <div class="mt-3 space-y-2 leading-relaxed text-muted pl-1">
-                <p><strong class="text-on-surface font-medium">Estructura cerrada:</strong> Al asignarle un rol estricto y un flujo delimitado, evitamos que la IA improvise o entregue generalidades.</p>
-                <p><strong class="text-on-surface font-medium">Cero complacencia:</strong> La IA tiene la orden de no avanzar si tus respuestas son vagas o teóricas, exigiéndote variables, reglas y flujos reales.</p>
-                <p><strong class="text-on-surface font-medium">Una pregunta a la vez:</strong> Evita abrumar con cuestionarios largos y permite diseñar la arquitectura punto por punto.</p>
-                <p><strong class="text-on-surface font-medium">Escucha reflexiva:</strong> Antes de formular la siguiente pregunta, la IA sintetiza lo que respondiste para verificar comprensión mutua.</p>
-                <p><strong class="text-on-surface font-medium">Cierre con planificación agéntica:</strong> La conversación concluye con una propuesta y planificación estructurada que articula chatbots, agentes de ejecución y agentes proactivos (Muse, Dots o Spark).</p>
-              </div>
-            </details>
+            <span class="ej-cell-arrow" aria-hidden="true">→</span>
           </div>
-        </article>
+
+          <div class="ej-cell-viz">
+            <canvas class="ej-mini-canvas" data-viz-id="${e.id}" aria-hidden="true"></canvas>
+          </div>
+
+          <p class="ej-cell-need">${escapeHtml(e.trigger)}</p>
+        </a>
       `).join('');
 
-      updateSelectorSituacionesUI(cat);
+      requestAnimationFrame(initEjMiniCanvases);
     }
 
     // 3. RECURSOS
@@ -2757,7 +3097,7 @@
           }
         }
 
-        if (e.key === '/' && !isTyping && AppState.activeTab !== 'ui') {
+        if (e.key === '/' && !isTyping && AppState.activeTab !== 'ui' && AppState.activeTab !== 'ejercicios') {
           e.preventDefault();
           const input = document.getElementById('global-search-input');
           input.focus();
@@ -2823,15 +3163,14 @@
 
         if (btn) {
           const originalContent = btn.innerHTML;
-          btn.classList.remove('bg-primary', 'hover:bg-primary-dark');
-          btn.classList.add('bg-emerald-700', 'hover:bg-emerald-800');
+          const originalClass = btn.className;
+          btn.className = 'btn-action inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-medium transition-all cursor-pointer';
           btn.innerHTML = `
             <span class="material-symbols-outlined text-base">check</span>
             <span>Prompt Copiado</span>
           `;
           setTimeout(() => {
-            btn.classList.remove('bg-emerald-700', 'hover:bg-emerald-800');
-            btn.classList.add('bg-primary', 'hover:bg-primary-dark');
+            btn.className = originalClass;
             btn.innerHTML = originalContent;
           }, 3000);
         }

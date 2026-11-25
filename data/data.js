@@ -487,14 +487,19 @@
     "skillEn": "Deep Knowledge",
     "title": "Conocimiento Tácito, Evals y SKILL.md",
     "estimatedTime": "10 a 15 min",
-    "trigger": "Domino un tema u oficio y quiero convertir mi criterio en evals y una skill",
+    "trigger": "Domino un tema u oficio y quiero que la IA aplique mi criterio sin cometer errores básicos",
     "triggerIcon": "build",
     "studioUrl": "conocimiento-profundo.html",
-    "studioLabel": "Abrir taller interactivo (3 etapas)",
-    "definition": "Lo que sabes de tu oficio y rara vez dices en voz alta es lo que te permite revisar el trabajo de una Inteligencia Artificial. El conocimiento tácito es lo que sabes hacer pero te cuesta explicar: aquí lo sacas a la luz y lo conviertes en pruebas (evals) y en una skill que puedes reutilizar.",
+    "studioLabel": "Abrir taller (3 etapas)",
+    "stages": [
+      "Sacar tu conocimiento tácito",
+      "Elegir pruebas de calidad (evals) en 4 tipos",
+      "Crear evals, auditar y guardar tu SKILL.md"
+    ],
+    "definition": "Lo que sabes de tu oficio y rara vez dices en voz alta es lo que te permite revisar el trabajo de una Inteligencia Artificial. El conocimiento tácito es lo que sabes hacer pero te cuesta explicar: aquí lo sacas a la luz y lo conviertes en pruebas (evals) y en un archivo de instrucciones (SKILL.md) reutilizable.",
     "example": "Un investigador o ingeniero usa un agente de código para automatizar la lectura de documentos técnicos y un agente proactivo (Dots o Spark) para vigilar actualizaciones de normativa o literatura. Sin conocimiento profundo, el sistema puede mezclar versiones de una norma, inventar una cita plausible o asumir una unidad equivocada. Quien domina su área fija de antemano las fuentes autorizadas, define casos difíciles de prueba (evals) y marca el punto exacto donde el agente debe detenerse a pedir confirmación humana.",
     "initialQuestion": "¿Qué parte de tu trabajo o estudio haces hoy casi sin pensar, y a alguien nuevo le costaría meses hacer bien?",
-    "resultDeliverable": "Mapa de conocimiento tácito, tus primeros evals (Matriz 2x2 de Tina Huang) y archivo SKILL.md reutilizable",
+    "resultDeliverable": "Mapa de conocimiento tácito, pruebas de calidad (evals) y archivo de instrucciones SKILL.md",
     "prompt": "ROL\nEres un entrevistador especializado en sacar a la luz conocimiento tácito: lo que una persona sabe hacer pero le cuesta explicar. Tu trabajo es ayudarme a ponerlo en palabras usando situaciones reales, no definiciones generales.\n\nOBJETIVO\nAl terminar, quiero tener escrito lo que sé y normalmente no digo, y tres ideas de proyectos rápidos donde ese conocimiento sea la diferencia. Todavía no sé qué proyecto quiero hacer, y no quiero que lo asumas.\n\nREGLAS\n- Haz UNA sola pregunta a la vez y espera mi respuesta.\n- Haz entre 8 y 9 preguntas, de menos de 30 palabras cada una.\n- Pídeme siempre situaciones concretas y recientes. Si respondo con generalidades (\"me fijo en la calidad\", \"es experiencia\", \"es intuición\"), no avances: pídeme el último caso real o plantéame una situación para contrastar (\"¿qué harías si el dato viniera de otra fuente?\").\n- No elogies mis respuestas ni las valides por cortesía. Si algo es vago, dilo.\n- Antes de cada pregunta, resume en una línea lo que acabo de decir, con mis palabras.\n- No propongas proyectos hasta el final.\n\nPREGUNTAS (en este orden)\n1. Algo que hago con soltura: Qué parte de mi trabajo o estudio hago hoy casi sin pensar y a alguien nuevo le costaría meses hacer bien. Si no se me ocurre, pregúntame a qué me dedico y qué hice esta semana.\n2. La última vez: Que cuente la última vez que lo hice, paso a paso.\n3. Señales: En qué me fijé en ese caso que me hizo decidir cómo seguir.\n4. La persona nueva: Qué habría hecho mal alguien sin experiencia en esa misma situación.\n5. Cuando algo falló: La última vez que algo salió mal o estuvo cerca de salir mal, y cómo me di cuenta.\n6. Excepciones: En qué casos la regla habitual no sirve y qué hago entonces.\n7. Delegar: Qué partes de esa tarea dejaría que hiciera una IA y cuáles prefiero hacer yo, y por qué.\n8. Dar por bueno: Qué miro, en cinco minutos, para saber si el resultado sirve o hay que rehacerlo.\n\nRESULTADO FINAL\nEntrégame un \"Mapa de conocimiento tácito\" con cinco partes:\n1. Lo que sé y no había dicho: entre 5 y 8 frases en mis palabras.\n2. Mis señales y reglas, en formato \"Si ocurre X, hago Y porque Z\".\n3. Errores que cometería una persona nueva o una IA en mi lugar.\n4. Tres ideas de proyecto rápido, cada una realizable en una tarde con Inteligencia Artificial, donde este conocimiento sea lo que decide la calidad. Indica por qué.\n5. Cómo sabría que el resultado está bien (mi criterio de \"terminado\").\nCierra preguntándome cuál de las tres ideas quiero desarrollar.\n\nPREGUNTA INICIAL\n\"¿Qué parte de tu trabajo o estudio haces hoy casi sin pensar, y a alguien nuevo le costaría meses hacer bien?\"",
     "tags": [
       "Conocimiento Profundo",
@@ -510,10 +515,15 @@
     "skillEn": "Wide Knowledge",
     "title": "La Biblioteca Infinita y Cruce de Perspectivas",
     "estimatedTime": "10 a 15 min",
-    "trigger": "Tengo un proyecto rápido y quiero revisarlo desde otras disciplinas",
+    "trigger": "Tengo un proyecto o idea y quiero revisarlo desde otras disciplinas para ver ángulos nuevos",
     "triggerIcon": "trending_up",
     "studioUrl": "conocimiento-amplio.html",
-    "studioLabel": "Abrir taller interactivo (3 etapas)",
+    "studioLabel": "Abrir taller (3 etapas)",
+    "stages": [
+      "Definir tu proyecto rápido y enfoque habitual",
+      "Elegir 1 a 3 perspectivas de 25 disciplinas",
+      "Revisión multidisciplinaria e integración"
+    ],
     "definition": "Una Inteligencia Artificial conoce métodos de decenas de disciplinas, pero rara vez los combina si no se lo pides. No necesitas ser especialista en otras áreas: basta saber qué preguntas hacen para usarlas como lentes sobre tu proyecto.",
     "example": "Alguien prepara una clase, una investigación o una herramienta web desde su disciplina habitual. Con conocimiento amplio, le pide a la IA que revise su proyecto desde el pre-mortem (por qué podría fallar en seis meses), la arquitectura de información (si cualquiera se orienta en cinco segundos) y el wabi-sabi (qué partes suenan demasiado artificiales).",
     "initialQuestion": "¿Qué proyecto rápido quieres construir o mejorar esta semana, y para quién está pensado?",
@@ -533,12 +543,17 @@
     "skillEn": "Taste",
     "title": "Paleta, Fuentes de Google y Criterio de Estilo",
     "estimatedTime": "10 a 15 min",
-    "trigger": "Quiero definir la estética de un paper, informe, póster o web sin aspecto genérico",
+    "trigger": "Quiero definir una estética y un tono propios para que mi trabajo no se vea genérico",
     "triggerIcon": "palette",
     "studioUrl": "criterio-gusto.html",
-    "studioLabel": "Abrir taller interactivo (3 etapas)",
-    "definition": "Una IA puede producir cincuenta borradores en segundos. Lo difícil pasa a ser elegir cuál sirve y por qué. Aquí defines qué estética y qué voz quieres, pruebas paletas de Sanzo Wada y fuentes de Google sobre un texto tuyo y llevas esas decisiones a tu pieza.",
-    "example": "Alguien prepara un informe, un póster o una página web académica. En vez de aceptar el primer resultado de la IA, arma una ficha de criterio, prueba una paleta de Sanzo Wada y dos fuentes de Google sobre un texto propio, fija reglas concretas y compara varios enfoques antes de producir la pieza.",
+    "studioLabel": "Abrir taller (3 etapas)",
+    "stages": [
+      "Armar tu ficha de criterio",
+      "Probar combinaciones de color (Sanzo Wada) y fuentes de Google",
+      "Explorar enfoques, archivo de estilo (ESTILO.md) y pieza aplicada"
+    ],
+    "definition": "Una IA puede producir cincuenta borradores en segundos. Lo difícil pasa a ser elegir cuál sirve y por qué. Aquí defines qué estética y qué voz quieres, pruebas combinaciones del libro de color del diseñador japonés Sanzo Wada junto con fuentes gratuitas de Google sobre un texto tuyo, y llevas esas decisiones a tu pieza.",
+    "example": "Alguien prepara un informe, un póster o una página web académica. En vez de aceptar el primer resultado de la IA, arma una ficha de criterio, elige una paleta del diccionario cromático de Sanzo Wada y dos fuentes gratuitas de Google sobre un texto propio, fija reglas concretas y compara varios enfoques antes de producir la pieza.",
     "initialQuestion": "¿Qué pieza quieres diseñar o mejorar (paper, informe, póster, carrusel o web) y qué aspecto genérico quieres evitar?",
     "resultDeliverable": "Ficha de criterio, selección de paleta (HEX/RGB) + fuentes de Google con instrucciones de instalación y primera versión aplicada",
     "prompt": "ROL\nEres un editor de estilo exigente. Me ayudas a definir el criterio visual y de tono de una pieza concreta, para que no termine con el aspecto genérico de las plantillas y de las herramientas de IA.\n\nOBJETIVO\nTerminar con una ficha de criterio de una página: qué quiero, qué rechazo y qué tono voy a usar. Todavía no vamos a elegir colores ni fuentes.\n\nREGLAS\n- Haz UNA sola pregunta a la vez y espera mi respuesta.\n- Haz entre 6 y 7 preguntas, de menos de 30 palabras cada una.\n- No elogies mis respuestas. Si digo algo vago (\"limpio\", \"moderno\", \"llamativo\"), pídeme un ejemplo real o un contraste concreto.\n- Antes de cada pregunta, resume en una línea lo que acabo de decir.\n\nPREGUNTAS\n1. La pieza: Qué quieres diseñar o mejorar (paper, informe, póster, carrusel, presentación o web) y quién la va a ver.\n2. Lo que rechazas: Qué diseños, frases o formatos de tu área, o hechos con IA, te producen rechazo inmediato. Pídeme un ejemplo.\n3. Un referente: Un libro, sitio, afiche o revista cuyo estilo te guste, y en una frase qué hace bien.\n4. Tono de voz: Cómo debe sonar el texto y qué tono no usarías nunca.\n5. Cinco segundos: Qué debería entender o recordar alguien que mira la pieza solo cinco segundos.\n6. Qué sacar: Qué elementos, secciones o explicaciones prefieres dejar fuera.\n\nRESULTADO FINAL\nEntrega una \"Ficha de criterio\" en 4 puntos:\n1. Pieza, audiencia y para qué sirve, en dos líneas.\n2. Qué quiero: aspecto, ritmo de lectura y tono de voz.\n3. Qué queda prohibido: recursos visuales y frases.\n4. Tres criterios concretos para juzgar cualquier borrador, escritos como preguntas de sí o no.\n\nPREGUNTA INICIAL\n\"¿Qué pieza quieres diseñar o mejorar (paper, informe, póster, carrusel o web) y qué aspecto genérico quieres evitar?\"",
@@ -556,10 +571,15 @@
     "skillEn": "Agency",
     "title": "Tarea no pedida, modos de autonomía y primera prueba",
     "estimatedTime": "10 a 15 min",
-    "trigger": "Solo he usado chatbots y quiero probar una tarea real con más autonomía esta semana",
+    "trigger": "Quiero pasar de solo conversar con la IA a probar una tarea real con más autonomía",
     "triggerIcon": "bolt",
     "studioUrl": "agencia.html",
-    "studioLabel": "Abrir taller interactivo (3 etapas)",
+    "studioLabel": "Abrir taller (3 etapas)",
+    "stages": [
+      "Elegir una tarea no pedida",
+      "Comparar modos de autonomía y límites seguros",
+      "Mandato de delegación y rutina o benchmark"
+    ],
     "definition": "La agencia es la iniciativa para probar la Inteligencia Artificial en tareas reales sin esperar instrucciones. Aquí eliges una tarea no pedida ligada a tu trabajo o intereses, comparas tres modos de autonomía y ejecutas una prueba acotada con límites seguros.",
     "example": "Dos personas tienen una tarea repetitiva con documentos o correos. La primera abre un chat cuando se acuerda y copia textos a mano. La segunda elige una tarea no pedida, arma una copia de prueba, delega un encargo claro a un agente ejecutor (Claude Code, Codex, Antigravity o Cursor) o activa un agente proactivo (Muse, dots o Gemini Spark) solo con borradores, revisa el resultado y guarda lo que funcionó como rutina o lo que falló como benchmark personal.",
     "initialQuestion": "¿Qué tema de tu trabajo, estudio o vida diaria conoces bien, y qué tarea repetitiva de las últimas dos semanas te gustaría dejar de hacer a mano?",
@@ -568,8 +588,8 @@
     "tags": [
       "Agencia",
       "Tarea no pedida",
-      "Agentes y Sandbox",
-      "Benchmark personal"
+      "Entorno seguro",
+      "Punto de referencia"
     ]
   }
 ],

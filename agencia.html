@@ -281,10 +281,6 @@
 
     .section-white {
       background-color: var(--bg-white);
-      background-image:
-        linear-gradient(to right, rgba(0, 53, 127, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 53, 127, 0.03) 1px, transparent 1px);
-      background-size: 56px 56px;
     }
 
     .section-paper {
@@ -294,18 +290,30 @@
     .section-dark {
       background-color: var(--cobalt-dark);
       color: #fcf9f8;
-      background-image:
-        linear-gradient(to right, rgba(252, 249, 248, 0.035) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(252, 249, 248, 0.035) 1px, transparent 1px);
-      background-size: 56px 56px;
+    }
+
+    .bg-canvas-full {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
     }
 
     .section-inner {
+      position: relative;
+      z-index: 10;
       width: 100%;
       max-width: 1120px;
       margin: auto 0;
       display: flex;
       flex-direction: column;
+    }
+
+    #seccion-portada .section-inner {
+      padding: clamp(0.75rem, 1.8vh, 1.4rem) clamp(0.75rem, 2vw, 1.6rem);
+      background: radial-gradient(ellipse at 32% 48%, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.68) 62%, rgba(255, 255, 255, 0) 100%);
     }
 
     /* =========================================================================
@@ -601,8 +609,14 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.75rem;
       padding-top: 0.2rem;
+    }
+
+    .copy-helper {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      line-height: 1.4;
     }
 
     .prompt-panel {
@@ -1137,6 +1151,7 @@
          PANTALLA 0: PORTADA
          ===================================================================== -->
     <section class="snap-section section-white" id="seccion-portada" data-index="0">
+      <canvas class="bg-canvas-full" id="bgCanvasPortada" aria-hidden="true"></canvas>
       <div class="section-inner">
         <h1 class="display-title">Agencia</h1>
         <div class="reading-divider"></div>
@@ -1146,7 +1161,7 @@
 
         <div class="concept-note">
           <p>
-            <strong>Agencia como hábito.</strong> Ethan Mollick define la agencia como la disposición a tomar la iniciativa y probar sin esperar instrucciones. La agencia se entrena como un hábito: elegir cada semana una «tarea no pedida» sobre algo que te importa, probar hasta dónde llega la IA y aprender tanto de lo que funciona como de lo que falla.
+            <strong>Agencia como hábito.</strong> La agencia es la disposición a tomar la iniciativa y probar sin esperar instrucciones. Se entrena como un hábito: elegir cada semana una «tarea no pedida» sobre algo que te importa, probar hasta dónde llega la IA y aprender tanto de lo que funciona como de lo que falla.
           </p>
         </div>
 
@@ -1164,7 +1179,7 @@
           <button class="roadmap-item" data-target="seccion-etapa-3">
             <span class="roadmap-step-num">Etapa 3</span>
             <span class="roadmap-step-title">Lanzar la prueba y registrar el resultado</span>
-            <span class="roadmap-step-desc">Dos prompts armados con tu selección: uno para delegar con claridad y otro para guardar el método o anotar el fallo como benchmark personal.</span>
+            <span class="roadmap-step-desc">Dos prompts armados con tu selección: uno para delegar con claridad y otro para guardar el método en un archivo de rutina o registrar el fallo como punto de referencia personal.</span>
           </button>
         </div>
 
@@ -1195,7 +1210,7 @@
               <h2 class="section-heading">Etapa 1. Encuentra una tarea real para probar esta semana</h2>
               <div class="reading-divider"></div>
               <p class="body-text">
-                Antes de abrir un agente o buscar herramientas, conviene definir qué vale la pena probar. Esta entrevista parte por lo que ya sabes hacer y te interesa —una idea inspirada en el Test Voight-Kampff que usa Mollick en sus clases— para que el proyecto nazca de una necesidad tuya y no de una lista genérica de internet.
+                Antes de abrir un agente o buscar herramientas, conviene definir qué vale la pena probar. Esta entrevista parte por lo que ya sabes hacer y te interesa, para que el proyecto nazca de una necesidad tuya y no de una lista genérica de internet.
               </p>
               <p class="body-text" style="margin-top: 0.45rem;">
                 También te ayuda a aplicar una regla simple de delegación: solo conviene delegar a una IA cuando revisar el resultado toma bastante menos tiempo que hacer el trabajo a mano.
@@ -1219,18 +1234,7 @@
                 <span class="material-symbols-outlined" style="font-size: 16px;">content_copy</span>
                 <span>Copiar prompt</span>
               </button>
-              <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
-                <span>Claude</span>
-                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
-              </a>
-              <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
-                <span>ChatGPT</span>
-                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
-              </a>
-              <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
-                <span>Gemini</span>
-                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
-              </a>
+              <span class="copy-helper">Cópialo y pégalo en tu chatbot de referencia.</span>
             </div>
           </div>
 
@@ -1253,6 +1257,7 @@
          PANTALLA 2: ETAPA 2 — ELEGIR MODO Y LÍMITES SEGUROS (SECCIÓN OSCURA)
          ===================================================================== -->
     <section class="snap-section section-dark" id="seccion-etapa-2" data-index="2">
+      <canvas class="bg-canvas-full" id="bgCanvasEtapa2" aria-hidden="true"></canvas>
       <div class="section-inner">
         <h2 class="section-heading">Etapa 2. Elige con qué modo partir y fija tus límites</h2>
         <div class="reading-divider"></div>
@@ -1276,10 +1281,10 @@
             </div>
           </div>
 
-          <!-- COLUMNA DERECHA: LÍMITES SEGUROS PARA PROBAR (SANDBOX) -->
+          <!-- COLUMNA DERECHA: LÍMITES SEGUROS (ENTORNO DE PRUEBA AISLADO) -->
           <div class="sandbox-panel">
             <div class="panel-label">
-              <span>Límites seguros para probar (Sandbox)</span>
+              <span>Límites seguros (entorno de prueba aislado)</span>
               <span id="sandboxCountLabel">3 activas</span>
             </div>
 
@@ -1291,7 +1296,7 @@
 
         <div class="stage2-footer-bar">
           <div class="stage2-status" id="stage2Status">
-            Modo elegido: Agente ejecutor (modo Conjurador) · 3 límites activos → insertados en Etapa 3
+            Modo elegido: Agente ejecutor (archivos y código) · 3 límites activos → insertados en Etapa 3
           </div>
           <button class="stage2-jump-link" data-target="seccion-etapa-3">
             Ir a Etapa 3 con esta configuración ↓
@@ -1313,7 +1318,7 @@
         <div class="reading-divider"></div>
 
         <div class="stage3-meta-bar">
-          <span id="stage3Summary">Configuración activa desde Etapa 2: Agente ejecutor (modo Conjurador)</span>
+          <span id="stage3Summary">Configuración activa desde Etapa 2: Agente ejecutor (archivos y código)</span>
           <button class="stage3-link" data-target="seccion-etapa-2">Cambiar en Etapa 2</button>
         </div>
 
@@ -1341,7 +1346,7 @@
           <div class="prompt-column">
             <div class="prompt-col-header">
               <div class="prompt-col-top">
-                <h3 class="prompt-col-title">Prompt 3B. Cierre del experimento (rutina o benchmark)</h3>
+                <h3 class="prompt-col-title">Prompt 3B. Cierre del experimento (rutina o punto de referencia)</h3>
                 <div class="prompt-col-actions">
                   <button class="btn-editorial primary" onclick="copyTextById('prompt3BText', this)" style="padding: 0.34rem 0.7rem;">
                     <span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span>
@@ -1350,7 +1355,7 @@
                 </div>
               </div>
               <p class="prompt-col-note">
-                Usa este prompt cuando termines la primera prueba (haya salido bien o mal). Así no te quedas con una prueba aislada: o dejas el método listo para repetir, o anotas dónde está hoy el límite de la IA.
+                Usa este prompt cuando termines la primera prueba (haya salido bien o mal): guardas el método en un archivo de texto reutilizable (<code>RUTINA.md</code>) o anotas dónde falló como punto de referencia personal (benchmark).
               </p>
             </div>
             <pre class="prompt-pre" id="prompt3BText"></pre>
@@ -1420,7 +1425,7 @@ PREGUNTA INICIAL
       },
       {
         id: 'agente',
-        title: 'Agente ejecutor (modo Conjurador)',
+        title: 'Agente ejecutor (archivos y código)',
         shortLabel: 'Archivos y código',
         shortDesc: 'Delegas un paquete de trabajo a una IA que usa archivos, código y herramientas en bucle.',
         steps: [
@@ -1699,11 +1704,177 @@ Sé directo y conciso. Nada de consejos genéricos.`;
           headerStepBtns.forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-target') === activeId);
           });
+
+          activeSectionId = activeId;
+          drawActiveBg(performance.now() / 1000);
+          syncBgLoop();
         }
       });
     }, { root: snapContainer, threshold: [0.5] });
 
     sections.forEach(sec => observer.observe(sec));
+
+    // =========================================================================
+    // 3B. VISUALIZACIÓN DE BAJO CONSUMO (CIRCUITO DE INICIATIVA Y AUTONOMÍA)
+    // =========================================================================
+    const REDUCED_MOTION = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const bgCanvasPortada = document.getElementById('bgCanvasPortada');
+    const bgCtxPortada = bgCanvasPortada ? bgCanvasPortada.getContext('2d') : null;
+    const bgCanvasEtapa2 = document.getElementById('bgCanvasEtapa2');
+    const bgCtxEtapa2 = bgCanvasEtapa2 ? bgCanvasEtapa2.getContext('2d') : null;
+    const bgDims = { portada: { w: 0, h: 0 }, etapa2: { w: 0, h: 0 } };
+    let activeSectionId = 'seccion-portada';
+    let isTabVisible = !document.hidden;
+    let bgRafId = null;
+    let lastBgDraw = 0;
+
+    function resizeBgCanvases() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      [
+        { el: bgCanvasPortada, ctx: bgCtxPortada, key: 'portada' },
+        { el: bgCanvasEtapa2, ctx: bgCtxEtapa2, key: 'etapa2' }
+      ].forEach(({ el, ctx, key }) => {
+        if (!el || !ctx || !el.parentElement) return;
+        const w = el.parentElement.clientWidth || window.innerWidth;
+        const h = el.parentElement.clientHeight || window.innerHeight;
+        bgDims[key] = { w, h };
+        el.width = Math.round(w * dpr);
+        el.height = Math.round(h * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      });
+      drawBgPortada(performance.now() / 1000);
+      drawBgEtapa2(performance.now() / 1000);
+    }
+
+    function drawBgPortada(tSec) {
+      if (!bgCtxPortada) return;
+      const { w, h } = bgDims.portada;
+      if (!w || !h) return;
+      bgCtxPortada.clearRect(0, 0, w, h);
+
+      const tracks = 5;
+      const checkpoints = [0.60, 0.78, 0.90];
+
+      // Marcas verticales discretas de revisión humana en zona derecha
+      bgCtxPortada.strokeStyle = 'rgba(0, 53, 127, 0.065)';
+      bgCtxPortada.lineWidth = 1;
+      checkpoints.forEach(cxNorm => {
+        const cx = cxNorm * w;
+        bgCtxPortada.beginPath();
+        bgCtxPortada.moveTo(cx, h * 0.14);
+        bgCtxPortada.lineTo(cx, h * 0.86);
+        bgCtxPortada.stroke();
+      });
+
+      for (let i = 0; i < tracks; i++) {
+        const ty = h * (0.18 + (i / (tracks - 1)) * 0.64);
+        const amp = 14 + (i % 2) * 8;
+
+        // Trayectoria horizontal suave
+        bgCtxPortada.strokeStyle = 'rgba(0, 53, 127, 0.08)';
+        bgCtxPortada.lineWidth = 1;
+        bgCtxPortada.beginPath();
+        for (let x = 0; x <= w; x += 28) {
+          const xu = x / w;
+          const y = ty + Math.sin(xu * Math.PI * 3 + i * 1.1) * amp;
+          if (x === 0) bgCtxPortada.moveTo(x, y);
+          else bgCtxPortada.lineTo(x, y);
+        }
+        bgCtxPortada.stroke();
+
+        // Pequeño bucle de verificación en el segundo checkpoint
+        const loopX = checkpoints[1] * w;
+        const loopY = ty + Math.sin(checkpoints[1] * Math.PI * 3 + i * 1.1) * amp;
+        bgCtxPortada.strokeStyle = 'rgba(0, 53, 127, 0.09)';
+        bgCtxPortada.beginPath();
+        bgCtxPortada.arc(loopX, loopY - 12, 12, 0, Math.PI * 2);
+        bgCtxPortada.stroke();
+
+        // Pulso discreto que recorre la trayectoria y desacelera al pasar por revisiones
+        const rawU = REDUCED_MOTION ? (0.64 + i * 0.06) % 1 : ((tSec * (0.065 + i * 0.008) + i * 0.21) % 1);
+        const easedU = rawU - 0.014 * Math.sin(rawU * Math.PI * 6);
+        const px = easedU * w;
+        const py = ty + Math.sin(easedU * Math.PI * 3 + i * 1.1) * amp;
+        bgCtxPortada.fillStyle = 'rgba(0, 53, 127, 0.28)';
+        bgCtxPortada.beginPath();
+        bgCtxPortada.arc(px, py, 2.5, 0, Math.PI * 2);
+        bgCtxPortada.fill();
+      }
+    }
+
+    function drawBgEtapa2(tSec) {
+      if (!bgCtxEtapa2) return;
+      const { w, h } = bgDims.etapa2;
+      if (!w || !h) return;
+      bgCtxEtapa2.clearRect(0, 0, w, h);
+
+      // 3 carriles de autonomía y marcas discretas de pausa humana
+      const lanes = [0.22, 0.50, 0.78];
+      lanes.forEach((lyNorm, idx) => {
+        const y = h * lyNorm;
+        bgCtxEtapa2.strokeStyle = 'rgba(252, 249, 248, 0.075)';
+        bgCtxEtapa2.lineWidth = 1;
+        bgCtxEtapa2.beginPath();
+        bgCtxEtapa2.moveTo(0, y);
+        bgCtxEtapa2.lineTo(w, y);
+        bgCtxEtapa2.stroke();
+
+        [0.32, 0.68].forEach(markNorm => {
+          const mx = markNorm * w;
+          bgCtxEtapa2.strokeStyle = 'rgba(158, 197, 255, 0.14)';
+          bgCtxEtapa2.beginPath();
+          bgCtxEtapa2.moveTo(mx, y - 8);
+          bgCtxEtapa2.lineTo(mx, y + 8);
+          bgCtxEtapa2.stroke();
+        });
+
+        const speed = 0.045 + idx * 0.025;
+        const u = REDUCED_MOTION ? (0.25 + idx * 0.22) : ((tSec * speed + idx * 0.3) % 1);
+        const px = u * w;
+        bgCtxEtapa2.fillStyle = 'rgba(158, 197, 255, 0.26)';
+        bgCtxEtapa2.beginPath();
+        bgCtxEtapa2.arc(px, y, 2.4, 0, Math.PI * 2);
+        bgCtxEtapa2.fill();
+      });
+    }
+
+    function drawActiveBg(tSec) {
+      if (activeSectionId === 'seccion-portada') drawBgPortada(tSec);
+      else if (activeSectionId === 'seccion-etapa-2') drawBgEtapa2(tSec);
+    }
+
+    function renderBgFrame(now) {
+      bgRafId = null;
+      if (REDUCED_MOTION || !isTabVisible) return;
+      if (activeSectionId !== 'seccion-portada' && activeSectionId !== 'seccion-etapa-2') return;
+      if (now - lastBgDraw >= 32) {
+        lastBgDraw = now;
+        drawActiveBg(now / 1000);
+      }
+      bgRafId = requestAnimationFrame(renderBgFrame);
+    }
+
+    function syncBgLoop() {
+      const shouldRun = !REDUCED_MOTION && isTabVisible && (activeSectionId === 'seccion-portada' || activeSectionId === 'seccion-etapa-2');
+      if (shouldRun && bgRafId === null) {
+        lastBgDraw = 0;
+        bgRafId = requestAnimationFrame(renderBgFrame);
+      } else if (!shouldRun && bgRafId !== null) {
+        cancelAnimationFrame(bgRafId);
+        bgRafId = null;
+      }
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      isTabVisible = !document.hidden;
+      syncBgLoop();
+    });
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resizeBgCanvases, 150);
+    });
 
     // =========================================================================
     // 4. COPIADO DE PROMPTS Y TOAST
@@ -1760,6 +1931,8 @@ Sé directo y conciso. Nada de consejos genéricos.`;
     // Inicialización
     document.getElementById('prompt1Text').textContent = PROMPT_1;
     renderStage2();
+    resizeBgCanvases();
+    syncBgLoop();
   </script>
 </body>
 </html>

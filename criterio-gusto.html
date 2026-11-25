@@ -283,10 +283,6 @@
 
     .section-white {
       background-color: var(--bg-white);
-      background-image:
-        linear-gradient(to right, rgba(0, 53, 127, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 53, 127, 0.03) 1px, transparent 1px);
-      background-size: 56px 56px;
     }
 
     .section-paper {
@@ -296,18 +292,30 @@
     .section-dark {
       background-color: var(--cobalt-dark);
       color: #fcf9f8;
-      background-image:
-        linear-gradient(to right, rgba(252, 249, 248, 0.035) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(252, 249, 248, 0.035) 1px, transparent 1px);
-      background-size: 56px 56px;
+    }
+
+    .bg-canvas-full {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
     }
 
     .section-inner {
+      position: relative;
+      z-index: 10;
       width: 100%;
       max-width: 1180px;
       margin: auto 0;
       display: flex;
       flex-direction: column;
+    }
+
+    #seccion-portada .section-inner {
+      padding: clamp(0.75rem, 1.8vh, 1.4rem) clamp(0.75rem, 2vw, 1.6rem);
+      background: radial-gradient(ellipse at 32% 48%, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.68) 62%, rgba(255, 255, 255, 0) 100%);
     }
 
     /* =========================================================================
@@ -560,12 +568,45 @@
       color: var(--ink-secondary);
     }
 
+    .section-dark .editorial-callout {
+      border-left-color: var(--cobalt-tint);
+      color: rgba(252, 249, 248, 0.88);
+    }
+
     .action-row {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.75rem;
       padding-top: 0.25rem;
+    }
+
+    .copy-helper {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      line-height: 1.4;
+    }
+
+    .section-dark .copy-helper {
+      color: rgba(252, 249, 248, 0.76);
+    }
+
+    .section-dark .btn-editorial.primary {
+      background: #fcf9f8;
+      color: var(--cobalt-dark);
+      border-color: #fcf9f8;
+    }
+
+    .section-dark .btn-editorial.primary:hover {
+      background: var(--cobalt-tint);
+      border-color: var(--cobalt-tint);
+      color: var(--cobalt-dark);
+    }
+
+    .section-dark .btn-editorial.primary.copied {
+      background: #14532d;
+      border-color: #14532d;
+      color: #ffffff;
     }
 
     .prompt-panel {
@@ -576,6 +617,11 @@
       background: var(--bg-white);
       min-height: 0;
       max-height: calc(100dvh - var(--header-height) - 135px);
+    }
+
+    .section-dark .prompt-panel {
+      border-top-color: var(--cobalt-tint);
+      border-bottom-color: rgba(252, 249, 248, 0.18);
     }
 
     .prompt-panel-bar {
@@ -621,7 +667,7 @@
       grid-template-columns: minmax(310px, 0.92fr) minmax(380px, 1.18fr);
       gap: 1.1rem;
       min-height: 0;
-      border-top: 1px solid var(--border-dark-hairline);
+      border-top: 1px solid var(--border-hairline);
       padding-top: 0.65rem;
     }
 
@@ -635,7 +681,7 @@
 
     .studio-tabs {
       display: flex;
-      border-bottom: 1px solid var(--border-dark-hairline);
+      border-bottom: 1px solid var(--border-hairline);
       gap: 0.2rem;
       flex-shrink: 0;
     }
@@ -646,7 +692,7 @@
       font-weight: 500;
       padding: 0.42rem 0.72rem;
       background: transparent;
-      color: rgba(252, 249, 248, 0.75);
+      color: var(--ink-secondary);
       border: 1px solid transparent;
       border-bottom: none;
       cursor: pointer;
@@ -654,8 +700,8 @@
     }
 
     .studio-tab.active {
-      background: #fcf9f8;
-      color: var(--cobalt-dark);
+      background: var(--cobalt);
+      color: #ffffff;
       font-weight: 600;
     }
 
@@ -665,16 +711,16 @@
       align-items: center;
       gap: 0.35rem;
       padding: 0.48rem 0;
-      border-bottom: 1px solid rgba(252, 249, 248, 0.14);
+      border-bottom: 1px solid var(--border-hairline);
       flex-shrink: 0;
     }
 
     .studio-search {
       flex: 1;
       min-width: 120px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(252, 249, 248, 0.28);
-      color: #fcf9f8;
+      background: var(--bg-paper);
+      border: 1px solid rgba(28, 27, 27, 0.22);
+      color: var(--ink-primary);
       font-family: var(--font-mono);
       font-size: 0.7rem;
       padding: 0.28rem 0.55rem;
@@ -682,7 +728,7 @@
     }
 
     .studio-search::placeholder {
-      color: rgba(252, 249, 248, 0.52);
+      color: var(--ink-muted);
     }
 
     .studio-mini-btn {
@@ -690,17 +736,17 @@
       font-size: 0.67rem;
       padding: 0.26rem 0.5rem;
       background: transparent;
-      color: rgba(252, 249, 248, 0.84);
-      border: 1px solid rgba(252, 249, 248, 0.3);
+      color: var(--ink-secondary);
+      border: 1px solid rgba(28, 27, 27, 0.22);
       cursor: pointer;
       white-space: nowrap;
     }
 
     .studio-mini-btn.active,
     .studio-mini-btn:hover {
-      background: #fcf9f8;
-      color: var(--cobalt-dark);
-      border-color: #fcf9f8;
+      background: var(--cobalt);
+      color: #ffffff;
+      border-color: var(--cobalt);
       font-weight: 600;
     }
 
@@ -709,7 +755,7 @@
       flex: 1;
       min-height: 220px;
       scrollbar-width: thin;
-      scrollbar-color: rgba(252, 249, 248, 0.35) transparent;
+      scrollbar-color: rgba(0, 53, 127, 0.28) transparent;
     }
 
     /* Ítems de Paletas */
@@ -719,18 +765,18 @@
       justify-content: space-between;
       gap: 0.65rem;
       padding: 0.48rem 0.55rem;
-      border-bottom: 1px solid rgba(252, 249, 248, 0.11);
+      border-bottom: 1px solid var(--border-hairline);
       cursor: pointer;
       transition: background-color var(--duration-fast);
     }
 
     .palette-row:hover {
-      background: rgba(252, 249, 248, 0.07);
+      background: rgba(0, 53, 127, 0.04);
     }
 
     .palette-row.active {
-      background: rgba(252, 249, 248, 0.14);
-      border-left: 2px solid var(--cobalt-tint);
+      background: rgba(0, 53, 127, 0.07);
+      border-left: 2px solid var(--cobalt);
     }
 
     .palette-swatches {
@@ -742,7 +788,7 @@
     .palette-swatch-dot {
       width: 18px;
       height: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      border: 1px solid rgba(28, 27, 27, 0.18);
     }
 
     .palette-meta {
@@ -752,7 +798,7 @@
 
     .palette-title {
       font-size: 0.77rem;
-      color: #fcf9f8;
+      color: var(--ink-primary);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -761,7 +807,7 @@
     .palette-num {
       font-family: var(--font-mono);
       font-size: 0.66rem;
-      color: var(--cobalt-tint);
+      color: var(--cobalt);
     }
 
     /* Ítems de Fuentes */
@@ -771,29 +817,29 @@
       justify-content: space-between;
       gap: 0.65rem;
       padding: 0.5rem 0.55rem;
-      border-bottom: 1px solid rgba(252, 249, 248, 0.11);
+      border-bottom: 1px solid var(--border-hairline);
       cursor: pointer;
     }
 
     .font-row:hover {
-      background: rgba(252, 249, 248, 0.07);
+      background: rgba(0, 53, 127, 0.04);
     }
 
     .font-row.active {
-      background: rgba(252, 249, 248, 0.14);
-      border-left: 2px solid var(--cobalt-tint);
+      background: rgba(0, 53, 127, 0.07);
+      border-left: 2px solid var(--cobalt);
     }
 
     .font-row-name {
       font-size: 0.85rem;
-      color: #fcf9f8;
+      color: var(--ink-primary);
       font-weight: 500;
     }
 
     .font-row-cat {
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--cobalt-tint);
+      color: var(--cobalt);
     }
 
     /* Ítems de Reglas de poda */
@@ -803,29 +849,29 @@
       justify-content: space-between;
       gap: 0.65rem;
       padding: 0.56rem 0.55rem;
-      border-bottom: 1px solid rgba(252, 249, 248, 0.12);
+      border-bottom: 1px solid var(--border-hairline);
       cursor: pointer;
     }
 
     .rule-row:hover {
-      background: rgba(252, 249, 248, 0.06);
+      background: rgba(0, 53, 127, 0.04);
     }
 
     .rule-row.selected {
-      background: rgba(252, 249, 248, 0.12);
-      border-left: 2px solid var(--cobalt-tint);
+      background: rgba(0, 53, 127, 0.07);
+      border-left: 2px solid var(--cobalt);
     }
 
     .rule-title {
       font-size: 0.8rem;
       font-weight: 600;
-      color: #fcf9f8;
+      color: var(--ink-primary);
     }
 
     .rule-desc {
       font-size: 0.72rem;
       line-height: 1.4;
-      color: rgba(252, 249, 248, 0.78);
+      color: var(--ink-secondary);
       margin-top: 0.15rem;
     }
 
@@ -858,7 +904,7 @@
       flex: 1;
       min-height: 210px;
       overflow-y: auto;
-      border: 1px solid rgba(252, 249, 248, 0.35);
+      border: 1px solid rgba(28, 27, 27, 0.18);
       display: grid;
       grid-template-columns: 1fr;
     }
@@ -900,10 +946,10 @@
       justify-content: space-between;
       gap: 0.55rem;
       padding-top: 0.45rem;
-      border-top: 1px solid var(--border-dark-hairline);
+      border-top: 1px solid var(--border-hairline);
       font-family: var(--font-mono);
       font-size: 0.68rem;
-      color: rgba(252, 249, 248, 0.85);
+      color: var(--ink-secondary);
       flex-shrink: 0;
     }
 
@@ -923,7 +969,7 @@
     .token-dot {
       width: 11px;
       height: 11px;
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(28, 27, 27, 0.18);
       display: inline-block;
     }
 
@@ -931,10 +977,10 @@
       font-family: var(--font-mono);
       font-size: 0.7rem;
       font-weight: 600;
-      color: var(--cobalt-tint);
+      color: var(--cobalt);
       background: transparent;
       border: none;
-      border-bottom: 1px solid var(--cobalt-tint);
+      border-bottom: 1px solid var(--cobalt);
       cursor: pointer;
     }
 
@@ -1145,16 +1191,17 @@
          PANTALLA 0: PORTADA
          ===================================================================== -->
     <section class="snap-section section-white" id="seccion-portada" data-index="0">
+      <canvas class="bg-canvas-full" id="bgCanvasPortada" aria-hidden="true"></canvas>
       <div class="section-inner">
         <h1 class="display-title">Criterio o Gusto</h1>
         <div class="reading-divider"></div>
         <p class="lead-text">
-          Una IA puede producir cincuenta borradores en segundos. Lo difícil pasa a ser elegir cuál sirve y por qué. Aquí defines qué estética y qué voz quieres, pruebas paletas y fuentes sobre un texto tuyo y llevas esas decisiones a un paper, informe, póster o web.
+          Una IA puede producir cincuenta borradores en segundos. Lo difícil pasa a ser elegir cuál sirve y por qué. Aquí defines qué estética y qué voz quieres, pruebas paletas del diccionario cromático de Sanzo Wada junto con fuentes gratuitas de Google sobre un texto tuyo, y llevas esas decisiones a un paper, informe, póster o web.
         </p>
 
         <div class="concept-note">
           <p>
-            <strong>El jardinero y el paladar.</strong> Ethan Mollick compara trabajar con IA con el oficio de un jardinero: se pide mucho material, se descarta casi todo y se combinan las pocas piezas que sirven. Si tu referencia es lo que la IA entrega por defecto, tu criterio se forma con comida de cafetería. El gusto se entrena comparando lo muy bueno con lo muy malo, y escribiendo por qué una opción funciona y otra no.
+            <strong>El jardinero y el paladar.</strong> Trabajar con Inteligencia Artificial se parece al oficio de un jardinero: se pide mucho material, se descarta casi todo y se combinan las pocas piezas que sirven. Si tu referencia es lo que la IA entrega por defecto, tu criterio se acostumbra a resultados genéricos. El gusto se entrena comparando lo muy bueno con lo muy malo, y escribiendo por qué una opción funciona y otra no.
           </p>
         </div>
 
@@ -1167,12 +1214,12 @@
           <button class="roadmap-item" data-target="seccion-etapa-2">
             <span class="roadmap-step-num">Etapa 2</span>
             <span class="roadmap-step-title">Probar paleta, fuentes y reglas</span>
-            <span class="roadmap-step-desc">348 paletas de Sanzo Wada y 94 fuentes de Google sobre un texto que puedes editar.</span>
+            <span class="roadmap-step-desc">348 combinaciones de color del diseñador japonés Sanzo Wada y 94 fuentes gratuitas de Google sobre un texto editable.</span>
           </button>
           <button class="roadmap-item" data-target="seccion-etapa-3">
             <span class="roadmap-step-num">Etapa 3</span>
             <span class="roadmap-step-title">Comparar enfoques y ver tu pieza</span>
-            <span class="roadmap-step-desc">Generar enfoques distintos y aplicar tus decisiones a tu informe, paper, póster o web.</span>
+            <span class="roadmap-step-desc">Generar enfoques distintos, guardar tu archivo de estilo (ESTILO.md) y aplicarlo a tu pieza real.</span>
           </button>
         </div>
 
@@ -1195,7 +1242,7 @@
     <!-- =====================================================================
          PANTALLA 1: ETAPA 1 — ENTREVISTA DE CRITERIO Y TONO
          ===================================================================== -->
-    <section class="snap-section section-paper" id="seccion-etapa-1" data-index="1">
+    <section class="snap-section section-dark" id="seccion-etapa-1" data-index="1">
       <div class="section-inner">
         <div class="stage-split">
           <div class="stage-left">
@@ -1216,18 +1263,7 @@
                 <span class="material-symbols-outlined" style="font-size: 16px;">content_copy</span>
                 <span>Copiar prompt</span>
               </button>
-              <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
-                <span>Claude</span>
-                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
-              </a>
-              <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
-                <span>ChatGPT</span>
-                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
-              </a>
-              <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
-                <span>Gemini</span>
-                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
-              </a>
+              <span class="copy-helper">Cópialo y pégalo en tu chatbot de referencia.</span>
             </div>
           </div>
 
@@ -1241,21 +1277,22 @@
         </div>
       </div>
 
-      <button class="snap-next-trigger" data-target="seccion-etapa-2">
+      <button class="snap-next-trigger light" data-target="seccion-etapa-2">
         ↓ Etapa 2. Probar paleta, fuentes y reglas
       </button>
     </section>
 
     <!-- =====================================================================
-         PANTALLA 2: ETAPA 2 — PROBAR PALETA, FUENTES Y REGLAS (SECCIÓN OSCURA)
+         PANTALLA 2: ETAPA 2 — PROBAR PALETA, FUENTES Y REGLAS (SECCIÓN BLANCA)
          ===================================================================== -->
-    <section class="snap-section section-dark" id="seccion-etapa-2" data-index="2">
+    <section class="snap-section section-white" id="seccion-etapa-2" data-index="2">
+      <canvas class="bg-canvas-full" id="bgCanvasEtapa2" aria-hidden="true"></canvas>
       <div class="section-inner">
         <div class="studio-top-row">
           <div>
             <h2 class="section-heading">Etapa 2. Probar paleta, fuentes y reglas</h2>
             <p class="body-text" style="max-width: 82ch;">
-              Elige una paleta de Sanzo Wada, una fuente para títulos y otra para el cuerpo, y marca las reglas que quieras mantener. Edita el texto del ejemplo con contenido tuyo para ver cómo se lee. <strong>Lo que elijas aquí (colores en HEX y RGB, fuentes de Google y reglas) se inserta en los prompts de la Etapa 3.</strong>
+              Las 348 combinaciones de color provienen del diccionario cromático que el pintor y diseñador japonés Sanzo Wada publicó en los años treinta tras estudiar cómo armonizan distintos tonos entre sí. Combínalas con fuentes tipográficas gratuitas de Google, edita el ejemplo con texto tuyo y marca tus reglas: <strong>todo lo que elijas (HEX, RGB, fuentes y reglas) se inserta en los prompts de la Etapa 3.</strong>
             </p>
           </div>
           <button class="studio-jump-link" data-target="seccion-etapa-3">
@@ -1308,7 +1345,7 @@
         </div>
       </div>
 
-      <button class="snap-next-trigger light" data-target="seccion-etapa-3">
+      <button class="snap-next-trigger" data-target="seccion-etapa-3">
         ↓ Etapa 3. Comparar enfoques y ver tu pieza aplicada
       </button>
     </section>
@@ -1321,7 +1358,7 @@
         <h2 class="section-heading">Etapa 3. Comparar enfoques y ver tu pieza aplicada</h2>
         <div class="reading-divider"></div>
         <p class="body-text" style="max-width: 86ch;">
-          El <strong>Prompt 3A</strong> lleva tus colores en HEX y RGB, tus fuentes de Google con instrucciones para instalarlas y tus reglas, y pide ocho enfoques distintos para que elijas. El <strong>Prompt 3B</strong> es el último paso: aplica todo a tu paper, informe, póster, carrusel o web para que veas cómo queda.
+          El <strong>Prompt 3A</strong> lleva tus colores en HEX y RGB, tus fuentes de Google con instrucciones para instalarlas y tus reglas, y pide ocho enfoques distintos para que elijas. El <strong>Prompt 3B</strong> es el último paso: guarda tus decisiones en un archivo de texto <code>ESTILO.md</code> reutilizable y aplica todo a tu paper, informe, póster, carrusel o web.
         </p>
 
         <div class="stage3-meta-bar">
@@ -1638,7 +1675,7 @@ PREGUNTA INICIAL
         `;
       } else {
         subbar.innerHTML = `
-          <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--cobalt-tint);">
+          <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--cobalt);">
             ${state.selectedRules.length} de ${PRUNING_RULES.length} reglas activas → se insertan en Etapa 3
           </span>
         `;
@@ -1676,7 +1713,7 @@ PREGUNTA INICIAL
               <span class="palette-num">#${String(c.id).padStart(3, '0')}</span>
             </div>
           `;
-        }).join('') || '<p style="padding:0.8rem; font-size:0.78rem; color:rgba(252,249,248,0.7);">Sin paletas para esa búsqueda.</p>';
+        }).join('') || '<p style="padding:0.8rem; font-size:0.78rem; color:var(--ink-muted);">Sin paletas para esa búsqueda.</p>';
       } else if (state.studioTab === 'fuentes') {
         const q = state.fontSearch.toLowerCase().trim();
         const activeName = state.fontRole === 'heading' ? state.headingFontName : state.bodyFontName;
@@ -1703,7 +1740,7 @@ PREGUNTA INICIAL
               <span class="studio-mini-btn ${active ? 'active' : ''}">${active ? 'Activa' : 'Usar'}</span>
             </div>
           `;
-        }).join('') || '<p style="padding:0.8rem; font-size:0.78rem; color:rgba(252,249,248,0.7);">Sin fuentes para esa búsqueda.</p>';
+        }).join('') || '<p style="padding:0.8rem; font-size:0.78rem; color:var(--ink-muted);">Sin fuentes para esa búsqueda.</p>';
       } else {
         list.innerHTML = PRUNING_RULES.map(r => {
           const sel = state.selectedRules.includes(r.id);
@@ -1853,7 +1890,7 @@ PREGUNTA INICIAL
       const tokensBar = document.getElementById('studioTokensBar');
       tokensBar.innerHTML = `
         <div class="token-swatches-inline">
-          <span style="color:var(--cobalt-tint);">Sanzo Wada #${String(combo.id).padStart(3, '0')}:</span>
+          <span style="color:var(--cobalt); font-weight:600;">Sanzo Wada #${String(combo.id).padStart(3, '0')}:</span>
           ${roles.raw.map(c => `<span class="token-chip"><span class="token-dot" style="background:${c.hex};"></span>${c.hex}</span>`).join('')}
         </div>
         <div>
@@ -1957,11 +1994,167 @@ Respeta las reglas sin agregar elementos que no pedí. Si falta contenido, déja
           headerStepBtns.forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-target') === activeId);
           });
+
+          activeSectionId = activeId;
+          drawActiveBg(performance.now() / 1000);
+          syncBgLoop();
         }
       });
     }, { root: snapContainer, threshold: [0.5] });
 
     sections.forEach(sec => observer.observe(sec));
+
+    // =========================================================================
+    // 3B. VISUALIZACIÓN DE BAJO CONSUMO (PODA EDITORIAL Y RETÍCULA TIPOGRÁFICA)
+    // =========================================================================
+    const REDUCED_MOTION = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const bgCanvasPortada = document.getElementById('bgCanvasPortada');
+    const bgCtxPortada = bgCanvasPortada ? bgCanvasPortada.getContext('2d') : null;
+    const bgCanvasEtapa2 = document.getElementById('bgCanvasEtapa2');
+    const bgCtxEtapa2 = bgCanvasEtapa2 ? bgCanvasEtapa2.getContext('2d') : null;
+    const bgDims = { portada: { w: 0, h: 0 }, etapa2: { w: 0, h: 0 } };
+    let activeSectionId = 'seccion-portada';
+    let isTabVisible = !document.hidden;
+    let bgRafId = null;
+    let lastBgDraw = 0;
+
+    // 18 marcos de proporción editorial distribuidos en periferia y zona derecha
+    const FRAMES = [
+      { x: 0.62, y: 0.12, w: 0.11, h: 0.16, ph: 0.0 },
+      { x: 0.75, y: 0.10, w: 0.16, h: 0.21, ph: 1.2 },
+      { x: 0.60, y: 0.31, w: 0.13, h: 0.18, ph: 2.1 },
+      { x: 0.75, y: 0.34, w: 0.10, h: 0.14, ph: 0.7 },
+      { x: 0.87, y: 0.33, w: 0.09, h: 0.22, ph: 3.0 },
+      { x: 0.63, y: 0.52, w: 0.15, h: 0.13, ph: 1.8 },
+      { x: 0.80, y: 0.57, w: 0.14, h: 0.18, ph: 2.7 },
+      { x: 0.59, y: 0.68, w: 0.10, h: 0.19, ph: 0.4 },
+      { x: 0.71, y: 0.69, w: 0.11, h: 0.15, ph: 3.6 },
+      { x: 0.84, y: 0.78, w: 0.11, h: 0.12, ph: 1.5 },
+      { x: 0.04, y: 0.72, w: 0.10, h: 0.14, ph: 2.4 },
+      { x: 0.16, y: 0.76, w: 0.12, h: 0.11, ph: 0.9 },
+      { x: 0.30, y: 0.78, w: 0.09, h: 0.13, ph: 3.3 },
+      { x: 0.42, y: 0.74, w: 0.14, h: 0.15, ph: 1.9 },
+      { x: 0.05, y: 0.10, w: 0.09, h: 0.12, ph: 2.9 },
+      { x: 0.48, y: 0.09, w: 0.12, h: 0.14, ph: 0.3 },
+      { x: 0.92, y: 0.14, w: 0.05, h: 0.16, ph: 2.2 },
+      { x: 0.54, y: 0.42, w: 0.05, h: 0.20, ph: 1.1 }
+    ];
+
+    function resizeBgCanvases() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      [
+        { el: bgCanvasPortada, ctx: bgCtxPortada, key: 'portada' },
+        { el: bgCanvasEtapa2, ctx: bgCtxEtapa2, key: 'etapa2' }
+      ].forEach(({ el, ctx, key }) => {
+        if (!el || !ctx || !el.parentElement) return;
+        const w = el.parentElement.clientWidth || window.innerWidth;
+        const h = el.parentElement.clientHeight || window.innerHeight;
+        bgDims[key] = { w, h };
+        el.width = Math.round(w * dpr);
+        el.height = Math.round(h * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      });
+      drawBgPortada(performance.now() / 1000);
+      drawBgEtapa2(performance.now() / 1000);
+    }
+
+    function drawBgPortada(tSec) {
+      if (!bgCtxPortada) return;
+      const { w, h } = bgDims.portada;
+      if (!w || !h) return;
+      bgCtxPortada.clearRect(0, 0, w, h);
+
+      FRAMES.forEach((f, idx) => {
+        const x = f.x * w;
+        const y = f.y * h;
+        const fw = f.w * w;
+        const fh = f.h * h;
+        const wave = REDUCED_MOTION ? (idx % 5 === 0 ? 1 : 0.2) : (0.5 + 0.5 * Math.sin(tSec * 0.48 + f.ph));
+        const selected = wave > 0.78;
+
+        bgCtxPortada.strokeStyle = selected
+          ? `rgba(0, 53, 127, ${(0.11 + (wave - 0.78) * 0.35).toFixed(3)})`
+          : 'rgba(0, 53, 127, 0.045)';
+        bgCtxPortada.lineWidth = selected ? 1.25 : 0.8;
+        bgCtxPortada.strokeRect(x, y, fw, fh);
+
+        if (selected) {
+          const tick = 6;
+          bgCtxPortada.strokeStyle = 'rgba(0, 53, 127, 0.24)';
+          bgCtxPortada.beginPath();
+          bgCtxPortada.moveTo(x - tick, y); bgCtxPortada.lineTo(x + tick, y);
+          bgCtxPortada.moveTo(x, y - tick); bgCtxPortada.lineTo(x, y + tick);
+          bgCtxPortada.moveTo(x + fw - tick, y + fh); bgCtxPortada.lineTo(x + fw + tick, y + fh);
+          bgCtxPortada.moveTo(x + fw, y + fh - tick); bgCtxPortada.lineTo(x + fw, y + fh + tick);
+          bgCtxPortada.stroke();
+        }
+      });
+    }
+
+    function drawBgEtapa2(tSec) {
+      if (!bgCtxEtapa2) return;
+      const { w, h } = bgDims.etapa2;
+      if (!w || !h) return;
+      bgCtxEtapa2.clearRect(0, 0, w, h);
+
+      // Líneas base tipográficas serenas y 4 guías de columna
+      const drift = REDUCED_MOTION ? 0 : Math.sin(tSec * 0.22) * 5;
+      bgCtxEtapa2.strokeStyle = 'rgba(0, 53, 127, 0.045)';
+      bgCtxEtapa2.lineWidth = 1;
+      for (let y = 32; y < h; y += 36) {
+        bgCtxEtapa2.beginPath();
+        bgCtxEtapa2.moveTo(0, y + drift);
+        bgCtxEtapa2.lineTo(w, y + drift);
+        bgCtxEtapa2.stroke();
+      }
+
+      bgCtxEtapa2.strokeStyle = 'rgba(0, 53, 127, 0.06)';
+      [0.12, 0.38, 0.62, 0.88].forEach(col => {
+        const cx = col * w;
+        bgCtxEtapa2.beginPath();
+        bgCtxEtapa2.moveTo(cx, 0);
+        bgCtxEtapa2.lineTo(cx, h);
+        bgCtxEtapa2.stroke();
+      });
+    }
+
+    function drawActiveBg(tSec) {
+      if (activeSectionId === 'seccion-portada') drawBgPortada(tSec);
+      else if (activeSectionId === 'seccion-etapa-2') drawBgEtapa2(tSec);
+    }
+
+    function renderBgFrame(now) {
+      bgRafId = null;
+      if (REDUCED_MOTION || !isTabVisible) return;
+      if (activeSectionId !== 'seccion-portada' && activeSectionId !== 'seccion-etapa-2') return;
+      if (now - lastBgDraw >= 32) {
+        lastBgDraw = now;
+        drawActiveBg(now / 1000);
+      }
+      bgRafId = requestAnimationFrame(renderBgFrame);
+    }
+
+    function syncBgLoop() {
+      const shouldRun = !REDUCED_MOTION && isTabVisible && (activeSectionId === 'seccion-portada' || activeSectionId === 'seccion-etapa-2');
+      if (shouldRun && bgRafId === null) {
+        lastBgDraw = 0;
+        bgRafId = requestAnimationFrame(renderBgFrame);
+      } else if (!shouldRun && bgRafId !== null) {
+        cancelAnimationFrame(bgRafId);
+        bgRafId = null;
+      }
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      isTabVisible = !document.hidden;
+      syncBgLoop();
+    });
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resizeBgCanvases, 150);
+    });
 
     // =========================================================================
     // 4. COPIADO DE PROMPTS Y TOAST
@@ -2019,6 +2212,8 @@ Respeta las reglas sin agregar elementos que no pedí. Si falta contenido, déja
     document.getElementById('prompt1Text').textContent = PROMPT_1;
     renderStudioLeft();
     renderPreviewAndPrompts();
+    resizeBgCanvases();
+    syncBgLoop();
   </script>
 </body>
 </html>
