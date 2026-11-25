@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conocimiento Profundo — Clases de IA</title>
+  <meta name="description" content="Conocimiento tácito, evaluación (evals) y creación de SKILL.md para trabajar con Inteligencia Artificial." />
+
+  <!-- Tipografías institucionales: Playfair Display, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />
+
+  <style>
+    :root {
+      --header-height: 56px;
+      --bg-white: #ffffff;
+      --bg-paper: #fcf9f8;
+      --bg-surface: #f4efec;
+      --ink-primary: #1c1b1b;
+      --ink-secondary: #4a4745;
+      --ink-muted: #66625f;
+      --cobalt: #00357f;
+      --cobalt-light: #0059c5;
+      --cobalt-dark: #002357;
+      --cobalt-soft: rgba(0, 53, 127, 0.06);
+      --cobalt-tint: #9ec5ff;
+      --border-hairline: rgba(28, 27, 27, 0.10);
+      --border-dark-hairline: rgba(252, 249, 248, 0.22);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --duration-fast: 150ms;
+      --duration-normal: 260ms;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--bg-white);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* =========================================================================
+       BARRA SUPERIOR COBALTO + CABECERA FIJA EDITORIAL (ESTILO AYSÉN SISTÉMICO)
+       ========================================================================= */
+    .top-accent-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cobalt), var(--cobalt-light), var(--cobalt));
+      z-index: 110;
+    }
+
+    .brand-header {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      z-index: 100;
+      background: rgba(252, 249, 248, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-hairline);
+      transition: background-color var(--duration-normal) var(--ease-out),
+                  border-color var(--duration-normal) var(--ease-out),
+                  color var(--duration-normal) var(--ease-out);
+    }
+
+    .brand-header.dark-mode {
+      background: rgba(0, 35, 87, 0.96);
+      border-bottom-color: rgba(252, 249, 248, 0.16);
+    }
+
+    .brand-header-inner {
+      max-width: 1240px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3vw, 2rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-identity {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--ink-primary);
+      min-width: 0;
+    }
+
+    .brand-header.dark-mode .brand-identity {
+      color: #fcf9f8;
+    }
+
+    .brand-dot {
+      width: 9px;
+      height: 9px;
+      background: var(--cobalt);
+      flex-shrink: 0;
+      transition: background-color var(--duration-normal) var(--ease-out);
+    }
+
+    .brand-header.dark-mode .brand-dot {
+      background: var(--cobalt-tint);
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .brand-sep {
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    .brand-header.dark-mode .brand-sep {
+      color: rgba(252, 249, 248, 0.5);
+    }
+
+    .brand-context {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--cobalt);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-header.dark-mode .brand-context {
+      color: var(--cobalt-tint);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-shrink: 0;
+    }
+
+    .header-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--ink-secondary);
+      text-decoration: none;
+      background: transparent;
+      padding: 0.34rem 0.62rem;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background-color var(--duration-fast) var(--ease-out),
+                  border-color var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .header-pill:hover,
+    .header-pill.active {
+      color: var(--cobalt);
+      background: rgba(0, 53, 127, 0.05);
+      border-color: rgba(0, 53, 127, 0.18);
+    }
+
+    .brand-header.dark-mode .header-pill {
+      color: rgba(252, 249, 248, 0.82);
+    }
+
+    .brand-header.dark-mode .header-pill:hover,
+    .brand-header.dark-mode .header-pill.active {
+      color: #ffffff;
+      background: rgba(252, 249, 248, 0.12);
+      border-color: rgba(252, 249, 248, 0.3);
+    }
+
+    /* =========================================================================
+       INDICADORES LATERALES DE SNAP SCROLL
+       ========================================================================= */
+    .snap-dots {
+      position: fixed;
+      right: 1.25rem;
+      top: calc(50% + var(--header-height) / 2);
+      transform: translateY(-50%);
+      z-index: 95;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .snap-dot {
+      width: 9px;
+      height: 9px;
+      border: 1.5px solid var(--cobalt);
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color var(--duration-normal) var(--ease-out),
+                  border-color var(--duration-normal) var(--ease-out),
+                  transform var(--duration-normal) var(--ease-out);
+    }
+
+    .snap-dot:hover {
+      transform: scale(1.2);
+    }
+
+    .snap-dot.active {
+      background: var(--cobalt);
+      transform: scale(1.25);
+    }
+
+    .snap-dots.dark-mode .snap-dot {
+      border-color: #fcf9f8;
+    }
+
+    .snap-dots.dark-mode .snap-dot.active {
+      background: #fcf9f8;
+    }
+
+    /* =========================================================================
+       CONTENEDOR SNAP SCROLL (4 PANTALLAS)
+       ========================================================================= */
+    .snap-container {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - var(--header-height) - 3px);
+      height: calc(100dvh - var(--header-height) - 3px);
+      margin-top: calc(var(--header-height) + 3px);
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .snap-section {
+      width: 100%;
+      height: calc(100vh - var(--header-height) - 3px);
+      height: calc(100dvh - var(--header-height) - 3px);
+      min-height: calc(100dvh - var(--header-height) - 3px);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+      padding: clamp(0.9rem, 2vh, 1.5rem) clamp(1.25rem, 4vw, 3.25rem) 3.4rem;
+    }
+
+    .section-white {
+      background-color: var(--bg-white);
+      background-image:
+        linear-gradient(to right, rgba(0, 53, 127, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 53, 127, 0.03) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    .section-paper {
+      background-color: var(--bg-paper);
+    }
+
+    .section-dark {
+      background-color: var(--cobalt-dark);
+      color: #fcf9f8;
+      background-image:
+        linear-gradient(to right, rgba(252, 249, 248, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(252, 249, 248, 0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    .section-inner {
+      width: 100%;
+      max-width: 1120px;
+      margin: auto 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* =========================================================================
+       TIPOGRAFÍA Y BOTONES EDITORIALES
+       ========================================================================= */
+    .display-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink-primary);
+      margin-bottom: clamp(0.6rem, 1.4vh, 1rem);
+    }
+
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(1.32rem, 2.15vw, 1.9rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--ink-primary);
+      margin-bottom: 0.45rem;
+    }
+
+    .section-dark .section-heading {
+      color: #fcf9f8;
+    }
+
+    .reading-divider {
+      width: 44px;
+      height: 2px;
+      background: var(--cobalt);
+      margin-bottom: clamp(0.55rem, 1.3vh, 0.95rem);
+      flex-shrink: 0;
+    }
+
+    .section-dark .reading-divider {
+      background: var(--cobalt-tint);
+    }
+
+    .lead-text {
+      font-size: clamp(0.94rem, 1.2vw, 1.06rem);
+      line-height: 1.58;
+      color: var(--ink-secondary);
+      max-width: 68ch;
+    }
+
+    .body-text {
+      font-size: clamp(0.82rem, 0.98vw, 0.9rem);
+      line-height: 1.52;
+      color: var(--ink-secondary);
+    }
+
+    .section-dark .body-text {
+      color: rgba(252, 249, 248, 0.88);
+    }
+
+    .btn-editorial {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.54rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      text-decoration: none;
+      border: 1.5px solid var(--cobalt);
+      cursor: pointer;
+      transition: background-color var(--duration-fast) var(--ease-out),
+                  border-color var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out),
+                  transform var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+    }
+
+    .btn-editorial:active {
+      transform: scale(0.98);
+    }
+
+    .btn-editorial.primary {
+      background: var(--cobalt);
+      color: #ffffff;
+    }
+
+    .btn-editorial.primary:hover {
+      background: var(--cobalt-dark);
+      border-color: var(--cobalt-dark);
+    }
+
+    .btn-editorial.secondary {
+      background: var(--bg-white);
+      color: var(--cobalt);
+    }
+
+    .btn-editorial.secondary:hover {
+      background: rgba(0, 53, 127, 0.05);
+      border-color: var(--cobalt-dark);
+    }
+
+    .btn-editorial.copied {
+      background: #14532d;
+      border-color: #14532d;
+      color: #ffffff;
+    }
+
+    /* Botón inferior de avance Snap Click */
+    .snap-next-trigger {
+      position: absolute;
+      bottom: 0.65rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      background: rgba(252, 249, 248, 0.96);
+      border: 1.5px solid rgba(0, 53, 127, 0.35);
+      padding: 0.32rem 0.9rem;
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      font-weight: 500;
+      color: var(--cobalt);
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: background-color var(--duration-fast) var(--ease-out),
+                  border-color var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+    }
+
+    .snap-next-trigger:hover {
+      background: var(--cobalt);
+      color: #ffffff;
+      border-color: var(--cobalt);
+    }
+
+    .snap-next-trigger.light {
+      background: rgba(0, 35, 87, 0.96);
+      border-color: rgba(252, 249, 248, 0.42);
+      color: #fcf9f8;
+    }
+
+    .snap-next-trigger.light:hover {
+      background: #fcf9f8;
+      color: var(--cobalt-dark);
+      border-color: #fcf9f8;
+    }
+
+    /* =========================================================================
+       PANTALLA 0: PORTADA + CONOCIMIENTO TÁCITO + RECORRIDO
+       ========================================================================= */
+    .tacit-note {
+      margin-top: clamp(0.9rem, 2vh, 1.5rem);
+      padding: 0.85rem 0 0.85rem 1.15rem;
+      border-top: 1px solid var(--border-hairline);
+      border-left: 2px solid var(--cobalt);
+      max-width: 72ch;
+    }
+
+    .tacit-note p {
+      font-size: clamp(0.84rem, 1.02vw, 0.92rem);
+      line-height: 1.6;
+      color: var(--ink-secondary);
+    }
+
+    .tacit-note strong {
+      color: var(--ink-primary);
+      font-weight: 600;
+    }
+
+    .roadmap-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: clamp(1rem, 2.2vh, 1.6rem);
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .roadmap-item {
+      text-align: left;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--border-hairline);
+      padding: 0.9rem 1.05rem;
+      cursor: pointer;
+      transition: background-color var(--duration-fast) var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .roadmap-item:last-child {
+      border-right: none;
+    }
+
+    .roadmap-item:hover {
+      background: rgba(0, 53, 127, 0.035);
+    }
+
+    .roadmap-step-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--cobalt);
+    }
+
+    .roadmap-step-title {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .roadmap-step-desc {
+      font-size: 0.79rem;
+      line-height: 1.44;
+      color: var(--ink-muted);
+    }
+
+    .portada-actions {
+      margin-top: clamp(0.95rem, 2vh, 1.5rem);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* =========================================================================
+       PANTALLA 1: ETAPA 1 (LAYOUT 2 COLUMNAS SIN CAJAS ANIDADAS)
+       ========================================================================= */
+    .stage-split {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.25fr);
+      gap: clamp(1.25rem, 3vw, 2.5rem);
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .stage-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.85rem;
+    }
+
+    .editorial-callout {
+      border-left: 2px solid var(--cobalt);
+      padding: 0.15rem 0 0.15rem 0.95rem;
+      font-size: 0.82rem;
+      line-height: 1.52;
+      color: var(--ink-secondary);
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+      padding-top: 0.25rem;
+    }
+
+    .prompt-panel {
+      display: flex;
+      flex-direction: column;
+      border-top: 2px solid var(--cobalt);
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-white);
+      min-height: 0;
+      max-height: calc(100dvh - var(--header-height) - 135px);
+    }
+
+    .prompt-panel-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.55rem 0.9rem;
+      border-bottom: 1px solid var(--border-hairline);
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      color: var(--ink-muted);
+      flex-shrink: 0;
+    }
+
+    .prompt-pre {
+      margin: 0;
+      padding: 0.9rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      line-height: 1.56;
+      color: var(--ink-primary);
+      white-space: pre-wrap;
+      overflow-y: auto;
+      flex: 1;
+      user-select: all;
+    }
+
+    /* =========================================================================
+       PANTALLA 2: ETAPA 2 (MATRIZ 2x2 COMPACTA EN SECCIÓN OSCURA)
+       ========================================================================= */
+    .evals-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      margin-top: 0.55rem;
+      border-top: 1px solid var(--border-dark-hairline);
+      border-bottom: 1px solid var(--border-dark-hairline);
+    }
+
+    .view-toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .view-toggle-caption {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: rgba(252, 249, 248, 0.72);
+    }
+
+    .view-toggle {
+      display: inline-flex;
+      border: 1px solid rgba(252, 249, 248, 0.42);
+    }
+
+    .view-toggle-btn {
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      font-weight: 500;
+      padding: 0.32rem 0.75rem;
+      background: transparent;
+      color: rgba(252, 249, 248, 0.84);
+      border: none;
+      cursor: pointer;
+      transition: background-color var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out);
+    }
+
+    .view-toggle-btn.active {
+      background: #fcf9f8;
+      color: var(--cobalt-dark);
+      font-weight: 600;
+    }
+
+    .evals-status-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .evals-counter {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--cobalt-tint);
+    }
+
+    .evals-jump-link {
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      font-weight: 600;
+      color: #fcf9f8;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(252, 249, 248, 0.55);
+      padding-bottom: 1px;
+      cursor: pointer;
+    }
+
+    .evals-jump-link:hover {
+      color: var(--cobalt-tint);
+      border-bottom-color: var(--cobalt-tint);
+    }
+
+    .evals-matrix {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.7rem;
+      margin-top: 0.7rem;
+    }
+
+    .eval-cell {
+      border: 1px solid var(--border-dark-hairline);
+      padding: 0.75rem 0.95rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.48rem;
+      transition: border-color var(--duration-fast) var(--ease-out),
+                  background-color var(--duration-fast) var(--ease-out);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .eval-cell.selected {
+      border-color: #fcf9f8;
+      background: rgba(252, 249, 248, 0.09);
+    }
+
+    .eval-cell-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.65rem;
+    }
+
+    .eval-cell-title {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fcf9f8;
+      line-height: 1.22;
+    }
+
+    .eval-cell-desc {
+      font-size: 0.77rem;
+      line-height: 1.42;
+      color: rgba(252, 249, 248, 0.78);
+    }
+
+    .eval-contrast {
+      border-top: 1px solid rgba(252, 249, 248, 0.16);
+      padding-top: 0.45rem;
+      font-size: 0.77rem;
+      line-height: 1.45;
+      color: rgba(252, 249, 248, 0.92);
+    }
+
+    .eval-contrast.expert-mode {
+      border-top: none;
+      border-left: 2px solid var(--cobalt-tint);
+      padding-top: 0.05rem;
+      padding-left: 0.7rem;
+    }
+
+    .eval-contrast-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--cobalt-tint);
+      margin-right: 0.35rem;
+    }
+
+    .btn-eval-select {
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      font-weight: 600;
+      padding: 0.28rem 0.6rem;
+      border: 1px solid rgba(252, 249, 248, 0.45);
+      background: transparent;
+      color: #fcf9f8;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: background-color var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out),
+                  border-color var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+    }
+
+    .btn-eval-select:hover {
+      border-color: #fcf9f8;
+      background: rgba(252, 249, 248, 0.12);
+    }
+
+    .eval-cell.selected .btn-eval-select {
+      background: #fcf9f8;
+      color: var(--cobalt-dark);
+      border-color: #fcf9f8;
+    }
+
+    /* =========================================================================
+       PANTALLA 3: ETAPA 3 (DOS PROMPTS ENSAMBLADOS EN VIVO)
+       ========================================================================= */
+    .stage3-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+      padding: 0.5rem 0;
+      margin: 0.5rem 0 0.8rem;
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-secondary);
+    }
+
+    .stage3-link {
+      color: var(--cobalt);
+      background: transparent;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .prompts-two-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.15rem;
+      min-height: 0;
+    }
+
+    .prompt-column {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      border-top: 2px solid var(--cobalt);
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-white);
+      max-height: calc(100dvh - var(--header-height) - 235px);
+    }
+
+    .prompt-col-header {
+      padding: 0.7rem 0.9rem;
+      border-bottom: 1px solid var(--border-hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+
+    .prompt-col-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .prompt-col-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .prompt-col-note {
+      font-size: 0.76rem;
+      line-height: 1.44;
+      color: var(--ink-muted);
+    }
+
+    .prompt-col-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    /* =========================================================================
+       TOAST DISCRETO
+       ========================================================================= */
+    .toast {
+      position: fixed;
+      bottom: 1.4rem;
+      right: 1.4rem;
+      z-index: 150;
+      background: var(--ink-primary);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      padding: 0.6rem 1rem;
+      border-left: 3px solid var(--cobalt-tint);
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================================
+       RESPONSIVE (MÓVIL Y PANTALLAS BAJAS)
+       ========================================================================= */
+    @media (max-width: 960px) {
+      html,
+      body {
+        overflow: auto;
+        height: auto;
+      }
+
+      .snap-container {
+        height: auto;
+        overflow-y: visible;
+        scroll-snap-type: none;
+      }
+
+      .snap-section {
+        height: auto;
+        min-height: calc(100dvh - var(--header-height) - 3px);
+        overflow: visible;
+        padding: 1.8rem 1.15rem 3.8rem;
+      }
+
+      .snap-dots {
+        display: none;
+      }
+
+      .brand-sep,
+      .brand-context,
+      .header-pill[data-step-nav] {
+        display: none;
+      }
+
+      .roadmap-strip,
+      .stage-split,
+      .evals-matrix,
+      .prompts-two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .roadmap-item {
+        border-right: none;
+        border-bottom: 1px solid var(--border-hairline);
+      }
+
+      .roadmap-item:last-child {
+        border-bottom: none;
+      }
+
+      .prompt-panel,
+      .prompt-column {
+        max-height: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-accent-line"></div>
+
+  <!-- CABECERA EDITORIAL FIJA -->
+  <header class="brand-header" id="brandHeader">
+    <div class="brand-header-inner">
+      <a href="index.html" class="brand-identity">
+        <span class="brand-dot"></span>
+        <span class="brand-name">Álvaro Contreras Barrios</span>
+        <span class="brand-sep">/</span>
+        <span class="brand-context">01 · Conocimiento Profundo</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Navegación de etapas">
+        <button class="header-pill active" data-target="seccion-portada" data-step-nav>Portada</button>
+        <button class="header-pill" data-target="seccion-etapa-1" data-step-nav>Etapa 1</button>
+        <button class="header-pill" data-target="seccion-etapa-2" data-step-nav>Etapa 2</button>
+        <button class="header-pill" data-target="seccion-etapa-3" data-step-nav>Etapa 3</button>
+        <a href="index.html#ejercicios" class="header-pill">
+          <span class="material-symbols-outlined" style="font-size: 15px;">arrow_back</span>
+          <span>Ejercicios</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- INDICADORES LATERALES DE SNAP SCROLL -->
+  <div class="snap-dots" id="snapDots" aria-label="Indicadores de pantalla">
+    <button class="snap-dot active" data-target="seccion-portada" title="Portada"></button>
+    <button class="snap-dot" data-target="seccion-etapa-1" title="Etapa 1. Sacar tu conocimiento tácito"></button>
+    <button class="snap-dot" data-target="seccion-etapa-2" title="Etapa 2. Elige tus evals"></button>
+    <button class="snap-dot" data-target="seccion-etapa-3" title="Etapa 3. Crear tus evals y SKILL.md"></button>
+  </div>
+
+  <!-- CONTENEDOR SNAP SCROLL -->
+  <main class="snap-container" id="snapContainer">
+
+    <!-- =====================================================================
+         PANTALLA 0: PORTADA
+         ===================================================================== -->
+    <section class="snap-section section-white" id="seccion-portada" data-index="0">
+      <div class="section-inner">
+        <h1 class="display-title">Conocimiento Profundo</h1>
+        <div class="reading-divider"></div>
+        <p class="lead-text">
+          Lo que sabes de tu oficio y rara vez dices en voz alta es lo que te permite revisar el trabajo de una Inteligencia Artificial. Aquí lo sacas a la luz y lo conviertes en pruebas (evals) y en una skill que puedes reutilizar.
+        </p>
+
+        <div class="tacit-note">
+          <p>
+            <strong>Conocimiento tácito.</strong> Es lo que sabes hacer pero te cuesta explicar. Notar que unas cifras no calzan, saber que un plan va a fallar o distinguir un borrador flojo de uno bueno son ejemplos. Michael Polanyi lo resumió así: «sabemos más de lo que podemos decir». La IA no puede inferirlo, así que hay que decirlo antes de delegar.
+          </p>
+        </div>
+
+        <div class="roadmap-strip">
+          <button class="roadmap-item" data-target="seccion-etapa-1">
+            <span class="roadmap-step-num">Etapa 1</span>
+            <span class="roadmap-step-title">Sacar tu conocimiento tácito</span>
+            <span class="roadmap-step-desc">Una conversación con la IA sobre algo que haces con soltura.</span>
+          </button>
+          <button class="roadmap-item" data-target="seccion-etapa-2">
+            <span class="roadmap-step-num">Etapa 2</span>
+            <span class="roadmap-step-title">Elegir tus evals</span>
+            <span class="roadmap-step-desc">Escoger qué tipos de prueba detectarían los errores de tu área.</span>
+          </button>
+          <button class="roadmap-item" data-target="seccion-etapa-3">
+            <span class="roadmap-step-num">Etapa 3</span>
+            <span class="roadmap-step-title">Crear evals y SKILL.md</span>
+            <span class="roadmap-step-desc">Delegar, auditar en una sesión nueva y guardar tus reglas.</span>
+          </button>
+        </div>
+
+        <div class="portada-actions">
+          <button class="btn-editorial primary" data-target="seccion-etapa-1">
+            <span>Ir a la Etapa 1</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">arrow_downward</span>
+          </button>
+          <a href="index.html#ejercicios" class="btn-editorial secondary">
+            <span>Volver a las 4 habilidades</span>
+          </a>
+        </div>
+      </div>
+
+      <button class="snap-next-trigger" data-target="seccion-etapa-1">
+        ↓ Etapa 1. Sacar tu conocimiento tácito
+      </button>
+    </section>
+
+    <!-- =====================================================================
+         PANTALLA 1: ETAPA 1 — SACAR TU CONOCIMIENTO TÁCITO
+         ===================================================================== -->
+    <section class="snap-section section-paper" id="seccion-etapa-1" data-index="1">
+      <div class="section-inner">
+        <div class="stage-split">
+          <div class="stage-left">
+            <div>
+              <h2 class="section-heading">Etapa 1. Sacar tu conocimiento tácito</h2>
+              <div class="reading-divider"></div>
+              <p class="body-text">
+                No necesitas tener un proyecto definido. Copia el prompt, pégalo en tu herramienta de Inteligencia Artificial y responde con situaciones reales de tu trabajo o estudio. Dura entre 10 y 15 minutos. Al final la IA te propone proyectos rápidos donde lo que sabes marca la diferencia.
+              </p>
+            </div>
+
+            <div class="editorial-callout">
+              Si respondes «no sé, es intuición», la IA te pedirá una situación concreta para contrastar. Esa respuesta es la que importa.
+            </div>
+
+            <div class="action-row">
+              <button class="btn-editorial primary" id="btnCopyPrompt1" onclick="copyTextById('prompt1Text', this)">
+                <span class="material-symbols-outlined" style="font-size: 16px;">content_copy</span>
+                <span>Copiar prompt</span>
+              </button>
+              <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
+                <span>Claude</span>
+                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
+              </a>
+              <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
+                <span>ChatGPT</span>
+                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
+              </a>
+              <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
+                <span>Gemini</span>
+                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="prompt-panel">
+            <div class="prompt-panel-bar">
+              <span>Prompt 1 · Entrevista de conocimiento tácito</span>
+              <span>8 preguntas · 10 a 15 min</span>
+            </div>
+            <pre class="prompt-pre" id="prompt1Text"></pre>
+          </div>
+        </div>
+      </div>
+
+      <button class="snap-next-trigger" data-target="seccion-etapa-2">
+        ↓ Etapa 2. Elige tus evals
+      </button>
+    </section>
+
+    <!-- =====================================================================
+         PANTALLA 2: ETAPA 2 — ELIGE TUS EVALS (SECCIÓN OSCURA COMPACTA)
+         ===================================================================== -->
+    <section class="snap-section section-dark" id="seccion-etapa-2" data-index="2">
+      <div class="section-inner">
+        <h2 class="section-heading">Etapa 2. Elige tus evals</h2>
+        <div class="reading-divider"></div>
+        <p class="body-text" style="max-width: 86ch;">
+          Un eval es una prueba para comprobar si el resultado de la IA sirve (clasificación de Tina Huang). Marca los dos o tres tipos que cubran los errores de tu Mapa de conocimiento tácito: <strong>los tipos que marques aquí se insertan automáticamente en los dos prompts de la Etapa 3</strong> para crear tus pruebas y auditar tu proyecto.
+        </p>
+
+        <div class="evals-toolbar">
+          <div class="view-toggle-wrap">
+            <span class="view-toggle-caption">Ver en los ejemplos:</span>
+            <div class="view-toggle" role="group" aria-label="Modo de ejemplo de los evals">
+              <button class="view-toggle-btn active" id="btnModeSurface" onclick="setEvalViewMode('surface')">
+                Resultado aparente de la IA
+              </button>
+              <button class="view-toggle-btn" id="btnModeExpert" onclick="setEvalViewMode('expert')">
+                Error oculto que atrapa el eval
+              </button>
+            </div>
+          </div>
+
+          <div class="evals-status-wrap">
+            <div class="evals-counter" id="evalsCounter">
+              2 seleccionados → insertados en Etapa 3
+            </div>
+            <button class="evals-jump-link" data-target="seccion-etapa-3">
+              Ir a ver los prompts ↓
+            </button>
+          </div>
+        </div>
+
+        <div class="evals-matrix" id="evalsMatrix">
+          <!-- Renderizado dinámico -->
+        </div>
+      </div>
+
+      <button class="snap-next-trigger light" data-target="seccion-etapa-3">
+        ↓ Etapa 3. Crear tus evals y SKILL.md
+      </button>
+    </section>
+
+    <!-- =====================================================================
+         PANTALLA 3: ETAPA 3 — CREAR TUS EVALS, AUDITAR Y GUARDAR SKILL.md
+         ===================================================================== -->
+    <section class="snap-section section-paper" id="seccion-etapa-3" data-index="3">
+      <div class="section-inner">
+        <h2 class="section-heading">Etapa 3. Crear tus evals, auditar y guardar tu SKILL.md</h2>
+        <div class="reading-divider"></div>
+        <p class="body-text" style="max-width: 84ch;">
+          Usa los dos prompts en orden. El primero va en la misma conversación de la Etapa 1 y construye tus evals y una primera versión del proyecto rápido que elegiste. El segundo va en una conversación nueva de tu IA, sin historial, para que revise sin dejarse influir por lo anterior.
+        </p>
+
+        <div class="stage3-meta-bar">
+          <span id="stage3Summary">Tipos incluidos desde Etapa 2: Objetivo, con referencia por caso · Subjetivo, con puntos clave por caso</span>
+          <button class="stage3-link" data-target="seccion-etapa-2">Cambiar selección en Etapa 2</button>
+        </div>
+
+        <div class="prompts-two-col">
+          <!-- PROMPT 3A -->
+          <div class="prompt-column">
+            <div class="prompt-col-header">
+              <div class="prompt-col-top">
+                <h3 class="prompt-col-title">Prompt 3A. Evals y primera versión</h3>
+                <div class="prompt-col-actions">
+                  <button class="btn-editorial primary" onclick="copyTextById('prompt3AText', this)" style="padding: 0.34rem 0.7rem;">
+                    <span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span>
+                    <span>Copiar 3A</span>
+                  </button>
+                </div>
+              </div>
+              <p class="prompt-col-note">
+                Pégalo en la misma conversación donde hiciste la Etapa 1. Ya incluye los tipos de eval que marcaste.
+              </p>
+            </div>
+            <pre class="prompt-pre" id="prompt3AText"></pre>
+          </div>
+
+          <!-- PROMPT 3B -->
+          <div class="prompt-column">
+            <div class="prompt-col-header">
+              <div class="prompt-col-top">
+                <h3 class="prompt-col-title">Prompt 3B. Auditoría y SKILL.md</h3>
+                <div class="prompt-col-actions">
+                  <button class="btn-editorial primary" onclick="copyTextById('prompt3BText', this)" style="padding: 0.34rem 0.7rem;">
+                    <span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span>
+                    <span>Copiar 3B</span>
+                  </button>
+                </div>
+              </div>
+              <p class="prompt-col-note">
+                Abre una conversación nueva en tu IA. En la misma conversación tiende a defender lo que ya escribió y a darte la razón.
+              </p>
+            </div>
+            <pre class="prompt-pre" id="prompt3BText"></pre>
+          </div>
+        </div>
+      </div>
+
+      <button class="snap-next-trigger" data-target="seccion-portada">
+        ↑ Volver al inicio
+      </button>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // =========================================================================
+    // 1. DATOS DEL TALLER
+    // =========================================================================
+    const PROMPT_1 = `ROL
+Eres un entrevistador especializado en sacar a la luz conocimiento tácito: lo que una persona sabe hacer pero le cuesta explicar. Tu trabajo es ayudarme a ponerlo en palabras usando situaciones reales, no definiciones generales.
+
+OBJETIVO
+Al terminar, quiero tener escrito lo que sé y normalmente no digo, y tres ideas de proyectos rápidos donde ese conocimiento sea la diferencia. Todavía no sé qué proyecto quiero hacer, y no quiero que lo asumas.
+
+REGLAS
+- Haz UNA sola pregunta a la vez y espera mi respuesta.
+- Haz entre 8 y 9 preguntas, de menos de 30 palabras cada una.
+- Pídeme siempre situaciones concretas y recientes. Si respondo con generalidades ("me fijo en la calidad", "es experiencia", "es intuición"), no avances: pídeme el último caso real o plantéame una situación para contrastar ("¿qué harías si el dato viniera de otra fuente?").
+- No elogies mis respuestas ni las valides por cortesía. Si algo es vago, dilo.
+- Antes de cada pregunta, resume en una línea lo que acabo de decir, con mis palabras.
+- No propongas proyectos hasta el final.
+
+PREGUNTAS (en este orden)
+1. Algo que hago con soltura: Qué parte de mi trabajo o estudio hago hoy casi sin pensar y a alguien nuevo le costaría meses hacer bien. Si no se me ocurre, pregúntame a qué me dedico y qué hice esta semana.
+2. La última vez: Que cuente la última vez que lo hice, paso a paso.
+3. Señales: En qué me fijé en ese caso que me hizo decidir cómo seguir.
+4. La persona nueva: Qué habría hecho mal alguien sin experiencia en esa misma situación.
+5. Cuando algo falló: La última vez que algo salió mal o estuvo cerca de salir mal, y cómo me di cuenta.
+6. Excepciones: En qué casos la regla habitual no sirve y qué hago entonces.
+7. Delegar: Qué partes de esa tarea dejaría que hiciera una IA y cuáles prefiero hacer yo, y por qué.
+8. Dar por bueno: Qué miro, en cinco minutos, para saber si el resultado sirve o hay que rehacerlo.
+
+RESULTADO FINAL
+Entrégame un "Mapa de conocimiento tácito" con cinco partes:
+1. Lo que sé y no había dicho: entre 5 y 8 frases en mis palabras.
+2. Mis señales y reglas, en formato "Si ocurre X, hago Y porque Z".
+3. Errores que cometería una persona nueva o una IA en mi lugar.
+4. Tres ideas de proyecto rápido, cada una realizable en una tarde con Inteligencia Artificial, donde este conocimiento sea lo que decide la calidad. Indica por qué.
+5. Cómo sabría que el resultado está bien (mi criterio de "terminado").
+Cierra preguntándome cuál de las tres ideas quiero desarrollar.
+
+PREGUNTA INICIAL
+"¿Qué parte de tu trabajo o estudio haces hoy casi sin pensar, y a alguien nuevo le costaría meses hacer bien?"`;
+
+    const EVAL_TYPES = [
+      {
+        id: 'obj-ref',
+        title: 'Objetivo, con referencia por caso',
+        desc: 'Compara cada resultado con un dato real y verificable de tu documento o fuente.',
+        surface: 'Un resumen que cita cifras, fechas y nombres de un documento. Todo parece correcto.',
+        expert: 'Un nombre o una cifra cambiados con apariencia razonable. Solo se detecta contrastando contra el original.'
+      },
+      {
+        id: 'obj-univ',
+        title: 'Objetivo, con regla universal',
+        desc: 'Regla comprobable con sí o no que aplica a cualquier resultado, sin excepción.',
+        surface: 'Una tabla con totales y promedios, sin advertencias.',
+        expert: 'Faltaban datos y se trataron como cero. La regla «avisar si faltan datos antes de calcular» lo habría marcado.'
+      },
+      {
+        id: 'subj-ref',
+        title: 'Subjetivo, con puntos clave por caso',
+        desc: 'La IA revisa si el resultado cubre las ideas que, según tu criterio, no pueden faltar.',
+        surface: 'Un análisis bien escrito y ordenado, de apariencia profesional.',
+        expert: 'Omite una consideración básica de tu área. Está bien redactado, pero incompleto.'
+      },
+      {
+        id: 'subj-univ',
+        title: 'Subjetivo, con rúbrica universal',
+        desc: 'Rúbrica de calidad que aplica a cualquier entrega de la IA: tono, claridad, honestidad.',
+        surface: 'Un comentario que dice «excelente enfoque, muy sólido».',
+        expert: 'Es halago sin contenido. Una buena rúbrica exige señalar al menos una debilidad concreta.'
+      }
+    ];
+
+    const state = {
+      viewMode: 'surface',
+      selectedIds: ['obj-ref', 'subj-ref']
+    };
+
+    // =========================================================================
+    // 2. RENDERIZADO DE ETAPA 2 Y ENSAMBLAJE EN VIVO DE ETAPA 3
+    // =========================================================================
+    function renderEvalsMatrix() {
+      const container = document.getElementById('evalsMatrix');
+      const isExpert = state.viewMode === 'expert';
+
+      container.innerHTML = EVAL_TYPES.map((ev) => {
+        const isSelected = state.selectedIds.includes(ev.id);
+        return `
+          <div class="eval-cell ${isSelected ? 'selected' : ''}">
+            <div class="eval-cell-top">
+              <h3 class="eval-cell-title">${ev.title}</h3>
+              <button class="btn-eval-select" onclick="toggleEvalType('${ev.id}')" aria-pressed="${isSelected}">
+                <span class="material-symbols-outlined" style="font-size: 13px;">${isSelected ? 'check' : 'add'}</span>
+                <span>${isSelected ? 'Incluido' : 'Incluir'}</span>
+              </button>
+            </div>
+
+            <p class="eval-cell-desc">${ev.desc}</p>
+
+            <div class="eval-contrast ${isExpert ? 'expert-mode' : ''}">
+              <span class="eval-contrast-tag">${isExpert ? 'Error oculto:' : 'Salida aparente:'}</span>
+              <span>${isExpert ? ev.expert : ev.surface}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateSelectionOutputs();
+    }
+
+    function setEvalViewMode(mode) {
+      state.viewMode = mode;
+      document.getElementById('btnModeSurface').classList.toggle('active', mode === 'surface');
+      document.getElementById('btnModeExpert').classList.toggle('active', mode === 'expert');
+      renderEvalsMatrix();
+    }
+
+    function toggleEvalType(id) {
+      const idx = state.selectedIds.indexOf(id);
+      if (idx >= 0) {
+        state.selectedIds.splice(idx, 1);
+      } else {
+        state.selectedIds.push(id);
+      }
+      renderEvalsMatrix();
+    }
+
+    function updateSelectionOutputs() {
+      const selected = EVAL_TYPES.filter(e => state.selectedIds.includes(e.id));
+      const count = selected.length;
+
+      const counterEl = document.getElementById('evalsCounter');
+      if (count === 0) {
+        counterEl.textContent = '0 seleccionados · marca al menos uno';
+      } else if (count === 1) {
+        counterEl.textContent = '1 seleccionado → insertado en Etapa 3';
+      } else {
+        counterEl.textContent = `${count} seleccionados → insertados en Etapa 3`;
+      }
+
+      const summaryEl = document.getElementById('stage3Summary');
+      summaryEl.textContent = count > 0
+        ? `Tipos incluidos desde Etapa 2: ${selected.map(s => s.title).join(' · ')}`
+        : 'Sin tipos seleccionados en Etapa 2 (se incluirá un espacio editable en los prompts).';
+
+      const listFor3A = count > 0
+        ? selected.map(s => `- ${s.title}: ${s.desc}`).join('\n')
+        : '- [Indica aquí los tipos de eval que elegiste en la Etapa 2]';
+
+      const listFor3B = count > 0
+        ? selected.map(s => s.title).join('; ')
+        : '[indica aquí los tipos elegidos en la Etapa 2]';
+
+      document.getElementById('prompt3AText').textContent = `Usa el Mapa de conocimiento tácito y el proyecto rápido que elegí.
+
+1. ENCARGO
+Antes de ejecutar, escribe en pocas líneas:
+- Objetivo y contexto.
+- Qué puedes tocar y qué no puedes tocar ni inventar.
+- Qué significa "terminado".
+- Fuentes válidas y formato del resultado.
+- Qué vas a verificar antes de entregar.
+
+2. MIS PRIMEROS EVALS
+Crea entre 5 y 8 casos de prueba de estos tipos:
+${listFor3A}
+Incluye al menos 2 casos difíciles tomados de mi Mapa de conocimiento tácito. Para cada caso indica: situación, resultado esperado y qué lo haría fallar.
+
+3. PRIMERA VERSIÓN
+Haz el proyecto. Si te falta información, dímelo en vez de suponerla.`;
+
+      document.getElementById('prompt3BText').textContent = `Eres un revisor escéptico. No has visto ninguna conversación previa.
+
+Te voy a pasar un resultado generado por Inteligencia Artificial y una lista de evals.
+
+TAREA 1. AUDITORÍA
+- Para cada eval responde PASS o FAIL.
+- No uses elogios generales. Si algo está débil, incompleto o sin respaldo, marca FAIL y cita el fragmento exacto.
+- Fíjate especialmente en estos tipos de error: ${listFor3B}.
+
+TAREA 2. SKILL.md
+Cuando yo confirme las correcciones, escribe un archivo SKILL.md en Markdown con:
+- Para qué sirve y cuándo usarla.
+- Reglas y prohibiciones de mi área.
+- Casos difíciles conocidos.
+- Los evals que debe pasar siempre antes de dar el trabajo por terminado.
+
+[PEGA AQUÍ LOS EVALS Y EL RESULTADO]`;
+    }
+
+    // =========================================================================
+    // 3. NAVEGACIÓN SNAP SCROLL E INTERSECTION OBSERVER
+    // =========================================================================
+    const snapContainer = document.getElementById('snapContainer');
+    const sections = document.querySelectorAll('.snap-section');
+    const snapDots = document.querySelectorAll('.snap-dot');
+    const snapDotsContainer = document.getElementById('snapDots');
+    const brandHeader = document.getElementById('brandHeader');
+    const headerStepBtns = document.querySelectorAll('.header-pill[data-step-nav]');
+
+    function scrollToSection(id) {
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    document.querySelectorAll('[data-target]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollToSection(btn.getAttribute('data-target'));
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
+          const activeId = entry.target.id;
+          const isDark = entry.target.classList.contains('section-dark');
+
+          snapDotsContainer.classList.toggle('dark-mode', isDark);
+          brandHeader.classList.toggle('dark-mode', isDark);
+
+          snapDots.forEach(dot => {
+            dot.classList.toggle('active', dot.getAttribute('data-target') === activeId);
+          });
+          headerStepBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-target') === activeId);
+          });
+        }
+      });
+    }, { root: snapContainer, threshold: [0.5] });
+
+    sections.forEach(sec => observer.observe(sec));
+
+    // =========================================================================
+    // 4. COPIADO DE PROMPTS Y TOAST
+    // =========================================================================
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove('visible'), 2600);
+    }
+
+    function copyTextById(elId, btn) {
+      const el = document.getElementById(elId);
+      if (!el) return;
+      const text = el.textContent;
+
+      const onSuccess = () => {
+        if (btn) {
+          const prev = btn.innerHTML;
+          btn.classList.add('copied');
+          btn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 15px;">check</span><span>Copiado</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = prev;
+          }, 2200);
+        }
+        showToast('Prompt copiado al portapapeles.');
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(onSuccess).catch(() => {
+          fallbackCopy(text);
+          onSuccess();
+        });
+      } else {
+        fallbackCopy(text);
+        onSuccess();
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    // Inicialización
+    document.getElementById('prompt1Text').textContent = PROMPT_1;
+    renderEvalsMatrix();
+  </script>
+</body>
+</html>

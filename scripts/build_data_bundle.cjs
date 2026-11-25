@@ -12,6 +12,8 @@ const paletasPath = path.join(dataDir, 'paletas.json');
 const paletas = fs.existsSync(paletasPath) ? JSON.parse(fs.readFileSync(paletasPath, 'utf8')) : { colors: [], combinations: [] };
 const fuentesPath = path.join(dataDir, 'fuentes.json');
 const fuentes = fs.existsSync(fuentesPath) ? JSON.parse(fs.readFileSync(fuentesPath, 'utf8')) : [];
+const lentesPath = path.join(dataDir, 'lentes.json');
+const lentes = fs.existsSync(lentesPath) ? JSON.parse(fs.readFileSync(lentesPath, 'utf8')) : [];
 
 const jsContent = `// Repositorio de Clases de IA - Datos embebidos para compatibilidad local y web
 (function() {
@@ -23,7 +25,8 @@ const jsContent = `// Repositorio de Clases de IA - Datos embebidos para compati
     materiales: ${JSON.stringify(materiales, null, 2)},
     autores: ${JSON.stringify(autores, null, 2)},
     paletas: ${JSON.stringify(paletas)},
-    fuentes: ${JSON.stringify(fuentes)}
+    fuentes: ${JSON.stringify(fuentes)},
+    lentes: ${JSON.stringify(lentes, null, 2)}
   };
 })();
 `;

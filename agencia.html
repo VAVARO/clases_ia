@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agencia — Clases de IA</title>
+  <meta name="description" content="Tarea no pedida, modos de autonomía y primera prueba segura para trabajar con Inteligencia Artificial." />
+
+  <!-- Tipografías institucionales: Playfair Display, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />
+
+  <style>
+    :root {
+      --header-height: 56px;
+      --bg-white: #ffffff;
+      --bg-paper: #fcf9f8;
+      --bg-surface: #f4efec;
+      --ink-primary: #1c1b1b;
+      --ink-secondary: #4a4745;
+      --ink-muted: #66625f;
+      --cobalt: #00357f;
+      --cobalt-light: #0059c5;
+      --cobalt-dark: #002357;
+      --cobalt-soft: rgba(0, 53, 127, 0.06);
+      --cobalt-tint: #9ec5ff;
+      --border-hairline: rgba(28, 27, 27, 0.10);
+      --border-dark-hairline: rgba(252, 249, 248, 0.22);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --duration-fast: 150ms;
+      --duration-normal: 260ms;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--bg-white);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* =========================================================================
+       BARRA SUPERIOR COBALTO + CABECERA FIJA EDITORIAL
+       ========================================================================= */
+    .top-accent-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cobalt), var(--cobalt-light), var(--cobalt));
+      z-index: 110;
+    }
+
+    .brand-header {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      z-index: 100;
+      background: rgba(252, 249, 248, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-hairline);
+      transition: background-color var(--duration-normal) var(--ease-out),
+                  border-color var(--duration-normal) var(--ease-out),
+                  color var(--duration-normal) var(--ease-out);
+    }
+
+    .brand-header.dark-mode {
+      background: rgba(0, 35, 87, 0.96);
+      border-bottom-color: rgba(252, 249, 248, 0.16);
+    }
+
+    .brand-header-inner {
+      max-width: 1240px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3vw, 2rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-identity {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--ink-primary);
+      min-width: 0;
+    }
+
+    .brand-header.dark-mode .brand-identity {
+      color: #fcf9f8;
+    }
+
+    .brand-dot {
+      width: 9px;
+      height: 9px;
+      background: var(--cobalt);
+      flex-shrink: 0;
+      transition: background-color var(--duration-normal) var(--ease-out);
+    }
+
+    .brand-header.dark-mode .brand-dot {
+      background: var(--cobalt-tint);
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .brand-sep {
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    .brand-header.dark-mode .brand-sep {
+      color: rgba(252, 249, 248, 0.5);
+    }
+
+    .brand-context {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--cobalt);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-header.dark-mode .brand-context {
+      color: var(--cobalt-tint);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-shrink: 0;
+    }
+
+    .header-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--ink-secondary);
+      text-decoration: none;
+      background: transparent;
+      padding: 0.34rem 0.62rem;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background-color var(--duration-fast) var(--ease-out),
+                  border-color var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .header-pill:hover,
+    .header-pill.active {
+      color: var(--cobalt);
+      background: rgba(0, 53, 127, 0.05);
+      border-color: rgba(0, 53, 127, 0.18);
+    }
+
+    .brand-header.dark-mode .header-pill {
+      color: rgba(252, 249, 248, 0.82);
+    }
+
+    .brand-header.dark-mode .header-pill:hover,
+    .brand-header.dark-mode .header-pill.active {
+      color: #ffffff;
+      background: rgba(252, 249, 248, 0.12);
+      border-color: rgba(252, 249, 248, 0.3);
+    }
+
+    /* =========================================================================
+       INDICADORES LATERALES DE SNAP SCROLL
+       ========================================================================= */
+    .snap-dots {
+      position: fixed;
+      right: 1.25rem;
+      top: calc(50% + var(--header-height) / 2);
+      transform: translateY(-50%);
+      z-index: 95;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .snap-dot {
+      width: 9px;
+      height: 9px;
+      border: 1.5px solid var(--cobalt);
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color var(--duration-normal) var(--ease-out),
+                  border-color var(--duration-normal) var(--ease-out),
+                  transform var(--duration-normal) var(--ease-out);
+    }
+
+    .snap-dot:hover {
+      transform: scale(1.2);
+    }
+
+    .snap-dot.active {
+      background: var(--cobalt);
+      transform: scale(1.25);
+    }
+
+    .snap-dots.dark-mode .snap-dot {
+      border-color: #fcf9f8;
+    }
+
+    .snap-dots.dark-mode .snap-dot.active {
+      background: #fcf9f8;
+    }
+
+    /* =========================================================================
+       CONTENEDOR SNAP SCROLL (4 PANTALLAS)
+       ========================================================================= */
+    .snap-container {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - var(--header-height) - 3px);
+      height: calc(100dvh - var(--header-height) - 3px);
+      margin-top: calc(var(--header-height) + 3px);
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .snap-section {
+      width: 100%;
+      height: calc(100vh - var(--header-height) - 3px);
+      height: calc(100dvh - var(--header-height) - 3px);
+      min-height: calc(100dvh - var(--header-height) - 3px);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+      padding: clamp(0.9rem, 2vh, 1.5rem) clamp(1.25rem, 4vw, 3.25rem) 3.4rem;
+    }
+
+    .section-white {
+      background-color: var(--bg-white);
+      background-image:
+        linear-gradient(to right, rgba(0, 53, 127, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 53, 127, 0.03) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    .section-paper {
+      background-color: var(--bg-paper);
+    }
+
+    .section-dark {
+      background-color: var(--cobalt-dark);
+      color: #fcf9f8;
+      background-image:
+        linear-gradient(to right, rgba(252, 249, 248, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(252, 249, 248, 0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    .section-inner {
+      width: 100%;
+      max-width: 1120px;
+      margin: auto 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* =========================================================================
+       TIPOGRAFÍA Y BOTONES EDITORIALES
+       ========================================================================= */
+    .display-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink-primary);
+      margin-bottom: clamp(0.6rem, 1.4vh, 1rem);
+    }
+
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(1.32rem, 2.15vw, 1.9rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--ink-primary);
+      margin-bottom: 0.45rem;
+    }
+
+    .section-dark .section-heading {
+      color: #fcf9f8;
+    }
+
+    .reading-divider {
+      width: 44px;
+      height: 2px;
+      background: var(--cobalt);
+      margin-bottom: clamp(0.55rem, 1.3vh, 0.95rem);
+      flex-shrink: 0;
+    }
+
+    .section-dark .reading-divider {
+      background: var(--cobalt-tint);
+    }
+
+    .lead-text {
+      font-size: clamp(0.94rem, 1.2vw, 1.06rem);
+      line-height: 1.58;
+      color: var(--ink-secondary);
+      max-width: 68ch;
+    }
+
+    .body-text {
+      font-size: clamp(0.82rem, 0.98vw, 0.9rem);
+      line-height: 1.52;
+      color: var(--ink-secondary);
+    }
+
+    .section-dark .body-text {
+      color: rgba(252, 249, 248, 0.88);
+    }
+
+    .btn-editorial {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.54rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      text-decoration: none;
+      border: 1.5px solid var(--cobalt);
+      cursor: pointer;
+      transition: background-color var(--duration-fast) var(--ease-out),
+                  border-color var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out),
+                  transform var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+    }
+
+    .btn-editorial:active {
+      transform: scale(0.98);
+    }
+
+    .btn-editorial.primary {
+      background: var(--cobalt);
+      color: #ffffff;
+    }
+
+    .btn-editorial.primary:hover {
+      background: var(--cobalt-dark);
+      border-color: var(--cobalt-dark);
+    }
+
+    .btn-editorial.secondary {
+      background: var(--bg-white);
+      color: var(--cobalt);
+    }
+
+    .btn-editorial.secondary:hover {
+      background: rgba(0, 53, 127, 0.05);
+      border-color: var(--cobalt-dark);
+    }
+
+    .btn-editorial.copied {
+      background: #14532d;
+      border-color: #14532d;
+      color: #ffffff;
+    }
+
+    /* Botón inferior de avance Snap Click */
+    .snap-next-trigger {
+      position: absolute;
+      bottom: 0.65rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      background: rgba(252, 249, 248, 0.96);
+      border: 1.5px solid rgba(0, 53, 127, 0.35);
+      padding: 0.32rem 0.9rem;
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      font-weight: 500;
+      color: var(--cobalt);
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: background-color var(--duration-fast) var(--ease-out),
+                  border-color var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+    }
+
+    .snap-next-trigger:hover {
+      background: var(--cobalt);
+      color: #ffffff;
+      border-color: var(--cobalt);
+    }
+
+    .snap-next-trigger.light {
+      background: rgba(0, 35, 87, 0.96);
+      border-color: rgba(252, 249, 248, 0.42);
+      color: #fcf9f8;
+    }
+
+    .snap-next-trigger.light:hover {
+      background: #fcf9f8;
+      color: var(--cobalt-dark);
+      border-color: #fcf9f8;
+    }
+
+    /* =========================================================================
+       PANTALLA 0: PORTADA + AGENCIA COMO HÁBITO + RECORRIDO
+       ========================================================================= */
+    .concept-note {
+      margin-top: clamp(0.9rem, 2vh, 1.5rem);
+      padding: 0.85rem 0 0.85rem 1.15rem;
+      border-top: 1px solid var(--border-hairline);
+      border-left: 2px solid var(--cobalt);
+      max-width: 72ch;
+    }
+
+    .concept-note p {
+      font-size: clamp(0.84rem, 1.02vw, 0.92rem);
+      line-height: 1.6;
+      color: var(--ink-secondary);
+    }
+
+    .concept-note strong {
+      color: var(--ink-primary);
+      font-weight: 600;
+    }
+
+    .roadmap-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: clamp(1rem, 2.2vh, 1.6rem);
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .roadmap-item {
+      text-align: left;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--border-hairline);
+      padding: 0.9rem 1.05rem;
+      cursor: pointer;
+      transition: background-color var(--duration-fast) var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .roadmap-item:last-child {
+      border-right: none;
+    }
+
+    .roadmap-item:hover {
+      background: rgba(0, 53, 127, 0.035);
+    }
+
+    .roadmap-step-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--cobalt);
+    }
+
+    .roadmap-step-title {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .roadmap-step-desc {
+      font-size: 0.79rem;
+      line-height: 1.44;
+      color: var(--ink-muted);
+    }
+
+    .portada-actions {
+      margin-top: clamp(0.95rem, 2vh, 1.5rem);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* =========================================================================
+       PANTALLA 1: ETAPA 1 (LAYOUT 2 COLUMNAS SIN CAJAS ANIDADAS)
+       ========================================================================= */
+    .stage-split {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.92fr) minmax(360px, 1.23fr);
+      gap: clamp(1.25rem, 3vw, 2.4rem);
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .stage-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .stage-deliverables {
+      border-top: 1px solid var(--border-hairline);
+      padding-top: 0.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .stage-deliverables-title {
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      font-weight: 600;
+      color: var(--cobalt);
+    }
+
+    .stage-deliverables ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .stage-deliverables li {
+      font-size: 0.81rem;
+      line-height: 1.45;
+      color: var(--ink-secondary);
+      padding-left: 0.85rem;
+      position: relative;
+    }
+
+    .stage-deliverables li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--cobalt);
+      font-family: var(--font-mono);
+    }
+
+    .editorial-callout {
+      border-left: 2px solid var(--cobalt);
+      padding: 0.15rem 0 0.15rem 0.95rem;
+      font-size: 0.81rem;
+      line-height: 1.5;
+      color: var(--ink-secondary);
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+      padding-top: 0.2rem;
+    }
+
+    .prompt-panel {
+      display: flex;
+      flex-direction: column;
+      border-top: 2px solid var(--cobalt);
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-white);
+      min-height: 0;
+      max-height: calc(100dvh - var(--header-height) - 135px);
+    }
+
+    .prompt-panel-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.55rem 0.9rem;
+      border-bottom: 1px solid var(--border-hairline);
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      color: var(--ink-muted);
+      flex-shrink: 0;
+    }
+
+    .prompt-pre {
+      margin: 0;
+      padding: 0.88rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.725rem;
+      line-height: 1.54;
+      color: var(--ink-primary);
+      white-space: pre-wrap;
+      overflow-y: auto;
+      flex: 1;
+      user-select: all;
+    }
+
+    /* =========================================================================
+       PANTALLA 2: ETAPA 2 — SELECTOR DE MODO + LÍMITES SEGUROS (SECCIÓN OSCURA)
+       ========================================================================= */
+    .agency-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 1.5rem;
+      margin-top: 0.75rem;
+      border-top: 1px solid var(--border-dark-hairline);
+      padding-top: 0.85rem;
+      align-items: start;
+    }
+
+    .mode-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      padding-right: 1.25rem;
+      border-right: 1px solid var(--border-dark-hairline);
+    }
+
+    .panel-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--cobalt-tint);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .mode-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(252, 249, 248, 0.35);
+    }
+
+    .mode-tab {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.5rem 0.6rem;
+      background: transparent;
+      color: rgba(252, 249, 248, 0.84);
+      border: none;
+      border-right: 1px solid rgba(252, 249, 248, 0.25);
+      cursor: pointer;
+      text-align: left;
+      line-height: 1.25;
+      transition: background-color var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out);
+    }
+
+    .mode-tab:last-child {
+      border-right: none;
+    }
+
+    .mode-tab:hover {
+      background: rgba(252, 249, 248, 0.10);
+      color: #ffffff;
+    }
+
+    .mode-tab.active {
+      background: #fcf9f8;
+      color: var(--cobalt-dark);
+      font-weight: 600;
+    }
+
+    .mode-tab-sub {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 400;
+      opacity: 0.78;
+      margin-top: 0.15rem;
+    }
+
+    .mode-subtitle {
+      font-size: 0.85rem;
+      line-height: 1.45;
+      color: #fcf9f8;
+      border-left: 2px solid var(--cobalt-tint);
+      padding-left: 0.7rem;
+    }
+
+    .mode-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border-dark-hairline);
+      border-bottom: 1px solid var(--border-dark-hairline);
+    }
+
+    .mode-step {
+      padding: 0.55rem 0.65rem 0.55rem 0;
+      border-right: 1px solid rgba(252, 249, 248, 0.14);
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .mode-step:not(:first-child) {
+      padding-left: 0.65rem;
+    }
+
+    .mode-step:last-child {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    .mode-step-label {
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      font-weight: 600;
+      color: var(--cobalt-tint);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mode-step-text {
+      font-size: 0.76rem;
+      line-height: 1.4;
+      color: rgba(252, 249, 248, 0.88);
+    }
+
+    .mode-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.42rem;
+    }
+
+    .mode-detail-row {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+      line-height: 1.42;
+      align-items: baseline;
+    }
+
+    .mode-detail-key {
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      color: var(--cobalt-tint);
+    }
+
+    .mode-detail-val {
+      color: rgba(252, 249, 248, 0.9);
+    }
+
+    /* Columna derecha: Límites seguros (Sandbox) */
+    .sandbox-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .sandbox-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border-dark-hairline);
+    }
+
+    .sandbox-item {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(252, 249, 248, 0.16);
+      padding: 0.5rem 0.4rem;
+      text-align: left;
+      color: #fcf9f8;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      transition: background-color var(--duration-fast) var(--ease-out);
+    }
+
+    .sandbox-item:hover {
+      background: rgba(252, 249, 248, 0.06);
+    }
+
+    .sandbox-item[aria-pressed="true"] {
+      background: rgba(252, 249, 248, 0.08);
+    }
+
+    .sandbox-check {
+      font-size: 18px;
+      color: rgba(252, 249, 248, 0.55);
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .sandbox-item[aria-pressed="true"] .sandbox-check {
+      color: var(--cobalt-tint);
+    }
+
+    .sandbox-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.12rem;
+    }
+
+    .sandbox-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      line-height: 1.28;
+      color: #fcf9f8;
+    }
+
+    .sandbox-desc {
+      font-size: 0.73rem;
+      line-height: 1.38;
+      color: rgba(252, 249, 248, 0.76);
+    }
+
+    /* Barra inferior de estado Etapa 2 */
+    .stage2-footer-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+      padding-top: 0.55rem;
+      border-top: 1px solid var(--border-dark-hairline);
+    }
+
+    .stage2-status {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--cobalt-tint);
+    }
+
+    .stage2-jump-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #fcf9f8;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(252, 249, 248, 0.55);
+      padding-bottom: 1px;
+      cursor: pointer;
+    }
+
+    .stage2-jump-link:hover {
+      color: var(--cobalt-tint);
+      border-bottom-color: var(--cobalt-tint);
+    }
+
+    /* =========================================================================
+       PANTALLA 3: ETAPA 3 (DOS PROMPTS ENSAMBLADOS EN VIVO)
+       ========================================================================= */
+    .stage3-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+      padding: 0.5rem 0;
+      margin: 0.5rem 0 0.8rem;
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--ink-secondary);
+    }
+
+    .stage3-link {
+      color: var(--cobalt);
+      background: transparent;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .prompts-two-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.15rem;
+      min-height: 0;
+    }
+
+    .prompt-column {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      border-top: 2px solid var(--cobalt);
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-white);
+      max-height: calc(100dvh - var(--header-height) - 210px);
+    }
+
+    .prompt-col-header {
+      padding: 0.7rem 0.9rem;
+      border-bottom: 1px solid var(--border-hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex-shrink: 0;
+    }
+
+    .prompt-col-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .prompt-col-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .prompt-col-note {
+      font-size: 0.76rem;
+      line-height: 1.44;
+      color: var(--ink-muted);
+    }
+
+    .prompt-col-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    /* =========================================================================
+       TOAST DISCRETO
+       ========================================================================= */
+    .toast {
+      position: fixed;
+      bottom: 1.4rem;
+      right: 1.4rem;
+      z-index: 150;
+      background: var(--ink-primary);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      padding: 0.6rem 1rem;
+      border-left: 3px solid var(--cobalt-tint);
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================================
+       RESPONSIVE (MÓVIL Y PANTALLAS BAJAS)
+       ========================================================================= */
+    @media (max-width: 960px) {
+      html,
+      body {
+        overflow: auto;
+        height: auto;
+      }
+
+      .snap-container {
+        height: auto;
+        overflow-y: visible;
+        scroll-snap-type: none;
+      }
+
+      .snap-section {
+        height: auto;
+        min-height: calc(100dvh - var(--header-height) - 3px);
+        overflow: visible;
+        padding: 1.8rem 1.15rem 3.8rem;
+      }
+
+      .snap-dots {
+        display: none;
+      }
+
+      .brand-sep,
+      .brand-context,
+      .header-pill[data-step-nav] {
+        display: none;
+      }
+
+      .roadmap-strip,
+      .stage-split,
+      .agency-grid,
+      .mode-tabs,
+      .mode-flow,
+      .prompts-two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .mode-panel {
+        padding-right: 0;
+        border-right: none;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-dark-hairline);
+      }
+
+      .mode-tab {
+        border-right: none;
+        border-bottom: 1px solid rgba(252, 249, 248, 0.25);
+      }
+
+      .mode-tab:last-child {
+        border-bottom: none;
+      }
+
+      .mode-step {
+        border-right: none;
+        border-bottom: 1px solid rgba(252, 249, 248, 0.14);
+        padding: 0.5rem 0;
+      }
+
+      .mode-step:not(:first-child) {
+        padding-left: 0;
+      }
+
+      .mode-step:last-child {
+        border-bottom: none;
+      }
+
+      .mode-detail-row {
+        grid-template-columns: 1fr;
+        gap: 0.15rem;
+      }
+
+      .roadmap-item {
+        border-right: none;
+        border-bottom: 1px solid var(--border-hairline);
+      }
+
+      .roadmap-item:last-child {
+        border-bottom: none;
+      }
+
+      .prompt-panel,
+      .prompt-column {
+        max-height: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-accent-line"></div>
+
+  <!-- CABECERA EDITORIAL FIJA -->
+  <header class="brand-header" id="brandHeader">
+    <div class="brand-header-inner">
+      <a href="index.html" class="brand-identity">
+        <span class="brand-dot"></span>
+        <span class="brand-name">Álvaro Contreras Barrios</span>
+        <span class="brand-sep">/</span>
+        <span class="brand-context">04 · Agencia</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Navegación de etapas">
+        <button class="header-pill active" data-target="seccion-portada" data-step-nav>Portada</button>
+        <button class="header-pill" data-target="seccion-etapa-1" data-step-nav>Etapa 1</button>
+        <button class="header-pill" data-target="seccion-etapa-2" data-step-nav>Etapa 2</button>
+        <button class="header-pill" data-target="seccion-etapa-3" data-step-nav>Etapa 3</button>
+        <a href="index.html#ejercicios" class="header-pill">
+          <span class="material-symbols-outlined" style="font-size: 15px;">arrow_back</span>
+          <span>Ejercicios</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- INDICADORES LATERALES DE SNAP SCROLL -->
+  <div class="snap-dots" id="snapDots" aria-label="Indicadores de pantalla">
+    <button class="snap-dot active" data-target="seccion-portada" title="Portada"></button>
+    <button class="snap-dot" data-target="seccion-etapa-1" title="Etapa 1. Elegir una tarea no pedida"></button>
+    <button class="snap-dot" data-target="seccion-etapa-2" title="Etapa 2. Elegir modo y límites seguros"></button>
+    <button class="snap-dot" data-target="seccion-etapa-3" title="Etapa 3. Mandato de delegación y cierre"></button>
+  </div>
+
+  <!-- CONTENEDOR SNAP SCROLL -->
+  <main class="snap-container" id="snapContainer">
+
+    <!-- =====================================================================
+         PANTALLA 0: PORTADA
+         ===================================================================== -->
+    <section class="snap-section section-white" id="seccion-portada" data-index="0">
+      <div class="section-inner">
+        <h1 class="display-title">Agencia</h1>
+        <div class="reading-divider"></div>
+        <p class="lead-text">
+          La Inteligencia Artificial espera a que le pidas algo. Aquí eliges una tarea real que nadie te pidió automatizar, decides con qué nivel de autonomía probarla y lanzas una primera prueba acotada y segura esta misma semana.
+        </p>
+
+        <div class="concept-note">
+          <p>
+            <strong>Agencia como hábito.</strong> Ethan Mollick define la agencia como la disposición a tomar la iniciativa y probar sin esperar instrucciones. La agencia se entrena como un hábito: elegir cada semana una «tarea no pedida» sobre algo que te importa, probar hasta dónde llega la IA y aprender tanto de lo que funciona como de lo que falla.
+          </p>
+        </div>
+
+        <div class="roadmap-strip">
+          <button class="roadmap-item" data-target="seccion-etapa-1">
+            <span class="roadmap-step-num">Etapa 1</span>
+            <span class="roadmap-step-title">Elegir una tarea no pedida</span>
+            <span class="roadmap-step-desc">Una conversación breve para detectar un problema real ligado a tu trabajo o intereses y definir tres ideas de proyecto rápido.</span>
+          </button>
+          <button class="roadmap-item" data-target="seccion-etapa-2">
+            <span class="roadmap-step-num">Etapa 2</span>
+            <span class="roadmap-step-title">Elegir modo y límites seguros</span>
+            <span class="roadmap-step-desc">Comparas chat reactivo, agente ejecutor y agente proactivo, y marcas las reglas para probar sin arriesgar tus archivos ni tus cuentas.</span>
+          </button>
+          <button class="roadmap-item" data-target="seccion-etapa-3">
+            <span class="roadmap-step-num">Etapa 3</span>
+            <span class="roadmap-step-title">Lanzar la prueba y registrar el resultado</span>
+            <span class="roadmap-step-desc">Dos prompts armados con tu selección: uno para delegar con claridad y otro para guardar el método o anotar el fallo como benchmark personal.</span>
+          </button>
+        </div>
+
+        <div class="portada-actions">
+          <button class="btn-editorial primary" data-target="seccion-etapa-1">
+            <span>Comenzar · Etapa 1</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">arrow_downward</span>
+          </button>
+          <a href="index.html#ejercicios" class="btn-editorial secondary">
+            <span>Volver a las 4 habilidades</span>
+          </a>
+        </div>
+      </div>
+
+      <button class="snap-next-trigger" data-target="seccion-etapa-1">
+        ↓ Etapa 1. Elegir una tarea no pedida
+      </button>
+    </section>
+
+    <!-- =====================================================================
+         PANTALLA 1: ETAPA 1 — ELEGIR UNA TAREA NO PEDIDA
+         ===================================================================== -->
+    <section class="snap-section section-paper" id="seccion-etapa-1" data-index="1">
+      <div class="section-inner">
+        <div class="stage-split">
+          <div class="stage-left">
+            <div>
+              <h2 class="section-heading">Etapa 1. Encuentra una tarea real para probar esta semana</h2>
+              <div class="reading-divider"></div>
+              <p class="body-text">
+                Antes de abrir un agente o buscar herramientas, conviene definir qué vale la pena probar. Esta entrevista parte por lo que ya sabes hacer y te interesa —una idea inspirada en el Test Voight-Kampff que usa Mollick en sus clases— para que el proyecto nazca de una necesidad tuya y no de una lista genérica de internet.
+              </p>
+              <p class="body-text" style="margin-top: 0.45rem;">
+                También te ayuda a aplicar una regla simple de delegación: solo conviene delegar a una IA cuando revisar el resultado toma bastante menos tiempo que hacer el trabajo a mano.
+              </p>
+            </div>
+
+            <div class="stage-deliverables">
+              <div class="stage-deliverables-title">Qué obtienes al terminar</div>
+              <ul>
+                <li>Una «Ficha de tarea no pedida» con tus intereses, la fricción real y los insumos que ya tienes hoy.</li>
+                <li>Tres ideas de proyecto rápido realizables en una tarde o en 48 horas, ordenadas de menor a mayor riesgo.</li>
+              </ul>
+            </div>
+
+            <div class="editorial-callout">
+              Si al empezar todavía no tienes claro qué quieres automatizar o construir, dilo en tu primera respuesta. La entrevista está pensada justamente para ayudarte a encontrarlo.
+            </div>
+
+            <div class="action-row">
+              <button class="btn-editorial primary" id="btnCopyPrompt1" onclick="copyTextById('prompt1Text', this)">
+                <span class="material-symbols-outlined" style="font-size: 16px;">content_copy</span>
+                <span>Copiar prompt</span>
+              </button>
+              <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
+                <span>Claude</span>
+                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
+              </a>
+              <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
+                <span>ChatGPT</span>
+                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
+              </a>
+              <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
+                <span>Gemini</span>
+                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="prompt-panel">
+            <div class="prompt-panel-bar">
+              <span>Prompt 1 · Entrevista de tarea no pedida</span>
+              <span>6 preguntas · 10 a 15 min</span>
+            </div>
+            <pre class="prompt-pre" id="prompt1Text"></pre>
+          </div>
+        </div>
+      </div>
+
+      <button class="snap-next-trigger" data-target="seccion-etapa-2">
+        ↓ Etapa 2. Elegir modo y límites seguros
+      </button>
+    </section>
+
+    <!-- =====================================================================
+         PANTALLA 2: ETAPA 2 — ELEGIR MODO Y LÍMITES SEGUROS (SECCIÓN OSCURA)
+         ===================================================================== -->
+    <section class="snap-section section-dark" id="seccion-etapa-2" data-index="2">
+      <div class="section-inner">
+        <h2 class="section-heading">Etapa 2. Elige con qué modo partir y fija tus límites</h2>
+        <div class="reading-divider"></div>
+        <p class="body-text" style="max-width: 88ch;">
+          El modo de trabajo y las reglas que marques aquí se insertan automáticamente en los dos prompts de la Etapa 3. Así pruebas una herramienta nueva sobre un problema real sin exponer archivos ni cuentas importantes.
+        </p>
+
+        <div class="agency-grid">
+          <!-- COLUMNA IZQUIERDA: SELECTOR DE MODO DE TRABAJO -->
+          <div class="mode-panel">
+            <div class="panel-label">
+              <span>Selector de modo de trabajo (elige 1)</span>
+            </div>
+
+            <div class="mode-tabs" role="tablist" aria-label="Modos de trabajo con Inteligencia Artificial" id="modeTabs">
+              <!-- Renderizado dinámico -->
+            </div>
+
+            <div id="modeDetailArea">
+              <!-- Renderizado dinámico -->
+            </div>
+          </div>
+
+          <!-- COLUMNA DERECHA: LÍMITES SEGUROS PARA PROBAR (SANDBOX) -->
+          <div class="sandbox-panel">
+            <div class="panel-label">
+              <span>Límites seguros para probar (Sandbox)</span>
+              <span id="sandboxCountLabel">3 activas</span>
+            </div>
+
+            <div class="sandbox-list" id="sandboxList">
+              <!-- Renderizado dinámico -->
+            </div>
+          </div>
+        </div>
+
+        <div class="stage2-footer-bar">
+          <div class="stage2-status" id="stage2Status">
+            Modo elegido: Agente ejecutor (modo Conjurador) · 3 límites activos → insertados en Etapa 3
+          </div>
+          <button class="stage2-jump-link" data-target="seccion-etapa-3">
+            Ir a Etapa 3 con esta configuración ↓
+          </button>
+        </div>
+      </div>
+
+      <button class="snap-next-trigger light" data-target="seccion-etapa-3">
+        ↓ Etapa 3. Mandato de delegación y cierre
+      </button>
+    </section>
+
+    <!-- =====================================================================
+         PANTALLA 3: ETAPA 3 — MANDATO DE DELEGACIÓN Y CIERRE
+         ===================================================================== -->
+    <section class="snap-section section-paper" id="seccion-etapa-3" data-index="3">
+      <div class="section-inner">
+        <h2 class="section-heading">Etapa 3. Lanza tu primera prueba y registra lo que aprendas</h2>
+        <div class="reading-divider"></div>
+
+        <div class="stage3-meta-bar">
+          <span id="stage3Summary">Configuración activa desde Etapa 2: Agente ejecutor (modo Conjurador)</span>
+          <button class="stage3-link" data-target="seccion-etapa-2">Cambiar en Etapa 2</button>
+        </div>
+
+        <div class="prompts-two-col">
+          <!-- PROMPT 3A -->
+          <div class="prompt-column">
+            <div class="prompt-col-header">
+              <div class="prompt-col-top">
+                <h3 class="prompt-col-title">Prompt 3A. Mandato de delegación y primera prueba</h3>
+                <div class="prompt-col-actions">
+                  <button class="btn-editorial primary" onclick="copyTextById('prompt3AText', this)" style="padding: 0.34rem 0.7rem;">
+                    <span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span>
+                    <span>Copiar 3A</span>
+                  </button>
+                </div>
+              </div>
+              <p class="prompt-col-note">
+                Pega este prompt junto con tu «Ficha de tarea no pedida» (Etapa 1) en la herramienta del modo que elegiste. En lugar de pedir frases genéricas, le da un mandato claro de trabajo.
+              </p>
+            </div>
+            <pre class="prompt-pre" id="prompt3AText"></pre>
+          </div>
+
+          <!-- PROMPT 3B -->
+          <div class="prompt-column">
+            <div class="prompt-col-header">
+              <div class="prompt-col-top">
+                <h3 class="prompt-col-title">Prompt 3B. Cierre del experimento (rutina o benchmark)</h3>
+                <div class="prompt-col-actions">
+                  <button class="btn-editorial primary" onclick="copyTextById('prompt3BText', this)" style="padding: 0.34rem 0.7rem;">
+                    <span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span>
+                    <span>Copiar 3B</span>
+                  </button>
+                </div>
+              </div>
+              <p class="prompt-col-note">
+                Usa este prompt cuando termines la primera prueba (haya salido bien o mal). Así no te quedas con una prueba aislada: o dejas el método listo para repetir, o anotas dónde está hoy el límite de la IA.
+              </p>
+            </div>
+            <pre class="prompt-pre" id="prompt3BText"></pre>
+          </div>
+        </div>
+      </div>
+
+      <button class="snap-next-trigger" data-target="seccion-portada">
+        ↑ Volver al inicio
+      </button>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // =========================================================================
+    // 1. DATOS DEL TALLER
+    // =========================================================================
+    const PROMPT_1 = `ROL
+Eres un entrevistador práctico y directo. Me ayudas a encontrar una tarea o problema real de mi trabajo, estudio o vida diaria que valga la pena probar con Inteligencia Artificial esta semana, sin esperar a que alguien me diga qué construir.
+
+OBJETIVO
+Terminar con una «Ficha de tarea no pedida» y tres ideas concretas de proyecto rápido realizables en una tarde o en 48 horas. Todavía no decido qué proyecto hacer ni qué herramienta usar, así que no lo asumas.
+
+REGLAS
+- Haz UNA sola pregunta a la vez y espera mi respuesta.
+- Haz entre 6 y 7 preguntas, de menos de 30 palabras cada una.
+- No elogies mis respuestas ni des soluciones antes del final. Si digo algo vago, pídeme un ejemplo concreto de esta semana.
+- Antes de cada pregunta, resume en una línea lo que acabo de decir, con mis palabras.
+
+PREGUNTAS (en este orden)
+1. Algo tuyo: Qué tema, oficio o actividad fuera del trabajo conoces bien o te importa de verdad. (Esto asegura que el proyecto tenga algo propio).
+2. Fricción reciente: Qué tarea repetitiva o pesada de las últimas dos semanas te quitó tiempo y normalmente haces a mano o copiando textos en un chat. Si no se te ocurre, pregúntame qué hice ayer frente al computador.
+3. Tiempo real: Cuánto te toma hacer esa tarea hoy y cuánto te tomaría revisar si una IA la hizo bien.
+4. Qué ya tienes a mano: Con qué carpeta, planilla, documento, correos o notas reales cuentas hoy mismo para hacer una prueba pequeña.
+5. Qué te frena: Qué duda técnica, miedo a romper algo o falta de costumbre te ha impedido probar una herramienta nueva.
+6. Resultado mínimo útil: Qué tendría que entregar la IA en una primera prueba de 30 minutos para que digas «esto sí me sirve».
+
+RESULTADO FINAL
+Entrega una «Ficha de tarea no pedida» con cuatro partes:
+1. Contexto propio: qué sabes o te importa y cuál es la fricción concreta.
+2. Chequeo de delegación: si revisar el resultado toma menos tiempo que hacerlo a mano, o si conviene acotar la tarea antes de delegarla.
+3. Insumos listos hoy (archivos, datos o ejemplos reales disponibles).
+4. Tres ideas de proyecto rápido realizables en 48 horas (de menor a mayor autonomía), indicando para cada una qué produciría concretamente.
+Cierra preguntándome cuál de las tres ideas quiero probar primero.
+
+PREGUNTA INICIAL
+«¿Qué tema de tu trabajo, estudio o vida diaria conoces bien, y qué tarea repetitiva de las últimas dos semanas te gustaría dejar de hacer a mano?»`;
+
+    const WORK_MODES = [
+      {
+        id: 'chat',
+        title: 'Chat reactivo',
+        shortLabel: 'Turno a turno',
+        shortDesc: 'Trabajas turno a turno dentro de una conversación.',
+        steps: [
+          { label: '1. Tú', text: 'Subes uno o dos archivos y explicas el objetivo.' },
+          { label: '2. IA', text: 'Responde con un texto, tabla o borrador dentro del chat.' },
+          { label: '3. Revisión', text: 'Corriges en la conversación y copias el resultado a tu archivo final.' }
+        ],
+        example: 'Subes tres informes a un chat y pides un resumen comparativo con los pendientes de la semana.',
+        tools: 'ChatGPT, Claude o Gemini en el navegador.',
+        when: 'Si nunca has hecho este proyecto y primero necesitas validar si la IA entiende bien el problema.',
+        deliverableHint: 'borrador estructurado o tabla lista para copiar'
+      },
+      {
+        id: 'agente',
+        title: 'Agente ejecutor (modo Conjurador)',
+        shortLabel: 'Archivos y código',
+        shortDesc: 'Delegas un paquete de trabajo a una IA que usa archivos, código y herramientas en bucle.',
+        steps: [
+          { label: '1. Tú', text: 'Entregas carpeta de prueba, objetivo, límites y qué cuenta como terminado.' },
+          { label: '2. IA', text: 'Lee archivos, escribe o corre scripts, corrige errores y arma el entregable completo.' },
+          { label: '3. Revisión', text: 'Evalúas el archivo final (planilla, web, informe o código) antes de usarlo.' }
+        ],
+        example: 'Apuntas el agente a una carpeta con veinte documentos; lee todos, extrae fechas y montos, arma una planilla limpia y verifica que no falten filas.',
+        tools: 'Claude Code, Codex, Antigravity, Cursor o Cowork.',
+        when: 'Cuando la tarea implica varios archivos, pasos repetitivos o construir una herramienta pequeña que no cabe en una ventana de chat.',
+        deliverableHint: 'archivo, planilla, informe o herramienta pequeña ejecutable'
+      },
+      {
+        id: 'proactivo',
+        title: 'Agente proactivo (en segundo plano)',
+        shortLabel: 'Muse, dots, Spark',
+        shortDesc: 'Una rutina conectada a tus apps trabaja sola y te avisa solo para aprobar.',
+        steps: [
+          { label: '1. Tú', text: 'Defines qué vigilar, con qué frecuencia y dónde detenerse.' },
+          { label: '2. IA', text: 'Monitorea en segundo plano, recuerda contexto y prepara borradores o alertas.' },
+          { label: '3. Revisión', text: 'Recibes un aviso breve y apruebas, corriges o descartas en un minuto.' }
+        ],
+        example: 'Cada viernes revisa tus correos y calendario, detecta pendientes sin respuesta y te deja tres borradores listos para aprobar antes de enviar.',
+        tools: 'Meta Muse, OpenAI dots, Google Gemini Spark (o rutinas programadas en tu agente).',
+        when: 'Cuando ya probaste la tarea manualmente y necesitas seguimiento continuo sin acordarte de abrir un chat.',
+        deliverableHint: 'diseño exacto de la rutina programada y un primer borrador de prueba'
+      }
+    ];
+
+    const SANDBOX_RULES = [
+      {
+        id: 'copia',
+        title: 'Trabajar sobre una copia de prueba',
+        desc: 'Nunca sobre tu carpeta original ni tu base de datos en uso. Si algo sale mal, borras la copia y listo.'
+      },
+      {
+        id: 'borradores',
+        title: 'Solo lectura y borradores (sin envíos automáticos)',
+        desc: 'La IA prepara correos, mensajes o cambios en borrador; tú das el clic final.'
+      },
+      {
+        id: 'revision',
+        title: 'Revisión humana obligatoria al cierre',
+        desc: 'Leer el resultado completo antes de usarlo y exigir que la IA señale qué datos no pudo verificar.'
+      },
+      {
+        id: 'corte',
+        title: 'Corte tras 2 o 3 intentos fallidos',
+        desc: 'Si después de dos o tres correcciones claras no funciona, paras, anotas dónde falló y no sigues perdiendo tiempo.'
+      },
+      {
+        id: 'muestra',
+        title: 'Primera prueba acotada a 5 o 10 casos',
+        desc: 'Antes de procesar cien archivos o un año de historial, validar que funcione bien en una muestra pequeña.'
+      }
+    ];
+
+    const state = {
+      selectedModeId: 'agente',
+      selectedRuleIds: ['copia', 'borradores', 'revision']
+    };
+
+    // =========================================================================
+    // 2. RENDERIZADO DE ETAPA 2 Y ENSAMBLAJE EN VIVO DE ETAPA 3
+    // =========================================================================
+    function renderStage2() {
+      const modeTabsEl = document.getElementById('modeTabs');
+      const modeDetailEl = document.getElementById('modeDetailArea');
+      const sandboxListEl = document.getElementById('sandboxList');
+
+      const activeMode = WORK_MODES.find(m => m.id === state.selectedModeId) || WORK_MODES[1];
+
+      modeTabsEl.innerHTML = WORK_MODES.map(m => {
+        const isActive = m.id === activeMode.id;
+        return `
+          <button
+            type="button"
+            role="tab"
+            aria-selected="${isActive}"
+            class="mode-tab ${isActive ? 'active' : ''}"
+            onclick="selectMode('${m.id}')"
+          >
+            <span>${m.title}</span>
+            <span class="mode-tab-sub">${m.shortLabel}</span>
+          </button>
+        `;
+      }).join('');
+
+      modeDetailEl.innerHTML = `
+        <p class="mode-subtitle">${activeMode.shortDesc}</p>
+
+        <div class="mode-flow" style="margin-top: 0.7rem;">
+          ${activeMode.steps.map((st, idx) => `
+            <div class="mode-step">
+              <div class="mode-step-label">
+                <span>${st.label}</span>
+                ${idx < activeMode.steps.length - 1 ? '<span style="opacity: 0.6;">→</span>' : ''}
+              </div>
+              <div class="mode-step-text">${st.text}</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="mode-details" style="margin-top: 0.7rem;">
+          <div class="mode-detail-row">
+            <span class="mode-detail-key">Mismo ejemplo</span>
+            <span class="mode-detail-val">${activeMode.example}</span>
+          </div>
+          <div class="mode-detail-row">
+            <span class="mode-detail-key">Herramientas</span>
+            <span class="mode-detail-val">${activeMode.tools}</span>
+          </div>
+          <div class="mode-detail-row">
+            <span class="mode-detail-key">Cuándo elegirlo</span>
+            <span class="mode-detail-val">${activeMode.when}</span>
+          </div>
+        </div>
+      `;
+
+      sandboxListEl.innerHTML = SANDBOX_RULES.map(rule => {
+        const isOn = state.selectedRuleIds.includes(rule.id);
+        return `
+          <button
+            type="button"
+            class="sandbox-item"
+            aria-pressed="${isOn}"
+            onclick="toggleRule('${rule.id}')"
+          >
+            <span class="material-symbols-outlined sandbox-check">
+              ${isOn ? 'check_box' : 'check_box_outline_blank'}
+            </span>
+            <span class="sandbox-text">
+              <span class="sandbox-title">${rule.title}</span>
+              <span class="sandbox-desc">${rule.desc}</span>
+            </span>
+          </button>
+        `;
+      }).join('');
+
+      updateSelectionOutputs();
+    }
+
+    function selectMode(modeId) {
+      state.selectedModeId = modeId;
+      renderStage2();
+    }
+
+    function toggleRule(ruleId) {
+      const idx = state.selectedRuleIds.indexOf(ruleId);
+      if (idx >= 0) {
+        state.selectedRuleIds.splice(idx, 1);
+      } else {
+        state.selectedRuleIds.push(ruleId);
+      }
+      renderStage2();
+    }
+
+    function updateSelectionOutputs() {
+      const activeMode = WORK_MODES.find(m => m.id === state.selectedModeId) || WORK_MODES[1];
+      const activeRules = SANDBOX_RULES.filter(r => state.selectedRuleIds.includes(r.id));
+      const count = activeRules.length;
+
+      const countWord = count === 1 ? '1 límite activo' : `${count} límites activos`;
+      const countShort = count === 1 ? '1 activa' : `${count} activas`;
+
+      document.getElementById('sandboxCountLabel').textContent = countShort;
+      document.getElementById('stage2Status').textContent =
+        `Modo elegido: ${activeMode.title} · ${countWord} → insertados en Etapa 3`;
+
+      const rulesSummary = count > 0
+        ? activeRules.map(r => r.title).join(' · ')
+        : 'Sin límites marcados (se incluirá espacio editable)';
+
+      document.getElementById('stage3Summary').textContent =
+        `Configuración activa desde Etapa 2: ${activeMode.title} · ${rulesSummary}`;
+
+      const rulesListFor3A = count > 0
+        ? activeRules.map(r => `- ${r.title}: ${r.desc}`).join('\n')
+        : '- [Indica aquí los límites seguros para tu prueba]';
+
+      const rulesInlineFor3B = count > 0
+        ? activeRules.map(r => r.title).join('; ')
+        : '[indica aquí los límites seguros que definiste]';
+
+      document.getElementById('prompt3AText').textContent = `Voy a probar un proyecto rápido en modo: ${activeMode.title} (${activeMode.shortDesc}).
+
+Aquí está mi Ficha de tarea no pedida (Etapa 1) y la idea que elegí probar:
+[PEGA AQUÍ TU FICHA DE LA ETAPA 1 Y LA IDEA ELEGIDA]
+
+Antes de producir nada, necesito que trabajemos con este mandato de delegación (las 5 piezas que definen un encargo claro):
+
+1. OBJETIVO Y CONTEXTO
+Qué problema concreto resolvemos y para quién sirve el resultado.
+
+2. QUÉ PUEDES TOCAR Y QUÉ NO (LÍMITES SEGUROS)
+Aplica estrictamente estas reglas que elegí:
+${rulesListFor3A}
+Además: si falta algún dato o archivo, márcalo como [faltante] en lugar de inventarlo.
+
+3. ENTREGABLE CONCRETO
+No quiero un consejo general ni un plan abstracto. Quiero un resultado concreto y utilizable (${activeMode.deliverableHint}).
+
+4. QUÉ SIGNIFICA «TERMINADO»
+Cumple el criterio mínimo de la ficha, usa mis insumos reales y respeta todos los límites de arriba.
+
+5. REVISIONES ANTES DE ENTREGAR
+Antes de dar la tarea por lista, revisa tu propio resultado y entrégame al final una lista corta de:
+- Qué comprobaste con certeza.
+- Qué supuestos hiciste o qué partes debo revisar yo primero.
+
+INSTRUCCIÓN DE ARRANQUE
+Si te falta algún dato indispensable para partir, hazme como máximo 3 preguntas breves ahora. Si ya tienes lo necesario, propón el plan en 5 líneas, espera mi confirmación y luego ejecuta la primera prueba.`;
+
+      document.getElementById('prompt3BText').textContent = `Acabo de terminar mi primera prueba en modo ${activeMode.title} con el proyecto de la Etapa 1.
+
+Resultado real de la prueba (elige y completa brevemente):
+- Qué salió bien: [ESCRIBE EN 2 LÍNEAS QUÉ FUNCIONÓ]
+- Qué falló o quedó flojo: [ESCRIBE EN 2 LÍNEAS QUÉ FALLÓ O QUÉ TUVISTE QUE CORREGIR]
+- Tiempo total (hacer + revisar): [EJ. 25 MINUTOS]
+
+Ayúdame a cerrar este experimento en uno de estos dos caminos, según lo que te acabo de contar:
+
+CAMINO A — SI LA PRUEBA FUNCIONÓ (O FUNCIONÓ TRAS CORREGIRLA)
+Redacta un archivo breve llamado RUTINA.md (máximo 1 página) que deje guardado el método exacto para repetirlo bien a la primera la próxima vez:
+1. Objetivo y cuándo usar esta rutina.
+2. Insumos necesarios antes de empezar.
+3. Pasos exactos que sí funcionaron (incluyendo qué evitar).
+4. Límites seguros obligatorios: ${rulesInlineFor3B}.
+5. Lista de verificación rápida (3 puntos) para revisar el resultado en menos de 5 minutos.
+
+CAMINO B — SI LA PRUEBA FALLÓ TRAS 2 O 3 INTENTOS CLAROS
+No intentes forzarlo otra vez. Redacta una «Nota de benchmark personal» (máximo media página) con:
+1. Qué tarea quise delegar y en qué punto exacto falló la IA.
+2. Por qué no conviene delegarla hoy (costo de revisión vs. hacerlo a mano).
+3. Un caso de prueba corto y repetible que pueda guardar para volver a probar esta misma tarea en 3 o 6 meses con modelos nuevos.
+
+Sé directo y conciso. Nada de consejos genéricos.`;
+    }
+
+    // =========================================================================
+    // 3. NAVEGACIÓN SNAP SCROLL E INTERSECTION OBSERVER
+    // =========================================================================
+    const snapContainer = document.getElementById('snapContainer');
+    const sections = document.querySelectorAll('.snap-section');
+    const snapDots = document.querySelectorAll('.snap-dot');
+    const snapDotsContainer = document.getElementById('snapDots');
+    const brandHeader = document.getElementById('brandHeader');
+    const headerStepBtns = document.querySelectorAll('.header-pill[data-step-nav]');
+
+    function scrollToSection(id) {
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    document.querySelectorAll('[data-target]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollToSection(btn.getAttribute('data-target'));
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
+          const activeId = entry.target.id;
+          const isDark = entry.target.classList.contains('section-dark');
+
+          snapDotsContainer.classList.toggle('dark-mode', isDark);
+          brandHeader.classList.toggle('dark-mode', isDark);
+
+          snapDots.forEach(dot => {
+            dot.classList.toggle('active', dot.getAttribute('data-target') === activeId);
+          });
+          headerStepBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-target') === activeId);
+          });
+        }
+      });
+    }, { root: snapContainer, threshold: [0.5] });
+
+    sections.forEach(sec => observer.observe(sec));
+
+    // =========================================================================
+    // 4. COPIADO DE PROMPTS Y TOAST
+    // =========================================================================
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove('visible'), 2600);
+    }
+
+    function copyTextById(elId, btn) {
+      const el = document.getElementById(elId);
+      if (!el) return;
+      const text = el.textContent;
+
+      const onSuccess = () => {
+        if (btn) {
+          const prev = btn.innerHTML;
+          btn.classList.add('copied');
+          btn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 15px;">check</span><span>Copiado</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = prev;
+          }, 2200);
+        }
+        showToast('Prompt copiado al portapapeles.');
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(onSuccess).catch(() => {
+          fallbackCopy(text);
+          onSuccess();
+        });
+      } else {
+        fallbackCopy(text);
+        onSuccess();
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    // Inicialización
+    document.getElementById('prompt1Text').textContent = PROMPT_1;
+    renderStage2();
+  </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+[
+  {
+    "id": "psicologia-consumidor",
+    "category": "Psicología y conducta",
+    "name": "Psicología del consumidor",
+    "short": "Estudia qué motiva, confunde o frena a una persona al decidir si confía o adopta algo.",
+    "whatIs": "Rama de la psicología que analiza cómo las personas perciben el valor, evalúan riesgos y deciden si dedican atención, tiempo o dinero a una propuesta.",
+    "focus": "En qué momento alguien interesado pierde atención, desconfía o abandona antes de entender el valor real de tu proyecto.",
+    "question": "¿Qué motivo concreto tiene una persona ocupada para confiar en esto y no cerrarlo en diez segundos?"
+  },
+  {
+    "id": "economia-conductual",
+    "category": "Psicología y conducta",
+    "name": "Economía conductual",
+    "short": "Analiza sesgos, incentivos reales y pequeñas fricciones que cambian decisiones cotidianas.",
+    "whatIs": "Disciplina que combina economía y psicología para explicar por qué las personas no deciden de forma puramente racional: pesan más las pérdidas, los valores por defecto y el esfuerzo inmediato.",
+    "focus": "Dónde estás pidiendo demasiado esfuerzo de entrada o asumiendo que la gente actuará como debería y no como suele hacerlo.",
+    "question": "¿Qué pequeña fricción o incentivo oculto hará que la gente posponga o abandone esto?"
+  },
+  {
+    "id": "psicologia-cognitiva",
+    "category": "Psicología y conducta",
+    "name": "Psicología cognitiva",
+    "short": "Mira cuánta información puede procesar alguien a la vez sin saturarse.",
+    "whatIs": "Estudio de cómo funcionan la atención, la memoria de trabajo y la comprensión humana. Cuando se muestran demasiados elementos a la vez, la comprensión cae.",
+    "focus": "Sobrecarga de información, conceptos que introduces demasiado pronto y pasos donde obligas a recordar datos de memoria.",
+    "question": "¿Qué sobra en esta pantalla o explicación que está compitiendo con la idea principal?"
+  },
+  {
+    "id": "teoria-aprendizaje",
+    "category": "Psicología y conducta",
+    "name": "Teoría del aprendizaje",
+    "short": "Explica qué hace que alguien entienda y recuerde algo en vez de solo leerlo por encima.",
+    "whatIs": "Campo de la pedagogía y las ciencias cognitivas centrado en cómo se construye comprensión duradera: práctica activa, ejemplos concretos, retroalimentación y dificultad adecuada.",
+    "focus": "Si tu proyecto solo entrega información pasiva o realmente hace pensar, contrastar y aplicar lo que propone.",
+    "question": "¿Qué tendrá que hacer la persona con esto para entenderlo de verdad y no solo asentir al leerlo?"
+  },
+  {
+    "id": "escucha-activa",
+    "category": "Psicología y conducta",
+    "name": "Escucha activa (enfoque rogeriano)",
+    "short": "Separa lo que una persona dice pedir de la necesidad real que hay detrás.",
+    "whatIs": "Enfoque originado en la psicología de Carl Rogers que busca comprender el problema desde el punto de vista de quien lo vive, sin asumir soluciones prematuras ni imponer categorías propias.",
+    "focus": "Supuestos ocultos sobre lo que necesita tu usuario o audiencia que en realidad reflejan tus preferencias y no las suyas.",
+    "question": "¿Estás resolviendo el problema real de la otra persona o la versión que a ti te resulta más cómoda?"
+  },
+  {
+    "id": "rastreo-epidemiologico",
+    "category": "Ciencia y sistemas",
+    "name": "Rastreo epidemiológico",
+    "short": "Mapea cómo se propaga una idea, un hábito, un error o una desinformación.",
+    "whatIs": "Método de la salud pública para seguir el origen, los canales de transmisión y los puntos de contagio de un fenómeno a través de una red de personas.",
+    "focus": "Cómo se difunde tu proyecto, dónde se corta la cadena de transmisión o cómo podría propagarse un malentendido.",
+    "question": "¿Por qué canal real se transmitiría esto de una persona a otra, y en qué punto se frena?"
+  },
+  {
+    "id": "pensamiento-sistemico",
+    "category": "Ciencia y sistemas",
+    "name": "Pensamiento sistémico",
+    "short": "Observa relaciones, ciclos de retroalimentación y efectos secundarios indirectos.",
+    "whatIs": "Forma de analizar problemas mirando el conjunto y las conexiones entre partes, porque cambiar una pieza suele producir efectos inesperados en otra.",
+    "focus": "Consecuencias no deseadas, dependencias ocultas y soluciones rápidas que solo desplazan el problema a otro lugar.",
+    "question": "Si esto funciona bien al principio, ¿qué efecto secundario o cuello de botella va a generar después?"
+  },
+  {
+    "id": "primeros-principios",
+    "category": "Ciencia y sistemas",
+    "name": "Primeros principios",
+    "short": "Desarma un problema hasta sus hechos básicos y reconstruye sin copiar costumbres.",
+    "whatIs": "Método de razonamiento proveniente de la física y la filosofía: cuestionar toda convención heredada («siempre se ha hecho así») hasta quedarse solo con lo que es necesariamente cierto.",
+    "focus": "Partes de tu proyecto que estás manteniendo por costumbre o imitación y que podrías simplificar de raíz.",
+    "question": "Si tuvieras que resolver esto desde cero sin copiar ningún formato existente, ¿qué parte desaparecería?"
+  },
+  {
+    "id": "diseno-experimental",
+    "category": "Ciencia y sistemas",
+    "name": "Diseño experimental",
+    "short": "Identifica qué hipótesis estás asumiendo y qué prueba pequeña la refutaría.",
+    "whatIs": "Práctica del método científico que traduce una creencia en una hipótesis falsable y diseña una prueba acotada con un criterio claro de éxito o fracaso.",
+    "focus": "Afirmaciones que das por hechas sin haberlas contrastado y cómo probar tu proyecto rápido con evidencia mínima.",
+    "question": "¿Qué tendría que ocurrir en una prueba corta para demostrarte que tu enfoque actual está equivocado?"
+  },
+  {
+    "id": "ecologia-resiliencia",
+    "category": "Ciencia y sistemas",
+    "name": "Ecología y resiliencia",
+    "short": "Evalúa cómo sobrevive un proyecto cuando cambia el entorno o falla una pieza.",
+    "whatIs": "Enfoque derivado del estudio de ecosistemas: la estabilidad no viene de controlar cada variable, sino de resistir perturbaciones, adaptarse y no depender de un único punto frágil.",
+    "focus": "Dependencias únicas (una herramienta, un archivo, una persona) que harían caer todo el proyecto si cambian.",
+    "question": "¿Qué pieza de tu proyecto, si mañana deja de funcionar o cambia de reglas, paraliza todo lo demás?"
+  },
+  {
+    "id": "wabi-sabi",
+    "category": "Diseño y estética",
+    "name": "Wabi-sabi",
+    "short": "Valora lo sobrio, imperfecto y humano frente a lo pulido en exceso y artificial.",
+    "whatIs": "Concepto estético japonés que encuentra valor en la sencillez, la asimetría y la huella humana. Frente a resultados de IA demasiado uniformes, ayuda a conservar carácter propio.",
+    "focus": "Lugares donde el proyecto suena artificial, demasiado simétrico o genérico por intentar verse «perfecto».",
+    "question": "¿Qué parte de esto se siente demasiado prefabricada y ganaría credibilidad si fuera más simple y directa?"
+  },
+  {
+    "id": "arquitectura-informacion",
+    "category": "Diseño y estética",
+    "name": "Arquitectura de información",
+    "short": "Ordena contenidos y categorías para que cualquiera encuentre lo importante sin perderse.",
+    "whatIs": "Disciplina que organiza cómo se nombran, agrupan y jerarquizan los contenidos de un documento, sitio o herramienta para que una persona se oriente al primer vistazo.",
+    "focus": "Títulos confusos, categorías que se solapan y recorridos donde el usuario no sabe qué viene primero ni dónde buscar.",
+    "question": "¿Alguien que entra por primera vez entiende en cinco segundos cómo está organizado esto y por dónde partir?"
+  },
+  {
+    "id": "diseno-universal",
+    "category": "Diseño y estética",
+    "name": "Diseño universal",
+    "short": "Diseña pensando en casos difíciles o restricciones reales para que funcione mejor para todos.",
+    "whatIs": "Principio de diseño que busca que un objeto, documento o interfaz sea usable por la mayor diversidad de personas (distintos dispositivos, niveles previos o limitaciones de tiempo y vista) sin adaptaciones aparte.",
+    "focus": "Barreras invisibles: jerga innecesaria, dependencia de pantallas grandes, contrastes pobres o supuestos sobre el nivel previo.",
+    "question": "¿Quién queda afuera o se traba al usar esto en el celular, con poco tiempo o sin conocer el vocabulario previo?"
+  },
+  {
+    "id": "diseno-editorial",
+    "category": "Diseño y estética",
+    "name": "Diseño editorial",
+    "short": "Cuida la jerarquía visual, el ritmo de lectura, los silencios y la economía de elementos.",
+    "whatIs": "Oficio tradicional de libros, revistas y publicaciones: guiar la vista mediante tipografía, contraste, espacios en blanco y estructura clara, en vez de llenar cada rincón.",
+    "focus": "Bloques densos difíciles de escanear, adornos que distraen y falta de jerarquía entre lo principal y lo secundario.",
+    "question": "Si alguien solo escanea los títulos y la primera frase de cada bloque, ¿entiende el sentido completo?"
+  },
+  {
+    "id": "diseno-servicios",
+    "category": "Diseño y estética",
+    "name": "Diseño de servicios",
+    "short": "Mira la experiencia completa de punta a punta, incluyendo qué pasa antes y después.",
+    "whatIs": "Disciplina que observa no solo el objeto o entregable central, sino todo el recorrido: cómo llega la persona, qué necesita para usarlo y qué pasa cuando termina.",
+    "focus": "Vacíos antes de empezar (falta de contexto o preparación) y después de terminar (el resultado queda guardado y no se usa).",
+    "question": "¿Qué ocurre cinco minutos antes y cinco minutos después de que alguien use o lea tu proyecto?"
+  },
+  {
+    "id": "improvisacion-si-y",
+    "category": "Comunicación y narrativa",
+    "name": "Improvisación teatral («Sí, y...»)",
+    "short": "Expande una idea sumando ángulos inesperados en vez de cerrarla demasiado pronto.",
+    "whatIs": "Regla central de la comedia de improvisación: aceptar una premisa («sí») y añadirle un giro concreto que la lleve más lejos («y...»), evitando descartar ideas antes de explorarlas.",
+    "focus": "Alternativas más audaces o usos inesperados de tu proyecto que no aparecen cuando solo pides mejoras conservadoras.",
+    "question": "Si aceptamos la base de tu proyecto, ¿qué giro inesperado lo volvería mucho más útil o memorable?"
+  },
+  {
+    "id": "periodismo-investigacion",
+    "category": "Comunicación y narrativa",
+    "name": "Periodismo de investigación",
+    "short": "Pregunta qué dato falta, de dónde sale cada afirmación y qué no está respaldado.",
+    "whatIs": "Práctica periodística basada en verificar hechos, contrastar fuentes independientes y detectar afirmaciones vagas, intereses ocultos o datos que no cuadran.",
+    "focus": "Afirmaciones sin evidencia, fuentes débiles o preguntas incómodas que alguien escéptico haría de inmediato.",
+    "question": "¿Qué afirmación central de tu proyecto se caería si alguien te pidiera mostrar la evidencia concreta?"
+  },
+  {
+    "id": "retorica-clasica",
+    "category": "Comunicación y narrativa",
+    "name": "Retórica clásica",
+    "short": "Equilibra evidencia lógica, credibilidad de quien habla y conexión con quien escucha.",
+    "whatIs": "Tradición originada en Aristóteles que analiza la persuasión a partir de tres pilares: logos (argumento y datos), ethos (credibilidad) y pathos (relevancia emocional para la audiencia).",
+    "focus": "Desequilibrios frecuentes: exceso de datos sin conexión humana, o entusiasmo sin sustento lógico ni credibilidad.",
+    "question": "¿Qué pilar está cojo en tu proyecto: la evidencia, la credibilidad o la relevancia para quien lo recibe?"
+  },
+  {
+    "id": "divulgacion-cientifica",
+    "category": "Comunicación y narrativa",
+    "name": "Divulgación científica",
+    "short": "Explica ideas complejas con precisión sin esconderse detrás de la jerga técnica.",
+    "whatIs": "Oficio de traducir conocimiento especializado a un lenguaje accesible usando analogías fieles y ejemplos concretos, sin simplificar al punto de falsear el concepto.",
+    "focus": "Tecnicismos que espantan a quien no es del área y metáforas imprecisas que distorsionan lo que quieres decir.",
+    "question": "¿Cómo explicarías el núcleo de tu proyecto a alguien inteligente de otra profesión sin perder rigor?"
+  },
+  {
+    "id": "edicion-literaria",
+    "category": "Comunicación y narrativa",
+    "name": "Edición literaria",
+    "short": "Recorta lo sobrante, detecta clichés y deja solo las frases que sostienen el texto.",
+    "whatIs": "Trabajo del editor que revisa un manuscrito buscando ritmo, claridad y precisión: elimina repeticiones, adjetivos vacíos y rodeos que diluyen la voz propia.",
+    "focus": "Párrafos inflados, lugares comunes típicos de la IA y partes donde podrías decir lo mismo en la mitad de palabras.",
+    "question": "Si tuvieras que cortar el 30% del texto o contenido de tu proyecto, ¿qué quitarías primero?"
+  },
+  {
+    "id": "pre-mortem",
+    "category": "Estrategia y decisión",
+    "name": "Pre-mortem",
+    "short": "Imagina que el proyecto ya falló dentro de seis meses y rastrea hoy por qué ocurrió.",
+    "whatIs": "Técnica creada por el psicólogo Gary Klein: en lugar de preguntar «¿qué podría salir mal?», asumes que el proyecto ya fracasó y escribes hacia atrás las causas más probables.",
+    "focus": "Riesgos reales que normalmente minimizas por optimismo, antes de invertir horas en construir.",
+    "question": "Supón que en seis meses nadie usó este proyecto o quedó a medias: ¿cuál fue la causa más probable?"
+  },
+  {
+    "id": "teoria-restricciones",
+    "category": "Estrategia y decisión",
+    "name": "Teoría de restricciones",
+    "short": "Busca el único cuello de botella que limita todo el resultado del proyecto.",
+    "whatIs": "Marco formulado por Eliyahu Goldratt: todo proceso tiene una restricción principal; optimizar cualquier otro paso que no sea ese cuello de botella casi no mejora el resultado final.",
+    "focus": "Tareas secundarias en las que estás perdiendo tiempo mientras el verdadero bloqueo sigue intacto.",
+    "question": "¿Cuál es el único paso que hoy frena todo lo demás, y qué pasaría si te concentraras solo en destrabarlo?"
+  },
+  {
+    "id": "mejora-continua-toyota",
+    "category": "Estrategia y decisión",
+    "name": "Mejora continua (sistema Toyota)",
+    "short": "Detecta desperdicios, pasos repetidos y fallas en el origen en vez de parchar al final.",
+    "whatIs": "Filosofía de operaciones que busca eliminar trabajo innecesario, evitar retrabajos y detener el proceso apenas aparece un defecto para corregir su causa raíz.",
+    "focus": "Pasos manuales repetitivos, información que se copia dos veces o errores que solo descubres cuando ya es tarde.",
+    "question": "¿Qué paso de tu flujo actual es puro retrabajo o espera que podrías eliminar desde el diseño?"
+  },
+  {
+    "id": "teoria-juegos",
+    "category": "Estrategia y decisión",
+    "name": "Teoría de juegos",
+    "short": "Anticipa cómo reaccionarán otras personas ante las reglas o incentivos que pongas.",
+    "whatIs": "Rama de la matemática y la economía que analiza decisiones estratégicas cuando el resultado depende de cómo respondan otros actores con sus propios intereses.",
+    "focus": "Atajos, comportamientos inesperados o desalineaciones que aparecen cuando otras personas interactúan con tus reglas.",
+    "question": "Si alguien quisiera sacar ventaja o hacer el mínimo esfuerzo frente a tu proyecto, ¿cómo reaccionaría?"
+  },
+  {
+    "id": "etica-marco-legal",
+    "category": "Estrategia y decisión",
+    "name": "Ética y marco legal aplicado",
+    "short": "Revisa privacidad, derechos de autor, sesgos y responsabilidades antes de publicar.",
+    "whatIs": "Evaluación práctica de los límites éticos y normativos de un proyecto: protección de datos personales, atribución de fuentes, sesgos injustos y consecuencias sobre terceros.",
+    "focus": "Datos sensibles que no deberías subir a una IA, derechos de uso o impactos sobre personas que no decidiste consultar.",
+    "question": "¿Qué dato, permiso, sesgo o responsabilidad hacia terceros podrías estar pasando por alto?"
+  }
+]

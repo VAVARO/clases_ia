@@ -1,0 +1,2024 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Criterio o Gusto — Clases de IA</title>
+  <meta name="description" content="Criterio visual y de tono, selector de paletas Sanzo Wada y fuentes de Google, y reglas para trabajar con Inteligencia Artificial." />
+
+  <!-- Tipografías institucionales: Playfair Display, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />
+
+  <!-- Datos empaquetados (incluye paletas Sanzo Wada y 94 Google Fonts para uso offline y web) -->
+  <script src="data/data.js?v=20261125"></script>
+
+  <style>
+    :root {
+      --header-height: 56px;
+      --bg-white: #ffffff;
+      --bg-paper: #fcf9f8;
+      --bg-surface: #f4efec;
+      --ink-primary: #1c1b1b;
+      --ink-secondary: #4a4745;
+      --ink-muted: #66625f;
+      --cobalt: #00357f;
+      --cobalt-light: #0059c5;
+      --cobalt-dark: #002357;
+      --cobalt-tint: #9ec5ff;
+      --border-hairline: rgba(28, 27, 27, 0.10);
+      --border-dark-hairline: rgba(252, 249, 248, 0.22);
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --duration-fast: 150ms;
+      --duration-normal: 260ms;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--bg-white);
+      color: var(--ink-primary);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* =========================================================================
+       BARRA SUPERIOR COBALTO + CABECERA FIJA EDITORIAL
+       ========================================================================= */
+    .top-accent-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cobalt), var(--cobalt-light), var(--cobalt));
+      z-index: 110;
+    }
+
+    .brand-header {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      z-index: 100;
+      background: rgba(252, 249, 248, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-hairline);
+      transition: background-color var(--duration-normal) var(--ease-out),
+                  border-color var(--duration-normal) var(--ease-out),
+                  color var(--duration-normal) var(--ease-out);
+    }
+
+    .brand-header.dark-mode {
+      background: rgba(0, 35, 87, 0.96);
+      border-bottom-color: rgba(252, 249, 248, 0.16);
+    }
+
+    .brand-header-inner {
+      max-width: 1280px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 3vw, 2rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-identity {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--ink-primary);
+      min-width: 0;
+    }
+
+    .brand-header.dark-mode .brand-identity {
+      color: #fcf9f8;
+    }
+
+    .brand-dot {
+      width: 9px;
+      height: 9px;
+      background: var(--cobalt);
+      flex-shrink: 0;
+      transition: background-color var(--duration-normal) var(--ease-out);
+    }
+
+    .brand-header.dark-mode .brand-dot {
+      background: var(--cobalt-tint);
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .brand-sep {
+      color: var(--ink-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    .brand-header.dark-mode .brand-sep {
+      color: rgba(252, 249, 248, 0.5);
+    }
+
+    .brand-context {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--cobalt);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-header.dark-mode .brand-context {
+      color: var(--cobalt-tint);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-shrink: 0;
+    }
+
+    .header-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--ink-secondary);
+      text-decoration: none;
+      background: transparent;
+      padding: 0.34rem 0.62rem;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background-color var(--duration-fast) var(--ease-out),
+                  border-color var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .header-pill:hover,
+    .header-pill.active {
+      color: var(--cobalt);
+      background: rgba(0, 53, 127, 0.05);
+      border-color: rgba(0, 53, 127, 0.18);
+    }
+
+    .brand-header.dark-mode .header-pill {
+      color: rgba(252, 249, 248, 0.82);
+    }
+
+    .brand-header.dark-mode .header-pill:hover,
+    .brand-header.dark-mode .header-pill.active {
+      color: #ffffff;
+      background: rgba(252, 249, 248, 0.12);
+      border-color: rgba(252, 249, 248, 0.3);
+    }
+
+    /* =========================================================================
+       INDICADORES LATERALES DE SNAP SCROLL
+       ========================================================================= */
+    .snap-dots {
+      position: fixed;
+      right: 1.15rem;
+      top: calc(50% + var(--header-height) / 2);
+      transform: translateY(-50%);
+      z-index: 95;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .snap-dot {
+      width: 9px;
+      height: 9px;
+      border: 1.5px solid var(--cobalt);
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color var(--duration-normal) var(--ease-out),
+                  border-color var(--duration-normal) var(--ease-out),
+                  transform var(--duration-normal) var(--ease-out);
+    }
+
+    .snap-dot:hover {
+      transform: scale(1.2);
+    }
+
+    .snap-dot.active {
+      background: var(--cobalt);
+      transform: scale(1.25);
+    }
+
+    .snap-dots.dark-mode .snap-dot {
+      border-color: #fcf9f8;
+    }
+
+    .snap-dots.dark-mode .snap-dot.active {
+      background: #fcf9f8;
+    }
+
+    /* =========================================================================
+       CONTENEDOR SNAP SCROLL (4 PANTALLAS)
+       ========================================================================= */
+    .snap-container {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - var(--header-height) - 3px);
+      height: calc(100dvh - var(--header-height) - 3px);
+      margin-top: calc(var(--header-height) + 3px);
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .snap-section {
+      width: 100%;
+      height: calc(100vh - var(--header-height) - 3px);
+      height: calc(100dvh - var(--header-height) - 3px);
+      min-height: calc(100dvh - var(--header-height) - 3px);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+      padding: clamp(0.75rem, 1.6vh, 1.3rem) clamp(1.2rem, 3.6vw, 3rem) 3.3rem;
+    }
+
+    .section-white {
+      background-color: var(--bg-white);
+      background-image:
+        linear-gradient(to right, rgba(0, 53, 127, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 53, 127, 0.03) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    .section-paper {
+      background-color: var(--bg-paper);
+    }
+
+    .section-dark {
+      background-color: var(--cobalt-dark);
+      color: #fcf9f8;
+      background-image:
+        linear-gradient(to right, rgba(252, 249, 248, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(252, 249, 248, 0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    .section-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: auto 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* =========================================================================
+       TIPOGRAFÍA Y BOTONES EDITORIALES
+       ========================================================================= */
+    .display-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink-primary);
+      margin-bottom: clamp(0.6rem, 1.4vh, 1rem);
+    }
+
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(1.26rem, 2vw, 1.82rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--ink-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-dark .section-heading {
+      color: #fcf9f8;
+    }
+
+    .reading-divider {
+      width: 44px;
+      height: 2px;
+      background: var(--cobalt);
+      margin-bottom: clamp(0.5rem, 1.2vh, 0.9rem);
+      flex-shrink: 0;
+    }
+
+    .section-dark .reading-divider {
+      background: var(--cobalt-tint);
+    }
+
+    .lead-text {
+      font-size: clamp(0.94rem, 1.2vw, 1.06rem);
+      line-height: 1.58;
+      color: var(--ink-secondary);
+      max-width: 68ch;
+    }
+
+    .body-text {
+      font-size: clamp(0.8rem, 0.95vw, 0.88rem);
+      line-height: 1.5;
+      color: var(--ink-secondary);
+    }
+
+    .section-dark .body-text {
+      color: rgba(252, 249, 248, 0.86);
+    }
+
+    .btn-editorial {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.52rem 0.95rem;
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      text-decoration: none;
+      border: 1.5px solid var(--cobalt);
+      cursor: pointer;
+      transition: background-color var(--duration-fast) var(--ease-out),
+                  border-color var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out),
+                  transform var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+    }
+
+    .btn-editorial:active {
+      transform: scale(0.98);
+    }
+
+    .btn-editorial.primary {
+      background: var(--cobalt);
+      color: #ffffff;
+    }
+
+    .btn-editorial.primary:hover {
+      background: var(--cobalt-dark);
+      border-color: var(--cobalt-dark);
+    }
+
+    .btn-editorial.secondary {
+      background: var(--bg-white);
+      color: var(--cobalt);
+    }
+
+    .btn-editorial.secondary:hover {
+      background: rgba(0, 53, 127, 0.05);
+      border-color: var(--cobalt-dark);
+    }
+
+    .btn-editorial.copied {
+      background: #14532d;
+      border-color: #14532d;
+      color: #ffffff;
+    }
+
+    .snap-next-trigger {
+      position: absolute;
+      bottom: 0.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      background: rgba(252, 249, 248, 0.96);
+      border: 1.5px solid rgba(0, 53, 127, 0.35);
+      padding: 0.3rem 0.9rem;
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      font-weight: 500;
+      color: var(--cobalt);
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: background-color var(--duration-fast) var(--ease-out),
+                  border-color var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out);
+      white-space: nowrap;
+    }
+
+    .snap-next-trigger:hover {
+      background: var(--cobalt);
+      color: #ffffff;
+      border-color: var(--cobalt);
+    }
+
+    .snap-next-trigger.light {
+      background: rgba(0, 35, 87, 0.96);
+      border-color: rgba(252, 249, 248, 0.42);
+      color: #fcf9f8;
+    }
+
+    .snap-next-trigger.light:hover {
+      background: #fcf9f8;
+      color: var(--cobalt-dark);
+      border-color: #fcf9f8;
+    }
+
+    /* =========================================================================
+       PANTALLA 0: PORTADA
+       ========================================================================= */
+    .concept-note {
+      margin-top: clamp(0.9rem, 2vh, 1.5rem);
+      padding: 0.85rem 0 0.85rem 1.15rem;
+      border-top: 1px solid var(--border-hairline);
+      border-left: 2px solid var(--cobalt);
+      max-width: 72ch;
+    }
+
+    .concept-note p {
+      font-size: clamp(0.84rem, 1.02vw, 0.92rem);
+      line-height: 1.6;
+      color: var(--ink-secondary);
+    }
+
+    .concept-note strong {
+      color: var(--ink-primary);
+      font-weight: 600;
+    }
+
+    .roadmap-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: clamp(1rem, 2.2vh, 1.6rem);
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .roadmap-item {
+      text-align: left;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--border-hairline);
+      padding: 0.9rem 1.05rem;
+      cursor: pointer;
+      transition: background-color var(--duration-fast) var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .roadmap-item:last-child {
+      border-right: none;
+    }
+
+    .roadmap-item:hover {
+      background: rgba(0, 53, 127, 0.035);
+    }
+
+    .roadmap-step-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--cobalt);
+    }
+
+    .roadmap-step-title {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .roadmap-step-desc {
+      font-size: 0.79rem;
+      line-height: 1.44;
+      color: var(--ink-muted);
+    }
+
+    .portada-actions {
+      margin-top: clamp(0.95rem, 2vh, 1.5rem);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* =========================================================================
+       PANTALLA 1: ETAPA 1
+       ========================================================================= */
+    .stage-split {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.25fr);
+      gap: clamp(1.25rem, 3vw, 2.5rem);
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .stage-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.85rem;
+    }
+
+    .editorial-callout {
+      border-left: 2px solid var(--cobalt);
+      padding: 0.15rem 0 0.15rem 0.95rem;
+      font-size: 0.82rem;
+      line-height: 1.52;
+      color: var(--ink-secondary);
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+      padding-top: 0.25rem;
+    }
+
+    .prompt-panel {
+      display: flex;
+      flex-direction: column;
+      border-top: 2px solid var(--cobalt);
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-white);
+      min-height: 0;
+      max-height: calc(100dvh - var(--header-height) - 135px);
+    }
+
+    .prompt-panel-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.55rem 0.9rem;
+      border-bottom: 1px solid var(--border-hairline);
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      color: var(--ink-muted);
+      flex-shrink: 0;
+    }
+
+    .prompt-pre {
+      margin: 0;
+      padding: 0.85rem 0.95rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      line-height: 1.54;
+      color: var(--ink-primary);
+      white-space: pre-wrap;
+      overflow-y: auto;
+      flex: 1;
+      user-select: all;
+    }
+
+    /* =========================================================================
+       PANTALLA 2: ESTUDIO UI INTEGRADO (SANZO WADA + GOOGLE FONTS + PODA)
+       ========================================================================= */
+    .studio-top-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: minmax(310px, 0.92fr) minmax(380px, 1.18fr);
+      gap: 1.1rem;
+      min-height: 0;
+      border-top: 1px solid var(--border-dark-hairline);
+      padding-top: 0.65rem;
+    }
+
+    /* Columna izquierda: selector con pestañas */
+    .studio-left {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      max-height: calc(100dvh - var(--header-height) - 210px);
+    }
+
+    .studio-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-dark-hairline);
+      gap: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    .studio-tab {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 0.42rem 0.72rem;
+      background: transparent;
+      color: rgba(252, 249, 248, 0.75);
+      border: 1px solid transparent;
+      border-bottom: none;
+      cursor: pointer;
+      transition: background-color var(--duration-fast), color var(--duration-fast);
+    }
+
+    .studio-tab.active {
+      background: #fcf9f8;
+      color: var(--cobalt-dark);
+      font-weight: 600;
+    }
+
+    .studio-subbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.48rem 0;
+      border-bottom: 1px solid rgba(252, 249, 248, 0.14);
+      flex-shrink: 0;
+    }
+
+    .studio-search {
+      flex: 1;
+      min-width: 120px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(252, 249, 248, 0.28);
+      color: #fcf9f8;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.28rem 0.55rem;
+      outline: none;
+    }
+
+    .studio-search::placeholder {
+      color: rgba(252, 249, 248, 0.52);
+    }
+
+    .studio-mini-btn {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      padding: 0.26rem 0.5rem;
+      background: transparent;
+      color: rgba(252, 249, 248, 0.84);
+      border: 1px solid rgba(252, 249, 248, 0.3);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .studio-mini-btn.active,
+    .studio-mini-btn:hover {
+      background: #fcf9f8;
+      color: var(--cobalt-dark);
+      border-color: #fcf9f8;
+      font-weight: 600;
+    }
+
+    .studio-scroll-list {
+      overflow-y: auto;
+      flex: 1;
+      min-height: 220px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(252, 249, 248, 0.35) transparent;
+    }
+
+    /* Ítems de Paletas */
+    .palette-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+      padding: 0.48rem 0.55rem;
+      border-bottom: 1px solid rgba(252, 249, 248, 0.11);
+      cursor: pointer;
+      transition: background-color var(--duration-fast);
+    }
+
+    .palette-row:hover {
+      background: rgba(252, 249, 248, 0.07);
+    }
+
+    .palette-row.active {
+      background: rgba(252, 249, 248, 0.14);
+      border-left: 2px solid var(--cobalt-tint);
+    }
+
+    .palette-swatches {
+      display: inline-flex;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .palette-swatch-dot {
+      width: 18px;
+      height: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .palette-meta {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .palette-title {
+      font-size: 0.77rem;
+      color: #fcf9f8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .palette-num {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--cobalt-tint);
+    }
+
+    /* Ítems de Fuentes */
+    .font-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+      padding: 0.5rem 0.55rem;
+      border-bottom: 1px solid rgba(252, 249, 248, 0.11);
+      cursor: pointer;
+    }
+
+    .font-row:hover {
+      background: rgba(252, 249, 248, 0.07);
+    }
+
+    .font-row.active {
+      background: rgba(252, 249, 248, 0.14);
+      border-left: 2px solid var(--cobalt-tint);
+    }
+
+    .font-row-name {
+      font-size: 0.85rem;
+      color: #fcf9f8;
+      font-weight: 500;
+    }
+
+    .font-row-cat {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--cobalt-tint);
+    }
+
+    /* Ítems de Reglas de poda */
+    .rule-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.65rem;
+      padding: 0.56rem 0.55rem;
+      border-bottom: 1px solid rgba(252, 249, 248, 0.12);
+      cursor: pointer;
+    }
+
+    .rule-row:hover {
+      background: rgba(252, 249, 248, 0.06);
+    }
+
+    .rule-row.selected {
+      background: rgba(252, 249, 248, 0.12);
+      border-left: 2px solid var(--cobalt-tint);
+    }
+
+    .rule-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fcf9f8;
+    }
+
+    .rule-desc {
+      font-size: 0.72rem;
+      line-height: 1.4;
+      color: rgba(252, 249, 248, 0.78);
+      margin-top: 0.15rem;
+    }
+
+    /* Columna derecha: Lienzo editable en vivo + Tokens */
+    .studio-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      min-height: 0;
+      max-height: calc(100dvh - var(--header-height) - 210px);
+    }
+
+    .canvas-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .canvas-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .preview-stage {
+      flex: 1;
+      min-height: 210px;
+      overflow-y: auto;
+      border: 1px solid rgba(252, 249, 248, 0.35);
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .preview-stage.comparing {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .preview-pane {
+      padding: 1.15rem 1.3rem;
+      transition: background-color 200ms ease, color 200ms ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .preview-stage.comparing .preview-pane:first-child {
+      border-right: 1px dashed rgba(128, 128, 128, 0.4);
+    }
+
+    .preview-pane [contenteditable="true"] {
+      outline: 1px dashed transparent;
+      outline-offset: 3px;
+      cursor: text;
+    }
+
+    .preview-pane [contenteditable="true"]:hover {
+      outline-color: rgba(128, 128, 128, 0.5);
+    }
+
+    .preview-pane [contenteditable="true"]:focus {
+      outline: 1.5px solid currentColor;
+    }
+
+    .studio-tokens-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.55rem;
+      padding-top: 0.45rem;
+      border-top: 1px solid var(--border-dark-hairline);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: rgba(252, 249, 248, 0.85);
+      flex-shrink: 0;
+    }
+
+    .token-swatches-inline {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .token-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .token-dot {
+      width: 11px;
+      height: 11px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      display: inline-block;
+    }
+
+    .studio-jump-link {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--cobalt-tint);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--cobalt-tint);
+      cursor: pointer;
+    }
+
+    /* =========================================================================
+       PANTALLA 3: ETAPA 3
+       ========================================================================= */
+    .stage3-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+      padding: 0.48rem 0;
+      margin: 0.48rem 0 0.75rem;
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      color: var(--ink-secondary);
+    }
+
+    .stage3-link {
+      color: var(--cobalt);
+      background: transparent;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .prompts-two-col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.15rem;
+      min-height: 0;
+    }
+
+    .prompt-column {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      border-top: 2px solid var(--cobalt);
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-white);
+      max-height: calc(100dvh - var(--header-height) - 235px);
+    }
+
+    .prompt-col-header {
+      padding: 0.68rem 0.9rem;
+      border-bottom: 1px solid var(--border-hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      flex-shrink: 0;
+    }
+
+    .prompt-col-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .prompt-col-title {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--ink-primary);
+    }
+
+    .prompt-col-note {
+      font-size: 0.75rem;
+      line-height: 1.42;
+      color: var(--ink-muted);
+    }
+
+    /* =========================================================================
+       TOAST
+       ========================================================================= */
+    .toast {
+      position: fixed;
+      bottom: 1.4rem;
+      right: 1.4rem;
+      z-index: 150;
+      background: var(--ink-primary);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      padding: 0.6rem 1rem;
+      border-left: 3px solid var(--cobalt-tint);
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================================
+       RESPONSIVE
+       ========================================================================= */
+    @media (max-width: 980px) {
+      html,
+      body {
+        overflow: auto;
+        height: auto;
+      }
+
+      .snap-container {
+        height: auto;
+        overflow-y: visible;
+        scroll-snap-type: none;
+      }
+
+      .snap-section {
+        height: auto;
+        min-height: calc(100dvh - var(--header-height) - 3px);
+        overflow: visible;
+        padding: 1.8rem 1.15rem 3.8rem;
+      }
+
+      .snap-dots,
+      .brand-sep,
+      .brand-context,
+      .header-pill[data-step-nav] {
+        display: none;
+      }
+
+      .roadmap-strip,
+      .stage-split,
+      .studio-grid,
+      .prompts-two-col,
+      .preview-stage.comparing {
+        grid-template-columns: 1fr;
+      }
+
+      .studio-left,
+      .studio-right {
+        max-height: none;
+      }
+
+      .studio-scroll-list {
+        max-height: 280px;
+      }
+
+      .roadmap-item {
+        border-right: none;
+        border-bottom: 1px solid var(--border-hairline);
+      }
+
+      .roadmap-item:last-child {
+        border-bottom: none;
+      }
+
+      .prompt-panel,
+      .prompt-column {
+        max-height: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-accent-line"></div>
+
+  <!-- CABECERA EDITORIAL FIJA -->
+  <header class="brand-header" id="brandHeader">
+    <div class="brand-header-inner">
+      <a href="index.html" class="brand-identity">
+        <span class="brand-dot"></span>
+        <span class="brand-name">Álvaro Contreras Barrios</span>
+        <span class="brand-sep">/</span>
+        <span class="brand-context">03 · Criterio o Gusto</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Navegación de etapas">
+        <button class="header-pill active" data-target="seccion-portada" data-step-nav>Portada</button>
+        <button class="header-pill" data-target="seccion-etapa-1" data-step-nav>Etapa 1</button>
+        <button class="header-pill" data-target="seccion-etapa-2" data-step-nav>Etapa 2</button>
+        <button class="header-pill" data-target="seccion-etapa-3" data-step-nav>Etapa 3</button>
+        <a href="index.html#ejercicios" class="header-pill">
+          <span class="material-symbols-outlined" style="font-size: 15px;">arrow_back</span>
+          <span>Ejercicios</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- INDICADORES LATERALES DE SNAP SCROLL -->
+  <div class="snap-dots" id="snapDots" aria-label="Indicadores de pantalla">
+    <button class="snap-dot active" data-target="seccion-portada" title="Portada"></button>
+    <button class="snap-dot" data-target="seccion-etapa-1" title="Etapa 1. Definir qué quieres y qué rechazas"></button>
+    <button class="snap-dot" data-target="seccion-etapa-2" title="Etapa 2. Probar paleta, fuentes y reglas"></button>
+    <button class="snap-dot" data-target="seccion-etapa-3" title="Etapa 3. Comparar enfoques y ver tu pieza aplicada"></button>
+  </div>
+
+  <!-- CONTENEDOR SNAP SCROLL -->
+  <main class="snap-container" id="snapContainer">
+
+    <!-- =====================================================================
+         PANTALLA 0: PORTADA
+         ===================================================================== -->
+    <section class="snap-section section-white" id="seccion-portada" data-index="0">
+      <div class="section-inner">
+        <h1 class="display-title">Criterio o Gusto</h1>
+        <div class="reading-divider"></div>
+        <p class="lead-text">
+          Una IA puede producir cincuenta borradores en segundos. Lo difícil pasa a ser elegir cuál sirve y por qué. Aquí defines qué estética y qué voz quieres, pruebas paletas y fuentes sobre un texto tuyo y llevas esas decisiones a un paper, informe, póster o web.
+        </p>
+
+        <div class="concept-note">
+          <p>
+            <strong>El jardinero y el paladar.</strong> Ethan Mollick compara trabajar con IA con el oficio de un jardinero: se pide mucho material, se descarta casi todo y se combinan las pocas piezas que sirven. Si tu referencia es lo que la IA entrega por defecto, tu criterio se forma con comida de cafetería. El gusto se entrena comparando lo muy bueno con lo muy malo, y escribiendo por qué una opción funciona y otra no.
+          </p>
+        </div>
+
+        <div class="roadmap-strip">
+          <button class="roadmap-item" data-target="seccion-etapa-1">
+            <span class="roadmap-step-num">Etapa 1</span>
+            <span class="roadmap-step-title">Definir qué quieres y qué rechazas</span>
+            <span class="roadmap-step-desc">Una entrevista con la IA para fijar la pieza, el tono y lo que no quieres ver.</span>
+          </button>
+          <button class="roadmap-item" data-target="seccion-etapa-2">
+            <span class="roadmap-step-num">Etapa 2</span>
+            <span class="roadmap-step-title">Probar paleta, fuentes y reglas</span>
+            <span class="roadmap-step-desc">348 paletas de Sanzo Wada y 94 fuentes de Google sobre un texto que puedes editar.</span>
+          </button>
+          <button class="roadmap-item" data-target="seccion-etapa-3">
+            <span class="roadmap-step-num">Etapa 3</span>
+            <span class="roadmap-step-title">Comparar enfoques y ver tu pieza</span>
+            <span class="roadmap-step-desc">Generar enfoques distintos y aplicar tus decisiones a tu informe, paper, póster o web.</span>
+          </button>
+        </div>
+
+        <div class="portada-actions">
+          <button class="btn-editorial primary" data-target="seccion-etapa-1">
+            <span>Ir a la Etapa 1</span>
+            <span class="material-symbols-outlined" style="font-size: 16px;">arrow_downward</span>
+          </button>
+          <button class="btn-editorial secondary" data-target="seccion-etapa-2">
+            <span>Ir directo a las paletas y fuentes</span>
+          </button>
+        </div>
+      </div>
+
+      <button class="snap-next-trigger" data-target="seccion-etapa-1">
+        ↓ Etapa 1. Definir qué quieres y qué rechazas
+      </button>
+    </section>
+
+    <!-- =====================================================================
+         PANTALLA 1: ETAPA 1 — ENTREVISTA DE CRITERIO Y TONO
+         ===================================================================== -->
+    <section class="snap-section section-paper" id="seccion-etapa-1" data-index="1">
+      <div class="section-inner">
+        <div class="stage-split">
+          <div class="stage-left">
+            <div>
+              <h2 class="section-heading">Etapa 1. Definir qué quieres y qué rechazas</h2>
+              <div class="reading-divider"></div>
+              <p class="body-text">
+                Piensa en una pieza concreta: un paper, un informe, un póster, un carrusel o una página web. Copia el prompt, conversa de 5 a 10 minutos con tu IA y vuelve con una ficha de criterio.
+              </p>
+            </div>
+
+            <div class="editorial-callout">
+              Pedir «algo moderno y profesional» suele producir resultados genéricos. La entrevista te pide ejemplos concretos: qué te gusta, qué rechazas y por qué.
+            </div>
+
+            <div class="action-row">
+              <button class="btn-editorial primary" onclick="copyTextById('prompt1Text', this)">
+                <span class="material-symbols-outlined" style="font-size: 16px;">content_copy</span>
+                <span>Copiar prompt</span>
+              </button>
+              <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
+                <span>Claude</span>
+                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
+              </a>
+              <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
+                <span>ChatGPT</span>
+                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
+              </a>
+              <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="btn-editorial secondary">
+                <span>Gemini</span>
+                <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="prompt-panel">
+            <div class="prompt-panel-bar">
+              <span>Prompt 1 · Entrevista de criterio y tono</span>
+              <span>6 preguntas · 5 a 10 min</span>
+            </div>
+            <pre class="prompt-pre" id="prompt1Text"></pre>
+          </div>
+        </div>
+      </div>
+
+      <button class="snap-next-trigger" data-target="seccion-etapa-2">
+        ↓ Etapa 2. Probar paleta, fuentes y reglas
+      </button>
+    </section>
+
+    <!-- =====================================================================
+         PANTALLA 2: ETAPA 2 — PROBAR PALETA, FUENTES Y REGLAS (SECCIÓN OSCURA)
+         ===================================================================== -->
+    <section class="snap-section section-dark" id="seccion-etapa-2" data-index="2">
+      <div class="section-inner">
+        <div class="studio-top-row">
+          <div>
+            <h2 class="section-heading">Etapa 2. Probar paleta, fuentes y reglas</h2>
+            <p class="body-text" style="max-width: 82ch;">
+              Elige una paleta de Sanzo Wada, una fuente para títulos y otra para el cuerpo, y marca las reglas que quieras mantener. Edita el texto del ejemplo con contenido tuyo para ver cómo se lee. <strong>Lo que elijas aquí (colores en HEX y RGB, fuentes de Google y reglas) se inserta en los prompts de la Etapa 3.</strong>
+            </p>
+          </div>
+          <button class="studio-jump-link" data-target="seccion-etapa-3">
+            Ver prompts en Etapa 3 ↓
+          </button>
+        </div>
+
+        <div class="studio-grid">
+          <!-- PANEL IZQUIERDO: PALETAS / FUENTES / REGLAS -->
+          <div class="studio-left">
+            <div class="studio-tabs" role="tablist">
+              <button class="studio-tab active" id="tabPaletas" onclick="setStudioTab('paletas')">Paletas (348)</button>
+              <button class="studio-tab" id="tabFuentes" onclick="setStudioTab('fuentes')">Fuentes de Google (94)</button>
+              <button class="studio-tab" id="tabReglas" onclick="setStudioTab('reglas')">Reglas (6)</button>
+            </div>
+
+            <div class="studio-subbar" id="studioSubbar">
+              <!-- Controles contextuales por pestaña -->
+            </div>
+
+            <div class="studio-scroll-list" id="studioList">
+              <!-- Lista desplazable -->
+            </div>
+          </div>
+
+          <!-- PANEL DERECHO: EJEMPLO EDITABLE EN VIVO + TOKENS -->
+          <div class="studio-right">
+            <div class="canvas-toolbar">
+              <div class="canvas-group" id="presetButtons">
+                <button class="studio-mini-btn active" data-preset="paper" onclick="setPreviewPreset('paper')">Paper o informe</button>
+                <button class="studio-mini-btn" data-preset="poster" onclick="setPreviewPreset('poster')">Póster o carrusel</button>
+                <button class="studio-mini-btn" data-preset="web" onclick="setPreviewPreset('web')">Web académica</button>
+              </div>
+              <div class="canvas-group">
+                <button class="studio-mini-btn active" id="bgModePaper" onclick="setBgMode('paper')">Fondo papel</button>
+                <button class="studio-mini-btn" id="bgModePalette" onclick="setBgMode('palette')">Fondo paleta</button>
+                <button class="studio-mini-btn" id="bgModeDark" onclick="setBgMode('dark')">Oscuro</button>
+                <button class="studio-mini-btn" id="btnCompareAB" onclick="toggleCompareAB()">Comparar A vs B</button>
+              </div>
+            </div>
+
+            <div class="preview-stage" id="previewStage">
+              <!-- Renderizado dinámico editable -->
+            </div>
+
+            <div class="studio-tokens-bar" id="studioTokensBar">
+              <!-- Códigos HEX/RGB + fuentes activas -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="snap-next-trigger light" data-target="seccion-etapa-3">
+        ↓ Etapa 3. Comparar enfoques y ver tu pieza aplicada
+      </button>
+    </section>
+
+    <!-- =====================================================================
+         PANTALLA 3: ETAPA 3 — COMPARAR ENFOQUES Y VER TU PIEZA APLICADA
+         ===================================================================== -->
+    <section class="snap-section section-paper" id="seccion-etapa-3" data-index="3">
+      <div class="section-inner">
+        <h2 class="section-heading">Etapa 3. Comparar enfoques y ver tu pieza aplicada</h2>
+        <div class="reading-divider"></div>
+        <p class="body-text" style="max-width: 86ch;">
+          El <strong>Prompt 3A</strong> lleva tus colores en HEX y RGB, tus fuentes de Google con instrucciones para instalarlas y tus reglas, y pide ocho enfoques distintos para que elijas. El <strong>Prompt 3B</strong> es el último paso: aplica todo a tu paper, informe, póster, carrusel o web para que veas cómo queda.
+        </p>
+
+        <div class="stage3-meta-bar">
+          <span id="stage3Summary">Paleta #190 · Títulos: Playfair Display · Cuerpo: Inter · 3 reglas</span>
+          <button class="stage3-link" data-target="seccion-etapa-2">Cambiar paleta, fuentes o reglas</button>
+        </div>
+
+        <div class="prompts-two-col">
+          <!-- PROMPT 3A -->
+          <div class="prompt-column">
+            <div class="prompt-col-header">
+              <div class="prompt-col-top">
+                <h3 class="prompt-col-title">Prompt 3A. Ocho enfoques con tu paleta y fuentes</h3>
+                <button class="btn-editorial primary" onclick="copyTextById('prompt3AText', this)" style="padding: 0.34rem 0.7rem;">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span>
+                  <span>Copiar 3A</span>
+                </button>
+              </div>
+              <p class="prompt-col-note">
+                Pégalo en la conversación de la Etapa 1. Ya incluye tus colores, fuentes y reglas.
+              </p>
+            </div>
+            <pre class="prompt-pre" id="prompt3AText"></pre>
+          </div>
+
+          <!-- PROMPT 3B -->
+          <div class="prompt-column">
+            <div class="prompt-col-header">
+              <div class="prompt-col-top">
+                <h3 class="prompt-col-title">Prompt 3B. Tu pieza real aplicada</h3>
+                <button class="btn-editorial primary" onclick="copyTextById('prompt3BText', this)" style="padding: 0.34rem 0.7rem;">
+                  <span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span>
+                  <span>Copiar 3B</span>
+                </button>
+              </div>
+              <p class="prompt-col-note">
+                Último paso: aplica tus decisiones a tu pieza real.
+              </p>
+            </div>
+            <pre class="prompt-pre" id="prompt3BText"></pre>
+          </div>
+        </div>
+      </div>
+
+      <button class="snap-next-trigger" data-target="seccion-portada">
+        ↑ Volver al inicio
+      </button>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // =========================================================================
+    // 1. DATOS DEL TALLER Y CARGA DE PALETAS SANZO WADA + GOOGLE FONTS
+    // =========================================================================
+    const PROMPT_1 = `ROL
+Eres un editor de estilo exigente. Me ayudas a definir el criterio visual y de tono de una pieza concreta, para que no termine con el aspecto genérico de las plantillas y de las herramientas de IA.
+
+OBJETIVO
+Terminar con una ficha de criterio de una página: qué quiero, qué rechazo y qué tono voy a usar. Todavía no vamos a elegir colores ni fuentes.
+
+REGLAS
+- Haz UNA sola pregunta a la vez y espera mi respuesta.
+- Haz entre 6 y 7 preguntas, de menos de 30 palabras cada una.
+- No elogies mis respuestas. Si digo algo vago ("limpio", "moderno", "llamativo"), pídeme un ejemplo real o un contraste concreto.
+- Antes de cada pregunta, resume en una línea lo que acabo de decir.
+
+PREGUNTAS
+1. La pieza: Qué quieres diseñar o mejorar (paper, informe, póster, carrusel, presentación o web) y quién la va a ver.
+2. Lo que rechazas: Qué diseños, frases o formatos de tu área, o hechos con IA, te producen rechazo inmediato. Pídeme un ejemplo.
+3. Un referente: Un libro, sitio, afiche o revista cuyo estilo te guste, y en una frase qué hace bien.
+4. Tono de voz: Cómo debe sonar el texto y qué tono no usarías nunca.
+5. Cinco segundos: Qué debería entender o recordar alguien que mira la pieza solo cinco segundos.
+6. Qué sacar: Qué elementos, secciones o explicaciones prefieres dejar fuera.
+
+RESULTADO FINAL
+Entrega una "Ficha de criterio" en 4 puntos:
+1. Pieza, audiencia y para qué sirve, en dos líneas.
+2. Qué quiero: aspecto, ritmo de lectura y tono de voz.
+3. Qué queda prohibido: recursos visuales y frases.
+4. Tres criterios concretos para juzgar cualquier borrador, escritos como preguntas de sí o no.
+
+PREGUNTA INICIAL
+"¿Qué pieza quieres diseñar o mejorar (paper, informe, póster, carrusel o web) y qué aspecto genérico quieres evitar?"`;
+
+    const PRUNING_RULES = [
+      {
+        id: 'volumen',
+        title: 'Pedir varias opciones',
+        desc: 'Pedir siempre varias opciones distintas entre sí antes de elegir, en vez de aceptar el primer borrador.'
+      },
+      {
+        id: 'anti-cliches',
+        title: 'Sin recursos de plantilla',
+        desc: 'No usar gradientes neón, íconos decorativos sin función, emojis ni tarjetas dentro de tarjetas.'
+      },
+      {
+        id: 'anti-adjetivos',
+        title: 'Sin adjetivos vacíos ni halagos',
+        desc: 'No usar palabras como «revolucionario», «innovador» o «potenciar», ni elogios al usuario.'
+      },
+      {
+        id: 'economia-texto',
+        title: 'Texto breve',
+        desc: 'Frases cortas, títulos directos y espacio en blanco. Quitar lo que no aporta.'
+      },
+      {
+        id: 'jerarquia-color',
+        title: 'Color con jerarquía',
+        desc: 'Usar solo la paleta elegida y reservar el color de acento para un único elemento por vista.'
+      },
+      {
+        id: 'legibilidad',
+        title: 'Legibilidad',
+        desc: 'Priorizar que se lea bien en pantalla, celular e impresión por sobre la decoración.'
+      }
+    ];
+
+    const PRESETS = {
+      paper: {
+        kicker: 'INFORME · [FECHA]',
+        title: 'Evaluación de herramientas de IA en equipos de trabajo: informe preliminar',
+        meta: 'Nombre de la autora o autor · Institución',
+        body: 'Este párrafo es de ejemplo. Haz clic para reemplazarlo por la introducción de tu paper o informe y ver cómo se lee con esta paleta y estas fuentes.',
+        highlight: 'Resultado destacado: reemplaza este texto por tu hallazgo principal.'
+      },
+      poster: {
+        kicker: 'LÁMINA 1 DE 5',
+        title: 'Qué mirar antes de confiar en un resultado de IA',
+        meta: 'Haz clic en cualquier texto para editarlo con el tuyo',
+        body: 'Una lámina se lee en pocos segundos. Prueba si el titular se distingue del cuerpo, si el contraste alcanza y si el ojo sabe por dónde empezar.',
+        highlight: 'Dato o llamado principal: una sola idea por lámina.'
+      },
+      web: {
+        kicker: 'INICIO · PUBLICACIONES · CONTACTO',
+        title: 'Tu nombre y tu área de trabajo',
+        meta: 'Sitio personal o académico · Texto editable',
+        body: 'Este es un texto de ejemplo para presentar tu sitio. Reemplázalo por tu descripción y revisa si la tipografía encaja con tu manera de escribir.',
+        highlight: 'Sección destacada: publicaciones recientes.'
+      }
+    };
+
+    const repoData = window.AI_REPOSITORY_DATA || {};
+    const PALETAS = repoData.paletas || { colors: [], combinations: [] };
+    const FUENTES = repoData.fuentes || [];
+    const COLOR_MAP = new Map((PALETAS.colors || []).map(c => [c.id, c]));
+    const loadedGoogleFonts = new Set(['Playfair Display', 'Inter', 'JetBrains Mono']);
+
+    const state = {
+      studioTab: 'paletas',
+      paletteSearch: '',
+      paletteSize: 'all',
+      fontRole: 'heading',
+      fontCategory: 'all',
+      fontSearch: '',
+      comboId: 190,
+      headingFontName: 'Playfair Display',
+      bodyFontName: 'Inter',
+      preset: 'paper',
+      bgMode: 'paper',
+      comparePin: null,
+      selectedRules: ['volumen', 'anti-cliches', 'anti-adjetivos']
+    };
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function hexToRgbArray(hex) {
+      const clean = (hex || '#000000').replace('#', '');
+      const r = parseInt(clean.slice(0, 2), 16) || 0;
+      const g = parseInt(clean.slice(2, 4), 16) || 0;
+      const b = parseInt(clean.slice(4, 6), 16) || 0;
+      return [r, g, b];
+    }
+
+    function relativeLuminance(hex) {
+      const [r, g, b] = hexToRgbArray(hex).map(v => {
+        const s = v / 255;
+        return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+      });
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+
+    function contrastRatio(hex1, hex2) {
+      const l1 = relativeLuminance(hex1);
+      const l2 = relativeLuminance(hex2);
+      const lighter = Math.max(l1, l2);
+      const darker = Math.min(l1, l2);
+      return (lighter + 0.05) / (darker + 0.05);
+    }
+
+    function formatRgb(colorObj) {
+      const rgb = (colorObj && Array.isArray(colorObj.rgb)) ? colorObj.rgb : hexToRgbArray(colorObj ? colorObj.hex : '#1c1b1b');
+      return `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+    }
+
+    function getComboById(id) {
+      const list = PALETAS.combinations || [];
+      return list.find(c => c.id === id) || list[0] || { id: 1, colorIds: [] };
+    }
+
+    function getComboColors(combo) {
+      return (combo.colorIds || []).map(cid => COLOR_MAP.get(cid)).filter(Boolean);
+    }
+
+    function resolvePaletteRoles(combo, bgMode) {
+      const colors = getComboColors(combo);
+      const sortedByLum = [...colors].sort((a, b) => relativeLuminance(a.hex) - relativeLuminance(b.hex));
+      const darkest = sortedByLum[0] || { name: 'Ink', hex: '#1c1b1b', rgb: [28, 27, 27] };
+      const lightest = sortedByLum[sortedByLum.length - 1] || { name: 'Paper', hex: '#fcf9f8', rgb: [252, 249, 248] };
+      const middle = sortedByLum.length > 2 ? sortedByLum[1] : darkest;
+
+      if (bgMode === 'dark') {
+        const bg = { name: 'Dark Surface', hex: '#14171c', rgb: [20, 23, 28] };
+        const heading = contrastRatio(lightest.hex, bg.hex) >= 4.5 ? lightest : { name: 'Warm White', hex: '#fcf9f8', rgb: [252, 249, 248] };
+        const text = { name: 'Soft Light', hex: '#e5e2de', rgb: [229, 226, 222] };
+        const accent = contrastRatio(middle.hex, bg.hex) >= 3.2 ? middle : heading;
+        return { bg, heading, text, accent, raw: colors };
+      }
+
+      if (bgMode === 'palette' && colors.length >= 2) {
+        const bg = lightest;
+        const heading = contrastRatio(darkest.hex, bg.hex) >= 4.5 ? darkest : { name: 'Ink', hex: '#1c1b1b', rgb: [28, 27, 27] };
+        const text = contrastRatio(darkest.hex, bg.hex) >= 4.5 ? darkest : { name: 'Ink', hex: '#1c1b1b', rgb: [28, 27, 27] };
+        const accent = middle.hex !== bg.hex ? middle : darkest;
+        return { bg, heading, text, accent, raw: colors };
+      }
+
+      // Modo papel claro (por defecto: legible para papers e informes)
+      const bg = { name: 'Papel cálido', hex: '#fcf9f8', rgb: [252, 249, 248] };
+      const heading = contrastRatio(darkest.hex, bg.hex) >= 4.5 ? darkest : { name: 'Ink', hex: '#1c1b1b', rgb: [28, 27, 27] };
+      const text = { name: 'Carbón', hex: '#2b2928', rgb: [43, 41, 40] };
+      const accent = contrastRatio(middle.hex, bg.hex) >= 3 ? middle : heading;
+      return { bg, heading, text, accent, raw: colors };
+    }
+
+    function getFontObject(name) {
+      const found = FUENTES.find(f => f.name === name);
+      if (found) return found;
+      if (name === 'Playfair Display') {
+        return { name: 'Playfair Display', category: 'Serif', cssFamilyParam: 'Playfair+Display:wght@500;600;700', specimenUrl: 'https://fonts.google.com/specimen/Playfair+Display' };
+      }
+      return { name: 'Inter', category: 'Sans Serif', cssFamilyParam: 'Inter:wght@400;500;600', specimenUrl: 'https://fonts.google.com/specimen/Inter' };
+    }
+
+    function getFontFallback(category) {
+      if (category === 'Serif') return 'Georgia, serif';
+      if (category === 'Monospace') return 'ui-monospace, monospace';
+      if (category === 'Handwriting') return 'cursive';
+      return '-apple-system, BlinkMacSystemFont, sans-serif';
+    }
+
+    function ensureGoogleFontLoaded(fontObj) {
+      if (!fontObj || loadedGoogleFonts.has(fontObj.name)) return;
+      loadedGoogleFonts.add(fontObj.name);
+      const param = fontObj.cssFamilyParam || fontObj.name.replace(/\s+/g, '+');
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = `https://fonts.googleapis.com/css2?family=${param}&display=swap`;
+      document.head.appendChild(link);
+    }
+
+    // =========================================================================
+    // 2. RENDERIZADO DEL ESTUDIO UI INTEGRADO (ETAPA 2)
+    // =========================================================================
+    function setStudioTab(tab) {
+      state.studioTab = tab;
+      document.getElementById('tabPaletas').classList.toggle('active', tab === 'paletas');
+      document.getElementById('tabFuentes').classList.toggle('active', tab === 'fuentes');
+      document.getElementById('tabReglas').classList.toggle('active', tab === 'reglas');
+      renderStudioLeft();
+    }
+
+    function renderStudioLeft() {
+      const subbar = document.getElementById('studioSubbar');
+      const list = document.getElementById('studioList');
+
+      if (state.studioTab === 'paletas') {
+        subbar.innerHTML = `
+          <input
+            type="text"
+            class="studio-search"
+            placeholder="Buscar color o #..."
+            value="${escapeHtml(state.paletteSearch)}"
+            oninput="state.paletteSearch = this.value; renderStudioListOnly();"
+          />
+          <button class="studio-mini-btn ${state.paletteSize === 'all' ? 'active' : ''}" onclick="state.paletteSize='all'; renderStudioLeft();">Todas</button>
+          <button class="studio-mini-btn ${state.paletteSize === '2' ? 'active' : ''}" onclick="state.paletteSize='2'; renderStudioLeft();">2</button>
+          <button class="studio-mini-btn ${state.paletteSize === '3' ? 'active' : ''}" onclick="state.paletteSize='3'; renderStudioLeft();">3</button>
+          <button class="studio-mini-btn ${state.paletteSize === '4' ? 'active' : ''}" onclick="state.paletteSize='4'; renderStudioLeft();">4</button>
+          <button class="studio-mini-btn" onclick="pickRandomPalette()">Aleatoria</button>
+        `;
+      } else if (state.studioTab === 'fuentes') {
+        const cats = ['all', 'Serif', 'Sans Serif', 'Display', 'Monospace', 'Handwriting'];
+        subbar.innerHTML = `
+          <button class="studio-mini-btn ${state.fontRole === 'heading' ? 'active' : ''}" onclick="state.fontRole='heading'; renderStudioLeft();">Para títulos</button>
+          <button class="studio-mini-btn ${state.fontRole === 'body' ? 'active' : ''}" onclick="state.fontRole='body'; renderStudioLeft();">Para cuerpo</button>
+          <input
+            type="text"
+            class="studio-search"
+            placeholder="Buscar fuente..."
+            value="${escapeHtml(state.fontSearch)}"
+            oninput="state.fontSearch = this.value; renderStudioListOnly();"
+          />
+          ${cats.map(c => `<button class="studio-mini-btn ${state.fontCategory === c ? 'active' : ''}" onclick="state.fontCategory='${c}'; renderStudioLeft();">${c === 'all' ? 'Todas' : c}</button>`).join('')}
+        `;
+      } else {
+        subbar.innerHTML = `
+          <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--cobalt-tint);">
+            ${state.selectedRules.length} de ${PRUNING_RULES.length} reglas activas → se insertan en Etapa 3
+          </span>
+        `;
+      }
+
+      renderStudioListOnly();
+    }
+
+    function renderStudioListOnly() {
+      const list = document.getElementById('studioList');
+
+      if (state.studioTab === 'paletas') {
+        const q = state.paletteSearch.toLowerCase().trim();
+        const filtered = (PALETAS.combinations || []).filter(c => {
+          if (state.paletteSize !== 'all' && String(c.size) !== state.paletteSize) return false;
+          if (!q) return true;
+          const colors = getComboColors(c);
+          return String(c.id).includes(q) ||
+            colors.some(col => col.name.toLowerCase().includes(q) || col.hex.toLowerCase().includes(q)) ||
+            (c.tones || []).some(t => t.toLowerCase().includes(q));
+        });
+
+        list.innerHTML = filtered.slice(0, 120).map(c => {
+          const colors = getComboColors(c);
+          const names = colors.map(col => col.name).join(' · ');
+          const active = c.id === state.comboId;
+          return `
+            <div class="palette-row ${active ? 'active' : ''}" onclick="selectPalette(${c.id})">
+              <div class="palette-swatches">
+                ${colors.map(col => `<span class="palette-swatch-dot" style="background:${col.hex};" title="${escapeHtml(col.name)} ${col.hex}"></span>`).join('')}
+              </div>
+              <div class="palette-meta">
+                <div class="palette-title">${escapeHtml(names)}</div>
+              </div>
+              <span class="palette-num">#${String(c.id).padStart(3, '0')}</span>
+            </div>
+          `;
+        }).join('') || '<p style="padding:0.8rem; font-size:0.78rem; color:rgba(252,249,248,0.7);">Sin paletas para esa búsqueda.</p>';
+      } else if (state.studioTab === 'fuentes') {
+        const q = state.fontSearch.toLowerCase().trim();
+        const activeName = state.fontRole === 'heading' ? state.headingFontName : state.bodyFontName;
+        const baseFonts = [
+          { name: 'Playfair Display', category: 'Serif', cssFamilyParam: 'Playfair+Display:wght@500;600;700', specimenUrl: 'https://fonts.google.com/specimen/Playfair+Display' },
+          { name: 'Inter', category: 'Sans Serif', cssFamilyParam: 'Inter:wght@400;500;600', specimenUrl: 'https://fonts.google.com/specimen/Inter' },
+          ...FUENTES.filter(f => f.name !== 'Playfair Display' && f.name !== 'Inter')
+        ];
+
+        const filtered = baseFonts.filter(f => {
+          if (state.fontCategory !== 'all' && f.category !== state.fontCategory) return false;
+          if (!q) return true;
+          return f.name.toLowerCase().includes(q) || (f.description || '').toLowerCase().includes(q);
+        });
+
+        list.innerHTML = filtered.map(f => {
+          const active = f.name === activeName;
+          return `
+            <div class="font-row ${active ? 'active' : ''}" onclick="selectFont('${escapeHtml(f.name)}')">
+              <div>
+                <div class="font-row-name">${escapeHtml(f.name)}</div>
+                <div class="font-row-cat">${escapeHtml(f.category)}</div>
+              </div>
+              <span class="studio-mini-btn ${active ? 'active' : ''}">${active ? 'Activa' : 'Usar'}</span>
+            </div>
+          `;
+        }).join('') || '<p style="padding:0.8rem; font-size:0.78rem; color:rgba(252,249,248,0.7);">Sin fuentes para esa búsqueda.</p>';
+      } else {
+        list.innerHTML = PRUNING_RULES.map(r => {
+          const sel = state.selectedRules.includes(r.id);
+          return `
+            <div class="rule-row ${sel ? 'selected' : ''}" onclick="toggleRule('${r.id}')">
+              <div>
+                <div class="rule-title">${escapeHtml(r.title)}</div>
+                <div class="rule-desc">${escapeHtml(r.desc)}</div>
+              </div>
+              <span class="studio-mini-btn ${sel ? 'active' : ''}">${sel ? 'Incluida' : 'Incluir'}</span>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function selectPalette(id) {
+      state.comboId = id;
+      renderStudioListOnly();
+      renderPreviewAndPrompts();
+    }
+
+    function pickRandomPalette() {
+      const list = PALETAS.combinations || [];
+      if (!list.length) return;
+      const picked = list[Math.floor(Math.random() * list.length)];
+      state.comboId = picked.id;
+      renderStudioListOnly();
+      renderPreviewAndPrompts();
+    }
+
+    function selectFont(name) {
+      const obj = getFontObject(name);
+      ensureGoogleFontLoaded(obj);
+      if (state.fontRole === 'heading') {
+        state.headingFontName = name;
+      } else {
+        state.bodyFontName = name;
+      }
+      renderStudioListOnly();
+      renderPreviewAndPrompts();
+    }
+
+    function toggleRule(id) {
+      const idx = state.selectedRules.indexOf(id);
+      if (idx >= 0) state.selectedRules.splice(idx, 1);
+      else state.selectedRules.push(id);
+      renderStudioLeft();
+      renderPreviewAndPrompts();
+    }
+
+    function setPreviewPreset(preset) {
+      state.preset = preset;
+      document.querySelectorAll('#presetButtons [data-preset]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-preset') === preset);
+      });
+      renderPreviewAndPrompts();
+    }
+
+    function setBgMode(mode) {
+      state.bgMode = mode;
+      document.getElementById('bgModePaper').classList.toggle('active', mode === 'paper');
+      document.getElementById('bgModePalette').classList.toggle('active', mode === 'palette');
+      document.getElementById('bgModeDark').classList.toggle('active', mode === 'dark');
+      renderPreviewAndPrompts();
+    }
+
+    function toggleCompareAB() {
+      const btn = document.getElementById('btnCompareAB');
+      if (state.comparePin) {
+        state.comparePin = null;
+        btn.classList.remove('active');
+        btn.textContent = 'Comparar A vs B';
+      } else {
+        state.comparePin = {
+          comboId: state.comboId,
+          headingFontName: state.headingFontName,
+          bodyFontName: state.bodyFontName,
+          bgMode: state.bgMode
+        };
+        btn.classList.add('active');
+        btn.textContent = 'Cerrar A vs B';
+        showToast('Opción A fijada. Cambia la paleta o las fuentes para compararla con la B.');
+      }
+      renderPreviewAndPrompts();
+    }
+
+    function buildPaneHtml(cfg, label) {
+      const combo = getComboById(cfg.comboId);
+      const roles = resolvePaletteRoles(combo, cfg.bgMode);
+      const hFont = getFontObject(cfg.headingFontName);
+      const bFont = getFontObject(cfg.bodyFontName);
+      ensureGoogleFontLoaded(hFont);
+      ensureGoogleFontLoaded(bFont);
+
+      const p = PRESETS[state.preset] || PRESETS.paper;
+      const hStack = `'${hFont.name}', ${getFontFallback(hFont.category)}`;
+      const bStack = `'${bFont.name}', ${getFontFallback(bFont.category)}`;
+
+      return `
+        <div class="preview-pane" style="background:${roles.bg.hex}; color:${roles.text.hex}; font-family:${bStack};">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem;">
+            <span contenteditable="true" style="font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.05em; color: ${roles.accent.hex}; font-weight: 600;">
+              ${escapeHtml(p.kicker)}
+            </span>
+            ${label ? `<span style="font-family:var(--font-mono); font-size:0.64rem; padding:2px 6px; border:1px solid ${roles.accent.hex}; color:${roles.accent.hex};">${label}</span>` : ''}
+          </div>
+          <h3 contenteditable="true" style="font-family:${hStack}; color:${roles.heading.hex}; font-size:clamp(1.15rem, 1.8vw, 1.55rem); line-height:1.18; font-weight:600;">
+            ${escapeHtml(p.title)}
+          </h3>
+          <div contenteditable="true" style="font-size:0.72rem; opacity:0.72; padding-bottom:0.45rem; border-bottom:1px solid ${roles.accent.hex}33;">
+            ${escapeHtml(p.meta)}
+          </div>
+          <p contenteditable="true" style="font-size:0.83rem; line-height:1.6;">
+            ${escapeHtml(p.body)}
+          </p>
+          <div contenteditable="true" style="border-left:2.5px solid ${roles.accent.hex}; padding-left:0.75rem; font-size:0.8rem; line-height:1.5; color:${roles.heading.hex}; margin-top:0.2rem;">
+            ${escapeHtml(p.highlight)}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderPreviewAndPrompts() {
+      const stage = document.getElementById('previewStage');
+      const currentCfg = {
+        comboId: state.comboId,
+        headingFontName: state.headingFontName,
+        bodyFontName: state.bodyFontName,
+        bgMode: state.bgMode
+      };
+
+      if (state.comparePin) {
+        stage.classList.add('comparing');
+        stage.innerHTML = buildPaneHtml(state.comparePin, 'Opción A') + buildPaneHtml(currentCfg, 'Opción B');
+      } else {
+        stage.classList.remove('comparing');
+        stage.innerHTML = buildPaneHtml(currentCfg, '');
+      }
+
+      const combo = getComboById(state.comboId);
+      const roles = resolvePaletteRoles(combo, state.bgMode);
+      const hFont = getFontObject(state.headingFontName);
+      const bFont = getFontObject(state.bodyFontName);
+
+      // Barra compacta de tokens debajo del lienzo
+      const tokensBar = document.getElementById('studioTokensBar');
+      tokensBar.innerHTML = `
+        <div class="token-swatches-inline">
+          <span style="color:var(--cobalt-tint);">Sanzo Wada #${String(combo.id).padStart(3, '0')}:</span>
+          ${roles.raw.map(c => `<span class="token-chip"><span class="token-dot" style="background:${c.hex};"></span>${c.hex}</span>`).join('')}
+        </div>
+        <div>
+          <span>Títulos: <strong>${escapeHtml(hFont.name)}</strong> · Cuerpo: <strong>${escapeHtml(bFont.name)}</strong> · Reglas: <strong>${state.selectedRules.length}</strong></span>
+        </div>
+      `;
+
+      // Actualizar Etapa 3 (Resumen + Prompts 3A y 3B con HEX/RGB + Google Fonts instalación)
+      const rulesList = PRUNING_RULES.filter(r => state.selectedRules.includes(r.id));
+      document.getElementById('stage3Summary').textContent =
+        `Paleta #${String(combo.id).padStart(3, '0')} · Títulos: ${hFont.name} · Cuerpo: ${bFont.name} · ${rulesList.length} reglas`;
+
+      const paletteLines = [
+        `- Fondo: ${roles.bg.hex} (${formatRgb(roles.bg)})`,
+        `- Títulos: ${roles.heading.hex} (${formatRgb(roles.heading)})`,
+        `- Texto principal: ${roles.text.hex} (${formatRgb(roles.text)})`,
+        `- Acento: ${roles.accent.hex} (${formatRgb(roles.accent)})`,
+        `- Paleta Sanzo Wada #${String(combo.id).padStart(3, '0')}: ${roles.raw.map(c => `${c.name} ${c.hex} / ${formatRgb(c)}`).join(' · ')}`
+      ].join('\n');
+
+      const hParam = hFont.cssFamilyParam || hFont.name.replace(/\s+/g, '+');
+      const bParam = bFont.cssFamilyParam || bFont.name.replace(/\s+/g, '+');
+      const googleFontsLink = hFont.name === bFont.name
+        ? `https://fonts.googleapis.com/css2?family=${hParam}&display=swap`
+        : `https://fonts.googleapis.com/css2?family=${hParam}&family=${bParam}&display=swap`;
+
+      const fontLines = [
+        `- Títulos: ${hFont.name} (${hFont.specimenUrl || 'https://fonts.google.com/'})`,
+        `- Cuerpo: ${bFont.name} (${bFont.specimenUrl || 'https://fonts.google.com/'})`,
+        `- Si la pieza es web, carga ambas con: <link rel="stylesheet" href="${googleFontsLink}">`,
+        `- Si es un paper, informe o presentación (Word, Google Docs, PowerPoint, LaTeX o Canva), explícame paso a paso cómo instalar o activar estas fuentes en esa herramienta y propón una fuente de respaldo por si no están disponibles.`
+      ].join('\n');
+
+      const rulesBlock = rulesList.length > 0
+        ? rulesList.map(r => `- ${r.title}: ${r.desc}`).join('\n')
+        : '- Sin recursos de plantilla ni adjetivos vacíos.';
+
+      document.getElementById('prompt3AText').textContent = `Usa la "Ficha de criterio" que armamos arriba y estas decisiones de color, tipografía y reglas.
+
+COLORES (HEX y RGB)
+${paletteLines}
+
+TIPOGRAFÍAS (Google Fonts)
+${fontLines}
+
+REGLAS
+${rulesBlock}
+
+Todavía no me entregues la versión final.
+1. Propón 8 enfoques distintos para la pieza (título y dos líneas cada uno).
+2. Revisa tu lista: si dos enfoques se parecen o suenan a plantilla, reemplaza uno por una alternativa claramente distinta.
+3. Indica el riesgo principal de cada enfoque.
+Termina preguntándome cuáles dos quiero combinar.`;
+
+      document.getElementById('prompt3BText').textContent = `De las opciones anteriores me quedo con:
+- [Anota aquí las 2 o 3 decisiones que elegiste]
+
+Ahora quiero ver cómo se vería esto aplicado a mi pieza real (paper, informe, póster, carrusel o web).
+
+Entrégame:
+1. Un archivo ESTILO.md con: los colores (HEX y RGB) y para qué sirve cada uno; las dos fuentes de Google (${hFont.name} para títulos y ${bFont.name} para cuerpo) y cómo cargarlas o instalarlas en mi herramienta; el tono de voz y las prohibiciones.
+2. La primera versión de la pieza con mi contenido: un archivo HTML/CSS que pueda abrir en el navegador o, si no es una web, la estructura completa lista para diagramar.
+
+Respeta las reglas sin agregar elementos que no pedí. Si falta contenido, déjalo marcado como [pendiente] en vez de inventarlo.`;
+    }
+
+    // =========================================================================
+    // 3. NAVEGACIÓN SNAP SCROLL E INTERSECTION OBSERVER
+    // =========================================================================
+    const snapContainer = document.getElementById('snapContainer');
+    const sections = document.querySelectorAll('.snap-section');
+    const snapDots = document.querySelectorAll('.snap-dot');
+    const snapDotsContainer = document.getElementById('snapDots');
+    const brandHeader = document.getElementById('brandHeader');
+    const headerStepBtns = document.querySelectorAll('.header-pill[data-step-nav]');
+
+    function scrollToSection(id) {
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('[data-target]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollToSection(btn.getAttribute('data-target'));
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.45) {
+          const activeId = entry.target.id;
+          const isDark = entry.target.classList.contains('section-dark');
+
+          snapDotsContainer.classList.toggle('dark-mode', isDark);
+          brandHeader.classList.toggle('dark-mode', isDark);
+
+          snapDots.forEach(dot => {
+            dot.classList.toggle('active', dot.getAttribute('data-target') === activeId);
+          });
+          headerStepBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-target') === activeId);
+          });
+        }
+      });
+    }, { root: snapContainer, threshold: [0.5] });
+
+    sections.forEach(sec => observer.observe(sec));
+
+    // =========================================================================
+    // 4. COPIADO DE PROMPTS Y TOAST
+    // =========================================================================
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove('visible'), 2600);
+    }
+
+    function copyTextById(elId, btn) {
+      const el = document.getElementById(elId);
+      if (!el) return;
+      const text = el.textContent;
+
+      const onSuccess = () => {
+        if (btn) {
+          const prev = btn.innerHTML;
+          btn.classList.add('copied');
+          btn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 15px;">check</span><span>Copiado</span>';
+          setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = prev;
+          }, 2200);
+        }
+        showToast('Prompt copiado al portapapeles.');
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(onSuccess).catch(() => {
+          fallbackCopy(text);
+          onSuccess();
+        });
+      } else {
+        fallbackCopy(text);
+        onSuccess();
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    // Inicialización
+    document.getElementById('prompt1Text').textContent = PROMPT_1;
+    renderStudioLeft();
+    renderPreviewAndPrompts();
+  </script>
+</body>
+</html>

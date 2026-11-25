@@ -3,13 +3,18 @@ const path = require('path');
 
 const files = [
   'index.html',
+  'conocimiento-profundo.html',
+  'conocimiento-amplio.html',
+  'criterio-gusto.html',
+  'agencia.html',
   'data/conceptos.json',
   'data/ejercicios.json',
   'data/recursos.json',
   'data/materiales.json',
   'data/autores.json',
   'data/paletas.json',
-  'data/fuentes.json'
+  'data/fuentes.json',
+  'data/lentes.json'
 ];
 
 // Broad emoji regex
